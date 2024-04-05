@@ -1,5 +1,8 @@
 import { css } from "@emotion/react";
 
 export const layout = css`
-    background-color: #fafafa;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: #f5f5f5;
 `;
