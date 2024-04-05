@@ -12,6 +12,8 @@ function App() {
             <HomePage />
             <SelectPackageOrStorePage />
             <FeedbackWritePage />
+            {/* <SelectPackageOrStorePage /> */}
+            {/* <MenuCategory /> */}
         </>
     );
 }

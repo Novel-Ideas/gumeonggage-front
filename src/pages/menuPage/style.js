@@ -6,23 +6,33 @@ export const layout = css`
     height: 100%;
 `;
 
-export const menuLayout = css`
+export const container = css`
     width: 70%;
     height: 100%;
 `;
 
 export const categoryLayout = css`
     position: relative;
-    height: 30%;
+    height: 25%;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    padding-left: 40px;
+`;
+
+export const menuLayout = css`
+    height: 75%;
+    background-color: coral;
+`;
+
+export const categoryBox = css`
+    display: flex;
+    height: 100%;
+    width: 50%;
 `;
 
 export const bigButton = css`
     position: absolute;
     top: 20px;
-    right: 30px;
+    right: 40px;
     box-sizing: border-box;
     border: 2px solid #222;
     border-radius: 20px;
