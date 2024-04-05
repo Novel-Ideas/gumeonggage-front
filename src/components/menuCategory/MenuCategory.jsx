@@ -9,11 +9,11 @@ function MenuCategory() {
     return (
         <div css={s.layout}>
             <div css={s.header}>
-                <h1 css={s.font}>Menu</h1>
-                <h1 css={s.font2}>Category</h1>
+                <h1 css={s.menuFont}>Menu</h1>
+                <h1 css={s.categoryFont}>Category</h1>
             </div>
-            <div css={s.categorylayout}>
-                <CategoryButton css={s.category} icon={<FaCrown />} categoryName={"TOP3"} />
+            <div css={s.categoryLayout}>
+                <CategoryButton icon={<FaCrown />} categoryName={"TOP3"} />
                 <CategoryButton icon={<PiHamburger />} categoryName={"Burger"} />
                 <CategoryButton icon={<LuGlassWater />} categoryName={"Drink"} />
             </div>

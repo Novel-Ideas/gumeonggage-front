@@ -1,17 +1,22 @@
 /**@jsxImportSource @emotion/react */
 import * as s from "./style";
 import PageLayout from "../../components/pageComponents/PageLayout";
+import MenuCategoryPage from "../../components/menuCategory/MenuCategory";
 
 function MenuPage(props) {
     return (
         <PageLayout>
             <div css={s.layout}>
-                <div css={s.menuLayout}>
+                <div css={s.container}>
                     <div css={s.categoryLayout}>
-                        <div>카테고리</div>
+                        <div css={s.categoryBox}>
+                            <MenuCategoryPage />
+                        </div>
                         <button css={s.bigButton}>큰 글씨 모드</button>
                     </div>
-                    <div>메뉴</div>
+                    <div css={s.menuLayout}>
+                        <div>메뉴</div>
+                    </div>
                 </div>
                 <div css={s.orderLayout}>
                     <div css={s.orderMenuLayout}>주문 메뉴</div>
