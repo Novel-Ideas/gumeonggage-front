@@ -1,11 +1,16 @@
-import SelectPackageOrStorePage from "./pages/mainPage/selectPackageOrStorePage/SelectPackageOrStorePage";
+import { Reset } from "styled-reset";
+import MenuPage from "./pages/menuPage/MenuPage";
+import HomePage from "./pages/homePage/HomePage";
+import SelectPackageOrStorePage from "./pages/MainPage/SelectPackageOrStorePage/SelectPackageOrStorePage";
 
 function App() {
     return (
-        <div>
+        <>
+            <Reset />
+            <MenuPage />
+            <HomePage />
             <SelectPackageOrStorePage />
-        </div>
+        </>
     );
 }
-
 export default App;
