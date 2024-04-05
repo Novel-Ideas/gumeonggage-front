@@ -1,5 +1,11 @@
+import SelectPackageOrStorePage from "./pages/mainPage/selectPackageOrStorePage/SelectPackageOrStorePage";
+
 function App() {
-    return <div></div>;
+    return (
+        <div>
+            <SelectPackageOrStorePage />
+        </div>
+    );
 }
 
 export default App;
