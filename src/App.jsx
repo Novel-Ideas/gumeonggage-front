@@ -1,5 +1,11 @@
+import MenuCategory from "./components/menuCategory/MenuCategory";
+
 function App() {
-    return <div></div>;
+    return (
+    <>
+        <MenuCategory />
+    </>
+    )
 }
 
 export default App;
