@@ -10,5 +10,5 @@ function App() {
             <HomePage />
         </>
     );
-
+}
 export default App;
