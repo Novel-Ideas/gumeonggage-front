@@ -10,7 +10,7 @@ export const feedbackTitle = css`
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
+    font-size: 25px;
 `;
 
 export const feedbackQuestion = css`
