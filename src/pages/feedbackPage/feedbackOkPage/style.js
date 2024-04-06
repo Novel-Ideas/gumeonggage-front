@@ -27,19 +27,19 @@ export const thankyouComment = css`
 
 export const checkButton = css`
     margin-top: 30px;
-    font-size: 20px;
+    font-size: 30px;
     font-weight: 600;
+    color: white;
     border-radius: 10px;
-    border: 1px solid #dbdbdb;
-    padding: 15px 200px;
-    background-color: white;
+    border: 2px solid rgb(252, 10, 86);
+    padding: 10px 200px;
+    background-color: rgb(252, 10, 86);
     box-shadow: 5px 5px 5px #898989ff;
+    transition: all 0.2s ease-in-out;
     cursor: pointer;
 
     &:hover {
-        background-color: #fafafa;
-    }
-    &:active {
-        background-color: #dbdbdb;
+        background-color: white;
+        color: rgb(252, 10, 86);
     }
 `;
