@@ -1,7 +1,6 @@
 import { css } from "@emotion/react";
 
 export const layout = css`
-    position: relative;
     border-radius: 25px;
     width: 100%;
     height: 100%;
@@ -11,8 +10,7 @@ export const layout = css`
     align-items: center;
 
     & > h1 {
-        position: absolute;
-        top: 50px;
+        margin-bottom: 30px;
         font-size: 50px;
         font-weight: 600;
         cursor: default;
@@ -24,7 +22,7 @@ export const feedbackLayout = css`
     border: 2px solid #dbdbdb;
     border-radius: 30px;
     width: 70%;
-    height: 70%;
+    height: 60%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -70,7 +68,7 @@ export const checkButton = css`
     font-weight: 600;
     border-radius: 10px;
     border: 1px solid #dbdbdb;
-    padding: 10px 10px;
+    padding: 15px 200px;
     background-color: white;
     box-shadow: 5px 5px 5px #33333322;
     cursor: pointer;

@@ -58,9 +58,9 @@ function FeedbackWritePage() {
                                 <label for="kind">친절함</label>
                             </div>
                         </div>
-                        <button css={s.checkButton}>확인</button>
                     </div>
                 </div>
+                <button css={s.checkButton}>확인</button>
             </div>
         </PageLayout>
     );

@@ -1,16 +1,19 @@
 /** @jsxImportSource @emotion/react */
+import PageLayout from "../../../components/pageComponents/PageLayout";
 import * as s from "./style";
 
 function FeedbackOkPage() {
     return (
-        <div css={s.layout}>
-            <div css={s.thankyouComment}>
-                <h1>후기를 남겨 주셔서 감사합니다!</h1>
+        <PageLayout>
+            <div css={s.layout}>
+                <div css={s.box}>
+                    <div css={s.thankyouComment}>
+                        <h1>후기를 남겨 주셔서 감사합니다!</h1>
+                    </div>
+                </div>
+                <button css={s.checkButton}>확인</button>
             </div>
-            <div css={s.checkButton}>
-                <button>확인</button>
-            </div>
-        </div>
+        </PageLayout>
     );
 }
 
