@@ -2,6 +2,7 @@ import { css } from "@emotion/react";
 
 export const layout = css`
     position: relative;
+    width: 100%s;
     height: 100%;
     display: flex;
     align-items: center;
@@ -10,27 +11,42 @@ export const layout = css`
 
 export const selectWay = css`
     box-sizing: border-box;
-    justify-content: center;
     display: flex;
-    border-radius: 35px;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    float: left;
+    border: 4px solid rgb(252, 10, 86);
+    border-radius: 35px;
     width: 450px;
     height: 550px;
-    margin: 100px;
-    background-color: white;
-    font-size: 40px;
+    margin: 50px;
+    background-color: rgb(252, 10, 86);
+    color: white;
+    font-size: 80px;
+    font-weight: 700;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 5px 5px 5px #898989ff;
+    cursor: pointer;
+
+    & > :first-child {
+        font-size: 250px;
+        margin-bottom: 40px;
+    }
+    &:hover {
+        background-color: white;
+        color: rgb(252, 10, 86);
+    }
 `;
 
 export const adminButton = css`
     position: absolute;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    right: 0px;
+    bottom: 0px;
+    font-size: 50px;
+    border: 1px solid #dbdbdb;
     border-radius: 10px;
-    width: 150px;
-    height: 50px;
-    font-size: 25px;
-    bottom: 0;
-    right: 0;
+    background-color: transparent;
 `;
