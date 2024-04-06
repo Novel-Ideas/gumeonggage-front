@@ -1,8 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import PageLayout from "../../../components/pageComponents/PageLayout";
 import * as s from "./style";
+import { useNavigate } from "react-router-dom";
 
 function FeedbackWritePage() {
+    const navigate = useNavigate();
+    const handleSubmitClick = () => {
+        navigate("/feedback/ok");
+    };
     return (
         <PageLayout>
             <div css={s.layout}>
@@ -60,7 +65,9 @@ function FeedbackWritePage() {
                         </div>
                     </div>
                 </div>
-                <button css={s.checkButton}>확인</button>
+                <button css={s.checkButton} onClick={handleSubmitClick}>
+                    확인
+                </button>
             </div>
         </PageLayout>
     );
