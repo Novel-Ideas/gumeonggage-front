@@ -65,7 +65,7 @@ export const radioButton = css`
     & > input[type="radio"]:checked {
         background-color: rgb(252, 10, 86); // 체크 시 내부 원으로 표시될 색상
         border: 3px solid white; // 테두리가 아닌, 테두리와 원 사이의 색상
-        box-shadow: 0 0 0 1.6px rgb(252, 10, 86);
+        box-shadow: 0 0 0 1.6px #22d3ee;
     }
     & > label {
         font-size: 35px;
