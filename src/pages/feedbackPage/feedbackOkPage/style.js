@@ -33,7 +33,7 @@ export const checkButton = css`
     border: 1px solid #dbdbdb;
     padding: 15px 200px;
     background-color: white;
-    box-shadow: 5px 5px 5px #33333322;
+    box-shadow: 5px 5px 5px #898989ff;
     cursor: pointer;
 
     &:hover {
