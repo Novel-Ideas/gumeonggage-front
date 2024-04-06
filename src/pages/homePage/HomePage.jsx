@@ -1,12 +1,17 @@
 /** @jsxImportSource @emotion/react */
 import PageLayout from "../../components/pageComponents/PageLayout";
 import * as s from "./style";
+import { useNavigate } from "react-router-dom";
 
 function HomePage() {
-    
+    const navigate = useNavigate();
+    const handlePageClick = () => {
+        navigate("/select");
+    };
+
     return (
         <PageLayout>
-            <div css={s.layout}>
+            <div css={s.layout} onClick={handlePageClick}>
                 <div css={s.content}>
                     <div css={s.imgbox}>
                         <img
