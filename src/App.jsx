@@ -3,17 +3,20 @@ import MenuPage from "./pages/menuPage/MenuPage";
 import HomePage from "./pages/homePage/HomePage";
 import SelectPackageOrStorePage from "./pages/mainPage/selectPackageOrStorePage/SelectPackageOrStorePage";
 import FeedbackWritePage from "./pages/feedbackPage/feedbackWritePage/FeedbackWritePage";
+import MenuList from "./components/menuList/MenuList";
 
 function App() {
     return (
         <>
-            <Reset />
+            {/* <Reset />
             <MenuPage />
             <HomePage />
             <SelectPackageOrStorePage />
-            <FeedbackWritePage />
+            <FeedbackWritePage /> */}
             {/* <SelectPackageOrStorePage /> */}
             {/* <MenuCategory /> */}
+            <MenuList />
+        
         </>
     );
 }
