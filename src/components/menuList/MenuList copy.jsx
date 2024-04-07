@@ -2,29 +2,22 @@
 import * as s from "./style";
 import MenuButton from "../menuButton/MenuButton";
 import { useEffect, useState } from "react";
-
-async function fetchMenuData() {
-    try {
-        const response = await fetch('/menus'); // 백엔드 API 엔드포인트
-        if (!response.ok) {
-            throw new Error('Failed to fetch menu data');
-        }
-        return await response.json(); // JSON 형식의 데이터 반환
-    } catch (error) {
-        console.error('Error fetching menu data:', error);
-        return []; // 에러가 발생하면 빈 배열 반환 또는 다른 적절한 처리
-    }
-}
+import axios from 'axios';
 
 function MenuList() {
-    
-    const [menuData, setMenuData] = useState([]);
+
+    const [menuItems, setMenuItems] = useState([]);
 
     useEffect(() => {
-        fetchMenuData().then(data => setMenuData(data));
+        axios.get('/menus')
+            .then(response => {
+                setMenuItems(response.data);
+            })
+            .catch(error => {
+                console.error('메뉴 항목을 불러오는 중 오류가 발생했습니다:', error);
+            });
     }, []);
-
-
+    
     return (
         <div css={s.layout}>
             <div css={s.header}>
@@ -32,12 +25,12 @@ function MenuList() {
                 <h1 css={s.categoryFont}>Order</h1>
             </div>
             <div css={s.menuListLayout}>
-                {menuData.map(menuItem => (
+            {menuItems.map((menuItem, menuId) => (
                     <MenuButton
-                        key={menuItem.menuId}
-                        img={menuItem.menuImgUrl}
-                        menuName={menuItem.menuName}
-                        price={menuItem.menuPrice}
+                        key={menuId} 
+                        img={menuItem.menuImgUrl} 
+                        menuName={menuItem.menuName} 
+                        price={menuItem.menuPrice} 
                     />
                 ))}
             </div>
