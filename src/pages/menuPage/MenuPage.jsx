@@ -17,9 +17,7 @@ function MenuPage(props) {
                         <button css={s.bigButton}>큰 글씨 모드</button>
                     </div>
                     <div css={s.menuLayout}>
-                        <div>
                             <MenuList />
-                        </div>
                     </div>
                 </div>
                 <div css={s.orderLayout}>
