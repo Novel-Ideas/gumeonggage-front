@@ -13,13 +13,13 @@ export const container = css`
 
 export const categoryLayout = css`
     position: relative;
-    height: 25%;
+    height: 30%;
     display: flex;
     padding-left: 40px;
 `;
 
 export const menuLayout = css`
-    height: 75%;
+    height: 70%;
     background-color: coral;
 `;
 
