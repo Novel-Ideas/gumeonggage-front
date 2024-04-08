@@ -36,5 +36,10 @@ export const menuListLayout = css`
     box-sizing: border-box;
     display: flex;
     align-items: center;
+`;
+
+export const menuListBox = css`
+    box-sizing: border-box;
+    display: flex;
     
 `;

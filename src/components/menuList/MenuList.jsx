@@ -12,7 +12,16 @@ function MenuList() {
                 <h1 css={s.orderFont}>Order</h1>
             </div>
             <div css={s.menuListLayout}>
-                <MenuButton img={<FaCrown />} menuName= {""} pirce={""} />
+                <div css={s.menuListBox}>
+                    <MenuButton img={<FaCrown />} menuName= {"트리플 버거"} price={"7900원"} />
+                    <MenuButton img={<FaCrown />} menuName= {"트리플 버거"} price={"7900원"} />
+                    <MenuButton img={<FaCrown />} menuName= {"트리플 버거"} price={"7900원"} />
+                    <MenuButton img={<FaCrown />} menuName= {"트리플 버거"} price={"7900원"} />
+                    <MenuButton img={<FaCrown />} menuName= {"트리플 버거"} price={"7900원"} />
+                    <MenuButton img={<FaCrown />} menuName= {"트리플 버거"} price={"7900원"} />
+                    <MenuButton img={<FaCrown />} menuName= {"트리플 버거"} price={"7900원"} />
+                    <MenuButton img={<FaCrown />} menuName= {"트리플 버거"} price={"7900원"} />
+                </div>
             </div>
         </div>
     );

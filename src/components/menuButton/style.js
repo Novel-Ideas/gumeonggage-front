@@ -49,25 +49,31 @@ export const imglayout = css`
 
 export const menuListLayout = css`
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100;
 `;
+
+
 
 export const menuFont = css`
     font-size: 24px;
     color: #898989;
+    margin: 5px 0px;
 `;
 
 export const priceFontLayout = css`
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 24px;
+    width: 180px;
+    font-size: 20px;
     color: #898989;
 `;
 
 export const priceFont = css`
-    font-size: 24px;
+    font-size: 18px;
     color: #898989;
+    margin-top: 0;
 `;
