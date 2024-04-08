@@ -3,6 +3,7 @@ import MenuRoute from "./routes/MenuRoute";
 import PaymentMethod from "./pages/payment Method/PaymentMethod";
 import PayList from "./pages/payList/PayList";
 import PointAccumulation from "./pages/pointAccumulation/PointAccumulation";
+import SideBar from "./components/sideBar/SideBar";
 
 function App() {
     return (
@@ -11,7 +12,8 @@ function App() {
             <MenuRoute /> */}
             {/* <PaymentMethod /> */}
             {/* <PayList /> */}
-            <PointAccumulation />
+            {/* <PointAccumulation /> */}
+            <SideBar />
         </>
     );
 }
