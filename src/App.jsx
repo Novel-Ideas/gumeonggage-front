@@ -1,4 +1,5 @@
 import { Reset } from "styled-reset";
+import MenuList from "./components/menuList/MenuList";
 import MenuRoute from "./routes/MenuRoute";
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
         <>
             <Reset />
             <MenuRoute />
+            <MenuList />
         </>
     );
 }
