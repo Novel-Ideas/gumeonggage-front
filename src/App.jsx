@@ -1,11 +1,10 @@
 import { Reset } from "styled-reset";
-import MenuRoute from "./routes/MenuRoute";
-
+import HomeRoute from "./routes/HomeRoute";
 function App() {
     return (
         <>
             <Reset />
-            <MenuRoute />
+            <HomeRoute />
         </>
     );
 }
