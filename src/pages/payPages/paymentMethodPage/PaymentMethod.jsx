@@ -1,12 +1,16 @@
 /** @jsxImportSource @emotion/react */
 import * as s from "./style";
 import PageModal from "../../../components/pageComponents/pageModal/PageModal";
-import { useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import DutchPayPage from "../dutchPayPage/DutchPayPage";
 
 function PaymentMethod() {
     const navigate = useNavigate();
     const handleCancelClick = () => {
-        navigate("/menu");
+        navigate("/menu/menuall");
+    };
+    const handleDutchPayClick = () => {
+        navigate("/menu/menuall/order/dutchpay");
     };
     return (
         <PageModal>
@@ -18,7 +22,10 @@ function PaymentMethod() {
                 </div>
                 <div css={s.paybox}>
                     <div css={s.methodLayout}>
-                        <button css={s.methodBox}></button>
+                        <button
+                            css={s.methodBox}
+                            onClick={handleDutchPayClick}
+                        ></button>
                         <h1>카드결제</h1>
                     </div>
                     <div css={s.methodLayout}>
@@ -31,6 +38,10 @@ function PaymentMethod() {
                         <span css={s.buttonX}>x</span> 취소
                     </button>
                 </div>
+                <Routes>
+                    <Route path="/" element={<></>} />
+                    <Route path="/dutchpay" element={<DutchPayPage />} />
+                </Routes>
             </div>
         </PageModal>
     );

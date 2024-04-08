@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 function HomePage() {
     const navigate = useNavigate();
     const handlePageClick = () => {
-        navigate("/select");
+        navigate("/menu/select");
     };
 
     return (

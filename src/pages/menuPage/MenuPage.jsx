@@ -10,7 +10,7 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 function MenuPage(props) {
     const navigate = useNavigate();
     const handleOrderButtonClick = () => {
-        navigate("/menu/order");
+        navigate("/menu/menuall/order");
     };
 
     return (
@@ -42,7 +42,7 @@ function MenuPage(props) {
                 </div>
                 <Routes>
                     <Route path="/" element={<></>} />
-                    <Route path="/order" element={<PaymentMethod />} />
+                    <Route path="/order/*" element={<PaymentMethod />} />
                 </Routes>
             </div>
         </PageLayout>

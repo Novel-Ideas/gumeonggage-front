@@ -7,9 +7,9 @@ function HomeRoute(props) {
     return (
         <>
             <Routes>
-                <Route path="/signin" element={<AdminAuthPage />} />
+                <Route path="/" element={<AdminAuthPage />} />
                 <Route path="/selectMenu" />
-                <Route path="/*" element={
+                <Route path="/menu/*" element={
                     <MenuRoute />
                 } />
                 <Route path="/admin/*" element={

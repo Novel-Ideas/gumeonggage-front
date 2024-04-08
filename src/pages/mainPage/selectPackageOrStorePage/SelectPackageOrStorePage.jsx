@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 function SelectPackageOrStorePage() {
     const navigate = useNavigate();
     const handleSelectButtonClick = () => {
-        navigate("/menu");
+        navigate("/menu/menuall");
     };
     return (
         <PageLayout>
