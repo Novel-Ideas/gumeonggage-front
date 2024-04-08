@@ -4,10 +4,9 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { QueryClient, QueryClientProvider } from "react-query";
 
 const queryClient = new QueryClient(); // queryClient = 데이터가 저장되는 캐싱 공간
-
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

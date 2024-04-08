@@ -12,7 +12,7 @@ function MenuRoute(props) {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/select" element={<SelectPackageOrStore />} />
-                <Route path="/menu" element={<MenuPage />} />
+                <Route path="/menu/*" element={<MenuPage />} />
                 <Route path="/feedback" element={<FeedbackWritePage />} />
                 <Route path="/feedback/ok" element={<FeedbackOkPage />} />
             </Routes>

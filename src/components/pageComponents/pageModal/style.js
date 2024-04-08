@@ -1,6 +1,7 @@
 import { css } from "@emotion/react";
 
-export const layout = css`
+export const layout = (show) => css`
+    opacity: ${show ? 1 : 0};
     width: 100%;
     height: 100%;
     background-color: #33333399;
@@ -9,6 +10,7 @@ export const layout = css`
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.2s ease-in-out;
 `;
 
 export const modal = css`

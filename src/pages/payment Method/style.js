@@ -4,16 +4,15 @@ export const layout = css`
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: column;// 세로로 세우겠다
-    justify-content: center;//가로중간 이거없으면 
-    align-items: center;//세로중간
+    flex-direction: column; // 세로로 세우겠다
+    justify-content: center; //가로중간 이거없으면
+    align-items: center; //세로중간
 `;
 
 export const textbox = css`
     width: 100%;
     height: 25%;
     box-sizing: border-box;
-    
 `;
 export const text = css`
     margin-top: 50px;
@@ -29,9 +28,8 @@ export const paybox = css`
     height: 50%;
     box-sizing: border-box;
     display: flex;
-    justify-content:center;
+    justify-content: center;
     align-items: center; //세로중간
-
 `;
 
 export const methodLayout = css`
@@ -53,19 +51,15 @@ export const methodBox = css`
 `;
 
 export const buttonBox = css`
-    width: 100%;
-    height: 25%;
     display: flex;
     justify-content: center;
     align-items: center;
-    
 `;
 
-export const cancle = css`
+export const cancel = css`
     width: 200px;
     height: 40px;
     font-size: 25px;
-    
 `;
 
 export const buttonX = css`

@@ -5,13 +5,12 @@ import MenuCategoryPage from "../../components/menuComponents/menuCategory/MenuC
 import OrderListComponent from "../../components/menuComponents/orderListComponent/OrderListComponent";
 import MenuList from "../../components/menuList/MenuList";
 import PaymentMethod from "../payment Method/PaymentMethod";
-import PageModal from "../../components/pageComponents/pageModal/PageModal";
-import { useState } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 function MenuPage(props) {
-    const [modalShow, setModalShow] = useState(false);
+    const navigate = useNavigate();
     const handleOrderButtonClick = () => {
-        setModalShow(() => true);
+        navigate("/menu/order");
     };
 
     return (
@@ -41,13 +40,10 @@ function MenuPage(props) {
                         </button>
                     </div>
                 </div>
-                {modalShow ? (
-                    <PageModal>
-                        <PaymentMethod />
-                    </PageModal>
-                ) : (
-                    <></>
-                )}
+                <Routes>
+                    <Route path="/" element={<></>} />
+                    <Route path="/order" element={<PaymentMethod />} />
+                </Routes>
             </div>
         </PageLayout>
     );
