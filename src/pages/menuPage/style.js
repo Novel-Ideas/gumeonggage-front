@@ -20,6 +20,7 @@ export const categoryLayout = css`
 
 export const menuLayout = css`
     height: 70%;
+    background-color: coral;
     width: 826px;
 `;
 
@@ -31,15 +32,15 @@ export const categoryBox = css`
 
 export const bigButton = css`
     position: absolute;
-    top: 20px;
-    right: 40px;
+    top: 10px;
+    right: 30px;
     box-sizing: border-box;
-    border: 2px solid #222;
+    border: 2px solid rgb(252, 10, 86);
     border-radius: 20px;
-    padding: 20px 30px;
-    font-size: 40px;
+    padding: 10px 20px;
+    font-size: 30px;
     font-weight: 700;
-    background-color: #222;
+    background-color: rgb(252, 10, 86);
     color: white;
     box-shadow: 5px 5px 5px #898989ff;
     transition: all 0.2s ease-in-out;
@@ -47,7 +48,7 @@ export const bigButton = css`
 
     &:hover {
         background-color: white;
-        color: #222;
+        color: rgb(252, 10, 86);
     }
 `;
 

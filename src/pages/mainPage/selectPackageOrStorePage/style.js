@@ -28,8 +28,8 @@ export const selectWay = css`
     box-shadow: 5px 5px 5px #898989ff;
     cursor: pointer;
 
-    & > :first-child {
-        font-size: 250px;
+    & > :first-of-type {
+        font-size: 150px;
         margin-bottom: 40px;
     }
     &:hover {
