@@ -7,7 +7,7 @@ function PlayRecPage() {
         <PageLayout>
             <div css={s.layout}>
                 <div>
-                    
+                    임시
                 </div>
                 <div css={s.desertRecommend}>
                     <h1>후식 추천 받기</h1>    
