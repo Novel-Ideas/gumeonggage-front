@@ -2,9 +2,10 @@ import { css } from "@emotion/react";
 
 export const menuLayout = css`
     height: 100%;
-    & > button:nth-of-type(1) {
+    /* & > button:nth-of-type(1) {
         margin-right: 15px;
-    }
+        margin-bottom: 15px;
+    } */
 `;
 
 export const menu = css`
@@ -32,6 +33,9 @@ export const menu = css`
             background-color: white;
         }
     }
+    &:visited {
+        background-color: white;
+    }
 `;
 
 export const imglayout = css`
@@ -52,15 +56,13 @@ export const menuListLayout = css`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100;
 `;
-
-
 
 export const menuFont = css`
     font-size: 24px;
     color: #898989;
-    margin: 5px 0px;
+    margin: 8px 0px;
+    font-weight: 600;
 `;
 
 export const priceFontLayout = css`
@@ -70,10 +72,11 @@ export const priceFontLayout = css`
     width: 180px;
     font-size: 20px;
     color: #898989;
+    margin-bottom: 10px;
 `;
 
 export const priceFont = css`
     font-size: 18px;
     color: #898989;
-    margin-top: 0;
+
 `;
