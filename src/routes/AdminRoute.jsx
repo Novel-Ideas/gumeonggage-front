@@ -2,17 +2,15 @@ import { Route, Routes } from "react-router-dom";
 
 function AdminRoute(props) {
     return (
-        <>
-            <Routes>
-                <Route path='/admin/main'/>
-                <Route path='/admin/sale'/>
-                <Route path='/admin/add'/>
-                <Route path='/admin/getmenu'/>
-                <Route path='/admin/update'/>
-                <Route path='/admin/delete'/>
-                <Route path='/admin/feedback'/>
-            </Routes>
-        </>
+        <Routes>
+            <Route path="/main" />
+            <Route path="/sale" />
+            <Route path="/add" />
+            <Route path="/getmenu" />
+            <Route path="/update" />
+            <Route path="/delete" />
+            <Route path="/feedback" />
+        </Routes>
     );
 }
 
