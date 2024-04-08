@@ -1,23 +1,11 @@
 import { Reset } from "styled-reset";
-import MenuRoute from "./routes/MenuRoute";
-import SideBar from "./components/sideBar/SideBar";
-import AdminAuthPage from "./pages/adminPages/adminAuthPage/AdminAuthPage";
-import PaymentMethod from "./pages/paymentMethodPage/PaymentMethod";
-import PayList from "./pages/payListPage/PayList";
-import PointAccumulation from "./pages/pointPage/pointAccumulation/PointAccumulation";
-import PointPhoneNumber from "./pages/pointPage/pointPhoneNumber/PointPhoneNumber";
+import HomeRoute from "./routes/HomeRoute";
 
 function App() {
     return (
         <>
-            {/* <Reset />
-            <MenuRoute /> */}
-            {/* <PaymentMethod /> */}
-            {/* <PayList /> */}
-            {/* <PointAccumulation /> */}
-            <SideBar />
-            <AdminAuthPage />
-            <PointPhoneNumber />
+            <Reset />
+            <HomeRoute />
         </>
     );
 }
