@@ -1,5 +1,5 @@
 /**@jsxImportSource @emotion/react */
-import CategoryButton from "../categoryButton/CategoryButton";
+import CategoryButton from "../../categoryButton/CategoryButton";
 import { PiHamburger } from "react-icons/pi";
 import { LuGlassWater } from "react-icons/lu";
 import { FaCrown } from "react-icons/fa";
@@ -14,8 +14,14 @@ function MenuCategory() {
             </div>
             <div css={s.categoryLayout}>
                 <CategoryButton icon={<FaCrown />} categoryName={"TOP3"} />
-                <CategoryButton icon={<PiHamburger />} categoryName={"Burger"} />
-                <CategoryButton icon={<LuGlassWater />} categoryName={"Drink"} />
+                <CategoryButton
+                    icon={<PiHamburger />}
+                    categoryName={"Burger"}
+                />
+                <CategoryButton
+                    icon={<LuGlassWater />}
+                    categoryName={"Drink"}
+                />
             </div>
         </div>
     );

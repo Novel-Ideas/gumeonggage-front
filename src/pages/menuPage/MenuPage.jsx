@@ -1,7 +1,7 @@
 /**@jsxImportSource @emotion/react */
 import * as s from "./style";
 import PageLayout from "../../components/pageComponents/PageLayout";
-import MenuCategoryPage from "../../components/menuCategory/MenuCategory";
+import MenuCategoryPage from "../../components/menuComponents/menuCategory/MenuCategory";
 
 function MenuPage(props) {
     return (
