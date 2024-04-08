@@ -45,7 +45,7 @@ export const bigButton = css`
     transition: all 0.2s ease-in-out;
     cursor: pointer;
 
-    &:hover {
+    &:active {
         background-color: white;
         color: rgb(252, 10, 86);
     }
@@ -91,7 +91,7 @@ export const orderButton = css`
         font-size: 20px;
         font-weight: 500;
     }
-    &:hover {
+    &:active {
         background-color: white;
         color: rgb(252, 10, 86);
     }
