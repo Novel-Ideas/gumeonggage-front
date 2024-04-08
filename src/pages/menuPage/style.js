@@ -21,6 +21,7 @@ export const categoryLayout = css`
 export const menuLayout = css`
     height: 70%;
     background-color: coral;
+    width: 826px;
 `;
 
 export const categoryBox = css`

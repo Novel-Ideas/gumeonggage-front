@@ -3,6 +3,7 @@ import * as s from "./style";
 import PageLayout from "../../components/pageComponents/PageLayout";
 import MenuCategoryPage from "../../components/menuComponents/menuCategory/MenuCategory";
 import OrderListComponent from "../../components/menuComponents/orderListComponent/OrderListComponent";
+import MenuList from "../../components/menuList/MenuList";
 
 function MenuPage(props) {
     return (
@@ -16,7 +17,9 @@ function MenuPage(props) {
                         <button css={s.bigButton}>큰 글씨 모드</button>
                     </div>
                     <div css={s.menuLayout}>
-                        <div>메뉴</div>
+                        <div>
+                            <MenuList />
+                        </div>
                     </div>
                 </div>
                 <div css={s.orderLayout}>
