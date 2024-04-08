@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import  PageLayout  from "../../components/pageComponents/PageLayout"
+import  PageLayout  from "../../../components/pageComponents/PageLayout"
 import * as s from "./style";
 
 function PaymentMethod() {
