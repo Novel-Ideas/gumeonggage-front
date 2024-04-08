@@ -1,22 +1,13 @@
 import { Reset } from "styled-reset";
-import MenuPage from "./pages/menuPage/MenuPage";
-import HomePage from "./pages/homePage/HomePage";
-import SelectPackageOrStorePage from "./pages/mainPage/selectPackageOrStorePage/SelectPackageOrStorePage";
-import FeedbackWritePage from "./pages/feedbackPage/feedbackWritePage/FeedbackWritePage";
 import MenuList from "./components/menuList/MenuList";
+import MenuRoute from "./routes/MenuRoute";
 
 function App() {
     return (
         <>
-            {/* <Reset />
-            <MenuPage />
-            <HomePage />
-            <SelectPackageOrStorePage />
-            <FeedbackWritePage /> */}
-            {/* <SelectPackageOrStorePage /> */}
-            {/* <MenuCategory /> */}
+            <Reset />
+            <MenuRoute />
             <MenuList />
-        
         </>
     );
 }
