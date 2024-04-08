@@ -4,7 +4,7 @@ import PageLayout from "../../components/pageComponents/pageLayout/PageLayout";
 import MenuCategoryPage from "../../components/menuComponents/menuCategory/MenuCategory";
 import OrderListComponent from "../../components/menuComponents/orderListComponent/OrderListComponent";
 import MenuList from "../../components/menuList/MenuList";
-import PaymentMethod from "../paymentMethodPage/PaymentMethod";
+import PaymentMethod from "../payPages/paymentMethodPage/PaymentMethod";
 import { Routes, Route, useNavigate } from "react-router-dom";
 
 function MenuPage(props) {

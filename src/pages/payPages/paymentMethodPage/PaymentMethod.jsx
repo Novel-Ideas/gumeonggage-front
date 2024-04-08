@@ -1,10 +1,6 @@
 /** @jsxImportSource @emotion/react */
-<<<<<<< HEAD:src/pages/paymentMethodPage/PaymentMethod.jsx
-=======
-import  PageLayout  from "../../../components/pageComponents/PageLayout"
->>>>>>> 49-더치페이-결제-화면-구성:src/pages/payPages/paymentMethodPage/PaymentMethod.jsx
 import * as s from "./style";
-import PageModal from "../../components/pageComponents/pageModal/PageModal";
+import PageModal from "../../../components/pageComponents/pageModal/PageModal";
 import { useNavigate } from "react-router-dom";
 
 function PaymentMethod() {
