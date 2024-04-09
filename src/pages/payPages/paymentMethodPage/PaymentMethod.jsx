@@ -22,12 +22,12 @@ function PaymentMethod() {
                 </div>
                 <div css={s.paybox}>
                     <div css={s.methodLayout}>
-                        <button css={s.methodBox} onClick={handleDutchPayClick}>
-                            카드결제
-                        </button>
+                        <button css={s.methodBox}>카드결제</button>
                     </div>
                     <div css={s.methodLayout}>
-                        <button css={s.methodBox}>더치페이</button>
+                        <button css={s.methodBox} onClick={handleDutchPayClick}>
+                            더치페이
+                        </button>
                     </div>
                 </div>
                 <div css={s.buttonBox}>
