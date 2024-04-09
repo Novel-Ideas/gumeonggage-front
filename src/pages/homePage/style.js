@@ -14,12 +14,16 @@ export const content = css`
     align-items: center; /* 세로 중앙 정렬 */
 `;
 
-export const imgbox = css`
+export const imgBox = css`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 400px;
-    height: 400px;
+
+    & > img {
+        width: 500px;
+        height: 500px;
+        background-size: fit;
+    }
 `;
 
 export const text = css`
