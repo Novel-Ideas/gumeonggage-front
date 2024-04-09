@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import AdminMenuAdd from "../pages/adminMenuAdd/AdminMenuAdd"
+import AdminMenuAdd from "../pages/adminPages/adminMenuAdd/AdminMenuAdd"
 import AdminPageLayout from "../components/pageComponents/adminPageLayout/AdminPageLayout";
 
 function AdminRoute(props) {
