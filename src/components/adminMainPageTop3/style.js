@@ -41,5 +41,5 @@ export const top3 = css`
 export const menu = css`
     padding: 15px;
     font-size: 25px;
-    
+
 `;

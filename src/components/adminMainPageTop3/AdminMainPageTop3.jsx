@@ -20,9 +20,6 @@ function AdminMainPageTop3(props) {
                 <div css={s.top3}>img</div>
                 <h1 css={s.menu}>치즈버거</h1>
             </div>
-           
-                {/* <div css={s.top3}>d</div>
-                <div css={s.top3}>d</div> */}
         </div>
     );
 }
