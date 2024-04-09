@@ -4,7 +4,9 @@ import * as s from "./style";
 
 function AdminPageLayout({ children }) {
     return  <div css={s.layout}>
-        <SideBar />
+        <div css={s.sideBar}>
+            <SideBar />
+        </div>
         {children}
     </div>;
 }
