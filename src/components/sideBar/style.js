@@ -1,19 +1,24 @@
 import { css } from "@emotion/react";
 
 export const container = css` 
-    width: 100%;
+    width: 20%;
     height: 100%;
     background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
 `;
 
 export const layout = css`
     display: flex;
     flex-direction: column;
-    width: 30%;
+    align-items: center;
+    width: 100%;
     height: 100%;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
     background-color: white;
     overflow-y: 30;
-    box-shadow: 1px 0px 2px #00000022;
+    box-shadow: 1px 0px 5px #00000022;
 `;
 
 export const link = css`
@@ -29,9 +34,8 @@ export const link = css`
 export const homeLayout = css`
     display: flex;
     align-items: center;
-    width: 100%;
+    width: 70%;
     height: 100px;
-    padding-left: 30px;
 `;
 
 export const home = css`
@@ -44,28 +48,25 @@ export const home = css`
 `;
 
 export const font = css`
-    padding-top: 13px;
-    width: 290px;
+    width: 100%;
     margin: 0;
     font-size: 30px;
     font-weight: 600;
+    padding-top: 15px;
     border-top: 1px solid #dbdbdb;
 `;
 
 export const salesLayout = css`
-    width: 100%;
+    width: 80%;
     height: 120px;
-    padding-left: 30px;
 `;
 
 export const menuLayout = css`
-    width: 100%;
+    width: 80%;
     height: 160px;
-    padding-left: 30px;
 `;
 
 export const feedbackLayout = css`
-    width: 100%;
+    width: 80%;
     height: 130px;
-    padding-left: 30px;
 `;

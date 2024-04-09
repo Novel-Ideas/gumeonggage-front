@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */ // aside css
 import * as s from "./style";
 import { Link } from "react-router-dom";
-import PageLayout from "../pageComponents/PageLayout";
+import PageLayout from "../pageComponents/pageLayout/PageLayout";
 import { Route, Routes } from 'react-router-dom';
 
 function SideBar() {
