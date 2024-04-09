@@ -3,28 +3,31 @@ import * as s from "./style";
 import { MdOutlineTakeoutDining } from "react-icons/md";
 import { MdOutlineTableRestaurant } from "react-icons/md";
 import { AiOutlineHome } from "react-icons/ai";
-import PageLayout from "../../../components/pageComponents/pageLayout/PageLayout";
+import PageLayout from "../../components/pageComponents/pageLayout/PageLayout";
 import { useNavigate } from "react-router-dom";
 
-function SelectPackageOrStorePage() {
+function SelectAdminPage(props) {
     const navigate = useNavigate();
-    const handleSelectButtonClick = () => {
-        navigate("/menu/menuall");
+    const handleAdminButtonClick = () => {
+        navigate("/admin/main");
+    };
+    const handleUserButtonClick = () => {
+        navigate("/menu/main");
     };
     return (
         <PageLayout>
             <div css={s.layout}>
-                <button css={s.selectWay} onClick={handleSelectButtonClick}>
+                <button css={s.selectWay} onClick={handleAdminButtonClick}>
                     <MdOutlineTakeoutDining />
-                    <h1>포장</h1>
+                    <h1>관리자 모드</h1>
                 </button>
-                <button css={s.selectWay} onClick={handleSelectButtonClick}>
+                <button css={s.selectWay} onClick={handleUserButtonClick}>
                     <MdOutlineTableRestaurant />
-                    <h1>매장</h1>
+                    <h1>사용자 모드</h1>
                 </button>
             </div>
         </PageLayout>
     );
 }
 
-export default SelectPackageOrStorePage;
+export default SelectAdminPage;
