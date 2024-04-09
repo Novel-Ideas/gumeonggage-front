@@ -2,7 +2,7 @@
 import * as s from "./style";
 import MenuButton from "../menuButton/MenuButton";
 import { useMutation } from "react-query";
-import { getmenuRequest } from "../../apis/menuList";
+import { getmenuRequest } from "../../apis/api/menuList";
 import { useEffect, useState } from "react";
 
 function MenuList() {
@@ -19,7 +19,7 @@ function MenuList() {
             }
         },
     });
-
+    
     useEffect(() => {
         getMenuMutation.mutate();
     }, []);
