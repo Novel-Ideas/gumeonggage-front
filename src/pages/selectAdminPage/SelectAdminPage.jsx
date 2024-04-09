@@ -1,8 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import * as s from "./style";
-import { MdOutlineTakeoutDining } from "react-icons/md";
 import { MdOutlineTableRestaurant } from "react-icons/md";
-import { AiOutlineHome } from "react-icons/ai";
+import { FaUserGear } from "react-icons/fa6";
 import PageLayout from "../../components/pageComponents/pageLayout/PageLayout";
 import { useNavigate } from "react-router-dom";
 
@@ -18,7 +17,7 @@ function SelectAdminPage(props) {
         <PageLayout>
             <div css={s.layout}>
                 <button css={s.selectWay} onClick={handleAdminButtonClick}>
-                    <MdOutlineTakeoutDining />
+                    <FaUserGear />
                     <h1>관리자 모드</h1>
                 </button>
                 <button css={s.selectWay} onClick={handleUserButtonClick}>

@@ -3,10 +3,13 @@ import * as s from "./style";
 import PageLayout from "../../../components/pageComponents/pageLayout/PageLayout";
 import { useInput } from "../../../hooks/useInput";
 import { signinRequest } from "../../../apis/api/signin";
+import { useNavigate } from "react-router-dom";
 
 function AdminAuthPage() {
     const [username, handleOnChangeUsername] = useInput();
     const [password, handleOnChangePassword] = useInput();
+    const navigate = useNavigate();
+
     const handleSigninClick = () => {
         signinRequest({
             username,
@@ -15,7 +18,7 @@ function AdminAuthPage() {
             .then((response) => {
                 const accessToken = response.data;
                 localStorage.setItem("AccessToken", accessToken);
-                
+                navigate("/selectmenu");
             })
             .catch((error) => {
                 alert(error.response.data);
