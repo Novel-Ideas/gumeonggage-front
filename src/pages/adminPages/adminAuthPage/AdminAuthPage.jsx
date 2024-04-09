@@ -18,7 +18,7 @@ function AdminAuthPage() {
             .then((response) => {
                 const accessToken = response.data;
                 localStorage.setItem("AccessToken", accessToken);
-                navigate("/selectmenu");
+                window.location.href = "/selectmenu";
             })
             .catch((error) => {
                 alert(error.response.data);

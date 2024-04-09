@@ -4,8 +4,10 @@ import { MdOutlineTableRestaurant } from "react-icons/md";
 import { FaUserGear } from "react-icons/fa6";
 import PageLayout from "../../components/pageComponents/pageLayout/PageLayout";
 import { useNavigate } from "react-router-dom";
+import { useAuthCheck } from "../../hooks/useAuthCheck";
 
 function SelectAdminPage(props) {
+    useAuthCheck();
     const navigate = useNavigate();
     const handleAdminButtonClick = () => {
         navigate("/admin/main");

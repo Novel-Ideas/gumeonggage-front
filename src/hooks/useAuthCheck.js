@@ -6,9 +6,10 @@ export const useAuthCheck = () => {
 
     useEffect(() => {
         const principalData = queryClient.getQueryData("principalQuery");
+        console.log(principalData)
         if (!principalData) {
             alert("로그인 후 이용해주세요.");
-            window.location.replace("/auth/signin");
+            window.location.replace("/");
         }
     }, []);
 };
