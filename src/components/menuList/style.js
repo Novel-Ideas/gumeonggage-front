@@ -6,7 +6,6 @@ export const layout = css`
     justify-content: space-between;
     width: 100%;
     height: 100%;
-    
 `;
 
 export const header = css`
@@ -35,15 +34,22 @@ export const orderFont = css`
 export const menuListLayout = css`
     box-sizing: border-box;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    justify-content: flex-start;
     padding-top: 10px;
+    overflow: scroll;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+    padding-left: 30px;
+    height: 100%;
+    width: 100%;
 `;
 
 export const menuListBox = css`
+    width: 100%;
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 15px;

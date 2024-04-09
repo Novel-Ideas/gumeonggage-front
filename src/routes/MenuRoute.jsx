@@ -8,15 +8,13 @@ import FeedbackOkPage from "../pages/feedbackPage/feedbackOkPage/FeedbackOkPage"
 
 function MenuRoute(props) {
     return (
-        <>
-            <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/select" element={<SelectPackageOrStore />} />
-                <Route path="/menu" element={<MenuPage />} />
-                <Route path="/feedback" element={<FeedbackWritePage />} />
-                <Route path="/feedback/ok" element={<FeedbackOkPage />} />
-            </Routes>
-        </>
+        <Routes>
+            <Route path="/main" element={<HomePage />} />
+            <Route path="/select" element={<SelectPackageOrStore />} />
+            <Route path="/menuall/*" element={<MenuPage />} />
+            <Route path="/feedback" element={<FeedbackWritePage />} />
+            <Route path="/feedback/ok" element={<FeedbackOkPage />} />
+        </Routes>
     );
 }
 

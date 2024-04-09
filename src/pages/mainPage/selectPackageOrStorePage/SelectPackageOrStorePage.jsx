@@ -3,13 +3,13 @@ import * as s from "./style";
 import { MdOutlineTakeoutDining } from "react-icons/md";
 import { MdOutlineTableRestaurant } from "react-icons/md";
 import { AiOutlineHome } from "react-icons/ai";
-import PageLayout from "../../../components/pageComponents/PageLayout";
+import PageLayout from "../../../components//pageComponents/pageLayout/PageLayout";
 import { useNavigate } from "react-router-dom";
 
 function SelectPackageOrStorePage() {
     const navigate = useNavigate();
     const handleSelectButtonClick = () => {
-        navigate("/menu");
+        navigate("/menu/menuall");
     };
     return (
         <PageLayout>

@@ -1,12 +1,12 @@
 /** @jsxImportSource @emotion/react */
-import PageLayout from "../../components/pageComponents/PageLayout";
+import PageLayout from "../../components/pageComponents/pageLayout/PageLayout";
 import * as s from "./style";
 import { useNavigate } from "react-router-dom";
 
 function HomePage() {
     const navigate = useNavigate();
     const handlePageClick = () => {
-        navigate("/select");
+        navigate("/menu/select");
     };
 
     return (
