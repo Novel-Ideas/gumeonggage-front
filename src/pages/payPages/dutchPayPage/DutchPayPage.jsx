@@ -1,6 +1,6 @@
 /**@jsxImportSource @emotion/react */
-import PageModal from "../../../components/pageComponents/pageModal/PageModal";
 import * as s from "./style";
+import PageModal from "../../../components/pageComponents/pageModal/PageModal";
 
 function DutchPayPage() {
     return (
