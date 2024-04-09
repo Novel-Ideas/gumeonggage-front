@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
-import PageLayout from "../../../src/components/pageComponents/pageLayout/PageLayout";
-import AdminPageLayout from "../../components/pageComponents/adminPageLayout/AdminPageLayout";
+import PageLayout from "../../../components/pageComponents/pageLayout/PageLayout";
+import AdminPageLayout from "../../../components/pageComponents/adminPageLayout/AdminPageLayout";
 import * as s from "./style";
 
 function AdminMenuAdd() {
