@@ -1,56 +1,40 @@
 /** @jsxImportSource @emotion/react */
 import AdminPageLayout from "../../../components/pageComponents/adminPageLayout/AdminPageLayout";
 import * as s from "./style";
+import { GrPowerReset } from "react-icons/gr";
+import noImg from "../../../assets/noImg.webp";
 
 function AdminMenuAdd() {
     return (
-            <AdminPageLayout>
-                <div css={s.layout}>
-                <div css={s.textbox}>
-                    <h1 css={s.text}>메뉴 추가</h1>
+        <AdminPageLayout>
+            <div css={s.layout}>
+                <div css={s.header}>
+                    <div css={s.title}>메뉴 추가</div>
                 </div>
-                <div css={s.addAndCancleBox}>
-                    <button css={s.addAndCancle}>저장</button>
-                    <button css={s.addAndCancle}>취소</button>
+                <div css={s.main}>
+                    <div css={s.resetLayout}>
+                        <button>
+                            <GrPowerReset />
+                        </button>
+                    </div>
+                    <div css={s.addLayout}>
+                        <div css={s.addBox}>
+                            <div css={s.imgLayout}>
+                                <div css={s.imgBox}>
+                                    <img src={noImg} alt="" />
+                                </div>
+                            </div>
+                            <div css={s.inputLayout}>인풋</div>
+                        </div>
+                    </div>
                 </div>
-                <div css={s.tableLayout}>
-                    <table css={s.tableContainer}>
-                        <tr>
-                            <td css={s.tableHeader}>Menu Id</td>
-                            <td css={s.table}><input css={s.inputBox}></input></td>
-                            <td colSpan="3" css={s.img}>이미지</td>
-                        </tr>
-                        <tr>
-                            <td css={s.tableHeader}>Category Id</td>
-                            <td css={s.table}><input css={s.inputBox}></input></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td css={s.tableHeader}>Menu Name</td>
-                            <td css={s.table}><input css={s.inputBox}></input></td>
-                            <td ></td>
-                        </tr>
-                        <tr>
-                            <td css={s.tableHeader}>Menu Price</td>
-                            <td css={s.table}><input css={s.inputBox}></input></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td css={s.tableHeader}>Menu Img Url</td>
-                            <td css={s.table}><input css={s.inputBox}></input></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td css={s.tableHeader}>Menu Cal</td>
-                            <td css={s.table}><input css={s.inputBox}></input></td>
-                            <td></td>
-                        </tr>
-
-                    </table>
+                <div css={s.footer}>
+                    <div>
+                        <button>저장</button>
+                    </div>
                 </div>
-                </div>
-            </AdminPageLayout>
-
+            </div>
+        </AdminPageLayout>
     );
 }
 
