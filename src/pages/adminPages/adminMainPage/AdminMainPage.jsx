@@ -1,9 +1,11 @@
 /** @jsxImportSource @emotion/react */ // aside css
 import * as s from "./style";
-import AdminPageLayout from '../../../components/pageComponents/adminPageLayout/AdminPageLayout';
+import AdminPageLayout from "../../../components/pageComponents/adminPageLayout/AdminPageLayout";
 import AdminMainPageTop3 from "../../../components/adminMainPageTop3/AdminMainPageTop3";
+import { useAuthCheck } from "../../../hooks/useAuthCheck";
 
 function AdminMainPage(props) {
+    useAuthCheck();
     return (
         <AdminPageLayout>
             <div css={s.layout}>
@@ -13,9 +15,7 @@ function AdminMainPage(props) {
                         <h1>매출</h1>
                     </div>
                     <div css={s.boxContainer}>
-                        <div css={s.categoryBox}>
-                            fds
-                        </div>
+                        <div css={s.categoryBox}>fds</div>
                     </div>
                 </div>
                 <div css={s.boxLayout}>

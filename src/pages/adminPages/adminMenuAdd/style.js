@@ -1,112 +1,168 @@
 import { css } from "@emotion/react";
 
 export const layout = css`
-z-index: 99;
+    z-index: 99;
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;// 세로로 세우겠다
-    /* justify-content: center;//가로중간 이거없으면  */
-    align-items:flex-start;//세로
 `;
 
-export const textbox = css`
-    width: 40%;
-    height: 15%;
-    box-sizing: border-box;
-    padding-left: 30px;
-`;
-
-export const text = css`
-    margin-top: 50px;
-    font-size: 38px;
-    font-weight: 600;
-    color: #555;
-    width: 180px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #888;
-`;
-
-export const addAndCancleBox = css`
+export const header = css`
     width: 100%;
-    height: 5%;
-    font-size: 30px;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: end;
-    padding-right: 30px;
-    margin-bottom: 10px;
-    
-`;
-
-export const addAndCancle = css`
-    margin: 0 13px;
-    width: 70px;
-    border-radius: 8px;
-    border: 1px solid #dbdbdb;
-    background-color: #fafafa;
-    box-shadow: 2px 2px 3px #0000001f;
-    &:hover {
-        background-color: #dfdfdf;
-    }
-    &:active {
-        background-color: #dbdbdb;
-    }
-`;
-
-export const tableLayout = css`
-    width: 100%;
-    height: 70%;
+    height: 20%;
     display: flex;
     justify-content: center;
-    
+    align-items: center;
 `;
 
-export const tableContainer = css`
-    width: 90%;
+export const title = css`
     box-sizing: border-box;
-    border-radius: 10px;
-    border-collapse: collapse;
-    border-style: hidden;
-    box-shadow: 0 0 0 1px #bbb;
+    border-bottom: 2px solid #222;
+    color: #222;
+    width: 90%;
+    height: 30%;
+    font-size: 40px;
+    font-weight: 700;
 `;
 
-
-export const tableHeader = css`
-    width: 23%;
-    font-size: 26px;
-    text-align: center;
-    border: 1px solid #bbb;
-    background-color: #fbfbfb;
-    border-radius: 10px;
-    color: #636363;
+export const main = css`
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `;
 
-export const table = css`
-    width: 50%;
-    height: 80px;
-    text-align: center;
+export const resetLayout = css`
+    width: 90%;
+    height: 10%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+
+    & > button {
+        box-sizing: border-box;
+        border: none;
+        border-radius: 10px;
+        font-size: 30px;
+        color: #222;
+        padding: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: transparent;
+
+        &:active {
+            background-color: #ff6035;
+            color: white;
+        }
+    }
 `;
-export const inputBox = css`
-    padding-left: 13px;
+
+export const addLayout = css`
+    width: 90%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+`;
+
+export const addBox = css`
+    box-sizing: border-box;
+    border-top: 2px solid #222;
+    border-bottom: 2px solid #222;
     width: 100%;
     height: 100%;
-    border-left: none;
-    border-right: none;
-    border: 1px solid #dbdbdb;
-    outline: none;
-    font-size: 23px;
-    background-color: fafafa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+export const imgLayout = css`
+    width: 35%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;
 
-export const img = css`
-    padding-left: 15px;
+export const imgBox = css`
+    width: 80%;
+    height: 70%;
+    border-radius: 20px;
+    overflow: hidden;
+
+    & > img {
+        width: 100%;
+        height: 100%;
+    }
 `;
 
+export const inputLayout = css`
+    width: 65%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`;
 
+export const inputBox = css`
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding-left: 10px;
+    border-left: 2px solid #222;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`;
 
+export const input = css`
+    width: 95%;
+    height: 16%;
 
+    & > input {
+        box-sizing: border-box;
+        background-color: transparent;
+        width: 100%;
+        height: 100%;
+        outline: none;
+        border: none;
+        border-bottom: 2px solid #222;
+        font-size: 25px;
+        padding-left: 10px;
+    }
+`;
 
+export const footer = css`
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
 
+export const buttonLayout = css`
+    width: 90%;
+    height: 100%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+`;
 
-//마진이나 포지션은 최대한 쓰지말것
+export const saveButton = css`
+    box-sizing: border-box;
+    background-color: rgb(0, 153, 255);
+    font-size: 30px;
+    font-weight: 600;
+    color: white;
+    border: 2px solid rgb(0, 153, 255);
+    border-radius: 15px;
+    padding: 10px 100px;
+    transition: 0.2s all ease-in-out;
+
+    &:active {
+        background-color: white;
+        color: rgb(0, 153, 255);
+    }
+`;

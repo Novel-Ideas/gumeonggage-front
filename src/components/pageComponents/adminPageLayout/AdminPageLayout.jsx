@@ -3,12 +3,14 @@ import SideBar from "../../sideBar/SideBar";
 import * as s from "./style";
 
 function AdminPageLayout({ children }) {
-    return  <div css={s.layout}>
-        <div css={s.sideBar}>
-            <SideBar />
+    return (
+        <div css={s.layout}>
+            <div css={s.sideBar}>
+                <SideBar />
+            </div>
+            {children}
         </div>
-        {children}
-    </div>;
+    );
 }
 
 export default AdminPageLayout;
