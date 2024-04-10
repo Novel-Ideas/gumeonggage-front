@@ -16,7 +16,8 @@ export const header = css`
 
 export const title = css`
     box-sizing: border-box;
-    border-bottom: 1px solid #333;
+    border-bottom: 2px solid #222;
+    color: #222;
     width: 90%;
     height: 30%;
     font-size: 40px;
@@ -40,7 +41,7 @@ export const resetLayout = css`
 
     & > button {
         box-sizing: border-box;
-        border: 1px solid #dbdbdb;
+        border: none;
         border-radius: 10px;
         font-size: 30px;
         color: #222;
@@ -48,22 +49,28 @@ export const resetLayout = css`
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: white;
+        background-color: transparent;
+
+        &:active {
+            background-color: #ff6035;
+            color: white;
+        }
     }
 `;
 
 export const addLayout = css`
-    width: 100%;
+    width: 90%;
     height: 90%;
     display: flex;
     justify-content: center;
+    background-color: white;
 `;
 
 export const addBox = css`
     box-sizing: border-box;
-    border-top: 1px solid #222;
-    border-bottom: 1px solid #222;
-    width: 90%;
+    border-top: 2px solid #222;
+    border-bottom: 2px solid #222;
+    width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -93,11 +100,69 @@ export const inputLayout = css`
     width: 65%;
     height: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+`;
+
+export const inputBox = css`
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding-left: 10px;
+    border-left: 2px solid #222;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const input = css`
+    width: 95%;
+    height: 16%;
+
+    & > input {
+        box-sizing: border-box;
+        background-color: transparent;
+        width: 100%;
+        height: 100%;
+        outline: none;
+        border: none;
+        border-bottom: 2px solid #222;
+        font-size: 25px;
+        padding-left: 10px;
+    }
 `;
 
 export const footer = css`
     width: 100%;
     height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const buttonLayout = css`
+    width: 90%;
+    height: 100%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+`;
+
+export const saveButton = css`
+    box-sizing: border-box;
+    background-color: rgb(0, 153, 255);
+    font-size: 30px;
+    font-weight: 600;
+    color: white;
+    border: 2px solid rgb(0, 153, 255);
+    border-radius: 15px;
+    padding: 10px 100px;
+    transition: 0.2s all ease-in-out;
+
+    &:active {
+        background-color: white;
+        color: rgb(0, 153, 255);
+    }
 `;

@@ -3,10 +3,18 @@ import AdminPageLayout from "../../../components/pageComponents/adminPageLayout/
 import * as s from "./style";
 import { GrPowerReset } from "react-icons/gr";
 import noImg from "../../../assets/noImg.webp";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
+import Select from "react-select";
+import { useState } from "react";
+
+const options = [
+    { value: "chocolate", label: "Chocolate" },
+    { value: "strawberry", label: "Strawberry" },
+    { value: "vanilla", label: "Vanilla" },
+];
 
 function AdminMenuAdd() {
+    const [selectedOption, setSelectedOption] = useState(null);
+
     return (
         <AdminPageLayout>
             <div css={s.layout}>
@@ -27,56 +35,61 @@ function AdminMenuAdd() {
                                 </div>
                             </div>
                             <div css={s.inputLayout}>
-                                <Box
-                                    component="form"
-                                    sx={{
-                                        "& > :not(style)": {
-                                            m: 1,
-                                            width: "90%",
-                                        },
-                                    }}
-                                    noValidate
-                                    autoComplete="off"
-                                >
-                                    <TextField
-                                        id="standard-basic"
-                                        label="메뉴 이름"
-                                        variant="standard"
-                                        margin="normal"
-                                        fontSize="50px"
-                                    />
-                                    <TextField
-                                        id="standard-basic"
-                                        label="카테고리"
-                                        variant="standard"
-                                        margin="normal"
-                                    />
-                                    <TextField
-                                        id="standard-basic"
-                                        label="가격"
-                                        variant="standard"
-                                        margin="normal"
-                                    />
-                                    <TextField
-                                        id="standard-basic"
-                                        label="칼로리"
-                                        variant="standard"
-                                        margin="normal"
-                                    />
-                                    <TextField
-                                        id="standard-basic"
-                                        label="이미지"
-                                        variant="standard"
-                                        margin="normal"
-                                    />
-                                </Box>
+                                <div css={s.inputBox}>
+                                    <div css={s.input}>
+                                        <input
+                                            type="text"
+                                            placeholder="메뉴 이름"
+                                        />
+                                    </div>
+                                    <div css={s.input}>
+                                        <Select
+                                            defaultValue={selectedOption}
+                                            onChange={setSelectedOption}
+                                            options={options}
+                                            placeholder="카테고리"
+                                            styles={{
+                                                control: (
+                                                    baseStyles,
+                                                    state
+                                                ) => ({
+                                                    ...baseStyles,
+                                                    height: "70.2px",
+                                                    border: state.isFocused
+                                                        ? "none"
+                                                        : "none",
+                                                    borderBottom:
+                                                        "2px solid #222",
+                                                    backgroundColor:
+                                                        "transparent",
+                                                    fontSize: "25px",
+                                                }),
+                                            }}
+                                        />
+                                    </div>
+                                    <div css={s.input}>
+                                        <input type="text" placeholder="가격" />
+                                    </div>
+                                    <div css={s.input}>
+                                        <input
+                                            type="text"
+                                            placeholder="칼로리"
+                                        />
+                                    </div>
+                                    <div css={s.input}>
+                                        <input
+                                            type="text"
+                                            placeholder="이미지 url"
+                                        />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div css={s.footer}>
-                    <div>
-                        <button>저장</button>
+                    <div css={s.buttonLayout}>
+                        <button css={s.saveButton}>저장</button>
                     </div>
                 </div>
             </div>
