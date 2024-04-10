@@ -4,7 +4,6 @@ import PageLayout from "../../../components/pageComponents/pageLayout/PageLayout
 import { useInput } from "../../../hooks/useInput";
 import { signinRequest } from "../../../apis/api/signin";
 import { useQueryClient } from "react-query";
-import { useEffect } from "react";
 import instance from "../../../apis/utils/instance";
 
 function AdminAuthPage() {

@@ -14,7 +14,7 @@ export const category = css`
     justify-content: center;
     align-items: center;
     width: 140px;
-    height: 170px;
+    height: 150px;
     border-radius: 15px;
     background-color: white;
     border: 1px solid #dbdbdb;
