@@ -21,12 +21,6 @@ export const menu = css`
     border: 1px solid #dbdbdb;
     cursor: pointer;
 
-    &:hover {
-        background-color: #fcd93c;
-        & > div:nth-of-type(1) {
-            background-color: white;
-        }
-    }
     &:active {
         background-color: #f9d017;
         & > div:nth-of-type(1) {

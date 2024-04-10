@@ -12,7 +12,7 @@ export const header = css`
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 30px;
 `;
 
 export const menuFont = css`
@@ -34,4 +34,5 @@ export const categoryLayout = css`
     box-sizing: border-box;
     display: flex;
     align-items: center;
+    padding-bottom: 10px;
 `;
