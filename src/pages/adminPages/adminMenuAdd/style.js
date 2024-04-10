@@ -80,7 +80,6 @@ export const imgLayout = css`
 export const imgBox = css`
     width: 80%;
     height: 70%;
-    background-color: palegoldenrod;
     border-radius: 20px;
     overflow: hidden;
 
@@ -93,7 +92,9 @@ export const imgBox = css`
 export const inputLayout = css`
     width: 65%;
     height: 100%;
-    background-color: wheat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;
 
 export const footer = css`
