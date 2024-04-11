@@ -1,7 +1,7 @@
 /**@jsxImportSource @emotion/react */
 import * as s from "./style";
 
-function MenuButton({ img, menuName, price }) {
+function MenuButton({ img, menuName, price, cal}) {
     return (
         <div css={s.menuLayout}>
             <button css={s.menu}>
@@ -10,8 +10,11 @@ function MenuButton({ img, menuName, price }) {
                 </div>
                 <div css={s.menuListLayout}>
                     <h1 css={s.menuFont}>{menuName}</h1>
+                    <div>
+                        <h1 css={s.calFont}>{cal}{" "}kcal</h1>
+                    </div>
                     <div css={s.priceFontLayout}>
-                        <h1 css={s.priceFont}>{price}</h1>
+                        <h1 css={s.priceFont}>{price}원</h1>
                     </div>
                 </div>
             </button>

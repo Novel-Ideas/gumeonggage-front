@@ -1,57 +1,99 @@
 /** @jsxImportSource @emotion/react */
-import PageLayout from "../../../components/pageComponents/pageLayout/PageLayout";
 import AdminPageLayout from "../../../components/pageComponents/adminPageLayout/AdminPageLayout";
 import * as s from "./style";
+import { GrPowerReset } from "react-icons/gr";
+import noImg from "../../../assets/noImg.webp";
+import Select from "react-select";
+import { useState } from "react";
+
+const options = [
+    { value: "chocolate", label: "Chocolate" },
+    { value: "strawberry", label: "Strawberry" },
+    { value: "vanilla", label: "Vanilla" },
+];
 
 function AdminMenuAdd() {
+    const [selectedOption, setSelectedOption] = useState(null);
+
     return (
-            <AdminPageLayout>
-                <div css={s.layout}>
-                <div css={s.textbox}>
-                    <h1 css={s.text}>메뉴 추가</h1>
+        <AdminPageLayout>
+            <div css={s.layout}>
+                <div css={s.header}>
+                    <div css={s.title}>메뉴 추가</div>
                 </div>
-                <div css={s.addAndCancleBox}>
-                    <button css={s.addAndCancle}>저장</button>
-                    <button css={s.addAndCancle}>취소</button>
+                <div css={s.main}>
+                    <div css={s.resetLayout}>
+                        <button>
+                            <GrPowerReset />
+                        </button>
+                    </div>
+                    <div css={s.addLayout}>
+                        <div css={s.addBox}>
+                            <div css={s.imgLayout}>
+                                <div css={s.imgBox}>
+                                    <img src={noImg} alt="" />
+                                </div>
+                            </div>
+                            <div css={s.inputLayout}>
+                                <div css={s.inputBox}>
+                                    <div css={s.input}>
+                                        <input
+                                            type="text"
+                                            placeholder="메뉴 이름"
+                                        />
+                                    </div>
+                                    <div css={s.input}>
+                                        <Select
+                                            defaultValue={selectedOption}
+                                            onChange={setSelectedOption}
+                                            options={options}
+                                            placeholder="카테고리"
+                                            styles={{
+                                                control: (
+                                                    baseStyles,
+                                                    state
+                                                ) => ({
+                                                    ...baseStyles,
+                                                    height: "70.2px",
+                                                    border: state.isFocused
+                                                        ? "none"
+                                                        : "none",
+                                                    borderBottom:
+                                                        "2px solid #222",
+                                                    backgroundColor:
+                                                        "transparent",
+                                                    fontSize: "25px",
+                                                }),
+                                            }}
+                                        />
+                                    </div>
+                                    <div css={s.input}>
+                                        <input type="text" placeholder="가격" />
+                                    </div>
+                                    <div css={s.input}>
+                                        <input
+                                            type="text"
+                                            placeholder="칼로리"
+                                        />
+                                    </div>
+                                    <div css={s.input}>
+                                        <input
+                                            type="text"
+                                            placeholder="이미지 url"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div css={s.tableLayout}>
-                    <table css={s.tableContainer}>
-                        <tr>
-                            <td css={s.tableHeader}>Menu Id</td>
-                            <td css={s.table}><input css={s.inputBox}></input></td>
-                            <td colSpan="3" css={s.img}>이미지</td>
-                        </tr>
-                        <tr>
-                            <td css={s.tableHeader}>Category Id</td>
-                            <td css={s.table}><input css={s.inputBox}></input></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td css={s.tableHeader}>Menu Name</td>
-                            <td css={s.table}><input css={s.inputBox}></input></td>
-                            <td ></td>
-                        </tr>
-                        <tr>
-                            <td css={s.tableHeader}>Menu Price</td>
-                            <td css={s.table}><input css={s.inputBox}></input></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td css={s.tableHeader}>Menu Img Url</td>
-                            <td css={s.table}><input css={s.inputBox}></input></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td css={s.tableHeader}>Menu Cal</td>
-                            <td css={s.table}><input css={s.inputBox}></input></td>
-                            <td></td>
-                        </tr>
-
-                    </table>
+                <div css={s.footer}>
+                    <div css={s.buttonLayout}>
+                        <button css={s.saveButton}>저장</button>
+                    </div>
                 </div>
-                </div>
-            </AdminPageLayout>
-
+            </div>
+        </AdminPageLayout>
     );
 }
 
