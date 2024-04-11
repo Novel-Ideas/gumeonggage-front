@@ -48,16 +48,14 @@ function AdminMainPage() {
                     </div>
                     <div css={s.boxContainer}>
                         <div css={s.categoryBox}>
-                            <>
-                                   {lanking.map((menu, index) => (
-                                        <AdminMainPageTop3 
-                                            key={menu.menuId}
-                                            img={menu.menu?.menuImgUrl}
-                                            menuName={menu.menu?.menuName}
-                                            index={index}
-                                        />)
-                                    )}
-                            </>
+                           {lanking.map((menu, index) => (
+                                <AdminMainPageTop3 
+                                    key={menu.menuId}
+                                    img={menu.menu?.menuImgUrl}
+                                    menuName={menu.menu?.menuName}
+                                    index={index}
+                                />)
+                            )}
                         </div>
                     </div>
                 </div>
