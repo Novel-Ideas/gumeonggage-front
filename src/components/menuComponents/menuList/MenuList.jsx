@@ -95,6 +95,7 @@ function MenuList() {
                                 img={menu.menu?.menuImgUrl}
                                 menuName={menu?.menu?.menuName}
                                 price={menu?.menu?.menuPrice}
+                                cal={menu?.menu?.menuCal}
                             />
                         ))
                     ) : (
@@ -105,6 +106,7 @@ function MenuList() {
                                     img={menu.menuImgUrl}
                                     menuName={menu.menuName}
                                     price={menu.menuPrice}
+                                    cal={menu.menuCal}
                                 />
                             ))}
                         </>
