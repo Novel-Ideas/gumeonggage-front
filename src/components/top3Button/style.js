@@ -23,9 +23,6 @@ export const menu = css`
 
     &:active {
         background-color: #f9d017;
-        & > div:nth-of-type(1) {
-            background-color: white;
-        }
     }
     &:visited {
         background-color: white;
