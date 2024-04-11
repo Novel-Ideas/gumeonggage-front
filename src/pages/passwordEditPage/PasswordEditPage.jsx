@@ -2,10 +2,12 @@
 
 import { editPasswordRequest } from "../../apis/api/editPassword";
 import AuthPageInput from "../../components/authPageInput/AuthPageInput";
+import { useAuthCheck } from "../../hooks/useAuthCheck";
 import { useEditPassword } from "../../hooks/useEditPassword";
 import { useMutation } from 'react-query';
 
 function PasswordEditPage() {
+    useAuthCheck();
     const [ oldPassword, handleOldPassword, oldMessage, setOld, setOldMessage ] = useEditPassword("oldPassword");
     const [ newPassword, handleNewPassword, newMessage, setNew, setNewMessage ] = useEditPassword("newPassword");
     const [ newPasswordCheck, handleNewPasswordCheck, newCheckMessage, setNewCheck, setNewCheckMessage ] = useEditPassword("newPasswordCheck");
@@ -46,8 +48,8 @@ function PasswordEditPage() {
 
     const handleEditsubmitClick = () => {
         editPasswordMutation.mutate({
-            oldMessage,
-            newMessage,
+            oldPassword,
+            newPassword,
             newPasswordCheck
         });
     }
