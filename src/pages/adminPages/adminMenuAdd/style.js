@@ -52,7 +52,7 @@ export const resetLayout = css`
         background-color: transparent;
 
         &:active {
-            background-color: #ff6035;
+            background-color: rgb(0, 153, 255);
             color: white;
         }
     }
@@ -132,6 +132,41 @@ export const input = css`
         font-size: 25px;
         padding-left: 10px;
     }
+
+    & > span {
+        box-sizing: border-box;
+        background-color: transparent;
+        width: 100%;
+        height: 100%;
+        outline: none;
+        border: none;
+        border-bottom: 2px solid #222;
+        font-size: 25px;
+        padding-left: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    &:nth-of-type(5) {
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+`;
+
+export const inputButton = css`
+    position: absolute;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(0, 153, 255);
+    color: white;
 `;
 
 export const footer = css`
