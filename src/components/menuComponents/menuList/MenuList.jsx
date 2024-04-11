@@ -11,6 +11,7 @@ import {
 import { useEffect, useState } from "react";
 import { categoryState } from "../../../atoms/categoryAtom";
 import { useRecoilState } from "recoil";
+import Top3Button from "../../top3Button/Top3Button";
 
 function MenuList() {
     const [menuList, setMenuList] = useState([]);
@@ -89,13 +90,14 @@ function MenuList() {
             <div css={s.menuListLayout}>
                 <div css={s.menuListBox}>
                     {category === "top3" ? (
-                        menuList.map((menu) => (
-                            <MenuButton
+                        menuList.map((menu, index) => (
+                            <Top3Button
                                 key={menu.menuId}
                                 img={menu.menu?.menuImgUrl}
                                 menuName={menu?.menu?.menuName}
                                 price={menu?.menu?.menuPrice}
                                 cal={menu?.menu?.menuCal}
+                                index={index}
                             />
                         ))
                     ) : (
