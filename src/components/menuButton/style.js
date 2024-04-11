@@ -33,15 +33,12 @@ export const menu = css`
 `;
 
 export const imglayout = css`
-    box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 10px;
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    border: 1px solid #dbdbdb;
+    width: 160px;
+    height: 160px;
     font-size: 40px;
     overflow: hidden;
 
@@ -55,11 +52,10 @@ export const menuListLayout = css`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
 `;
 
 export const menuFont = css`
-    font-size: 22px;
+    font-size: large;
     color: #3f3f3f;
     margin: 8px 0px;
     font-weight: 600;
@@ -86,5 +82,4 @@ export const priceFontLayout = css`
 export const priceFont = css`
     font-size: 18px;
     color: #898989;
-
 `;

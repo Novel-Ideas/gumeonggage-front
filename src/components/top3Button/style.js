@@ -36,20 +36,27 @@ export const lanking = (index) => css`
     font-size: 35px;
     font-weight: 700;
     padding-bottom: 7px;
-    color: ${index === 0 ? "gold" : index === 1 ? "silver" : "#cc9c5c" };
+    color: ${index === 0 ? "gold" : index === 1 ? "silver" : "#cc9c5c"};
 `;
 
 export const imglayout = css`
-    box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 10px;
-    width: 230px;
-    height: 230px;
-    border-radius: 50%;
-    border: 1px solid #dbdbdb;
-    font-size: 40px;
+    width: 100%;
+    height: 260px;
+    overflow: hidden;
+    background-color: transparent;
+
+    &:active {
+        background-color: #f9d017;
+    }
+
+    & > img {
+        width: 100%;
+        background-color: transparent;
+    }
 `;
 
 export const menuListLayout = css`
@@ -57,11 +64,10 @@ export const menuListLayout = css`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
 `;
 
 export const menuFont = css`
-    font-size: 35px;
+    font-size: x-large;
     color: #3f3f3f;
     margin: 8px 0px;
     font-weight: 600;
@@ -81,13 +87,10 @@ export const priceFontLayout = css`
     justify-content: center;
     align-items: center;
     width: 180px;
-    font-size: 20px;
-    color: #898989;
     margin-bottom: 10px;
 `;
 
 export const priceFont = css`
-    font-size: 30px;
+    font-size: x-large;
     color: #898989;
-
 `;
