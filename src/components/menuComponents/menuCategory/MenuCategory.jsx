@@ -5,7 +5,6 @@ import { PiHamburger } from "react-icons/pi";
 import { LuGlassWater } from "react-icons/lu";
 import { FaCrown } from "react-icons/fa";
 import { TiThSmall } from "react-icons/ti";
-import * as s from "./style";
 import { useRecoilState } from "recoil";
 import { categoryState } from "../../../atoms/categoryAtom";
 
