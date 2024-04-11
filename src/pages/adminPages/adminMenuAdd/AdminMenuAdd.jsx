@@ -12,6 +12,7 @@ import { storage } from "../../../apis/firebase/config/firebaseConfig";
 import { v4 as uuid } from "uuid";
 import { getAllCategoryRequest } from "../../../apis/api/options";
 import { useMenuRegisterInput } from "../../../hooks/useMenuRegisterInput";
+import { registerMenuRequest } from "../../../apis/api/menuApi";
 
 function AdminMenuAdd() {
     const [selectedOption, setSelectedOption] = useState(null);
@@ -71,12 +72,24 @@ function AdminMenuAdd() {
         );
     };
 
+    const registerMenuMutation = useMutation({
+        mutationKey: "registerMenuMutation",
+        mutationFn: registerMenuRequest,
+        onSuccess: (response) => {
+            alert("등록완료");
+            window.location.replace("/admin/add");
+        },
+        onError: (error) => {},
+    });
+
     const handleSubmitClick = () => {
-        console.log(menuName.value);
-        console.log(menuCategoryId.value.value);
-        console.log(menuPrice.value);
-        console.log(menuCal.value);
-        console.log(menuImgUrl.value);
+        registerMenuMutation.mutate({
+            menuName: menuName.value,
+            categoryId: menuCategoryId.value.value,
+            menuPrice: menuPrice.value,
+            menuCal: menuCal.value,
+            menuImgUrl: menuImgUrl.value,
+        });
     };
 
     return (

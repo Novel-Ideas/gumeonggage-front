@@ -147,6 +147,13 @@ export const input = css`
         align-items: center;
     }
 
+    & > span > input {
+        border: none;
+        outline: none;
+        width: 90%;
+        height: 90%;
+    }
+
     &:nth-of-type(5) {
         display: flex;
         align-items: center;

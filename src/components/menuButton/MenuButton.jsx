@@ -6,7 +6,7 @@ function MenuButton({ img, menuName, price }) {
         <div css={s.menuLayout}>
             <button css={s.menu}>
                 <div css={s.imglayout}>
-                    {img}
+                    <img src={img} alt="" />
                 </div>
                 <div css={s.menuListLayout}>
                     <h1 css={s.menuFont}>{menuName}</h1>
