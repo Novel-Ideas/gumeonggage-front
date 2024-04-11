@@ -1,4 +1,5 @@
 /**@jsxImportSource @emotion/react */
+import * as s from "./style";
 import CategoryButton from "../../categoryButton/CategoryButton";
 import { PiHamburger } from "react-icons/pi";
 import { LuGlassWater } from "react-icons/lu";
