@@ -14,7 +14,7 @@ export const container = css`
     height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ;
     justify-content: center;
 `;
 
