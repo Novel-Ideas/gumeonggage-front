@@ -15,3 +15,4 @@ export const getBurgerRequest = async () => {
 export const getDrinkRequest = async () => {
     return await instance.get("/menus/drink");
 };
+
