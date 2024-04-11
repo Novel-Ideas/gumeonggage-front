@@ -15,7 +15,7 @@ export const menu = css`
     justify-content: center;
     align-items: center;
     width: 180px;
-    height: 230px;
+    height: 243px;
     border-radius: 15px;
     background-color: white;
     border: 1px solid #dbdbdb;
@@ -50,13 +50,22 @@ export const menuListLayout = css`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
 `;
 
 export const menuFont = css`
-    font-size: 24px;
-    color: #898989;
+    font-size: 22px;
+    color: #3f3f3f;
     margin: 8px 0px;
     font-weight: 600;
+    margin-bottom: 4px;
+`;
+
+export const calFont = css`
+    font-size: 14px;
+    font-weight: 500;
+    color: #898989;
+    margin-bottom: 5px;
 `;
 
 export const priceFontLayout = css`
