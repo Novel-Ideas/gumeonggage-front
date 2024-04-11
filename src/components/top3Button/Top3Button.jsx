@@ -1,6 +1,5 @@
 /**@jsxImportSource @emotion/react */
 import * as s from "./style";
-import { FaCrown } from "react-icons/fa6";
 
 function Top3Button({ img, menuName, price, cal, index}) {
     return (

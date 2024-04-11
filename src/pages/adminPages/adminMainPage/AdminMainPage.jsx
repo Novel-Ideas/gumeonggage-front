@@ -3,8 +3,31 @@ import * as s from "./style";
 import AdminPageLayout from "../../../components/pageComponents/adminPageLayout/AdminPageLayout";
 import AdminMainPageTop3 from "../../../components/adminMainPageTop3/AdminMainPageTop3";
 import { useAuthCheck } from "../../../hooks/useAuthCheck";
+import { useEffect, useState } from "react";
+import { useMutation } from "react-query";
+import { getTop3Request } from "../../../apis/api/menuList";
+import { useRecoilState } from "recoil";
+import { categoryState } from "../../../atoms/categoryAtom";
 
-function AdminMainPage(props) {
+function AdminMainPage() {
+    const [ lanking , setLanking ] = useState([]);
+
+    const getLankingMutation = useMutation({
+        mutationKey: "getLankingMutation",
+        mutationFn: getTop3Request,
+        retry: 0,
+        onSuccess: (response) => {
+            if (response.data) {
+                console.log(response.data);
+                setLanking(response.data);
+            }
+        },
+    });
+
+    useEffect(() => {
+        getLankingMutation.mutate();
+    },[])
+
     useAuthCheck();
     return (
         <AdminPageLayout>
@@ -25,7 +48,14 @@ function AdminMainPage(props) {
                     </div>
                     <div css={s.boxContainer}>
                         <div css={s.categoryBox}>
-                            <AdminMainPageTop3 />
+                           {lanking.map((menu, index) => (
+                                <AdminMainPageTop3 
+                                    key={menu.menuId}
+                                    img={menu.menu?.menuImgUrl}
+                                    menuName={menu.menu?.menuName}
+                                    index={index}
+                                />)
+                            )}
                         </div>
                     </div>
                 </div>

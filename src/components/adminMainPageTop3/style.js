@@ -10,16 +10,22 @@ export const layout = css`
 `;
 
 export const container = css`
-    width: 25%;
-    height: 100%;
+    width: 80%;
+    height: 80%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    align-items: center                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ;
     justify-content: center;
 `;
 
-export const icon = css`
-    color: #ffdd19;
+export const lankingContainer = css`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+`
+export const icon = (index) => css`
+    color: ${index === 0 ? "gold" : index === 1 ? "silver" : "#cc9c5c" };
 `
 
 
@@ -31,15 +37,17 @@ export const font = css`
 `;
 
 export const top3 = css`
-    border: 1px solid black;
     width: 100%;
     height: 180px;
-    background-color: coral;
     border-radius: 10px;
+    & > img {
+        width: 100%;
+    }
 `;
 
 export const menu = css`
     padding: 15px;
-    font-size: 25px;
+    font-size: large;
+    font-weight: 700;
 
 `;
