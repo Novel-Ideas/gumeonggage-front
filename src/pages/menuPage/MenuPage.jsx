@@ -7,6 +7,7 @@ import MenuList from "../../components/menuList/MenuList";
 import PaymentMethod from "../payPages/paymentMethodPage/PaymentMethod";
 import { Routes, Route, useNavigate } from "react-router-dom";
 
+
 function MenuPage(props) {
     const navigate = useNavigate();
     const handleOrderButtonClick = () => {

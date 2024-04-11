@@ -1,8 +1,8 @@
 /**@jsxImportSource @emotion/react */
 import * as s from "./style";
 
-function CategoryButton({ icon, categoryName }) {
-
+function BigCategoryButton({ icon, categoryName }) {
+    
     return (
         <div css={s.categoryLayout}>
             <button css={s.category}>
@@ -17,4 +17,4 @@ function CategoryButton({ icon, categoryName }) {
     );
 }
 
-export default CategoryButton;
+export default BigCategoryButton;
