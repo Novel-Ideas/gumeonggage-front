@@ -43,6 +43,11 @@ export const imglayout = css`
     border-radius: 50%;
     border: 1px solid #dbdbdb;
     font-size: 40px;
+    overflow: hidden;
+
+    & > img {
+        width: 100%;
+    }
 `;
 
 export const menuListLayout = css`

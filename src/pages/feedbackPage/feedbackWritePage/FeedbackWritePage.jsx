@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 function FeedbackWritePage() {
     const navigate = useNavigate();
     const handleSubmitClick = () => {
-        navigate("/feedback/ok");
+        navigate("/menu/feedback/ok");
     };
     return (
         <PageLayout>
