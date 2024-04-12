@@ -26,7 +26,7 @@ export const title = css`
 
 export const searchBoxLayout = css`
     width: 100%;
-    height: 80%;
+    height: 75%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,7 +35,7 @@ export const searchBoxLayout = css`
 
 export const searchBox = css`
     width: 80%;
-    height: 80%;
+    height: 100%;
     border: 1px solid #4d4d4d;
     border-radius: 30px;
     background-color: white;
@@ -44,7 +44,7 @@ export const searchBox = css`
 export const top = css`
     background-color: #fafafa;
     width: 100%;
-    height: 10%;
+    height: 8%;
     border-top-right-radius: 30px;
     border-top-left-radius: 30px;
     display: flex;
@@ -69,36 +69,93 @@ export const searchLayout = css`
     align-items: center;
     justify-content: center;
     width: 755px;
-    height: 100%;
+    height: 90%;
 `;
 
 export const search = css`
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
 `;
 
 export const askTitle = css`
     list-style-type: none;
-    background-color: #369;
+    background-color: #58a6ee;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     width: 100%;
-    height: 10%;
+    height: 8%;
     color: white;
+
+    & > li {
+        text-align: center;
+    }
+
+    & > li:nth-of-type(1) {
+        width: 15%;
+    }
+    & > li:nth-of-type(2) {
+        width: 20%;
+    }
+    & > li:nth-of-type(3) {
+        width: 20%;
+    }
+    & > li:nth-of-type(4) {
+        width: 20%;
+    }
+    & > li:nth-of-type(5) {
+        width: 25%;
+    }
+
 `;
 
+
 export const listLayout = css`
-    width: 100%;
-    height: 80%;
+    width: 755px;
+    height: 90%;
+    overflow: auto;
+    &::-webkit-scrollbar {
+    width: 13px;
+}
+    &::-webkit-scrollbar-track {
+    background: transparent;
+}
+    &::-webkit-scrollbar-thumb {
+    background: #aae0ff;
+    background-clip: padding-box;
+    border: 3px solid transparent;
+    border-radius: 8px;
+}
 `;
 
 export const askList = css`
     list-style-type: none;
-    background-color: #369;
+    background-color: white;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    height: 10%;
-    color: white;
+    height: 8%;
+    color: #333;
+    
+    & > li {
+        text-align: center;
+    }
+
+    & > li:nth-of-type(1) {
+        width: 15%;
+    }
+    & > li:nth-of-type(2) {
+        width: 20%;
+    }
+    & > li:nth-of-type(3) {
+        width: 20%;
+    }
+    & > li:nth-of-type(4) {
+        width: 20%;
+    }
+    & > li:nth-of-type(5) {
+        width: 25%;
+    }
 `;
