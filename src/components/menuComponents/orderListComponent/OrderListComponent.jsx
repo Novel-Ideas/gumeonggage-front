@@ -61,6 +61,13 @@ function OrderListComponent(props) {
         }
     };
 
+    const handleMenuRemoveClick = (id) => {
+        const findOrder = orderList.filter((order) => order.menuId === id)[0];
+        setOrderList((prevOrderList) =>
+            prevOrderList.filter((order) => order !== findOrder)
+        );
+    };
+
     useEffect(() => {
         if (menuList.length > 0) {
             const menus = menuList.filter((menu) => {
@@ -88,7 +95,6 @@ function OrderListComponent(props) {
 
     return (
         <div css={s.layout}>
-            
             <div css={s.orderLayout}>
                 <div css={s.orderBox}>
                     {orderMenuList.map((menu) => {
@@ -118,7 +124,12 @@ function OrderListComponent(props) {
                                             <FiMinus />
                                         </button>
                                     </div>
-                                    <button css={s.removeButton}>
+                                    <button
+                                        css={s.removeButton}
+                                        onClick={() =>
+                                            handleMenuRemoveClick(menu.menuId)
+                                        }
+                                    >
                                         <IoClose />
                                     </button>
                                 </div>
