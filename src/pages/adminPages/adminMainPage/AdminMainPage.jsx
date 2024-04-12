@@ -3,9 +3,9 @@ import * as s from "./style";
 import AdminPageLayout from "../../../components/pageComponents/adminPageLayout/AdminPageLayout";
 import AdminMainPageTop3 from "../../../components/adminMainPageTop3/AdminMainPageTop3";
 import { useAuthCheck } from "../../../hooks/useAuthCheck";
-import { useEffect, useState } from "react";
-import { useMutation, useQuery } from "react-query";
-import { getTop3Request } from "../../../apis/api/menuList";
+import { useState } from "react";
+import { useQuery } from "react-query";
+import { getMenuRequest } from "../../../apis/api/menuList";
 import {
     Bar,
     CartesianGrid,
@@ -34,7 +34,7 @@ function AdminMainPage() {
         },
     });
 
-    const rankingQuery = useQuery(["rankingQuery"], getTop3Request, {
+    const rankingQuery = useQuery(["rankingQuery"], () => getMenuRequest(2), {
         retry: 0,
         refetchOnWindowFocus: false,
         onSuccess: (response) => {

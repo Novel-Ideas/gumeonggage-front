@@ -2,7 +2,7 @@
 import * as s from "./style";
 import MenuButton from "../../menuButton/MenuButton";
 import { useQuery } from "react-query";
-import { getmenuRequest } from "../../../apis/api/menuList";
+import { getMenuRequest } from "../../../apis/api/menuList";
 import { useState } from "react";
 import { categoryState } from "../../../atoms/categoryAtom";
 import { useRecoilState } from "recoil";
@@ -16,9 +16,9 @@ function MenuList() {
 
     const menuListQuery = useQuery(
         ["menuQuery", category],
-        () => getmenuRequest(category),
-        {
-            retry: 0,
+        () => getMenuRequest(category),
+        { 
+             retry: 0,
             refetchOnWindowFocus: false,
             onSuccess: (response) => {
                 setMenuList(response.data);

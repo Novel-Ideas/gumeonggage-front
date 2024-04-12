@@ -7,7 +7,6 @@ import MenuList from "../../components/menuComponents/menuList/MenuList";
 import PaymentMethod from "../payPages/paymentMethodPage/PaymentMethod";
 import { Routes, Route, useNavigate } from "react-router-dom";
 
-
 function MenuPage(props) {
     const navigate = useNavigate();
     const handleOrderButtonClick = () => {
@@ -29,6 +28,10 @@ function MenuPage(props) {
                     </div>
                 </div>
                 <div css={s.orderLayout}>
+                    <div css={s.header}>
+                        <h1>Order</h1>
+                        <h1>Menu</h1>
+                    </div>
                     <div css={s.orderMenuLayout}>
                         <OrderListComponent />
                     </div>

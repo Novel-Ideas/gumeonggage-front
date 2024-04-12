@@ -1,6 +1,6 @@
 import instance from "../utils/instance";
 
-export const getmenuRequest = async (categoryId) => {
+export const getMenuRequest = async (categoryId) => {
     return await instance.get(`/menus?categoryId=${categoryId}`);
 };
 
