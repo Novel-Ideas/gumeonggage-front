@@ -68,7 +68,7 @@ export const searchLayout = css`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 755px;
+    width: 100%;
     height: 90%;
 `;
 
@@ -113,7 +113,7 @@ export const askTitle = css`
 
 
 export const listLayout = css`
-    width: 755px;
+    width: 100%;
     height: 90%;
     overflow: auto;
     &::-webkit-scrollbar {
