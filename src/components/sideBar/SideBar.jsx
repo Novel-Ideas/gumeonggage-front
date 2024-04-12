@@ -24,6 +24,10 @@ function SideBar() {
                             <h1 css={s.font}>피드백</h1>
                             <Link to={"/admin/feedback"} css={s.link}>피드백 조회</Link>
                         </div>
+                        <div css={s.userLayout}>
+                            <h1 css={s.font}>회원관리</h1>
+                            <Link to={"/admin/usersearch"} css={s.link}>회원 조회</Link>
+                        </div>
                 </div>
             </div>  
         </PageLayout>
