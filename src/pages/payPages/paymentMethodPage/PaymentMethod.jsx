@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import * as s from "./style";
-import PageModal from "../../../components/pageComponents/pageModal/PageModal";
-import { Routes, Route, useNavigate } from "react-router-dom";
 import DutchPayPage from "../dutchPayPage/DutchPayPage";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import PageModal from "../../../components/pageComponents/pageModal/PageModal";
 
 function PaymentMethod() {
     const navigate = useNavigate();

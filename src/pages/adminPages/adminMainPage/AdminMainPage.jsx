@@ -4,13 +4,35 @@ import AdminPageLayout from "../../../components/pageComponents/adminPageLayout/
 import AdminMainPageTop3 from "../../../components/adminMainPageTop3/AdminMainPageTop3";
 import { useAuthCheck } from "../../../hooks/useAuthCheck";
 import { useEffect, useState } from "react";
-import { useMutation } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import { getTop3Request } from "../../../apis/api/menuList";
-import { useRecoilState } from "recoil";
-import { categoryState } from "../../../atoms/categoryAtom";
+import {
+    Bar,
+    CartesianGrid,
+    ComposedChart,
+    Legend,
+    Line,
+    ResponsiveContainer,
+    Tooltip,
+    XAxis,
+    YAxis,
+} from "recharts";
+import { getSalesRequest } from "../../../apis/api/salesApi";
 
 function AdminMainPage() {
-    const [ lanking , setLanking ] = useState([]);
+    const [lanking, setLanking] = useState([]);
+    const [sales, setSales] = useState([]);
+    const salesQuery = useQuery(["salesQuery"], getSalesRequest, {
+        retry: 0,
+        refetchOnWindowFocus: false,
+        onSuccess: (response) => {
+            console.log("salesQuery", response.data);
+            setSales(() => response.data);
+        },
+        onError: (error) => {
+            console.log("salesQuer", error);
+        },
+    });
 
     const getLankingMutation = useMutation({
         mutationKey: "getLankingMutation",
@@ -26,7 +48,7 @@ function AdminMainPage() {
 
     useEffect(() => {
         getLankingMutation.mutate();
-    },[])
+    }, []);
 
     useAuthCheck();
     return (
@@ -38,7 +60,33 @@ function AdminMainPage() {
                         <h1>매출</h1>
                     </div>
                     <div css={s.boxContainer}>
-                        <div css={s.categoryBox}>fds</div>
+                        <div css={s.categoryBox}>
+                            <ResponsiveContainer width={800} height="90%">
+                                <ComposedChart
+                                    // width={730}
+                                    // height={250}
+                                    data={sales}
+                                >
+                                    <XAxis dataKey="month" />
+                                    <YAxis name="aocnf" />
+                                    <Tooltip />
+                                    <Legend />
+                                    <CartesianGrid stroke="#f5f5f5" />
+                                    <Bar
+                                        dataKey="totalSales"
+                                        barSize={20}
+                                        name="매출"
+                                        fill="#8abdf3"
+                                    />
+                                    <Line
+                                        type="monotone"
+                                        dataKey="totalSales"
+                                        stroke="#ff7300"
+                                        legendType="none"
+                                    />
+                                </ComposedChart>
+                            </ResponsiveContainer>
+                        </div>
                     </div>
                 </div>
                 <div css={s.boxLayout}>
@@ -48,14 +96,14 @@ function AdminMainPage() {
                     </div>
                     <div css={s.boxContainer}>
                         <div css={s.categoryBox}>
-                           {lanking.map((menu, index) => (
-                                <AdminMainPageTop3 
+                            {lanking.map((menu, index) => (
+                                <AdminMainPageTop3
                                     key={menu.menuId}
                                     img={menu.menu?.menuImgUrl}
                                     menuName={menu.menu?.menuName}
                                     index={index}
-                                />)
-                            )}
+                                />
+                            ))}
                         </div>
                     </div>
                 </div>
