@@ -52,12 +52,12 @@ export const orderInfoBox = css`
     /* margin: 0px 20px; */
 
     & > h1:nth-of-type(1) {
-        font-size: 30px;
+        font-size: 25px;
         margin-left: 20px;
     }
 
     & > h1:nth-of-type(2) {
-        font-size: 25px;
+        font-size: 20px;
         font-weight: 700;
         margin-right: 20px;
     }
@@ -75,12 +75,12 @@ export const orderCount = css`
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 30px;
+    font-size: 25px;
     margin-left: 20px;
 
     & > div {
-        width: 40px;
-        height: 40px;
+        width: 30px;
+        height: 30px;
         display: flex;
         justify-content: center;
         align-items: center;

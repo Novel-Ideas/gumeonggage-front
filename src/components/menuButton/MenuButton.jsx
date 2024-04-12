@@ -1,10 +1,10 @@
 /**@jsxImportSource @emotion/react */
 import * as s from "./style";
 
-function MenuButton({ img, menuName, price, cal}) {
+function MenuButton({ img, menuName, price, cal, onClick}) {
     return (
         <div css={s.menuLayout}>
-            <button css={s.menu}>
+            <button css={s.menu} onClick={onClick}>
                 <div css={s.imglayout}>
                     <img src={img} alt="" />
                 </div>
