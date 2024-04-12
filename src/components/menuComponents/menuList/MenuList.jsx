@@ -71,6 +71,7 @@ function MenuList() {
                                 price={menu?.menu?.menuPrice}
                                 cal={menu?.menu?.menuCal}
                                 index={index}
+                                onClick={() => handleMenuClick(menu.menuId)}
                             />
                         ))
                     ) : (

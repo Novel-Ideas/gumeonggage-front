@@ -6,12 +6,28 @@ import OrderListComponent from "../../components/menuComponents/orderListCompone
 import MenuList from "../../components/menuComponents/menuList/MenuList";
 import PaymentMethod from "../payPages/paymentMethodPage/PaymentMethod";
 import { Routes, Route, useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { orderMenuListState } from "../../atoms/orderMenuListAtom";
+import { useEffect, useState } from "react";
 
 function MenuPage(props) {
+    const [result, setResult] = useState();
+    const [orderMenuList, setOrderMenuList] =
+        useRecoilState(orderMenuListState);
     const navigate = useNavigate();
     const handleOrderButtonClick = () => {
         navigate("/menu/menuall/order");
     };
+
+    useEffect(() => {
+        const order = orderMenuList;
+        setResult(() => {
+            let price = 0;
+            order.map((menu) => (price += menu.totalPrice));
+            return price;
+        });
+        console.log(result);
+    }, [orderMenuList]);
 
     return (
         <PageLayout>
@@ -40,7 +56,7 @@ function MenuPage(props) {
                             css={s.orderButton}
                             onClick={handleOrderButtonClick}
                         >
-                            주문하기<p>12,900원</p>
+                            주문하기<p>{result}원</p>
                         </button>
                     </div>
                 </div>

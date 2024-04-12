@@ -1,10 +1,10 @@
 /**@jsxImportSource @emotion/react */
 import * as s from "./style";
 
-function Top3Button({ img, menuName, price, cal, index }) {
+function Top3Button({ img, menuName, price, cal, index, onClick }) {
     return (
         <div css={s.menuLayout}>
-            <button css={s.menu}>
+            <button css={s.menu} onClick={onClick}>
                 <div css={s.lanking(index)}>{index + 1}위</div>
                 <div css={s.imglayout}>
                     <img src={img} alt="" />

@@ -36,10 +36,10 @@ export const menuListLayout = css`
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
-    padding-top: 10px;
-    overflow: scroll;
+    overflow: auto;
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none;
+    padding-top: 10px;
     padding-left: 30px;
     height: 100%;
     width: 100%;
