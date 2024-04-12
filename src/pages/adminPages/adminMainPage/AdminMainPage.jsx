@@ -20,6 +20,7 @@ import {
 import { getSalesRequest } from "../../../apis/api/salesApi";
 import { TbArrowBigLeftFilled } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
+import AdminMainPageFeedback from "../../../components/adminMainPageFeedback/AdminMainPageFeedback";
 
 function AdminMainPage() {
     const [lanking, setLanking] = useState([]);
@@ -124,9 +125,7 @@ function AdminMainPage() {
                     </div>
                     <div css={s.boxContainer}>
                         <div css={s.categoryBox}>
-                            <div>d</div>
-                            <div>d</div>
-                            <div>d</div>
+                            <AdminMainPageFeedback />
                         </div>
                     </div>
                 </div>
