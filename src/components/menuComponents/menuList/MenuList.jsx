@@ -5,8 +5,8 @@ import { useMutation } from "react-query";
 import {
     getBurgerRequest,
     getDrinkRequest,
-    getTop3Request,
-    getmenuRequest,
+    getMenuRequest,
+    getTop3Request
 } from "../../../apis/api/menuList";
 import { useEffect, useState } from "react";
 import { categoryState } from "../../../atoms/categoryAtom";
@@ -19,7 +19,7 @@ function MenuList() {
 
     const getMenuMutation = useMutation({
         mutationKey: "getMenuMutation",
-        mutationFn: getmenuRequest,
+        mutationFn: getMenuRequest,
         retry: 0,
         onSuccess: (response) => {
             if (response.data) {
