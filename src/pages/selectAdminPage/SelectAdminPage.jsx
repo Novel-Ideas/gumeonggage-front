@@ -5,6 +5,7 @@ import { FaUserGear } from "react-icons/fa6";
 import PageLayout from "../../components/pageComponents/pageLayout/PageLayout";
 import { useNavigate } from "react-router-dom";
 import { useAuthCheck } from "../../hooks/useAuthCheck";
+import { TbArrowBigLeftFilled } from "react-icons/tb";
 
 function SelectAdminPage(props) {
     useAuthCheck();
@@ -15,17 +16,25 @@ function SelectAdminPage(props) {
     const handleUserButtonClick = () => {
         navigate("/menu/main");
     };
+    const handlebackButtonClick = () => {
+        navigate("/");
+    };
     return (
         <PageLayout>
             <div css={s.layout}>
-                <button css={s.selectWay} onClick={handleAdminButtonClick}>
-                    <FaUserGear />
-                    <h1>관리자 모드</h1>
-                </button>
-                <button css={s.selectWay} onClick={handleUserButtonClick}>
-                    <MdOutlineTableRestaurant />
-                    <h1>사용자 모드</h1>
-                </button>
+                <div css={s.buttonLayout}>
+                    <button css={s.backButton} onClick={handlebackButtonClick}><TbArrowBigLeftFilled /></button>
+                </div>
+                <div css={s.buttonContainer}>
+                    <button css={s.selectWay} onClick={handleAdminButtonClick}>
+                        <FaUserGear />
+                        <h1>관리자 모드</h1>
+                    </button>
+                    <button css={s.selectWay} onClick={handleUserButtonClick}>
+                        <MdOutlineTableRestaurant />
+                        <h1>사용자 모드</h1>
+                    </button>
+                </div>
             </div>
         </PageLayout>
     );
