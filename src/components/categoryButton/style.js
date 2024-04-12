@@ -27,7 +27,7 @@ export const category = css`
         }
     }
     &:active {
-        background-color: #f9d017;
+        background-color: #fcd93c;
         & > div:nth-of-type(1) {
             background-color: white;
         }
@@ -39,12 +39,10 @@ export const imglayout = css`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 10px;
-    width: 90px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     border-radius: 15px;
-    border: 1px solid #dbdbdb;
-    font-size: 40px;
+    font-size: 50px;
 `;
 
 export const categoryTitleLayout = css`
@@ -54,6 +52,7 @@ export const categoryTitleLayout = css`
 `;
 
 export const categoryfont = css`
+    margin-top: 5px;
     font-size: 24px;
     color: #898989;
 `;

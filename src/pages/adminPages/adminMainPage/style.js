@@ -48,6 +48,7 @@ export const boxContainer = css`
     height: 80%;
 `;
 
+
 export const categoryBox = css`
     margin-bottom: 10px;    
     box-sizing: border-box;
@@ -56,7 +57,10 @@ export const categoryBox = css`
     height: 300px;
     border-radius: 15px;
     background-color: white;
-    border: 1px solid #dbdbdb
+    border: 1px solid #dbdbdb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
 `;
 
