@@ -1,29 +1,26 @@
 /**@jsxImportSource @emotion/react */
 import * as s from "./style";
 import { FaCircle } from "react-icons/fa";
-import { useMutation } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import AdminPageLayout from '../../../components/pageComponents/adminPageLayout/AdminPageLayout';
 import { getFeedbackRequest } from "../../../apis/api/feedback";
 import { useEffect, useState } from "react";
 
 function AdminFeedbackPage(props) {
-    const [ feedbackList, SetFeedbackList ] = useState([]);
+    const [ feedbackList, setFeedbackList ] = useState([]);
 
-    const getFeedbackMutation = useMutation({
-        mutationKey: "getFeedbackMutation",
-        mutationFn: getFeedbackRequest,
-        retry: 0,
+    const searchFeedbackQuery = useQuery(["feedbackQuery"], getFeedbackRequest, {
         onSuccess: (response) => {
-            if (response.data) {
-                console.log(response.data);
-                getFeedbackMutation(response.data);
-            }
-        },
-    });
+            setFeedbackList(response.data)
+    },
+    onError: (error) => {
+        console.log(error);
+    },
+    retry: 0,
+    refetchOnWindowFocus: false,
+})
 
-    useEffect(() => {
-        getFeedbackMutation.mutate();
-    },[])
+console.log(feedbackList)
 
     return (
         <AdminPageLayout>
@@ -41,23 +38,23 @@ function AdminFeedbackPage(props) {
                         <div css={s.searchLayout}>
                             <div css={s.search}>
                                 <ul css={s.askTitle}>
-                                    <li>Id</li>
-                                    <li>질문1</li>
-                                    <li>질문2</li>
-                                    <li>질문3</li>
-                                    <li>날짜</li>
+                                        <li>Id</li>
+                                        <li>염도</li>
+                                        <li>양</li>
+                                        <li>친절도</li>
+                                        <li>날짜</li>
                                 </ul>
-                                <div css={s.listLayout}>
+                                <div css={s.listLayout}>           
                                         {
-                                            feedbackList.map((feedback) =>                                           
-                                            <ul css={s.askList} key={feedback.feedbackId}>
-                                                <li>{feedback.feedbackId}</li>
-                                                <li>{feedback.answer1}</li>
-                                                <li>{feedback.answer2}</li>
-                                                <li>{feedback.answer3}</li>
-                                                <li>{feedback.updateDate}</li>
-                                            </ul>
-                                            )
+                                            feedbackList.map((feedback) => (
+                                                <ul css={s.askList}>
+                                                    <li>{feedback.feedbackId}</li>
+                                                    <li>{feedback.answer1 === 1 ? "싱거움" : feedback.answer1 === 2 ? "적당함" : "간이셈"}</li>
+                                                    <li>{feedback.answer2 === 1 ? "적음" : feedback.answer2 === 2 ? "적당함" : "많음"}</li>
+                                                    <li>{feedback.answer3 === 1 ? "불친절함" : feedback.answer2 === 2 ? "보통" : "친절함"}</li>
+                                                    <li>{feedback.createDate}</li>
+                                                </ul>
+                                            ))
                                         }
                                 </div>
                             </div>
