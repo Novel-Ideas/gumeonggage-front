@@ -8,11 +8,13 @@ import { useQuery } from "react-query";
 import { useEffect, useState } from "react";
 import { orderListState } from "../../../atoms/orderListAtom";
 import { getMenuRequest } from "../../../apis/api/menuList";
+import { orderMenuListState } from "../../../atoms/orderMenuListAtom";
 
 function OrderListComponent(props) {
     const [orderList, setOrderList] = useRecoilState(orderListState);
     const [menuList, setMenuList] = useState([]);
-    const [orderMenuList, setOrderMenuList] = useState([]);
+    const [orderMenuList, setOrderMenuList] =
+        useRecoilState(orderMenuListState);
 
     const menuListQuery = useQuery(["menuQuery"], () => getMenuRequest(1), {
         retry: 0,

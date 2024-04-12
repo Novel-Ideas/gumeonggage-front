@@ -7,7 +7,6 @@ export const layout = css`
     flex-direction: column;
 `;
 
-
 export const orderLayout = css`
     width: 100%;
     height: 90%;
@@ -29,6 +28,10 @@ export const orderMenuLayout = css`
     border-bottom: 1px solid #dbdbdb;
     padding-bottom: 10px;
     margin-bottom: 15px;
+
+    :last-child {
+        border: none;
+    }
 `;
 
 export const orderInfoBox = css`
