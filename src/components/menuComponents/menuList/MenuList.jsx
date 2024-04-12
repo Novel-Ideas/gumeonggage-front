@@ -1,85 +1,58 @@
 /**@jsxImportSource @emotion/react */
 import * as s from "./style";
 import MenuButton from "../../menuButton/MenuButton";
-import { useMutation } from "react-query";
-import {
-    getBurgerRequest,
-    getDrinkRequest,
-    getMenuRequest,
-    getTop3Request
-} from "../../../apis/api/menuList";
-import { useEffect, useState } from "react";
+import { useQuery } from "react-query";
+import { getMenuRequest } from "../../../apis/api/menuList";
+import { useState } from "react";
 import { categoryState } from "../../../atoms/categoryAtom";
 import { useRecoilState } from "recoil";
 import Top3Button from "../../top3Button/Top3Button";
+import { orderListState } from "../../../atoms/orderListAtom";
 
 function MenuList() {
     const [menuList, setMenuList] = useState([]);
     const [category, setCategory] = useRecoilState(categoryState);
+    const [orderList, setOrderList] = useRecoilState(orderListState);
 
-    const getMenuMutation = useMutation({
-        mutationKey: "getMenuMutation",
-        mutationFn: getMenuRequest,
-        retry: 0,
-        onSuccess: (response) => {
-            if (response.data) {
-                console.log(response.data);
+    const menuListQuery = useQuery(
+        ["menuQuery", category],
+        () => getMenuRequest(category),
+        { 
+             retry: 0,
+            refetchOnWindowFocus: false,
+            onSuccess: (response) => {
                 setMenuList(response.data);
-            }
-        },
-    });
-
-    const getTop3Mutation = useMutation({
-        mutationkey: "getTop3Mutation",
-        mutationFn: getTop3Request,
-        retry: 0,
-        onSuccess: (response) => {
-            if (response.data) {
-                console.log(response.data);
-                setMenuList(response.data);
-            }
-        },
-    });
-
-    const getBurgerMutation = useMutation({
-        mutationkey: "getBurgerMutation",
-        mutationFn: getBurgerRequest,
-        retry: 0,
-        onSuccess: (response) => {
-            if (response.data) {
-                console.log(response.data);
-                setMenuList(response.data);
-            }
-        },
-    });
-
-    const getDrinkMutation = useMutation({
-        mutationkey: "getDrinkMutation",
-        mutationFn: getDrinkRequest,
-        retry: 0,
-        onSuccess: (response) => {
-            if (response.data) {
-                console.log(response.data);
-                setMenuList(response.data);
-            }
-        },
-    });
-
-    useEffect(() => {
-        if (category === "all") {
-            getMenuMutation.mutate();
-            console.log(category);
-        } else if (category === "top3") {
-            getTop3Mutation.mutate();
-            console.log(category);
-        } else if (category === "burger") {
-            getBurgerMutation.mutate();
-            console.log(category);
-        } else if (category === "drink") {
-            getDrinkMutation.mutate();
-            console.log(category);
+            },
+            onError: (error) => {
+                console.log(error);
+            },
         }
-    }, [category]);
+    );
+
+    const handleMenuClick = (id) => {
+        if (orderList.filter((order) => order.menuId === id).length > 0) {
+            setOrderList(
+                orderList.map((order) => {
+                    if (order.menuId === id) {
+                        return {
+                            ...order,
+                            menuCount: order.menuCount + 1,
+                        };
+                    } else {
+                        return order;
+                    }
+                })
+            );
+        } else {
+            setOrderList([
+                ...orderList,
+                {
+                    menuId: id,
+                    menuCount: 1,
+                },
+            ]);
+        }
+    };
 
     return (
         <div css={s.layout}>
@@ -89,7 +62,7 @@ function MenuList() {
             </div>
             <div css={s.menuListLayout}>
                 <div css={s.menuListBox}>
-                    {category === "top3" ? (
+                    {category === 2 ? (
                         menuList.map((menu, index) => (
                             <Top3Button
                                 key={menu.menuId}
@@ -109,6 +82,7 @@ function MenuList() {
                                     menuName={menu.menuName}
                                     price={menu.menuPrice}
                                     cal={menu.menuCal}
+                                    onClick={() => handleMenuClick(menu.menuId)}
                                 />
                             ))}
                         </>

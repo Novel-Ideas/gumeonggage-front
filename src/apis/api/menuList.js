@@ -1,7 +1,7 @@
 import instance from "../utils/instance";
 
-export const getMenuRequest = async () => {
-    return await instance.get("/menus");
+export const getMenuRequest = async (categoryId) => {
+    return await instance.get(`/menus?categoryId=${categoryId}`);
 };
 
 export const getTop3Request = async () => {
@@ -15,4 +15,3 @@ export const getBurgerRequest = async () => {
 export const getDrinkRequest = async () => {
     return await instance.get("/menus/drink");
 };
-

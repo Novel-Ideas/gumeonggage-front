@@ -64,6 +64,28 @@ export const orderLayout = css`
 export const orderMenuLayout = css`
     width: 100%;
     height: 80%;
+    overflow: auto;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+`;
+
+export const header = css`
+    width: 100%;
+    height: 10%;
+    display: flex;
+    padding-top: 20px;
+
+    & > h1:nth-of-type(1) {
+        font-size: 45px;
+        font-weight: 700;
+        padding-left: 20px;
+    }
+
+    & > h1:nth-of-type(2) {
+        font-size: 45px;
+        font-weight: 300;
+        margin-left: 5px;
+    }
 `;
 
 export const orderButtonLayout = css`
