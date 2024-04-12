@@ -20,37 +20,31 @@ import {
 import { getSalesRequest } from "../../../apis/api/salesApi";
 
 function AdminMainPage() {
-    const [lanking, setLanking] = useState([]);
+    useAuthCheck();
+    const [ranking, setRanking] = useState([]);
     const [sales, setSales] = useState([]);
     const salesQuery = useQuery(["salesQuery"], getSalesRequest, {
         retry: 0,
         refetchOnWindowFocus: false,
         onSuccess: (response) => {
-            console.log("salesQuery", response.data);
             setSales(() => response.data);
         },
         onError: (error) => {
-            console.log("salesQuer", error);
+            console.log("salesQuery", error);
         },
     });
 
-    const getLankingMutation = useMutation({
-        mutationKey: "getLankingMutation",
-        mutationFn: getTop3Request,
+    const rankingQuery = useQuery(["rankingQuery"], getTop3Request, {
         retry: 0,
+        refetchOnWindowFocus: false,
         onSuccess: (response) => {
-            if (response.data) {
-                console.log(response.data);
-                setLanking(response.data);
-            }
+            setRanking(() => response.data);
+        },
+        onError: (error) => {
+            console.log("rankingQuery", error);
         },
     });
 
-    useEffect(() => {
-        getLankingMutation.mutate();
-    }, []);
-
-    useAuthCheck();
     return (
         <AdminPageLayout>
             <div css={s.layout}>
@@ -96,7 +90,7 @@ function AdminMainPage() {
                     </div>
                     <div css={s.boxContainer}>
                         <div css={s.categoryBox}>
-                            {lanking.map((menu, index) => (
+                            {ranking.map((menu, index) => (
                                 <AdminMainPageTop3
                                     key={menu.menuId}
                                     img={menu.menu?.menuImgUrl}
