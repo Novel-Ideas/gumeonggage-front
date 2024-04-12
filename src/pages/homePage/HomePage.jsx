@@ -3,6 +3,7 @@ import PageLayout from "../../components/pageComponents/pageLayout/PageLayout";
 import * as s from "./style";
 import { useNavigate } from "react-router-dom";
 import burger from "../../assets/burger.png";
+import { TbArrowBigLeftFilled } from "react-icons/tb";
 
 function HomePage() {
     const navigate = useNavigate();
@@ -10,8 +11,15 @@ function HomePage() {
         navigate("/menu/select");
     };
 
+    const handlebackButtonClick = () => {
+        navigate("/selectmenu");
+    };
+
     return (
         <PageLayout>
+                <div css={s.buttonLayout}>
+                    <button css={s.backButton} onClick={handlebackButtonClick}><TbArrowBigLeftFilled /></button>
+                </div>
             <div css={s.layout} onClick={handlePageClick}>
                 <div css={s.content}>
                     <div css={s.imgBox}>
