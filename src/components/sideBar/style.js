@@ -70,3 +70,8 @@ export const feedbackLayout = css`
     width: 80%;
     height: 130px;
 `;
+
+export const userLayout = css`
+    width: 80%;
+    height: 130px;
+`;

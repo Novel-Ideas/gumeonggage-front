@@ -9,8 +9,8 @@ import AdminUserSearch from "../components/adminUserSearch/AdminUserSearch";
 function AdminRoute(props) {
     return (
         <Routes>
-            <Route path="/main" element={<AdminMainPage />}/>
             <Route path="/sale" />
+            <Route path="/main" element={<AdminMainPage />}/>
             <Route path="/add" element={<AdminMenuAdd />}/>
             <Route path="/getmenu" element={<AdminMenuSearch/>}/>
             <Route path="/update" />
