@@ -18,10 +18,13 @@ import {
     YAxis,
 } from "recharts";
 import { getSalesRequest } from "../../../apis/api/salesApi";
+import { TbArrowBigLeftFilled } from "react-icons/tb";
+import { useNavigate } from "react-router-dom";
 
 function AdminMainPage() {
     const [lanking, setLanking] = useState([]);
     const [sales, setSales] = useState([]);
+    const navigate = useNavigate();
     const salesQuery = useQuery(["salesQuery"], getSalesRequest, {
         retry: 0,
         refetchOnWindowFocus: false,
@@ -50,10 +53,17 @@ function AdminMainPage() {
         getLankingMutation.mutate();
     }, []);
 
+    const handlebackButtonClick = () => {
+        navigate("/selectmenu");
+    };
+
     useAuthCheck();
     return (
         <AdminPageLayout>
             <div css={s.layout}>
+                <div css={s.buttonLayout}>
+                    <button css={s.backButton} onClick={handlebackButtonClick}><TbArrowBigLeftFilled /></button>
+                </div>
                 <div css={s.boxLayout}>
                     <div css={s.fontLayout}>
                         <h1>Sales</h1>
