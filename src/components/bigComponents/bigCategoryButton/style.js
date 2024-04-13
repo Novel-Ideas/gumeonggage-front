@@ -43,8 +43,7 @@ export const imglayout = css`
     width: 130px;
     height: 170px;
     border-radius: 15px;
-    border: 1px solid #dbdbdb;
-    font-size: 40px;
+    font-size: 60px;
 `;
 
 export const categoryTitleLayout = css`
@@ -54,6 +53,6 @@ export const categoryTitleLayout = css`
 `;
 
 export const categoryfont = css`
-    font-size: 24px;
+    font-size: 35px;
     color: #898989;
 `;

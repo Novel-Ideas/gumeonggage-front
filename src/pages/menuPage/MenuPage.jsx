@@ -9,14 +9,20 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { orderMenuListState } from "../../atoms/orderMenuListAtom";
 import { useEffect, useState } from "react";
+import BigMenuComponent from "../../components/bigComponents/bigMenuComponent/BigMenuComponent";
 
 function MenuPage(props) {
     const [result, setResult] = useState();
+    const [bigMode, setBigMode] = useState(false);
     const [orderMenuList, setOrderMenuList] =
         useRecoilState(orderMenuListState);
     const navigate = useNavigate();
     const handleOrderButtonClick = () => {
         navigate("/menu/menuall/order");
+    };
+
+    const handleBigModeClick = () => {
+        setBigMode(() => !bigMode);
     };
 
     useEffect(() => {
@@ -35,9 +41,17 @@ function MenuPage(props) {
                 <div css={s.container}>
                     <div css={s.categoryLayout}>
                         <div css={s.categoryBox}>
-                            <MenuCategoryPage />
+                            {bigMode ? (
+                                <BigMenuComponent />
+                            ) : (
+                                <MenuCategoryPage />
+                            )}
+                            {/* <MenuCategoryPage /> */}
+                            {/* <BigMenuComponent /> */}
                         </div>
-                        <button css={s.bigButton}>큰 글씨 모드</button>
+                        <button css={s.bigButton} onClick={handleBigModeClick}>
+                            큰 글씨 모드
+                        </button>
                     </div>
                     <div css={s.menuLayout}>
                         <MenuList />
