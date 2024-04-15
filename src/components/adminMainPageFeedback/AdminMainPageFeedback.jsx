@@ -1,21 +1,9 @@
 /** @jsxImportSource @emotion/react */ // aside css
-import { useQuery } from "react-query";
 import * as s from "./style";
-import { PieChart, Pie, ResponsiveContainer } from 'recharts';
-import { getFeedbackRequest } from "../../apis/api/feedback";
-import { useState } from "react";
+import { PieChart, Pie, ResponsiveContainer, Label, LabelList } from 'recharts';
 
 
 function AdminMainPageFeedback() {
-      const [ feedbackCount, setFeedbackCount ] = useState(0)
-
-      const getcountQuery = useQuery(["getcountQuery"], () => getFeedbackRequest, {
-        retry: 0,
-        refetchOnWindowFocus: false,
-        onSuccess: (response) => {
-          setFeedbackCount(())
-        }
-      )}
 
     
       const data01 = [
@@ -67,7 +55,8 @@ function AdminMainPageFeedback() {
         <div css={s.layout}>
             <ResponsiveContainer width="33%" height="100%" display="flex" >
                     <PieChart   width={500} height={250}>
-                        <Pie data={data01} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={50} outerRadius={80} fill="#96cbe0" label />
+                        <Pie data={data01} dataKey="value" nameKey="name"  cx="50%" cy="50%" innerRadius={50} outerRadius={80} fill="#96cbe0" label />
+                        <LabelList dataKey="value" position="inside" />
                     </PieChart>
             </ResponsiveContainer>
             <ResponsiveContainer width="33%" height="100%" display="flex" >
