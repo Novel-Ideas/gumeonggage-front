@@ -1,55 +1,68 @@
 /** @jsxImportSource @emotion/react */ // aside css
+import { useQuery } from "react-query";
 import * as s from "./style";
 import { PieChart, Pie, ResponsiveContainer } from 'recharts';
+import { getFeedbackRequest } from "../../apis/api/feedback";
+import { useState } from "react";
 
 
-function AdminMainPageFeedback(props) {
+function AdminMainPageFeedback() {
+      const [ feedbackCount, setFeedbackCount ] = useState(0)
+
+      const getcountQuery = useQuery(["getcountQuery"], () => getFeedbackRequest, {
+        retry: 0,
+        refetchOnWindowFocus: false,
+        onSuccess: (response) => {
+          setFeedbackCount(())
+        }
+      )}
+
     
       const data01 = [
         {
-          "name": "Group A",
+          "name": "맛없음",
           "value": 2400
         },
         {
-          "name": "Group B",
+          "name": "보통",
           "value": 4567
         },
         {
-          "name": "Group C",
+          "name": "맛있음",
           "value": 1398
         },
       ];
 
       const data02 = [
         {
-          "name": "Group A",
+          "name": "적음",
           "value": 3000
         },
         {
-          "name": "Group B",
+          "name": "적당함",
           "value": 4567
         },
         {
-          "name": "Group C",
+          "name": "많음",
           "value": 1398
         },
       ];
 
       const data03 = [
         {
-          "name": "Group A",
+          "name": "불친절함",
           "value": 3000
         },
         {
-          "name": "Group B",
+          "name": "보통",
           "value": 4567
         },
         {
-          "name": "Group C",
+          "name": "친절함",
           "value": 3050
         },
       ];
-    
+
       return (
         <div css={s.layout}>
             <ResponsiveContainer width="33%" height="100%" display="flex" >

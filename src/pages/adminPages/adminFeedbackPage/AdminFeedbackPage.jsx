@@ -39,7 +39,7 @@ console.log(feedbackList)
                             <div css={s.search}>
                                 <ul css={s.askTitle}>
                                         <li>Id</li>
-                                        <li>염도</li>
+                                        <li>맛</li>
                                         <li>양</li>
                                         <li>친절도</li>
                                         <li>날짜</li>
@@ -49,7 +49,7 @@ console.log(feedbackList)
                                             feedbackList.map((feedback) => (
                                                 <ul css={s.askList}>
                                                     <li>{feedback.feedbackId}</li>
-                                                    <li>{feedback.answer1 === 1 ? "싱거움" : feedback.answer1 === 2 ? "적당함" : "간이셈"}</li>
+                                                    <li>{feedback.answer1 === 1 ? "맛없음" : feedback.answer1 === 2 ? "보통" : "맛있음"}</li>
                                                     <li>{feedback.answer2 === 1 ? "적음" : feedback.answer2 === 2 ? "적당함" : "많음"}</li>
                                                     <li>{feedback.answer3 === 1 ? "불친절함" : feedback.answer2 === 2 ? "보통" : "친절함"}</li>
                                                     <li>{feedback.createDate}</li>
