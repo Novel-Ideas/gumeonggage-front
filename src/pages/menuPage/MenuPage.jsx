@@ -10,13 +10,16 @@ import { useRecoilState } from "recoil";
 import { orderMenuListState } from "../../atoms/orderMenuListAtom";
 import { useEffect, useState } from "react";
 import BigMenuComponent from "../../components/bigComponents/bigMenuComponent/BigMenuComponent";
+import { totalPayPriceState } from "../../atoms/totalPayPriceAtom";
 import BigMenuListComponent from "../../components/bigComponents/bigMenuListComponent/BigMenuListComponent";
 
+
 function MenuPage(props) {
-    const [result, setResult] = useState();
     const [bigMode, setBigMode] = useState(false);
     const [orderMenuList, setOrderMenuList] =
         useRecoilState(orderMenuListState);
+    const [totalPayPrice, setTotalPayPrice] =
+        useRecoilState(totalPayPriceState);
     const navigate = useNavigate();
     const handleOrderButtonClick = () => {
         navigate("/menu/menuall/order");
@@ -28,12 +31,11 @@ function MenuPage(props) {
 
     useEffect(() => {
         const order = orderMenuList;
-        setResult(() => {
+        setTotalPayPrice(() => {
             let price = 0;
             order.map((menu) => (price += menu.totalPrice));
             return price;
         });
-        console.log(result);
     }, [orderMenuList]);
 
     return (
@@ -73,7 +75,7 @@ function MenuPage(props) {
                             css={s.orderButton}
                             onClick={handleOrderButtonClick}
                         >
-                            주문하기<p>{result}원</p>
+                            주문하기<p>{totalPayPrice}원</p>
                         </button>
                     </div>
                 </div>
