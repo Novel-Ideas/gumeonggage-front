@@ -46,8 +46,6 @@ function MenuPage(props) {
                             ) : (
                                 <MenuCategoryPage />
                             )}
-                            {/* <MenuCategoryPage /> */}
-                            {/* <BigMenuComponent /> */}
                         </div>
                         <button css={s.bigButton} onClick={handleBigModeClick}>
                             큰 글씨 모드

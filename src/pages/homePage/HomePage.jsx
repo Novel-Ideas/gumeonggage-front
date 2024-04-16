@@ -17,16 +17,15 @@ function HomePage() {
 
     return (
         <PageLayout>
-                <div css={s.buttonLayout}>
-                    <button css={s.backButton} onClick={handlebackButtonClick}><TbArrowBigLeftFilled /></button>
-                </div>
+            <div css={s.buttonLayout}>
+                <button css={s.backButton} onClick={handlebackButtonClick}>
+                    <TbArrowBigLeftFilled />
+                </button>
+            </div>
             <div css={s.layout} onClick={handlePageClick}>
                 <div css={s.content}>
                     <div css={s.imgBox}>
-                        <img
-                            src={burger}
-                            alt=""
-                        />
+                        <img src={burger} alt="" />
                     </div>
                     <div css={s.text}>
                         <h1>화면을 터치해 주세요!</h1>
