@@ -5,11 +5,13 @@ import { useInput } from "../../../hooks/useInput";
 import { signinRequest } from "../../../apis/api/signin";
 import { useQueryClient } from "react-query";
 import instance from "../../../apis/utils/instance";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function AdminAuthPage() {
     const [username, handleOnChangeUsername] = useInput();
     const [password, handleOnChangePassword] = useInput();
     const queryClient = useQueryClient();
+    const navigate = useNavigate();
     const principalData = queryClient.getQueryData("principalQuery");
     console.log(principalData);
 
@@ -28,6 +30,10 @@ function AdminAuthPage() {
                 console.log(error);
             });
     };
+
+    const handleSignupClick = () => {
+        navigate("/adminsignup")
+    }
 
     const handleStoreButtonClick = () => {
         window.location.href = "/selectmenu";
@@ -75,6 +81,9 @@ function AdminAuthPage() {
                         </div>
                         <button css={s.loginButton} onClick={handleSigninClick}>
                             로그인
+                        </button>
+                        <button css={s.signupButton} onClick={handleSignupClick}>
+                            회원가입
                         </button>
                     </>
                 ) : (
