@@ -42,6 +42,7 @@ function AdminMainPage() {
         retry: 0,
         refetchOnWindowFocus: false,
         onSuccess: (response) => {
+            console.log(response.data)
             setRanking(() => response.data);
         },
         onError: (error) => {
