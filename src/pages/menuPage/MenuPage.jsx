@@ -10,6 +10,7 @@ import { useRecoilState } from "recoil";
 import { orderMenuListState } from "../../atoms/orderMenuListAtom";
 import { useEffect, useState } from "react";
 import BigMenuComponent from "../../components/bigComponents/bigMenuComponent/BigMenuComponent";
+import BigMenuListComponent from "../../components/bigComponents/bigMenuListComponent/BigMenuListComponent";
 
 function MenuPage(props) {
     const [result, setResult] = useState();
@@ -52,7 +53,11 @@ function MenuPage(props) {
                         </button>
                     </div>
                     <div css={s.menuLayout}>
-                        <MenuList />
+                        {bigMode ? (
+                                    <BigMenuListComponent />
+                                ) : (
+                                    <MenuList />
+                                )}
                     </div>
                 </div>
                 <div css={s.orderLayout}>
