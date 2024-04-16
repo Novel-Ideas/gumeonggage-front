@@ -11,6 +11,8 @@ import { orderMenuListState } from "../../atoms/orderMenuListAtom";
 import { useEffect, useState } from "react";
 import BigMenuComponent from "../../components/bigComponents/bigMenuComponent/BigMenuComponent";
 import { totalPayPriceState } from "../../atoms/totalPayPriceAtom";
+import BigMenuListComponent from "../../components/bigComponents/bigMenuListComponent/BigMenuListComponent";
+
 
 function MenuPage(props) {
     const [bigMode, setBigMode] = useState(false);
@@ -53,7 +55,11 @@ function MenuPage(props) {
                         </button>
                     </div>
                     <div css={s.menuLayout}>
-                        <MenuList />
+                        {bigMode ? (
+                                    <BigMenuListComponent />
+                                ) : (
+                                    <MenuList />
+                                )}
                     </div>
                 </div>
                 <div css={s.orderLayout}>

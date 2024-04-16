@@ -65,6 +65,24 @@ export const loginButton = css`
     }
 `;
 
+export const signupButton = css`
+    margin-top: 30px;
+    color: rgb(252, 10, 86);
+    font-weight: 700;
+    font-size: 30px;
+    box-sizing: border-box;
+    border: 2px solid rgb(252, 10, 86);
+    border-radius: 20px;
+    background-color: white;
+    padding: 20px 175px;
+    box-shadow: 5px 5px 5px #898989ff;
+
+    &:active {
+        background-color: rgb(252, 10, 86);
+        color: white;
+    }
+`;
+
 export const accountInfo = css`
     font-size: 40px;
     font-weight: 700;
