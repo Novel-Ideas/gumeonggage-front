@@ -7,25 +7,6 @@ export const layout = css`
     flex-direction: column;
 `;
 
-export const header = css`
-    width: 100%;
-    height: 10%;
-    display: flex;
-    padding-top: 20px;
-
-    & > h1:nth-of-type(1) {
-        font-size: 45px;
-        font-weight: 700;
-        padding-left: 20px;
-    }
-
-    & > h1:nth-of-type(2) {
-        font-size: 45px;
-        font-weight: 300;
-        margin-left: 5px;
-    }
-`;
-
 export const orderLayout = css`
     width: 100%;
     height: 90%;
@@ -40,7 +21,17 @@ export const orderBox = css`
     display: flex;
     flex-direction: column;
     align-content: center;
-    /* background-color: aliceblue; */
+`;
+
+export const orderMenuLayout = css`
+    box-sizing: border-box;
+    border-bottom: 1px solid #dbdbdb;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+
+    :last-child {
+        border: none;
+    }
 `;
 
 export const orderInfoBox = css`
@@ -49,15 +40,14 @@ export const orderInfoBox = css`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* margin: 0px 20px; */
 
     & > h1:nth-of-type(1) {
-        font-size: 30px;
+        font-size: 25px;
         margin-left: 20px;
     }
 
     & > h1:nth-of-type(2) {
-        font-size: 25px;
+        font-size: 20px;
         font-weight: 700;
         margin-right: 20px;
     }
@@ -75,12 +65,12 @@ export const orderCount = css`
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 30px;
+    font-size: 25px;
     margin-left: 20px;
 
     & > div {
-        width: 40px;
-        height: 40px;
+        width: 30px;
+        height: 30px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -92,13 +82,40 @@ export const orderCount = css`
         align-items: center;
         font-weight: 600;
     }
+
+    & > button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        border-radius: 20px;
+        background-color: transparent;
+        font-size: 20px;
+        padding: 5px;
+        transition: 0.2s all ease-in-out;
+
+        &:active {
+            background-color: rgb(252, 10, 86);
+            color: white;
+        }
+    }
 `;
 
 export const removeButton = css`
     display: flex;
     justify-content: center;
     align-items: center;
+    border: none;
+    border-radius: 20px;
+    background-color: transparent;
     margin-right: 20px;
-    font-size: 35px;
-    color: red;
+    font-size: 30px;
+    color: rgb(252, 10, 86);
+    padding: 3px;
+    transition: 0.2s all ease-in-out;
+
+    &:active {
+        background-color: rgb(252, 10, 86);
+        color: white;
+    }
 `;

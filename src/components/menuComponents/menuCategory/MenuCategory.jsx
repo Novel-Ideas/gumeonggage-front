@@ -11,16 +11,16 @@ import { categoryState } from "../../../atoms/categoryAtom";
 function MenuCategory() {
     const [category, setCategory] = useRecoilState(categoryState);
     const handleAllClick = () => {
-        setCategory("all");
+        setCategory(1);
     };
     const handleTop3Click = () => {
-        setCategory("top3");
+        setCategory(2);
     };
     const handleBurgerClick = () => {
-        setCategory("burger");
+        setCategory(3);
     };
     const handleDrinkClick = () => {
-        setCategory("drink");
+        setCategory(4);
     };
     return (
         <div css={s.layout}>

@@ -14,8 +14,8 @@ export const menu = css`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 180px;
-    height: 243px;
+    width: 250px;
+    height: 480px;
     border-radius: 15px;
     background-color: white;
     border: 1px solid #dbdbdb;
@@ -23,27 +23,30 @@ export const menu = css`
 
     &:active {
         background-color: #f9d017;
-        & > div:nth-of-type(1) {
-            background-color: white;
-        }
     }
     &:visited {
         background-color: white;
     }
 `;
 
+
 export const imglayout = css`
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 10px;
-    width: 160px;
-    height: 160px;
-    font-size: 40px;
+    width: 100%;
+    height: 260px;
     overflow: hidden;
+    background-color: transparent;
+
+    &:active {
+        background-color: #f9d017;
+    }
 
     & > img {
         width: 100%;
+        background-color: transparent;
     }
 `;
 
@@ -55,16 +58,16 @@ export const menuListLayout = css`
 `;
 
 export const menuFont = css`
-    font-size: large;
+    font-size: x-large;
     color: #3f3f3f;
     margin: 8px 0px;
     font-weight: 600;
     margin-bottom: 4px;
-    
+    padding-top: 3px;
 `;
 
 export const calFont = css`
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 500;
     color: #898989;
     margin-bottom: 5px;
@@ -75,12 +78,10 @@ export const priceFontLayout = css`
     justify-content: center;
     align-items: center;
     width: 180px;
-    font-size: 20px;
-    color: #898989;
     margin-bottom: 10px;
 `;
 
 export const priceFont = css`
-    font-size: 18px;
+    font-size: x-large;
     color: #898989;
 `;

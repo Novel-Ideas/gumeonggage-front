@@ -6,13 +6,37 @@ import PaymentMethod from "../payPages/paymentMethodPage/PaymentMethod";
 import MenuCategoryPage from "../../components/menuComponents/menuCategory/MenuCategory";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import OrderListComponent from "../../components/menuComponents/orderListComponent/OrderListComponent";
+import { useRecoilState } from "recoil";
+import { orderMenuListState } from "../../atoms/orderMenuListAtom";
+import { useEffect, useState } from "react";
+import BigMenuComponent from "../../components/bigComponents/bigMenuComponent/BigMenuComponent";
+import { totalPayPriceState } from "../../atoms/totalPayPriceAtom";
+import BigMenuListComponent from "../../components/bigComponents/bigMenuListComponent/BigMenuListComponent";
 
 
 function MenuPage(props) {
+    const [bigMode, setBigMode] = useState(false);
+    const [orderMenuList, setOrderMenuList] =
+        useRecoilState(orderMenuListState);
+    const [totalPayPrice, setTotalPayPrice] =
+        useRecoilState(totalPayPriceState);
     const navigate = useNavigate();
     const handleOrderButtonClick = () => {
         navigate("/menu/menuall/order");
     };
+
+    const handleBigModeClick = () => {
+        setBigMode(() => !bigMode);
+    };
+
+    useEffect(() => {
+        const order = orderMenuList;
+        setTotalPayPrice(() => {
+            let price = 0;
+            order.map((menu) => (price += menu.totalPrice));
+            return price;
+        });
+    }, [orderMenuList]);
 
     return (
         <PageLayout>
@@ -20,15 +44,29 @@ function MenuPage(props) {
                 <div css={s.container}>
                     <div css={s.categoryLayout}>
                         <div css={s.categoryBox}>
-                            <MenuCategoryPage />
+                            {bigMode ? (
+                                <BigMenuComponent />
+                            ) : (
+                                <MenuCategoryPage />
+                            )}
                         </div>
-                        <button css={s.bigButton}>큰 글씨 모드</button>
+                        <button css={s.bigButton} onClick={handleBigModeClick}>
+                            큰 글씨 모드
+                        </button>
                     </div>
                     <div css={s.menuLayout}>
-                        <MenuList />
+                        {bigMode ? (
+                                    <BigMenuListComponent />
+                                ) : (
+                                    <MenuList />
+                                )}
                     </div>
                 </div>
                 <div css={s.orderLayout}>
+                    <div css={s.header}>
+                        <h1>Order</h1>
+                        <h1>Menu</h1>
+                    </div>
                     <div css={s.orderMenuLayout}>
                         <OrderListComponent />
                     </div>
@@ -37,7 +75,7 @@ function MenuPage(props) {
                             css={s.orderButton}
                             onClick={handleOrderButtonClick}
                         >
-                            주문하기<p>12,900원</p>
+                            주문하기<p>{totalPayPrice}원</p>
                         </button>
                     </div>
                 </div>

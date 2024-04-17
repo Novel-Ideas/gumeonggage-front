@@ -8,8 +8,9 @@ import { categoryState } from "../../../atoms/categoryAtom";
 import { useRecoilState } from "recoil";
 import Top3Button from "../../top3Button/Top3Button";
 import { orderListState } from "../../../atoms/orderListAtom";
+import BigMenuListButton from "../bigMenuListButton/BigMenuListButton";
 
-function MenuList() {
+function BigMenuListComponent() {
     const [menuList, setMenuList] = useState([]);
     const [category, setCategory] = useRecoilState(categoryState);
     const [orderList, setOrderList] = useRecoilState(orderListState);
@@ -56,10 +57,12 @@ function MenuList() {
 
     return (
         <div css={s.layout}>
+            <div css={s.nullbox}></div>
             <div css={s.header}>
-                <h1 css={s.chooseFont}>Choose</h1>
-                <h1 css={s.orderFont}>Order</h1>
+                <h1 css={s.chooseFont}>메뉴</h1>
+                <h1 css={s.orderFont}> 선택</h1>
             </div>
+            <div css={s.header}></div>
             <div css={s.menuListLayout}>
                 <div css={s.menuListBox}>
                     {category === 2 ? (
@@ -77,7 +80,7 @@ function MenuList() {
                     ) : (
                         <>
                             {menuList.map((menu) => (
-                                <MenuButton
+                                <BigMenuListButton
                                     key={menu.menuId}
                                     img={menu.menuImgUrl}
                                     menuName={menu.menuName}
@@ -94,4 +97,4 @@ function MenuList() {
     );
 }
 
-export default MenuList;
+export default BigMenuListComponent;

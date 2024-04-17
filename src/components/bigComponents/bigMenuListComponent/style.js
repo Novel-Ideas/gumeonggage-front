@@ -8,6 +8,12 @@ export const layout = css`
     height: 100%;
 `;
 
+export const nullbox = css`
+    box-sizing: border-box;
+    margin-top: 25px;
+
+`;
+
 export const header = css`
     box-sizing: border-box;
     display: flex;
@@ -17,15 +23,16 @@ export const header = css`
 `;
 
 export const chooseFont = css`
-    font-size: 45px;
-    font-weight: 600;
+    padding-right: 5px;
+    font-size: 60px;
+    font-weight: 700;
     color: #222;
     cursor: default;
 `;
 
 export const orderFont = css`
-    margin-left: 5px;
-    font-size: 45px;
+    padding-left: 5px;
+    font-size: 60px;
     font-weight: 300;
     color: #222;
     cursor: default;

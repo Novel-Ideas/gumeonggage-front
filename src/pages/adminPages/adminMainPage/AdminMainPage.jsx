@@ -3,9 +3,9 @@ import * as s from "./style";
 import AdminPageLayout from "../../../components/pageComponents/adminPageLayout/AdminPageLayout";
 import AdminMainPageTop3 from "../../../components/adminMainPageTop3/AdminMainPageTop3";
 import { useAuthCheck } from "../../../hooks/useAuthCheck";
-import { useEffect, useState } from "react";
-import { useMutation, useQuery } from "react-query";
-import { getTop3Request } from "../../../apis/api/menuList";
+import { useState } from "react";
+import { useQuery } from "react-query";
+import { getMenuRequest } from "../../../apis/api/menuList";
 import {
     Bar,
     CartesianGrid,
@@ -18,42 +18,48 @@ import {
     YAxis,
 } from "recharts";
 import { getSalesRequest } from "../../../apis/api/salesApi";
+import { TbArrowBigLeftFilled } from "react-icons/tb";
+import { useNavigate } from "react-router-dom";
+import AdminMainPageFeedback from "../../../components/adminMainPageFeedback/AdminMainPageFeedback";
 
 function AdminMainPage() {
-    const [lanking, setLanking] = useState([]);
+    useAuthCheck();
+    const [ranking, setRanking] = useState([]);
     const [sales, setSales] = useState([]);
+    const navigate = useNavigate();
     const salesQuery = useQuery(["salesQuery"], getSalesRequest, {
         retry: 0,
         refetchOnWindowFocus: false,
         onSuccess: (response) => {
-            console.log("salesQuery", response.data);
             setSales(() => response.data);
         },
         onError: (error) => {
-            console.log("salesQuer", error);
+            console.log("salesQuery", error);
         },
     });
 
-    const getLankingMutation = useMutation({
-        mutationKey: "getLankingMutation",
-        mutationFn: getTop3Request,
+    const rankingQuery = useQuery(["rankingQuery"], () => getMenuRequest(2), {
         retry: 0,
+        refetchOnWindowFocus: false,
         onSuccess: (response) => {
-            if (response.data) {
-                console.log(response.data);
-                setLanking(response.data);
-            }
+            console.log(response.data)
+            setRanking(() => response.data);
+        },
+        onError: (error) => {
+            console.log("rankingQuery", error);
         },
     });
-
-    useEffect(() => {
-        getLankingMutation.mutate();
-    }, []);
-
-    useAuthCheck();
+  
+    const handlebackButtonClick = () => {
+        navigate("/selectmenu");
+    };
+  
     return (
         <AdminPageLayout>
             <div css={s.layout}>
+                <div css={s.buttonLayout}>
+                    <button css={s.backButton} onClick={handlebackButtonClick}><TbArrowBigLeftFilled /></button>
+                </div>
                 <div css={s.boxLayout}>
                     <div css={s.fontLayout}>
                         <h1>Sales</h1>
@@ -96,7 +102,7 @@ function AdminMainPage() {
                     </div>
                     <div css={s.boxContainer}>
                         <div css={s.categoryBox}>
-                            {lanking.map((menu, index) => (
+                            {ranking.map((menu, index) => (
                                 <AdminMainPageTop3
                                     key={menu.menuId}
                                     img={menu.menu?.menuImgUrl}
@@ -114,9 +120,7 @@ function AdminMainPage() {
                     </div>
                     <div css={s.boxContainer}>
                         <div css={s.categoryBox}>
-                            <div>d</div>
-                            <div>d</div>
-                            <div>d</div>
+                            <AdminMainPageFeedback />
                         </div>
                     </div>
                 </div>

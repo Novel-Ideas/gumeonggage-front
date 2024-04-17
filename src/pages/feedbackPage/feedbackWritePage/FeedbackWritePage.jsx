@@ -15,26 +15,26 @@ function FeedbackWritePage() {
                 <div css={s.feedbackLayout}>
                     <div css={s.feedbackBox}>
                         <div css={s.feedbackContents}>
-                            <h1>음식이 싱겁진 않았나요?</h1>
+                            <h1>음식의 맛은 어땠나요?</h1>
                             <div css={s.radioButton}>
                                 <input
                                     type="radio"
                                     name="salinity"
                                     id="watery"
                                 />
-                                <label for="watery">싱거움</label>
+                                <label for="watery">맛없음</label>
                                 <input
                                     type="radio"
                                     name="salinity"
                                     id="proper1"
                                 />
-                                <label for="proper1">적당함</label>
+                                <label for="proper1">보통</label>
                                 <input
                                     type="radio"
                                     name="salinity"
                                     id="salty"
                                 />
-                                <label for="salty">간이 셈</label>
+                                <label for="salty">맛있음</label>
                             </div>
                         </div>
                         <div css={s.feedbackContents}>

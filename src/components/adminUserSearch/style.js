@@ -68,7 +68,7 @@ export const searchLayout = css`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 755px;
     height: 90%;
 `;
 
@@ -78,6 +78,7 @@ export const search = css`
     display: flex;
     flex-direction: column;
 `;
+
 
 export const askTitle = css`
     list-style-type: none;
@@ -94,18 +95,15 @@ export const askTitle = css`
     }
 
     & > li:nth-of-type(1) {
-        width: 15%;
+        width: 25%;
     }
     & > li:nth-of-type(2) {
-        width: 20%;
+        width: 25%;
     }
     & > li:nth-of-type(3) {
-        width: 20%;
+        width: 25%;
     }
     & > li:nth-of-type(4) {
-        width: 20%;
-    }
-    & > li:nth-of-type(5) {
         width: 25%;
     }
 
@@ -136,26 +134,24 @@ export const askList = css`
     display: flex;
     align-items: center;
     justify-content: space-around;
+    width: 100%;
     height: 8%;
     color: #333;
     
-    & > li {
+     & > li {
         text-align: center;
     }
 
     & > li:nth-of-type(1) {
-        width: 15%;
+        width: 25%;
     }
     & > li:nth-of-type(2) {
-        width: 20%;
+        width: 25%;
     }
     & > li:nth-of-type(3) {
-        width: 20%;
+        width: 25%;
     }
     & > li:nth-of-type(4) {
-        width: 20%;
-    }
-    & > li:nth-of-type(5) {
         width: 25%;
     }
 `;
