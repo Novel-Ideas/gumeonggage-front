@@ -5,7 +5,7 @@ import { useMutation, useQuery } from "react-query";
 import {
     deleteMenuRequest,
     updateMenuRequest,
-} from "../../../apis/api/menuList";
+} from "../../../apis/api/menuApi";
 import PageModal from "../../../components/pageComponents/pageModal/PageModal";
 import Select from "react-select";
 import { useNavigate, useSearchParams } from "react-router-dom";

@@ -50,10 +50,7 @@ function MenuPage(props) {
                             )}
                         </div>
                         <button css={s.bigButton} onClick={handleBigModeClick}>
-                            {!bigMode
-                                ? "표준 모드"
-                                : "큰글씨 모드"
-                            }
+                            {bigMode ? "표준 모드" : "큰글씨 모드"}
                         </button>
                     </div>
                     <div css={s.menuLayout}>

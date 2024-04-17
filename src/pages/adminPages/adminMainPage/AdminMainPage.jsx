@@ -5,7 +5,7 @@ import AdminMainPageTop3 from "../../../components/adminMainPageTop3/AdminMainPa
 import { useAuthCheck } from "../../../hooks/useAuthCheck";
 import { useState } from "react";
 import { useQuery } from "react-query";
-import { getMenuRequest } from "../../../apis/api/menuList";
+import { getMenuRequest } from "../../../apis/api/menuApi";
 import {
     Bar,
     CartesianGrid,

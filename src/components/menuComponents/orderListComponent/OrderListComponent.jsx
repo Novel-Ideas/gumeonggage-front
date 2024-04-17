@@ -7,7 +7,7 @@ import { useRecoilState } from "recoil";
 import { useQuery } from "react-query";
 import { useEffect, useState } from "react";
 import { orderListState } from "../../../atoms/orderListAtom";
-import { getMenuRequest } from "../../../apis/api/menuList";
+import { getMenuRequest } from "../../../apis/api/menuApi";
 import { orderMenuListState } from "../../../atoms/orderMenuListAtom";
 
 function OrderListComponent(props) {
