@@ -27,7 +27,7 @@ export const orderMenuLayout = css`
     box-sizing: border-box;
     border-bottom: 1px solid #dbdbdb;
     padding-bottom: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 
     :last-child {
         border: none;
@@ -42,12 +42,12 @@ export const orderInfoBox = css`
     align-items: center;
 
     & > h1:nth-of-type(1) {
-        font-size: 25px;
+        font-size: 21px;
         margin-left: 20px;
     }
 
     & > h1:nth-of-type(2) {
-        font-size: 20px;
+        font-size: 19px;
         font-weight: 700;
         margin-right: 20px;
     }
@@ -67,6 +67,8 @@ export const orderCount = css`
     align-items: center;
     font-size: 25px;
     margin-left: 20px;
+    margin-top: 8px;
+    margin-bottom: 6px;
 
     & > div {
         width: 30px;
@@ -74,6 +76,8 @@ export const orderCount = css`
         display: flex;
         justify-content: center;
         align-items: center;
+        border-left: none;
+        border-right: none;
     }
 
     & > div:nth-of-type(2) {
@@ -87,8 +91,8 @@ export const orderCount = css`
         display: flex;
         justify-content: center;
         align-items: center;
-        border: none;
-        border-radius: 20px;
+        border: 1px solid #dbdbdb;
+        border-radius: 8px;
         background-color: transparent;
         font-size: 20px;
         padding: 5px;
@@ -97,6 +101,10 @@ export const orderCount = css`
         &:active {
             background-color: rgb(252, 10, 86);
             color: white;
+        }
+
+        & > div:nth-of-type(1) {
+            border-bottom-left-radius: 10px;
         }
     }
 `;
