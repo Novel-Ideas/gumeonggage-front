@@ -15,7 +15,7 @@ export const menu = css`
     justify-content: center;
     align-items: center;
     width: 250px;
-    height: 480px;
+    height: 445px;
     border-radius: 15px;
     background-color: white;
     border: 1px solid #dbdbdb;
@@ -58,7 +58,7 @@ export const menuListLayout = css`
 `;
 
 export const menuFont = css`
-    font-size: x-large;
+    font-size: 22px;
     color: #3f3f3f;
     margin: 8px 0px;
     font-weight: 600;

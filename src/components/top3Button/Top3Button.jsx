@@ -1,7 +1,9 @@
 /**@jsxImportSource @emotion/react */
+import { useState } from "react";
 import * as s from "./style";
 
 function Top3Button({ img, menuName, price, cal, index, onClick }) {
+
     return (
         <div css={s.menuLayout}>
             <button css={s.menu} onClick={onClick}>
