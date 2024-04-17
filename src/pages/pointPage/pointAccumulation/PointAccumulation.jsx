@@ -1,5 +1,4 @@
 /** @jsxImportSource @emotion/react */
-import  PageLayout  from "../../../components/pageComponents/pageLayout/PageLayout"
 import PageModal from "../../../components/pageComponents/pageModal/PageModal";
 import * as s from "./style";
 
