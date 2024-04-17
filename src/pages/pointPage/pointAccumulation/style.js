@@ -4,56 +4,86 @@ export const layout = css`
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: column;// 세로로 세우겠다
-    justify-content: center;//가로중간 이거없으면 
-    align-items: center;//세로중간
+    flex-direction: column; // 세로로 세우겠다
+    justify-content: center; //가로중간 이거없으면
+    align-items: center; //세로중간
 `;
 
 export const textbox = css`
     width: 100%;
-    height: 25%;
-    box-sizing: border-box;
-    
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;
 export const text = css`
-    margin-top: 50px;
-    text-align: center;
+    color: red;
+    font-size: 60px;
+`;
+export const blackText = css`
     color: black;
 `;
 
 export const paybox = css`
-    width: 100%;
-    height: 50%;
-    box-sizing: border-box;
+    width: 80%;
+    height: 60%;
     display: flex;
-    justify-content:center;
+    justify-content: center;
     align-items: center; //세로중간
-
 `;
 
 export const methodLayout = css`
-    width: 20%;
-    height: 70%;
-    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 100px;
 `;
 
 export const methodBox = css`
     box-sizing: border-box;
-    border: 1px solid #dbdbdb;
-    width: 100%;
-    height: 70%;
+    border: 2px solid rgb(252, 10, 86);
+    border-radius: 30px;
+    background-color: rgb(252, 10, 86);
+    width: 350px;
+    height: 250px;
+    font-size: 50px;
+    color: white;
+    font-weight: 600;
+    box-shadow: 5px 5px 5px #898989ff;
     display: flex;
-    justify-content: center;//가로중간 이거없으면 
-    align-items: center;//세로중간
+    align-items: center;
+    justify-content: center;
+
+    &:active {
+        background-color: white;
+        color: rgb(252, 10, 86);
+    }
+
 `;
 
 export const buttonBox = css`
-    width: 100%;
-    height: 25%;  
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const cancel = css`
+    border: 2px solid rgb(252, 10, 86);
+    border-radius: 10px;
+    background-color: white;
+    color: rgb(252, 10, 86);
+    width: 280px;
+    height: 70px;
+    font-size: 30px;
+    font-weight: 700;
+    box-shadow: 5px 5px 5px #898989ff;
+
+    &:active {
+        background-color: rgb(252, 10, 86);
+        color: white;
+    }
 `;
 //마진이나 포지션은 최대한 쓰지말것
