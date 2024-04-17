@@ -31,6 +31,12 @@ function AdminAuthPage() {
             });
     };
 
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            handleSigninClick();
+        }
+    };
+
     const handleSignupClick = () => {
         navigate("/adminsignup")
     }
@@ -66,6 +72,7 @@ function AdminAuthPage() {
                                     placeholder="아이디를 입력하세요"
                                     value={username}
                                     onChange={handleOnChangeUsername}
+                                    onKeyPress={handleKeyPress}
                                 />
                             </div>
                             <div css={s.inputInfo}>
@@ -76,6 +83,7 @@ function AdminAuthPage() {
                                     placeholder="비밀번호를 입력하세요"
                                     value={password}
                                     onChange={handleOnChangePassword}
+                                    onKeyPress={handleKeyPress}
                                 />
                             </div>
                         </div>

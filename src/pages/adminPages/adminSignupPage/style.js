@@ -19,6 +19,7 @@ export const layout = css`
 
 export const inputInfo = css`
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 5px;
