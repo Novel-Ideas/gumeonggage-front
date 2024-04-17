@@ -92,6 +92,14 @@ function AdminMenuAdd() {
         });
     };
 
+    const handleResetClick = () => {
+        menuName.setValue(() => "");
+        menuCategoryId.setValue(() => "");
+        menuPrice.setValue(() => "");
+        menuCal.setValue(() => "");
+        menuImgUrl.setValue(() => "");
+    };
+
     return (
         <AdminPageLayout>
             <div css={s.layout}>
@@ -100,7 +108,7 @@ function AdminMenuAdd() {
                 </div>
                 <div css={s.main}>
                     <div css={s.resetLayout}>
-                        <button>
+                        <button onClick={handleResetClick}>
                             <GrPowerReset />
                         </button>
                     </div>
