@@ -1,11 +1,12 @@
 /** @jsxImportSource @emotion/react */
-import  PageLayout  from "../../../components/pageComponents/PageLayout"
+import PageLayout from "../../../components/pageComponents/pageLayout/PageLayout";
+import PageModal from "../../../components/pageComponents/pageModal/PageModal";
 import * as s from "./style";
 
 function PointAccumulation() {
     return (
-        <PageLayout>
-           <div css={s.layout}>
+        <PageModal>
+            <div css={s.layout}>
                 <div css={s.textbox}>
                     <h1 css={s.text}>포인트 적립</h1>
                 </div>
@@ -21,11 +22,9 @@ function PointAccumulation() {
                         </div>
                     </div>
                 </div>
-                <div css={s.buttonBox}>
-                </div>
-            </div> 
-        </PageLayout>
-        
+                <div css={s.buttonBox}></div>
+            </div>
+        </PageModal>
     );
 }
 

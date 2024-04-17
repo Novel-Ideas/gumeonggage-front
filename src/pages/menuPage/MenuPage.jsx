@@ -13,7 +13,6 @@ import BigMenuComponent from "../../components/bigComponents/bigMenuComponent/Bi
 import { totalPayPriceState } from "../../atoms/totalPayPriceAtom";
 import BigMenuListComponent from "../../components/bigComponents/bigMenuListComponent/BigMenuListComponent";
 
-
 function MenuPage(props) {
     const [bigMode, setBigMode] = useState(false);
     const [orderMenuList, setOrderMenuList] =
@@ -55,11 +54,7 @@ function MenuPage(props) {
                         </button>
                     </div>
                     <div css={s.menuLayout}>
-                        {bigMode ? (
-                                    <BigMenuListComponent />
-                                ) : (
-                                    <MenuList />
-                                )}
+                        {bigMode ? <BigMenuListComponent /> : <MenuList />}
                     </div>
                 </div>
                 <div css={s.orderLayout}>
