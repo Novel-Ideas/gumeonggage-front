@@ -4,64 +4,79 @@ export const layout = css`
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: column;// 세로로 세우겠다
-    /* justify-content: center;//가로중간 이거없으면  */
-    align-items: center;//세로중간
+    align-items: center;
+    flex-direction: column;
+    justify-content: center; 
 `;
 
 export const textbox = css`
-    width: 40%;
-    height: 15%;
-    box-sizing: border-box;
-    
+    width: 100%;
+    height: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 `;
+
 export const text = css`
-    margin-top: 50px;
-    text-align: center;
+    font-size: 60px;
     color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;
 
-export const phoneNumber = css`
-    width: 40%;
-    height: 10%;
-    font-size: 50px;
+export const inputBox = css`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+
+export const phoneNumberInput = css`
+    width: 35vw;
+    height: 22%;
+    outline: none;
+    border: 2px solid rgb(252, 10, 86);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    font-size: 45px;
     box-sizing: border-box;
-    border: 1px solid black;
-
-`;
-
-export const phoneNumberBox = css`
-    width: 40%;
+    border-bottom: 2px solid rgb(252, 10, 86);
+    
 `;
 
 export const tableContainer = css`
     width: 100%;
     box-sizing: border-box;
-    border: 1px solid black;
-    border-collapse: collapse;
+    border: 2px solid rgb(252, 10, 86);
+    
 `;
 
 export const table = css`
-    border: 0;
-    border: 1px solid black;
-    width: 100px;
-    height: 80px;
+    box-sizing: border-box;
+    border: 2px solid rgb(252, 10, 86);
+    width: 90px;
+    height: 100px;
+    border-left: 20px;
     text-align: center;
+    justify-content: center;
+    background-color: rgb(252, 10, 86);
+    
     &:hover {
-        background-color: #dbdbdb;
+        background-color: crimson;
     }
+
+
 `;
+
 export const number = css`
+    height: 100%;
     border: none;
+    font-size: 40px;
+    align-items: center;
+    justify-content: center;
     background-color: transparent;
-    cursor: pointer;
+    color: white;
     
 `;
-
-
-export const numberFont = css`
-    font-size: 40px; // 원하는 폰트 크기로 설정
-    
-`;
-
-//마진이나 포지션은 최대한 쓰지말것
