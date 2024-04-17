@@ -40,7 +40,7 @@ export const buttonLayout = css`
     display: flex;
     align-items: center;
     justify-content: center;
-`
+`;
 
 export const rejectButton = css`
     box-sizing: border-box;
