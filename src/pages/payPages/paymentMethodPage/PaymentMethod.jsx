@@ -17,7 +17,7 @@ function PaymentMethod() {
             <div css={s.layout}>
                 <div css={s.textbox}>
                     <h1 css={s.text}>
-                        결제방법<span css={s.blackText}>을 선택하세요.</span>
+                        결제방법<span css={s.blackText}>을 선택하세요</span>
                     </h1>
                 </div>
                 <div css={s.paybox}>
