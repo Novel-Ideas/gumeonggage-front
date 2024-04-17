@@ -5,6 +5,9 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import PageModal from "../../../components/pageComponents/pageModal/PageModal";
 import { useRecoilState } from "recoil";
 import { orderMenuListState } from "../../../atoms/orderMenuListAtom";
+import { useMutation } from "react-query";
+import { orderRequest } from "../../../apis/api/menuApi";
+import { useState } from "react";
 
 function PaymentMethod() {
     const navigate = useNavigate();
@@ -17,8 +20,28 @@ function PaymentMethod() {
         navigate("/menu/menuall/order/dutchpay");
     };
 
-    
-    console.log(orderMenuList)
+    const orderRequestMutation = useMutation({
+        mutationKey: "orderRequestMutation",
+        mutationFn: orderRequest,
+        onSuccess: (response) => {
+            console.log(response);
+            alert("메뉴 주문이 완료됐습니다");
+            window.location.replace("/menu/feedback");
+        },
+        onError: (error) => {
+            console.log(error);
+        },
+    });
+
+    const handleOrderClick = () => {
+        let orderInfo = [];
+        orderMenuList.map((order) =>
+            orderInfo.push({ menuId: order.menuId, menuCount: order.menuCount })
+        );
+
+        orderRequestMutation.mutate(orderInfo);
+    };
+
     return (
         <PageModal>
             <div css={s.layout}>
@@ -29,7 +52,9 @@ function PaymentMethod() {
                 </div>
                 <div css={s.paybox}>
                     <div css={s.methodLayout}>
-                        <button css={s.methodBox}>카드결제</button>
+                        <button css={s.methodBox} onClick={handleOrderClick}>
+                            카드결제
+                        </button>
                     </div>
                     <div css={s.methodLayout}>
                         <button css={s.methodBox} onClick={handleDutchPayClick}>

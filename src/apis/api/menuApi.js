@@ -15,3 +15,7 @@ export const updateMenuRequest = async (data) => {
 export const deleteMenuRequest = async (menuId) => {
     return await instance.delete(`/admin/menu?menuId=${menuId}`);
 };
+
+export const orderRequest = async (data) => {
+    return await instance.post("/order", data);
+};
