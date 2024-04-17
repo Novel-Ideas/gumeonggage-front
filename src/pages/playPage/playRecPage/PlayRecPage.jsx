@@ -1,22 +1,27 @@
 /**@jsxImportSource @emotion/react */
-import PageLayout from "../../../components/pageComponents/PageLayout";
 import * as s from "./style";
+import PageModal from "../../../components/pageComponents/pageModal/PageModal";
 
 function PlayRecPage() {
     return (
-        <PageLayout>
+        <PageModal>
             <div css={s.layout}>
-                <div>
-                    임시
+                <div css={s.textBox}>
+                    <h1 css={s.highlightText}>
+                        후식 <span css={s.recText}>추천 받기</span>    
+                    </h1>
                 </div>
-                <div css={s.desertRecommend}>
-                    <h1>후식 추천 받기</h1>    
+                <div css={s.buttonBox}>
+                <div css={s.buttonLayout}>
+                    <button css={s.rejectButton}>안 받을래요</button>
                 </div>
-                <div css={s.rejectButton}>
-                    <button>안 받을래요</button>
+                <div css={s.buttonLayout}>
+                    <button css={s.acceptButton}>받을래요</button>
                 </div>
+                </div>
+                
             </div>
-        </PageLayout>
+        </PageModal>
     );
 }
 
