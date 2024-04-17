@@ -7,6 +7,7 @@ import FeedbackWritePage from "../pages/feedbackPage/feedbackWritePage/FeedbackW
 import FeedbackOkPage from "../pages/feedbackPage/feedbackOkPage/FeedbackOkPage";
 import PointAccumulation from "../pages/pointPage/pointAccumulation/PointAccumulation";
 import PlayRecPage from "../pages/playPage/playRecPage/PlayRecPage";
+import PointCheck from "../pages/pointPage/pointCheck/PointCheck";
 
 function MenuRoute(props) {
     return (
@@ -17,7 +18,8 @@ function MenuRoute(props) {
             <Route path="/point" element={<PointAccumulation />} />
             <Route path="/feedback" element={<FeedbackWritePage />} />
             <Route path="/feedback/ok" element={<FeedbackOkPage />} />
-            <Route path="/play" element={<PlayRecPage/>} />
+            <Route path="/play" element={<PlayRecPage />} />
+            <Route path="/point/check" element={<PointCheck /> } />
         </Routes>
     );
 }

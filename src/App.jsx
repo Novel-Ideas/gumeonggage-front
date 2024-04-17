@@ -1,5 +1,6 @@
 import { Reset } from "styled-reset";
 import HomeRoute from "./routes/HomeRoute";
+import PointCheck from "./pages/pointPage/pointCheck/PointCheck";
 function App() {
     return (
         <>
