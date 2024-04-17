@@ -2,7 +2,7 @@
 import * as s from "./style";
 import { useState } from "react";
 import { useQuery } from "react-query";
-import { getMenuRequest } from "../../../apis/api/menuList";
+import { getMenuRequest } from "../../../apis/api/menuApi";
 import MenuButton from "../../../components/menuButton/MenuButton";
 import AdminPageLayout from "../../../components/pageComponents/adminPageLayout/AdminPageLayout";
 import { Route, Routes, useNavigate } from "react-router-dom";

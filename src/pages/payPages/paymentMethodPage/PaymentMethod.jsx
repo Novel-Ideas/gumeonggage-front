@@ -3,15 +3,22 @@ import * as s from "./style";
 import DutchPayPage from "../dutchPayPage/DutchPayPage";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import PageModal from "../../../components/pageComponents/pageModal/PageModal";
+import { useRecoilState } from "recoil";
+import { orderMenuListState } from "../../../atoms/orderMenuListAtom";
 
 function PaymentMethod() {
     const navigate = useNavigate();
+    const [orderMenuList, setOrderMenuList] =
+        useRecoilState(orderMenuListState);
     const handleCancelClick = () => {
         navigate("/menu/menuall");
     };
     const handleDutchPayClick = () => {
         navigate("/menu/menuall/order/dutchpay");
     };
+
+    
+    console.log(orderMenuList)
     return (
         <PageModal>
             <div css={s.layout}>
