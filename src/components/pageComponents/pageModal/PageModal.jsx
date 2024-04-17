@@ -4,6 +4,7 @@ import * as s from "./style";
 
 function PageModal({ children }) {
     const [show, setShow] = useState(false);
+
     useEffect(() => {
         setShow(() => true);
         return () => {

@@ -1,13 +1,16 @@
 /**@jsxImportSource @emotion/react */
 import * as s from "./style";
 import { useState } from "react";
-import AdminPageLayout from "../../../components/pageComponents/adminPageLayout/AdminPageLayout";
-import { getMenuRequest } from "../../../apis/api/menuList";
 import { useQuery } from "react-query"; 
+import { getMenuRequest } from "../../../apis/api/menuList";
 import MenuButton from "../../../components/menuButton/MenuButton";
+import AdminPageLayout from "../../../components/pageComponents/adminPageLayout/AdminPageLayout";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import AdminMenuUpdate from "../adminMenuUpdate/AdminMenuUpdate";
 
 function AdminMenuSearch() {
     const [ menuList, setMenuList ] = useState([]);
+    const navigate = useNavigate();
 
     const menuQuery = useQuery(["menuQuery"], getMenuRequest, 
     {
@@ -15,12 +18,16 @@ function AdminMenuSearch() {
         refetchOnWindowFocus: false,
         onSuccess: response => {
             console.log(response.data);
-            setMenuList(response.data)
+            setMenuList(response.data);
         },
         onError: error => {
             console.log(error);
         }
     });
+
+    const handleMenuClick = (id) => {
+        navigate(`/admin/getmenu/menu?menuId=${id}`)
+    }
 
     return (
         <AdminPageLayout>
@@ -32,6 +39,7 @@ function AdminMenuSearch() {
                     {menuList.map(menu => (
                         <MenuButton 
                         key={menu.menuId}
+                        onClick={() => handleMenuClick(menu.menuId)}
                         menuName={menu.menuName}
                         price={menu.menuPrice}
                         cal={menu.menuCal}
@@ -39,6 +47,10 @@ function AdminMenuSearch() {
                         />
                     ))}
                 </div>
+                <Routes>
+                    <Route path="/" element={<></>} />
+                    <Route path="/menu/*" element={<AdminMenuUpdate />} />
+                </Routes>
             </div>
         </AdminPageLayout>
     );

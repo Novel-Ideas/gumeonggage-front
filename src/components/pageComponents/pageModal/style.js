@@ -6,7 +6,9 @@ export const layout = (show) => css`
     height: 100%;
     background-color: #33333399;
     position: fixed;
-    z-index: 99;
+    top: 0;
+    left: 0;
+    z-index: 100;
     display: flex;
     align-items: center;
     justify-content: center;
