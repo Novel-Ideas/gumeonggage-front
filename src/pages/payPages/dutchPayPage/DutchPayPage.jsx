@@ -7,19 +7,19 @@ import { IoAddCircleOutline } from "react-icons/io5";
 import { FiDelete } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import { payListState } from "../../../atoms/payListAtom";
+import { useEffect, useState } from "react";
 
 function DutchPayPage() {
     const [orderMenuList, setOrderMenuList] =
         useRecoilState(orderMenuListState);
+    const [orderList, setOrderList] = useState([]);
     const [payList, setPayList] = useRecoilState(payListState);
     const navigate = useNavigate();
 
     const handleAddPayList = (id) => {
-        const findOrder = orderMenuList.filter(
-            (order) => order.menuId === id
-        )[0];
-        setOrderMenuList((prevOrderMenuList) =>
-            prevOrderMenuList.filter((order) => order !== findOrder)
+        const findOrder = orderList.filter((order) => order.menuId === id)[0];
+        setOrderList((prevOrderList) =>
+            prevOrderList.filter((order) => order !== findOrder)
         );
         setPayList(() => [...payList, findOrder]);
     };
@@ -29,12 +29,17 @@ function DutchPayPage() {
         setPayList((prevPayList) =>
             prevPayList.filter((order) => order !== findOrder)
         );
-        setOrderMenuList(() => [...orderMenuList, findOrder]);
+        setOrderList(() => [...orderList, findOrder]);
     };
 
     const handleCancelClick = () => {
+        setPayList(() => []);
         navigate("/menu/menuall/order");
     };
+
+    useEffect(() => {
+        setOrderList(() => orderMenuList);
+    }, []);
 
     return (
         <PageModal>
@@ -44,7 +49,7 @@ function DutchPayPage() {
                 </div>
                 <div css={s.main}>
                     <div css={s.orderListBox}>
-                        {orderMenuList.map((order) => {
+                        {orderList.map((order) => {
                             return (
                                 <div css={s.orderBox} key={order.menuId}>
                                     <div css={s.orderInfo}>
