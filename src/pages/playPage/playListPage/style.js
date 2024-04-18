@@ -2,15 +2,42 @@ import { css } from "@emotion/react";
 
 export const layout = css`
     box-sizing: border-box;
-    width: 750px;
-    height: 350px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 `;
 
-export const button = css`
+export const container = css`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 80%;
+`
+
+export const buttonBox = css`
+    height: 20%;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 30px;
-    width: 150px;
-    height: 50px;
+`;
+
+export const cancel = css`
+    border: 2px solid rgb(252, 10, 86);
+    border-radius: 10px;
+    background-color: white;
+    color: rgb(252, 10, 86);
+    width: 280px;
+    height: 70px;
+    font-size: 30px;
+    font-weight: 700;
+    box-shadow: 5px 5px 5px #898989ff;
+
+    &:active {
+        background-color: rgb(252, 10, 86);
+        color: white;
+    }
 `;

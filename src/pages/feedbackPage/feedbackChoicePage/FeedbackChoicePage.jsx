@@ -11,6 +11,9 @@ function FeedbackChoicePage(props) {
     const handleAddMenuClick = () => {
         navigate("/menu/menuall");
     };
+    const handleNextClick = () => {
+        navigate("/menu/play");
+    };
     return (
         <PageModal>
             <div css={s.layout}>
@@ -30,7 +33,7 @@ function FeedbackChoicePage(props) {
                     </div>
                 </div>
                 <div css={s.buttonBox}>
-                    <button css={s.next}>
+                    <button css={s.next} onClick={handleNextClick}>
                         건너뛰기
                     </button>
                 </div>

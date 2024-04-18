@@ -1,8 +1,13 @@
 /**@jsxImportSource @emotion/react */
 import * as s from "./style";
 import PageModal from "../../../components/pageComponents/pageModal/PageModal";
+import { useNavigate } from "react-router-dom";
 
 function PlayRecPage() {
+    const navigate = useNavigate();
+    const handleYesClick = () => {
+        navigate("/menu/playlist");
+    };
     return (
         <PageModal>
             <div css={s.layout}>
@@ -16,7 +21,7 @@ function PlayRecPage() {
                     <button css={s.rejectButton}>안 받을래요</button>
                 </div>
                 <div css={s.buttonLayout}>
-                    <button css={s.acceptButton}>받을래요</button>
+                    <button css={s.acceptButton}onClick={handleYesClick}>받을래요</button>
                 </div>
                 </div>
                 

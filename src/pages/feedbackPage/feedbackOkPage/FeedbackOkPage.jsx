@@ -1,8 +1,13 @@
 /** @jsxImportSource @emotion/react */
+import { useNavigate } from "react-router-dom";
 import PageLayout from "../../../components/pageComponents/pageLayout/PageLayout";
 import * as s from "./style";
 
 function FeedbackOkPage() {
+    const navigate = useNavigate();
+    const handleOkClick = () => {
+        navigate("/menu/play");
+    };
     return (
         <PageLayout>
             <div css={s.layout}>
@@ -11,7 +16,7 @@ function FeedbackOkPage() {
                         <h1>후기를 남겨 주셔서 감사합니다!</h1>
                     </div>
                 </div>
-                <button css={s.checkButton}>확인</button>
+                <button css={s.checkButton} onClick={handleOkClick}>확인</button>
             </div>
         </PageLayout>
     );
