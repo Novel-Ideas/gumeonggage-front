@@ -6,8 +6,8 @@ export const getFeedbackRequest = async () => {
 
 export const getFeedbackCountRequest = async () => {
     return await instance.get("/admin/feedback/answercount");
-}
+};
 
 export const addFeedbackRequest = async (data) => {
-    return await instance.post("/feedback/add", {data})
-}
+    return await instance.post("/feedback/add", data);
+};

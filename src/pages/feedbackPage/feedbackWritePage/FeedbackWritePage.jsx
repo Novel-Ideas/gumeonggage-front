@@ -5,33 +5,53 @@ import * as s from "./style";
 import { useNavigate } from "react-router-dom";
 import { useMutation, useQuery } from "react-query";
 import { addFeedbackRequest } from "../../../apis/api/feedback";
-import useFeedback from "../../../hooks/useFeedback";
 
 function FeedbackWritePage() {
-    const [ feedbackList, setFeedbackList ] = useState([]);
+    const [answer1, setAnswer1] = useState();
+    const [answer2, setAnswer2] = useState();
+    const [answer3, setAnswer3] = useState();
     const navigate = useNavigate();
 
     const feedbackMutation = useMutation({
         mutationKey: "feedbackMutation",
         mutationFn: addFeedbackRequest,
-        retry:0,
+        retry: 0,
         onSuccess: (response) => {
-            alert("등록완료")
+            alert("등록완료");
             navigate("/menu/feedback/ok");
         },
         onError: (error) => {
-            console.log(error)
-        }
-    })
+            console.log(error);
+        },
+    });
 
     const handleFeedbackSubmitClick = () => {
-        feedbackMutation.mutate()
-    }
+        if(answer1 && answer2 && answer3 !== undefined) {
+            feedbackMutation.mutate({
+                answer1: parseInt(answer1),
+                answer2: parseInt(answer2),
+                answer3: parseInt(answer3),
+            });
+        } else {
+            alert("선택해주세요")
+        }
+    };
 
-    const handleChange = (e) => {
-        setFeedbackList(e.target.value)
-        console.log(e.target.value)
-    }
+    const handleAnswer1Change = (e) => {
+        console.log(e.target.value);
+        setAnswer1(e.target.value);
+        
+    };
+
+    const handleAnswer2Change = (e) => {
+        console.log(e.target.value);
+        setAnswer2(e.target.value);
+    };
+
+    const handleAnswer3Change = (e) => {
+        console.log(e.target.value);
+        setAnswer3(e.target.value);
+    };
 
     return (
         <PageLayout>
@@ -46,23 +66,24 @@ function FeedbackWritePage() {
                                     type="radio"
                                     name="salinity"
                                     id="watery"
-                                    onChange={() => handleChange()}
+                                    value="1"
+                                    onChange={handleAnswer1Change}
                                 />
                                 <label for="watery">맛없음</label>
                                 <input
                                     type="radio"
                                     name="salinity"
                                     id="proper1"
-                                    // value={answer1.value}
-                                    onChange={handleChange}
+                                    value="2"
+                                    onChange={handleAnswer1Change}
                                 />
                                 <label for="proper1">보통</label>
                                 <input
                                     type="radio"
                                     name="salinity"
                                     id="salty"
-                                    // value={answer1.value}
-                                    onChange={handleChange}
+                                    value="3"
+                                    onChange={handleAnswer1Change}
                                 />
                                 <label for="salty">맛있음</label>
                             </div>
@@ -70,22 +91,28 @@ function FeedbackWritePage() {
                         <div css={s.feedbackContents}>
                             <h1>음식의 양이 적당했나요?</h1>
                             <div css={s.radioButton}>
-                                <input type="radio" name="amount" id="little" 
-                                //   value={answer2.value}
-                                  onChange={handleChange}
+                                <input
+                                    type="radio"
+                                    name="amount"
+                                    id="little"
+                                    value="1"
+                                    onChange={handleAnswer2Change}
                                 />
                                 <label for="little">적음</label>
                                 <input
                                     type="radio"
                                     name="amount"
                                     id="proper2"
-                                    // value={answer2.value}
-                                    onChange={handleChange}
+                                    value="2"
+                                    onChange={handleAnswer2Change}
                                 />
                                 <label for="proper2">적당함</label>
-                                <input type="radio" name="amount" id="many" 
-                                //    value={answer2.value}
-                                   onChange={handleChange}
+                                <input
+                                    type="radio"
+                                    name="amount"
+                                    id="many"
+                                    value="3"
+                                    onChange={handleAnswer2Change}
                                 />
                                 <label for="many">많음</label>
                             </div>
@@ -93,19 +120,28 @@ function FeedbackWritePage() {
                         <div css={s.feedbackContents}>
                             <h1>직원들이 친절했나요?</h1>
                             <div css={s.radioButton}>
-                                <input type="radio" name="kind" id="unkind" 
-                                //    value={answer3.value}
-                                   onChange={handleChange}
+                                <input
+                                    type="radio"
+                                    name="kind"
+                                    id="unkind"
+                                    value="1"
+                                    onChange={handleAnswer3Change}
                                 />
                                 <label for="unkind">불친절함</label>
-                                <input type="radio" name="kind" id="proper3" 
-                                //    value={answer3.valu}
-                                   onChange={handleChange}
+                                <input
+                                    type="radio"
+                                    name="kind"
+                                    id="proper3"
+                                    value="2"
+                                    onChange={handleAnswer3Change}
                                 />
                                 <label for="proper3">보통</label>
-                                <input type="radio" name="kind" id="kind" 
-                                //    value={answer3.valu}
-                                   onChange={handleChange}
+                                <input
+                                    type="radio"
+                                    name="kind"
+                                    id="kind"
+                                    value="3"
+                                    onChange={handleAnswer3Change}
                                 />
                                 <label for="kind">친절함</label>
                             </div>
