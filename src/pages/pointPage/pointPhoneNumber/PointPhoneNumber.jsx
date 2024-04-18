@@ -1,8 +1,14 @@
 /** @jsxImportSource @emotion/react */
+import { useNavigate } from "react-router-dom";
 import PageModal from "../../../components/pageComponents/pageModal/PageModal";
 import * as s from "./style";
 
 function PointPhoneNumber() {
+    const navigate = useNavigate();
+
+    const handleCancelClick = () => {
+        navigate("/menu/menuall/order");
+    };
     return (
         <PageModal>
             <div css={s.layout}>
@@ -58,10 +64,15 @@ function PointPhoneNumber() {
                         </tr>
                     </table>
                 </div>
+                <div css={s.buttonLayout}>
+                    <div css={s.buttonBox}>
+                        <button onClick={handleCancelClick}>취소하기</button>
+                        <button>적립하기</button>
+                    </div>
+                </div>
             </div>
         </PageModal>
     );
 }
 
 export default PointPhoneNumber;
-//sdf

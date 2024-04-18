@@ -7,12 +7,12 @@ import { useRecoilState } from "recoil";
 import { orderMenuListState } from "../../../atoms/orderMenuListAtom";
 import { useMutation } from "react-query";
 import { orderRequest } from "../../../apis/api/menuApi";
-import { useState } from "react";
+import PointAccumulation from "../../pointPage/pointAccumulation/PointAccumulation";
+import PointPhoneNumber from "../../pointPage/pointPhoneNumber/PointPhoneNumber";
 
 function PaymentMethod() {
     const navigate = useNavigate();
-    const [orderMenuList, setOrderMenuList] =
-        useRecoilState(orderMenuListState);
+    
     const handleCancelClick = () => {
         navigate("/menu/menuall");
     };
@@ -20,26 +20,8 @@ function PaymentMethod() {
         navigate("/menu/menuall/order/dutchpay");
     };
 
-    const orderRequestMutation = useMutation({
-        mutationKey: "orderRequestMutation",
-        mutationFn: orderRequest,
-        onSuccess: (response) => {
-            console.log(response);
-            alert("메뉴 주문이 완료됐습니다");
-            window.location.replace("/menu/feedback");
-        },
-        onError: (error) => {
-            console.log(error);
-        },
-    });
-
     const handleOrderClick = () => {
-        let orderInfo = [];
-        orderMenuList.map((order) =>
-            orderInfo.push({ menuId: order.menuId, menuCount: order.menuCount })
-        );
-
-        orderRequestMutation.mutate(orderInfo);
+        navigate("/menu/menuall/order/askpoint");
     };
 
     return (
@@ -69,6 +51,8 @@ function PaymentMethod() {
                 </div>
                 <Routes>
                     <Route path="/" element={<></>} />
+                    <Route path="/askpoint" element={<PointAccumulation />} />
+                    <Route path="/pointinput" element={<PointPhoneNumber />} />
                     <Route path="/dutchpay" element={<DutchPayPage />} />
                 </Routes>
             </div>

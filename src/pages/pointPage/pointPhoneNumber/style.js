@@ -87,3 +87,35 @@ export const trBox = css`
         border-bottom-right-radius: 15px;
     }
 `;
+
+export const buttonLayout = css`
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const buttonBox = css`
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & > button {
+        font-size: 30px;
+        font-weight: 600;
+        color: white;
+        border: 2px solid rgb(252, 10, 86);
+        padding: 15px 40px;
+        border-radius: 15px;
+        background-color: rgb(252, 10, 86);
+        transition: 0.2s all ease-in-out;
+
+        &:active {
+            color: rgb(252, 10, 86);
+            background-color: white;
+        }
+    }
+`;
