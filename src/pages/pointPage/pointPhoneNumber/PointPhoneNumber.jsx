@@ -2,8 +2,29 @@
 import { useNavigate } from "react-router-dom";
 import PageModal from "../../../components/pageComponents/pageModal/PageModal";
 import * as s from "./style";
+import { useEffect, useState } from "react";
 
 function PointPhoneNumber() {
+    const [ inputValue, setInputValue ] = useState("defaultValue");
+
+    const handleOnClick = (e) => {
+        const regex = /^[0-9\b -]{0,13}$/;
+        setInputValue({
+            ...inputValue
+        });
+    }
+
+    useEffect(() => {
+        if(inputValue.length === 10) {
+            setInputValue(inputValue.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3'));
+
+        } else if(inputValue.length === 13) {
+            setInputValue(inputValue
+                .replace(/-/g, '')
+                .replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3'));
+        }
+    }, [inputValue])
+
     const navigate = useNavigate();
 
     const handleCancelClick = () => {

@@ -10,4 +10,3 @@ function App() {
 }
 export default App;
 
-//임시 커밋
