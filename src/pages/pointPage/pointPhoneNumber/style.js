@@ -6,7 +6,7 @@ export const layout = css`
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: center; 
+    justify-content: center;
 `;
 
 export const textbox = css`
@@ -15,7 +15,6 @@ export const textbox = css`
     display: flex;
     align-items: center;
     justify-content: center;
-
 `;
 
 export const text = css`
@@ -26,15 +25,17 @@ export const text = css`
     justify-content: center;
 `;
 
-export const inputBox = css`
+export const phoneNumberLayout = css`
     width: 100%;
+    height: 75%;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 `;
 
 export const phoneNumberInput = css`
-    width: 35vw;
+    width: 50%;
     height: 22%;
     outline: none;
     border: 2px solid rgb(252, 10, 86);
@@ -43,14 +44,14 @@ export const phoneNumberInput = css`
     font-size: 45px;
     box-sizing: border-box;
     border-bottom: 2px solid rgb(252, 10, 86);
-    
 `;
 
 export const tableContainer = css`
-    width: 100%;
-    box-sizing: border-box;
-    border: 2px solid rgb(252, 10, 86);
-    
+    width: 50%;
+    border-collapse: collapse;
+    border-radius: 15px;
+    border-style: hidden;
+    box-shadow: 0 0 0 0.5 rgb(252, 10, 86);
 `;
 
 export const table = css`
@@ -62,12 +63,10 @@ export const table = css`
     text-align: center;
     justify-content: center;
     background-color: rgb(252, 10, 86);
-    
-    &:hover {
+
+    &:active {
         background-color: crimson;
     }
-
-
 `;
 
 export const number = css`
@@ -78,5 +77,45 @@ export const number = css`
     justify-content: center;
     background-color: transparent;
     color: white;
-    
+`;
+
+export const trBox = css`
+    & > td:nth-of-type(1) {
+        border-bottom-left-radius: 15px;
+    }
+    & > td:nth-of-type(3) {
+        border-bottom-right-radius: 15px;
+    }
+`;
+
+export const buttonLayout = css`
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const buttonBox = css`
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & > button {
+        font-size: 30px;
+        font-weight: 600;
+        color: white;
+        border: 2px solid rgb(252, 10, 86);
+        padding: 15px 40px;
+        border-radius: 15px;
+        background-color: rgb(252, 10, 86);
+        transition: 0.2s all ease-in-out;
+
+        &:active {
+            color: rgb(252, 10, 86);
+            background-color: white;
+        }
+    }
 `;
