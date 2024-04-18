@@ -6,8 +6,10 @@ import { useMutation } from "react-query";
 import { orderRequest } from "../../../apis/api/menuApi";
 import { orderMenuListState } from "../../../atoms/orderMenuListAtom";
 import { useRecoilState } from "recoil";
+import Swal from "sweetalert2";
 
 function PointAccumulation() {
+    const Swal = require("sweetalert2");
     const navigate = useNavigate();
     const [orderMenuList, setOrderMenuList] =
         useRecoilState(orderMenuListState);
@@ -17,7 +19,17 @@ function PointAccumulation() {
         mutationFn: orderRequest,
         onSuccess: (response) => {
             console.log(response);
-            alert("메뉴 주문이 완료됐습니다");
+            // Swal.fire({
+            //     title: "주문완료~!",
+            //     text: "음식이 나올때까지 조금만 기다려주세요!",
+            //     icon: "success",
+            //     confirmButtonColor: "rgb(252, 10, 86)",
+            //     confirmButtonText: "확인",
+            // }).then((result) => {
+            //     if (result.isConfirmed) {
+            //         window.location.replace("/menu/feedbackChoice");
+            //     }
+            // });
             window.location.replace("/menu/feedbackChoice");
         },
         onError: (error) => {
@@ -33,7 +45,34 @@ function PointAccumulation() {
         orderMenuList.map((order) =>
             orderInfo.push({ menuId: order.menuId, menuCount: order.menuCount })
         );
-        orderRequestMutation.mutate(orderInfo);
+        Swal.fire({
+            title: "주문하시겠습니까?",
+            text: "적립하지 않은 포인트는 되돌릴 수 없습니다.",
+            icon: "warning",
+
+            showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
+            confirmButtonColor: "#3085d6", // confrim 버튼 색깔 지정
+            cancelButtonColor: "#d33", // cancel 버튼 색깔 지정
+            confirmButtonText: "주문하기", // confirm 버튼 텍스트 지정
+            cancelButtonText: "취소", // cancel 버튼 텍스트 지정
+
+            reverseButtons: true, // 버튼 순서 거꾸로
+        }).then((result) => {
+            // 만약 Promise리턴을 받으면,
+            if (result.isConfirmed) {
+                // 만약 모달창에서 confirm 버튼을 눌렀다면
+
+                Swal.fire({
+                    title: "주문 완료!",
+                    text: "음식이 나올때까지 조금만 기다려주세요!",
+                    icon: "success",
+                    showConfirmButton: false,
+                });
+                setTimeout(() => {
+                    orderRequestMutation.mutate(orderInfo);
+                }, 3000);
+            }
+        });
     };
     return (
         <PageModal>

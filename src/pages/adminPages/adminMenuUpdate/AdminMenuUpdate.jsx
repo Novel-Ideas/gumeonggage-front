@@ -16,6 +16,7 @@ import { useMenuRegisterInput } from "../../../hooks/useMenuRegisterInput";
 import { getAllCategoryRequest } from "../../../apis/api/options";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { v4 as uuid } from "uuid";
+import Swal from "sweetalert2";
 
 function AdminMenuUpdate({ menuList }) {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -24,6 +25,18 @@ function AdminMenuUpdate({ menuList }) {
     const [menu, setMenu] = useState();
     const navigate = useNavigate();
     const fileRef = useRef();
+
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+    });
 
     const menuName = useMenuRegisterInput();
     const menuCategoryId = useMenuRegisterInput();
@@ -73,26 +86,41 @@ function AdminMenuUpdate({ menuList }) {
             e.target.value = "";
             return;
         }
-        if (!window.confirm("파일을 업로드 하시겠습니까?")) {
-            e.target.value = "";
-            return;
-        }
+        Swal.fire({
+            title: "파일을 업로드 하시겠습니까?",
+            text: "다시 되돌릴 수 없습니다. 신중하세요.",
+            icon: "warning",
 
-        const storageRef = ref(storage, `menu/img/${uuid()}_${files[0].name}`);
-        const uploadTask = uploadBytesResumable(storageRef, files[0]);
+            showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
+            confirmButtonColor: "#3085d6", // confrim 버튼 색깔 지정
+            cancelButtonColor: "#d33", // cancel 버튼 색깔 지정
+            confirmButtonText: "업로드", // confirm 버튼 텍스트 지정
+            cancelButtonText: "취소", // cancel 버튼 텍스트 지정
 
-        uploadTask.on(
-            "state_changed",
-            (snapshot) => {},
-            (error) => {},
-            () => {
-                alert("업로드가 완료되었습니다.");
-                getDownloadURL(storageRef).then((url) => {
-                    menuImgUrl.setValue(() => url);
-                    console.log(url);
-                });
+            reverseButtons: true, // 버튼 순서 거꾸로
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const storageRef = ref(
+                    storage,
+                    `menu/img/${uuid()}_${files[0].name}`
+                );
+                const uploadTask = uploadBytesResumable(storageRef, files[0]);
+
+                uploadTask.on(
+                    "state_changed",
+                    (snapshot) => {},
+                    (error) => {},
+                    () => {
+                        Swal.fire("업로드가 완료되었습니다.", "", "success");
+
+                        getDownloadURL(storageRef).then((url) => {
+                            menuImgUrl.setValue(() => url);
+                            console.log(url);
+                        });
+                    }
+                );
             }
-        );
+        });
     };
 
     const updateMenuMutation = useMutation({
@@ -100,8 +128,9 @@ function AdminMenuUpdate({ menuList }) {
         mutationFn: updateMenuRequest,
         onSuccess: (response) => {
             console.log(response);
-            alert("메뉴 수정이 완료됐습니다");
-            window.location.replace("/admin/getmenu");
+            setTimeout(() => {
+                window.location.replace("/admin/getmenu");
+            }, 2000);
         },
         onError: (error) => {
             console.log(error);
@@ -114,8 +143,9 @@ function AdminMenuUpdate({ menuList }) {
         mutationFn: deleteMenuRequest,
         onSuccess: (response) => {
             console.log(response);
-            alert("메뉴 삭제가 완료됐습니다");
-            window.location.replace("/admin/getmenu");
+            setTimeout(() => {
+                window.location.replace("/admin/getmenu");
+            }, 2000);
         },
         onError: (error) => {
             console.log(error);
@@ -123,22 +153,52 @@ function AdminMenuUpdate({ menuList }) {
     });
 
     const handleUpdateClick = () => {
-        updateMenuMutation.mutate({
-            menuId: searchParams.get("menuId"),
-            menuName: menuName.value,
-            categoryId: menuCategoryId.value.value,
-            menuPrice: menuPrice.value,
-            menuCal: menuCal.value,
-            menuImgUrl: menuImgUrl.value,
+        Swal.fire({
+            title: "정말로 메뉴를 수정하시겠습니까?",
+            text: "수정된 메뉴는 다시 되돌릴 수 없습니다. 신중하세요.",
+            icon: "warning",
+
+            showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
+            confirmButtonColor: "#3085d6", // confrim 버튼 색깔 지정
+            cancelButtonColor: "#d33", // cancel 버튼 색깔 지정
+            confirmButtonText: "수정", // confirm 버튼 텍스트 지정
+            cancelButtonText: "취소", // cancel 버튼 텍스트 지정
+
+            reverseButtons: true, // 버튼 순서 거꾸로
+        }).then((result) => {
+            if (result.isConfirmed) {
+                updateMenuMutation.mutate({
+                    menuId: searchParams.get("menuId"),
+                    menuName: menuName.value,
+                    categoryId: menuCategoryId.value.value,
+                    menuPrice: menuPrice.value,
+                    menuCal: menuCal.value,
+                    menuImgUrl: menuImgUrl.value,
+                });
+                Swal.fire("메뉴가 성공적으로 수정되었습니다.", "", "success");
+            }
         });
     };
 
     const handleDeleteClick = () => {
-        if (window.confirm("메뉴를 삭제하시겠습니까?")) {
-            deleteMenuMutation.mutate(parseInt(searchParams.get("menuId")));
-        } else {
-            return;
-        }
+        Swal.fire({
+            title: "정말로 메뉴를 삭제하시겠습니까?",
+            text: "삭제된 메뉴는 다시 되돌릴 수 없습니다. 신중하세요.",
+            icon: "warning",
+
+            showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
+            confirmButtonColor: "#3085d6", // confrim 버튼 색깔 지정
+            cancelButtonColor: "#d33", // cancel 버튼 색깔 지정
+            confirmButtonText: "삭제", // confirm 버튼 텍스트 지정
+            cancelButtonText: "취소", // cancel 버튼 텍스트 지정
+
+            reverseButtons: true, // 버튼 순서 거꾸로
+        }).then((result) => {
+            if (result.isConfirmed) {
+                deleteMenuMutation.mutate(parseInt(searchParams.get("menuId")));
+                Swal.fire("메뉴가 성공적으로 삭제되었습니다.", "", "success");
+            }
+        });
     };
 
     const handleCancelClick = () => {
