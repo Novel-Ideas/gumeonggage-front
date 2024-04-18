@@ -6,6 +6,7 @@ import MenuPage from "../pages/menuPage/MenuPage";
 import FeedbackWritePage from "../pages/feedbackPage/feedbackWritePage/FeedbackWritePage";
 import FeedbackOkPage from "../pages/feedbackPage/feedbackOkPage/FeedbackOkPage";
 import PointAccumulation from "../pages/pointPage/pointAccumulation/PointAccumulation";
+import FeedbackChoicePage from "../pages/feedbackPage/feedbackChoicePage/FeedbackChoicePage";
 import PlayRecPage from "../pages/playPage/playRecPage/PlayRecPage";
 import PointCheck from "../pages/pointPage/pointCheck/PointCheck";
 import PointPhoneNumber from "../pages/pointPage/pointPhoneNumber/PointPhoneNumber";
@@ -17,6 +18,7 @@ function MenuRoute(props) {
             <Route path="/select" element={<SelectPackageOrStore />} />
             <Route path="/menuall/*" element={<MenuPage />} />
             <Route path="/point" element={<PointAccumulation />} />
+            <Route path="/feedbackChoice" element={<FeedbackChoicePage />} />
             <Route path="/pointphone" element={<PointPhoneNumber />} />
             <Route path="/feedback" element={<FeedbackWritePage />} />
             <Route path="/feedback/ok" element={<FeedbackOkPage />} />
