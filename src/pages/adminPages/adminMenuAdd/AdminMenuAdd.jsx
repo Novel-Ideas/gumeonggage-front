@@ -13,11 +13,24 @@ import { v4 as uuid } from "uuid";
 import { getAllCategoryRequest } from "../../../apis/api/options";
 import { useMenuRegisterInput } from "../../../hooks/useMenuRegisterInput";
 import { registerMenuRequest } from "../../../apis/api/menuApi";
+import Swal from "sweetalert2";
 
 function AdminMenuAdd() {
     const [selectedOption, setSelectedOption] = useState(null);
     const [categoryOptions, setCategoryOptions] = useState([]);
     const fileRef = useRef();
+
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+    });
 
     const menuName = useMenuRegisterInput();
     const menuCategoryId = useMenuRegisterInput();
@@ -50,34 +63,60 @@ function AdminMenuAdd() {
             e.target.value = "";
             return;
         }
-        if (!window.confirm("파일을 업로드 하시겠습니까?")) {
-            e.target.value = "";
-            return;
-        }
+        Swal.fire({
+            title: "파일을 업로드 하시겠습니까?",
+            text: "다시 되돌릴 수 없습니다. 신중하세요.",
+            icon: "warning",
 
-        const storageRef = ref(storage, `menu/img/${uuid()}_${files[0].name}`);
-        const uploadTask = uploadBytesResumable(storageRef, files[0]);
+            showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
+            confirmButtonColor: "#3085d6", // confrim 버튼 색깔 지정
+            cancelButtonColor: "#d33", // cancel 버튼 색깔 지정
+            confirmButtonText: "업로드", // confirm 버튼 텍스트 지정
+            cancelButtonText: "취소", // cancel 버튼 텍스트 지정
 
-        uploadTask.on(
-            "state_changed",
-            (snapshot) => {},
-            (error) => {},
-            () => {
-                alert("업로드가 완료되었습니다.");
-                getDownloadURL(storageRef).then((url) => {
-                    menuImgUrl.setValue(() => url);
-                    console.log(url);
-                });
+            reverseButtons: true, // 버튼 순서 거꾸로
+        }).then((result) => {
+            // 만약 Promise리턴을 받으면,
+            if (result.isConfirmed) {
+                // 만약 모달창에서 confirm 버튼을 눌렀다면
+
+                Swal.fire("업로드가 완료되었습니다.", "", "success");
+                const storageRef = ref(
+                    storage,
+                    `menu/img/${uuid()}_${files[0].name}`
+                );
+                const uploadTask = uploadBytesResumable(storageRef, files[0]);
+
+                uploadTask.on(
+                    "state_changed",
+                    (snapshot) => {},
+                    (error) => {},
+                    () => {
+                        Toast.fire({
+                            icon: "success",
+                            title: "성공적으로 업로드가 완료되었습니다.",
+                        });
+                        getDownloadURL(storageRef).then((url) => {
+                            menuImgUrl.setValue(() => url);
+                            console.log(url);
+                        });
+                    }
+                );
             }
-        );
+        });
     };
 
     const registerMenuMutation = useMutation({
         mutationKey: "registerMenuMutation",
         mutationFn: registerMenuRequest,
         onSuccess: (response) => {
-            alert("등록완료");
-            window.location.replace("/admin/add");
+            Toast.fire({
+                icon: "success",
+                title: "성공적으로 등록 완료되었습니다.",
+            });
+            setTimeout(() => {
+                window.location.replace("/admin/add");
+            }, 2000);
         },
         onError: (error) => {},
     });

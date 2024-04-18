@@ -12,8 +12,10 @@ import { useEffect, useState } from "react";
 import BigMenuComponent from "../../components/bigComponents/bigMenuComponent/BigMenuComponent";
 import { totalPayPriceState } from "../../atoms/totalPayPriceAtom";
 import BigMenuListComponent from "../../components/bigComponents/bigMenuListComponent/BigMenuListComponent";
+import Swal from "sweetalert2";
 
 function MenuPage(props) {
+    const Swal = require("sweetalert2");
     const [bigMode, setBigMode] = useState(false);
     const [orderMenuList, setOrderMenuList] =
         useRecoilState(orderMenuListState);
@@ -24,7 +26,14 @@ function MenuPage(props) {
         if (orderMenuList.length > 0) {
             navigate("/menu/menuall/order");
         } else {
-            alert("메뉴를 골라주세요.");
+            Swal.fire({
+                title: "아차차...!",
+                text: "주문내역이 없어요!",
+                icon: "error",
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+            });
         }
     };
 

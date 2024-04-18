@@ -6,6 +6,7 @@ import { signinRequest } from "../../../apis/api/signin";
 import { useQueryClient } from "react-query";
 import instance from "../../../apis/utils/instance";
 import { Navigate, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function AdminAuthPage() {
     const [username, handleOnChangeUsername] = useInput();
@@ -15,6 +16,18 @@ function AdminAuthPage() {
     const principalData = queryClient.getQueryData("principalQuery");
     console.log(principalData);
 
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+    });
+
     const handleSigninClick = () => {
         signinRequest({
             username,
@@ -23,7 +36,13 @@ function AdminAuthPage() {
             .then((response) => {
                 const accessToken = response.data;
                 localStorage.setItem("AccessToken", accessToken);
-                window.location.href = "/";
+                Toast.fire({
+                    icon: "success",
+                    title: "성공적으로 로그인 되었습니다.",
+                });
+                setTimeout(() => {
+                    window.location.href = "/";
+                }, 2000);
             })
             .catch((error) => {
                 alert(error.response.data);
@@ -32,14 +51,14 @@ function AdminAuthPage() {
     };
 
     const handleKeyPress = (event) => {
-        if (event.key === 'Enter') {
+        if (event.key === "Enter") {
             handleSigninClick();
         }
     };
 
     const handleSignupClick = () => {
-        navigate("/adminsignup")
-    }
+        navigate("/adminsignup");
+    };
 
     const handleStoreButtonClick = () => {
         window.location.href = "/selectmenu";
@@ -53,8 +72,13 @@ function AdminAuthPage() {
             return config;
         });
         queryClient.refetchQueries("principalQuery");
-        alert("로그아웃 되었습니다.");
-        window.location.replace("/");
+        Toast.fire({
+            icon: "success",
+            title: "성공적으로 로그아웃 되었습니다.",
+        });
+        setTimeout(() => {
+            window.location.href = "/";
+        }, 2000);
     };
 
     return (
@@ -90,7 +114,10 @@ function AdminAuthPage() {
                         <button css={s.loginButton} onClick={handleSigninClick}>
                             로그인
                         </button>
-                        <button css={s.signupButton} onClick={handleSignupClick}>
+                        <button
+                            css={s.signupButton}
+                            onClick={handleSignupClick}
+                        >
                             회원가입
                         </button>
                     </>
