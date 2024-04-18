@@ -63,6 +63,7 @@ function AdminMenuAdd() {
             e.target.value = "";
             return;
         }
+
         Swal.fire({
             title: "파일을 업로드 하시겠습니까?",
             text: "다시 되돌릴 수 없습니다. 신중하세요.",

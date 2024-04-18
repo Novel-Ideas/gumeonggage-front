@@ -4,7 +4,9 @@ import * as s from "./style";
 function PlayMap() {
     return (
         <div css={s.layout}>
-            지도
+            <div css={s.mapContainer}>
+                지도
+            </div>
         </div>
     );
 }
