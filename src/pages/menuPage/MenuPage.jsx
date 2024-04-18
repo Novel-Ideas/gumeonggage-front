@@ -21,7 +21,11 @@ function MenuPage(props) {
         useRecoilState(totalPayPriceState);
     const navigate = useNavigate();
     const handleOrderButtonClick = () => {
-        navigate("/menu/menuall/order");
+        if (orderMenuList.length > 0) {
+            navigate("/menu/menuall/order");
+        } else {
+            alert("메뉴를 골라주세요.");
+        }
     };
 
     const handleBigModeClick = () => {
