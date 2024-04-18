@@ -1,12 +1,14 @@
 /** @jsxImportSource @emotion/react */
 import { useState } from "react";
-import PageLayout from "../../../components/pageComponents/pageLayout/PageLayout";
 import * as s from "./style";
 import { useNavigate } from "react-router-dom";
-import { useMutation, useQuery } from "react-query";
+import { useMutation } from "react-query";
 import { addFeedbackRequest } from "../../../apis/api/feedback";
+import PageModal from "../../../components/pageComponents/pageModal/PageModal";
+import Swal from "sweetalert2";
 
 function FeedbackWritePage() {
+    const Swal = require("sweetalert2");
     const [answer1, setAnswer1] = useState();
     const [answer2, setAnswer2] = useState();
     const [answer3, setAnswer3] = useState();
@@ -17,8 +19,17 @@ function FeedbackWritePage() {
         mutationFn: addFeedbackRequest,
         retry: 0,
         onSuccess: (response) => {
-            alert("등록완료");
-            navigate("/menu/feedback/ok");
+            Swal.fire({
+                title: "감사합니다~!",
+                text: "더욱 성장하는 맥도날드가 되겠습니다!",
+                icon: "success",
+                confirmButtonColor: "rgb(252, 10, 86)",
+                confirmButtonText: "확인",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate("/menu/feedback/ok");
+                }
+            });
         },
         onError: (error) => {
             console.log(error);
@@ -26,21 +37,27 @@ function FeedbackWritePage() {
     });
 
     const handleFeedbackSubmitClick = () => {
-        if(answer1 && answer2 && answer3 !== undefined) {
+        if (answer1 && answer2 && answer3 !== undefined) {
             feedbackMutation.mutate({
                 answer1: parseInt(answer1),
                 answer2: parseInt(answer2),
                 answer3: parseInt(answer3),
             });
         } else {
-            alert("선택해주세요")
+            Swal.fire({
+                title: "Oh..No..",
+                text: "답을 선택해주세요!",
+                icon: "error",
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+            });
         }
     };
 
     const handleAnswer1Change = (e) => {
         console.log(e.target.value);
         setAnswer1(e.target.value);
-        
     };
 
     const handleAnswer2Change = (e) => {
@@ -54,7 +71,7 @@ function FeedbackWritePage() {
     };
 
     return (
-        <PageLayout>
+        <PageModal>
             <div css={s.layout}>
                 <h1>후기 작성하기</h1>
                 <div css={s.feedbackLayout}>
@@ -152,7 +169,7 @@ function FeedbackWritePage() {
                     확인
                 </button>
             </div>
-        </PageLayout>
+        </PageModal>
     );
 }
 
