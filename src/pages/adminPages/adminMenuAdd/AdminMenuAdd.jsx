@@ -92,95 +92,135 @@ function AdminMenuAdd() {
     });
   };
 
-  return (
-    <AdminPageLayout>
-      <div css={s.layout}>
-        <div css={s.header}>
-          <div css={s.title}>메뉴 추가</div>
-        </div>
-        <div css={s.main}>
-          <div css={s.resetLayout}>
-            <button>
-              <GrPowerReset />
-            </button>
-          </div>
-          <div css={s.addLayout}>
-            <div css={s.addBox}>
-              <div css={s.imgLayout}>
-                <div css={s.imgBox}>
-                  <img
-                    src={!menuImgUrl.value ? noImg : menuImgUrl.value}
-                    alt=""
-                  />
+
+    const handleResetClick = () => {
+        menuName.setValue(() => "");
+        menuCategoryId.setValue(() => "");
+        menuPrice.setValue(() => "");
+        menuCal.setValue(() => "");
+        menuImgUrl.setValue(() => "");
+    };
+
+    return (
+        <AdminPageLayout>
+            <div css={s.layout}>
+                <div css={s.header}>
+                    <div css={s.title}>메뉴 추가</div>
                 </div>
-              </div>
-              <div css={s.inputLayout}>
-                <div css={s.inputBox}>
-                  <div css={s.input}>
-                    <input
-                      type="text"
-                      value={menuName.value}
-                      onChange={menuName.handleOnChange}
-                      placeholder="메뉴 이름"
-                    />
-                  </div>
-                  <div css={s.input}>
-                    <Select
-                      defaultValue={selectedOption}
-                      options={categoryOptions}
-                      value={menuCategoryId.value}
-                      onChange={menuCategoryId.handleOnChange}
-                      placeholder="카테고리"
-                      styles={{
-                        control: (baseStyles, state) => ({
-                          ...baseStyles,
-                          height: "70.2px",
-                          border: state.isFocused ? "none" : "none",
-                          borderBottom: "2px solid #222",
-                          backgroundColor: "transparent",
-                          fontSize: "25px",
-                        }),
-                      }}
-                    />
-                  </div>
-                  <div css={s.input}>
-                    <input
-                      type="text"
-                      placeholder="가격"
-                      value={menuPrice.value}
-                      onChange={menuPrice.handleOnChange}
-                    />
-                  </div>
-                  <div css={s.input}>
-                    <input
-                      type="text"
-                      placeholder="칼로리"
-                      value={menuCal.value}
-                      onChange={menuCal.handleOnChange}
-                    />
-                  </div>
-                  <div css={s.input}>
-                    <span>
-                      <input
-                        type="text"
-                        value={menuImgUrl.value}
-                        onChange={menuImgUrl.handleOnChange}
-                      />
-                    </span>
-                    <input
-                      type="file"
-                      style={{ display: "none" }}
-                      onChange={handleFileChange}
-                      placeholder="이미지 url"
-                      ref={fileRef}
-                    />
-                    <button
-                      css={s.inputButton}
-                      onClick={() => fileRef.current.click()}
-                    >
-                      <FaImages />
-                    </button>
-                  </div>
+                <div css={s.main}>
+                    <div css={s.resetLayout}>
+                        <button onClick={handleResetClick}>
+                            <GrPowerReset />
+                        </button>
+                    </div>
+                    <div css={s.addLayout}>
+                        <div css={s.addBox}>
+                            <div css={s.imgLayout}>
+                                <div css={s.imgBox}>
+                                    <img
+                                        src={
+                                            !menuImgUrl.value
+                                                ? noImg
+                                                : menuImgUrl.value
+                                        }
+                                        alt=""
+                                    />
+                                </div>
+                            </div>
+                            <div css={s.inputLayout}>
+                                <div css={s.inputBox}>
+                                    <div css={s.input}>
+                                        <input
+                                            type="text"
+                                            value={menuName.value}
+                                            onChange={menuName.handleOnChange}
+                                            placeholder="메뉴 이름"
+                                        />
+                                    </div>
+                                    <div css={s.input}>
+                                        <Select
+                                            defaultValue={selectedOption}
+                                            options={categoryOptions}
+                                            value={menuCategoryId.value}
+                                            onChange={
+                                                menuCategoryId.handleOnChange
+                                            }
+                                            placeholder="카테고리"
+                                            styles={{
+                                                control: (
+                                                    baseStyles,
+                                                    state
+                                                ) => ({
+                                                    ...baseStyles,
+                                                    height: "70.2px",
+                                                    border: state.isFocused
+                                                        ? "none"
+                                                        : "none",
+                                                    borderBottom:
+                                                        "2px solid #222",
+                                                    backgroundColor:
+                                                        "transparent",
+                                                    fontSize: "25px",
+                                                }),
+                                            }}
+                                        />
+                                    </div>
+                                    <div css={s.input}>
+                                        <input
+                                            type="text"
+                                            placeholder="가격"
+                                            value={menuPrice.value}
+                                            onChange={menuPrice.handleOnChange}
+                                        />
+                                    </div>
+                                    <div css={s.input}>
+                                        <input
+                                            type="text"
+                                            placeholder="칼로리"
+                                            value={menuCal.value}
+                                            onChange={menuCal.handleOnChange}
+                                        />
+                                    </div>
+                                    <div css={s.input}>
+                                        <span>
+                                            <input
+                                                type="text"
+                                                value={menuImgUrl.value}
+                                                onChange={
+                                                    menuImgUrl.handleOnChange
+                                                }
+                                            />
+                                        </span>
+                                        <input
+                                            type="file"
+                                            style={{ display: "none" }}
+                                            onChange={handleFileChange}
+                                            placeholder="이미지 url"
+                                            ref={fileRef}
+                                        />
+                                        <button
+                                            css={s.inputButton}
+                                            onClick={() =>
+                                                fileRef.current.click()
+                                            }
+                                        >
+                                            <FaImages />
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div css={s.footer}>
+                    <div css={s.buttonLayout}>
+                        <button
+                            css={s.saveButton}
+                            onClick={() => handleSubmitClick()}
+                        >
+                            저장
+                        </button>
+                    </div>
                 </div>
               </div>
             </div>

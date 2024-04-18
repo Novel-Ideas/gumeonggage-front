@@ -55,12 +55,12 @@ export const methodBox = css`
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: 0.2s all ease-in-out;
 
     &:active {
         background-color: white;
         color: rgb(252, 10, 86);
     }
-
 `;
 
 export const buttonBox = css`

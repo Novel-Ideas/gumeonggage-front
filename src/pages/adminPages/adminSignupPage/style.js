@@ -1,24 +1,46 @@
 import { css } from "@emotion/react";
 
 export const layout = css`
-    box-sizing: border-box;
-    border: 1px solid black;
-    width: 50vw;
-    height: 50vh;
-    align-items: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     
+`;
+
+export const box = css`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+`
+
+export const signupBox = css`
+    box-sizing: border-box;
+    border: 2px solid rgb(252, 10, 86);
+    border-radius: 30px;
+    background-color: rgb(252, 10, 86);
+    padding: 50px;
+    width: 40%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 5px 5px #898989ff;
+
     & > h1 {
-        display: flex;
-        justify-content: center;
-        font-size: 35px;
-        
+        font-size: 60px;
+        color: white;
+        font-weight: 700;
     }
-    
 `;
 
 export const inputInfo = css`
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 5px;
@@ -30,15 +52,20 @@ export const inputInfo = css`
 `;
 
 export const signupButton = css`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    
-    & > * {
-        font-size: 20px;
-        width: 160px;
-        height: 40px;
+    margin-top: 30px;
+    color: rgb(252, 10, 86);
+    font-weight: 700;
+    font-size: 30px;
+    box-sizing: border-box;
+    border: 2px solid rgb(252, 10, 86);
+    border-radius: 20px;
+    background-color: white;
+    padding: 20px 190px;
+    box-shadow: 5px 5px 5px #898989ff;
+
+    &:active {
+        background-color: rgb(252, 10, 86);
+        color: white;
     }
 
 `;

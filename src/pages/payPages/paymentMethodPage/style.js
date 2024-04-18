@@ -16,10 +16,12 @@ export const textbox = css`
     justify-content: center;
     align-items: center;
 `;
+
 export const text = css`
     color: red;
     font-size: 60px;
 `;
+
 export const blackText = css`
     color: black;
 `;

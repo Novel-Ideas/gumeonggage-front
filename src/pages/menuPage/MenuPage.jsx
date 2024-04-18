@@ -21,7 +21,11 @@ function MenuPage(props) {
         useRecoilState(totalPayPriceState);
     const navigate = useNavigate();
     const handleOrderButtonClick = () => {
-        navigate("/menu/menuall/order");
+        if (orderMenuList.length > 0) {
+            navigate("/menu/menuall/order");
+        } else {
+            alert("메뉴를 골라주세요.");
+        }
     };
 
     const handleBigModeClick = () => {
@@ -50,10 +54,7 @@ function MenuPage(props) {
                             )}
                         </div>
                         <button css={s.bigButton} onClick={handleBigModeClick}>
-                            {!bigMode
-                                ? "표준 모드"
-                                : "큰글씨 모드"
-                            }
+                            {bigMode ? "표준 모드" : "큰글씨 모드"}
                         </button>
                     </div>
                     <div css={s.menuLayout}>
