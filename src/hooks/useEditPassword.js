@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { REGEX } from "../constants/regeex";
+import { REGEX } from "../constants/regex";
 
 export const useEditPassword = (property) => {
     const [ value, setValue ] = useState("");

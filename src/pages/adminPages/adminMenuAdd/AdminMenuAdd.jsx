@@ -15,82 +15,83 @@ import { useMenuRegisterInput } from "../../../hooks/useMenuRegisterInput";
 import { registerMenuRequest } from "../../../apis/api/menuApi";
 
 function AdminMenuAdd() {
-    const [selectedOption, setSelectedOption] = useState(null);
-    const [categoryOptions, setCategoryOptions] = useState([]);
-    const fileRef = useRef();
+  const [selectedOption, setSelectedOption] = useState(null);
+  const [categoryOptions, setCategoryOptions] = useState([]);
+  const fileRef = useRef();
 
-    const menuName = useMenuRegisterInput();
-    const menuCategoryId = useMenuRegisterInput();
-    const menuPrice = useMenuRegisterInput();
-    const menuCal = useMenuRegisterInput();
-    const menuImgUrl = useMenuRegisterInput();
+  const menuName = useMenuRegisterInput();
+  const menuCategoryId = useMenuRegisterInput();
+  const menuPrice = useMenuRegisterInput();
+  const menuCal = useMenuRegisterInput();
+  const menuImgUrl = useMenuRegisterInput();
 
-    const categoryQuery = useQuery(["categoryQuery"], getAllCategoryRequest, {
-        onSuccess: (response) => {
-            setCategoryOptions(() =>
-                response.data.map((category) => {
-                    return {
-                        value: category.categoryId,
-                        label: category.categoryName,
-                    };
-                })
-            );
-        },
-        onError: (error) => {
-            console.log(error);
-        },
-        retry: 0,
-        refetchOnWindowFocus: false,
-    });
+  const categoryQuery = useQuery(["categoryQuery"], getAllCategoryRequest, {
+    onSuccess: (response) => {
+      setCategoryOptions(() =>
+        response.data.map((category) => {
+          return {
+            value: category.categoryId,
+            label: category.categoryName,
+          };
+        })
+      );
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+    retry: 0,
+    refetchOnWindowFocus: false,
+  });
 
-    const handleFileChange = (e) => {
-        const files = Array.from(e.target.files);
+  const handleFileChange = (e) => {
+    const files = Array.from(e.target.files);
 
-        if (files.length === 0) {
-            e.target.value = "";
-            return;
-        }
-        if (!window.confirm("파일을 업로드 하시겠습니까?")) {
-            e.target.value = "";
-            return;
-        }
+    if (files.length === 0) {
+      e.target.value = "";
+      return;
+    }
+    if (!window.confirm("파일을 업로드 하시겠습니까?")) {
+      e.target.value = "";
+      return;
+    }
 
-        const storageRef = ref(storage, `menu/img/${uuid()}_${files[0].name}`);
-        const uploadTask = uploadBytesResumable(storageRef, files[0]);
+    const storageRef = ref(storage, `menu/img/${uuid()}_${files[0].name}`);
+    const uploadTask = uploadBytesResumable(storageRef, files[0]);
 
-        uploadTask.on(
-            "state_changed",
-            (snapshot) => {},
-            (error) => {},
-            () => {
-                alert("업로드가 완료되었습니다.");
-                getDownloadURL(storageRef).then((url) => {
-                    menuImgUrl.setValue(() => url);
-                    console.log(url);
-                });
-            }
-        );
-    };
-
-    const registerMenuMutation = useMutation({
-        mutationKey: "registerMenuMutation",
-        mutationFn: registerMenuRequest,
-        onSuccess: (response) => {
-            alert("등록완료");
-            window.location.replace("/admin/add");
-        },
-        onError: (error) => {},
-    });
-
-    const handleSubmitClick = () => {
-        registerMenuMutation.mutate({
-            menuName: menuName.value,
-            categoryId: menuCategoryId.value.value,
-            menuPrice: menuPrice.value,
-            menuCal: menuCal.value,
-            menuImgUrl: menuImgUrl.value,
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {},
+      (error) => {},
+      () => {
+        alert("업로드가 완료되었습니다.");
+        getDownloadURL(storageRef).then((url) => {
+          menuImgUrl.setValue(() => url);
+          console.log(url);
         });
-    };
+      }
+    );
+  };
+
+  const registerMenuMutation = useMutation({
+    mutationKey: "registerMenuMutation",
+    mutationFn: registerMenuRequest,
+    onSuccess: (response) => {
+      alert("등록완료");
+      window.location.replace("/admin/add");
+    },
+    onError: (error) => {},
+  });
+
+  const handleSubmitClick = () => {
+    registerMenuMutation.mutate({
+      menuName: menuName.value,
+      categoryId: menuCategoryId.value.value,
+      menuPrice: menuPrice.value,
+      menuCal: menuCal.value,
+      menuImgUrl: menuImgUrl.value,
+    });
+  };
+
 
     const handleResetClick = () => {
         menuName.setValue(() => "");
@@ -221,9 +222,20 @@ function AdminMenuAdd() {
                         </button>
                     </div>
                 </div>
+              </div>
             </div>
-        </AdminPageLayout>
-    );
+          </div>
+        </div>
+        <div css={s.footer}>
+          <div css={s.buttonLayout}>
+            <button css={s.saveButton} onClick={() => handleSubmitClick()}>
+              저장
+            </button>
+          </div>
+        </div>
+      </div>
+    </AdminPageLayout>
+  );
 }
 
 export default AdminMenuAdd;

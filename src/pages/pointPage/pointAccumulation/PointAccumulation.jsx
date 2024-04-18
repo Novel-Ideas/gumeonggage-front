@@ -18,7 +18,7 @@ function PointAccumulation() {
         onSuccess: (response) => {
             console.log(response);
             alert("메뉴 주문이 완료됐습니다");
-            window.location.replace("/menu/feedback");
+            window.location.replace("/menu/feedbackChoice");
         },
         onError: (error) => {
             console.log(error);
