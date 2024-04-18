@@ -2,7 +2,7 @@
 import * as s from "./style";
 import MenuButton from "../../menuButton/MenuButton";
 import { useQuery } from "react-query";
-import { getMenuRequest } from "../../../apis/api/menuList";
+import { getMenuRequest } from "../../../apis/api/menuApi";
 import { useState } from "react";
 import { categoryState } from "../../../atoms/categoryAtom";
 import { useRecoilState } from "recoil";

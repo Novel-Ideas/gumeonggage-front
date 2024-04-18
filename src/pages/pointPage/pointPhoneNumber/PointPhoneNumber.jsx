@@ -2,10 +2,9 @@
 import PageModal from "../../../components/pageComponents/pageModal/PageModal";
 import * as s from "./style";
 
-
 function PointPhoneNumber() {
     return (
-        <PageModal>
+    <PageModal>
         <div css={s.layout}>
              <div css={s.textbox}>
                  <h1 css={s.text}>포인트 적립</h1>
