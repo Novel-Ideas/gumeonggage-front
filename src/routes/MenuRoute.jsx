@@ -10,6 +10,7 @@ import FeedbackChoicePage from "../pages/feedbackPage/feedbackChoicePage/Feedbac
 import PlayRecPage from "../pages/playPage/playRecPage/PlayRecPage";
 import PointCheck from "../pages/pointPage/pointCheck/PointCheck";
 import PointPhoneNumber from "../pages/pointPage/pointPhoneNumber/PointPhoneNumber";
+import PlayListPage from "../pages/playPage/playListPage/PlayListPage";
 
 function MenuRoute(props) {
     return (
@@ -18,12 +19,13 @@ function MenuRoute(props) {
             <Route path="/select" element={<SelectPackageOrStore />} />
             <Route path="/menuall/*" element={<MenuPage />} />
             <Route path="/point" element={<PointAccumulation />} />
-            <Route path="/feedbackChoice" element={<FeedbackChoicePage />} />
+            <Route path="/point/check" element={<PointCheck />} />
             <Route path="/pointphone" element={<PointPhoneNumber />} />
+            <Route path="/feedbackChoice" element={<FeedbackChoicePage />} />
             <Route path="/feedback" element={<FeedbackWritePage />} />
             <Route path="/feedback/ok" element={<FeedbackOkPage />} />
             <Route path="/play" element={<PlayRecPage />} />
-            <Route path="/point/check" element={<PointCheck />} />
+            <Route path="/playlist" element={<PlayListPage />} />
         </Routes>
     );
 }
