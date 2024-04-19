@@ -15,7 +15,7 @@ export const categoryLayout = css`
     position: relative;
     height: 30%;
     display: flex;
-    padding-left: 40px;
+    padding-left: 30px;
 `;
 
 export const menuLayout = css`

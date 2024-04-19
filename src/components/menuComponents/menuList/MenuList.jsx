@@ -17,8 +17,8 @@ function MenuList() {
     const menuListQuery = useQuery(
         ["menuQuery", category],
         () => getMenuRequest(category),
-        { 
-             retry: 0,
+        {
+            retry: 0,
             refetchOnWindowFocus: false,
             onSuccess: (response) => {
                 setMenuList(response.data);

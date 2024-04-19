@@ -30,9 +30,12 @@ export const menu = css`
 `;
 
 export const lanking = (index) => css`
+    height: 20%;
     font-size: 35px;
     font-weight: 700;
     padding-bottom: 7px;
+    display: flex;
+    align-items: center;
     color: ${index === 0 ? "gold" : index === 1 ? "silver" : "#cc9c5c"};
 `;
 
@@ -40,9 +43,8 @@ export const imglayout = css`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 10px;
     width: 100%;
-    height: 260px;
+    height: 40%;
     overflow: hidden;
     background-color: transparent;
 
@@ -61,6 +63,7 @@ export const menuListLayout = css`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 40%;
 `;
 
 export const menuFont = css`

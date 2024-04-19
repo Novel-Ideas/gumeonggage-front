@@ -12,8 +12,8 @@ export const header = css`
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    padding-top: 10px;
-    padding-left: 40px;
+    padding-left: 30px;
+    height: 80px;
 `;
 
 export const chooseFont = css`
