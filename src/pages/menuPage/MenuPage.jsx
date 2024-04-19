@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import BigMenuComponent from "../../components/bigComponents/bigMenuComponent/BigMenuComponent";
 import { totalPayPriceState } from "../../atoms/totalPayPriceAtom";
 import BigMenuListComponent from "../../components/bigComponents/bigMenuListComponent/BigMenuListComponent";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 
 function MenuPage(props) {
     const Swal = require("sweetalert2");

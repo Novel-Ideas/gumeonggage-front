@@ -9,10 +9,10 @@ export const layout = css`
 `;
 
 export const header = css`
+height: 40%;
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    margin-top: 30px;
 `;
 
 export const menuFont = css`
