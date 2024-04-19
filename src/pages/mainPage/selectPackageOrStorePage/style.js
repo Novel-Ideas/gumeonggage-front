@@ -1,4 +1,4 @@
-import { css } from "@emotion/react"; 
+import { css } from "@emotion/react";
 
 export const layout = css`
     position: relative;
@@ -22,31 +22,22 @@ export const selectWay = css`
     margin: 50px;
     background-color: rgb(252, 10, 86);
     color: white;
-    font-size: 80px;
     font-weight: 700;
     transition: all 0.2s ease-in-out;
     box-shadow: 5px 5px 5px #898989ff;
     cursor: pointer;
 
-    & > :first-of-type {
-        font-size: 150px;
-        margin-bottom: 40px;
+    & > :nth-child(1) {
+        font-size: 160px;
+        margin: 40px;
     }
+    & > :nth-child(2) {
+        font-size: 100px;
+  
+    }
+    
     &:hover {
         background-color: white;
         color: rgb(252, 10, 86);
     }
-`;
-
-export const adminButton = css`
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    right: 0px;
-    bottom: 0px;
-    font-size: 50px;
-    border: 1px solid #dbdbdb;
-    border-radius: 10px;
-    background-color: transparent;
 `;
