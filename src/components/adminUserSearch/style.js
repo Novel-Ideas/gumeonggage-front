@@ -91,23 +91,23 @@ export const askTitle = css`
     margin-top: 0;
     margin-bottom: 0;
     color: white;
-    padding-left: 0;
+    padding-left: 10px;
 
     & > li {
         text-align: center;
     }
 
     & > li:nth-of-type(1) {
-        width: 25%;
+        width: 15%;
     }
     & > li:nth-of-type(2) {
         width: 25%;
     }
     & > li:nth-of-type(3) {
-        width: 25%;
+        width: 30%;
     }
     & > li:nth-of-type(4) {
-        width: 25%;
+        width: 30%;
     }
 
 `;
@@ -137,24 +137,25 @@ export const askList = css`
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 100%;
+    width: 90;
     height: 8%;
     color: #333;
-    padding-left: 0;
+    padding-left: 10px;
+    
      & > li {
         text-align: center;
     }
 
     & > li:nth-of-type(1) {
-        width: 25%;
+        width: 15%;
     }
     & > li:nth-of-type(2) {
         width: 25%;
     }
     & > li:nth-of-type(3) {
-        width: 25%;
+        width: 30%;
     }
     & > li:nth-of-type(4) {
-        width: 25%;
+        width: 30%;
     }
 `;
