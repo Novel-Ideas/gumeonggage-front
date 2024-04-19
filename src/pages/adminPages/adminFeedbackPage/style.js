@@ -90,6 +90,7 @@ export const askTitle = css`
     margin-top: 0;
     margin-bottom: 0;
     color: white;
+    padding-left: 0;
 
     & > li {
         text-align: center;
@@ -140,6 +141,7 @@ export const askList = css`
     justify-content: space-around;
     height: 8%;
     color: #333;
+    padding-left: 0;
     
     & > li {
         text-align: center;
