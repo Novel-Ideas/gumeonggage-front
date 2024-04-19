@@ -15,7 +15,7 @@ export const orderLayout = css`
 `;
 
 export const orderBox = css`
-    margin-top: 20px;
+    /* margin-top: 20px; */
     width: 100%;
     height: 100px;
     display: flex;

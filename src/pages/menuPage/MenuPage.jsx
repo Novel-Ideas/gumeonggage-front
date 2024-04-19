@@ -83,7 +83,12 @@ function MenuPage(props) {
                             css={s.orderButton}
                             onClick={handleOrderButtonClick}
                         >
-                            주문하기<p>{totalPayPrice}원</p>
+                            주문하기
+                            <p>
+                                {totalPayPrice === 0
+                                    ? ""
+                                    : totalPayPrice + "원"}
+                            </p>
                         </button>
                     </div>
                 </div>

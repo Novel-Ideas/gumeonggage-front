@@ -73,12 +73,12 @@ export const header = css`
     width: 100%;
     height: 10%;
     display: flex;
-    padding-top: 20px;
+    align-items: center;
 
     & > h1:nth-of-type(1) {
         font-size: 45px;
         font-weight: 700;
-        padding-left: 20px;
+        padding-left: 15px;
     }
 
     & > h1:nth-of-type(2) {
@@ -104,7 +104,7 @@ export const orderButton = css`
     background-color: rgb(252, 10, 86);
     font-size: 30px;
     font-weight: 700;
-    padding: 15px 90px;
+    padding: 10px 90px;
     color: white;
     box-shadow: 5px 5px 5px #898989ff;
     transition: all 0.2s ease-in-out;
@@ -112,6 +112,7 @@ export const orderButton = css`
     & > p {
         font-size: 20px;
         font-weight: 500;
+        margin: 0;
     }
     &:active {
         background-color: white;
