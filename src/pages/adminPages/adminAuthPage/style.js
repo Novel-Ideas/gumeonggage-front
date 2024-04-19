@@ -56,8 +56,9 @@ export const loginButton = css`
     border: 2px solid rgb(252, 10, 86);
     border-radius: 20px;
     background-color: white;
-    padding: 20px 190px;
+    padding: 20px 195px;
     box-shadow: 5px 5px 5px #898989ff;
+    transition: 0.2s all ease-in-out;
 
     &:active {
         background-color: rgb(252, 10, 86);
@@ -74,7 +75,7 @@ export const signupButton = css`
     border: 2px solid rgb(252, 10, 86);
     border-radius: 20px;
     background-color: white;
-    padding: 20px 175px;
+    padding: 20px 180px;
     box-shadow: 5px 5px 5px #898989ff;
 
     &:active {
