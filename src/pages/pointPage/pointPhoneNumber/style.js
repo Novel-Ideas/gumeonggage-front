@@ -35,13 +35,13 @@ export const phoneNumberLayout = css`
 `;
 
 export const phoneNumberInput = css`
-    width: 50%;
+    width: 49.8%;
     height: 22%;
-    outline: none;
     border: 2px solid rgb(252, 10, 86);
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     font-size: 45px;
+    padding: 10px;
     box-sizing: border-box;
     border-bottom: 2px solid rgb(252, 10, 86);
 `;
@@ -56,27 +56,29 @@ export const tableContainer = css`
 
 export const table = css`
     box-sizing: border-box;
-    border: 2px solid rgb(252, 10, 86);
     width: 90px;
     height: 100px;
     border-left: 20px;
     text-align: center;
     justify-content: center;
-    background-color: rgb(252, 10, 86);
-
-    &:active {
-        background-color: crimson;
-    }
+    overflow: hidden;
 `;
 
 export const number = css`
     height: 100%;
+    width: 100%;
     border: none;
     font-size: 40px;
     align-items: center;
     justify-content: center;
-    background-color: transparent;
     color: white;
+    background-color: rgb(252, 10, 86);
+    transition: 0.2s all ease-in-out;
+
+    &:active {
+        background-color: white;
+        color: rgb(252, 10, 86);
+    }
 `;
 
 export const trBox = css`

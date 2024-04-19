@@ -5,31 +5,24 @@ import * as s from "./style";
 import { useEffect, useState } from "react";
 
 function PointPhoneNumber() {
-    const [ inputValue, setInputValue ] = useState("defaultValue");
-
-    const handleOnClick = (e) => {
-        const regex = /^[0-9\b -]{0,13}$/;
-        setInputValue({
-            ...inputValue
-        });
-    }
-
-    useEffect(() => {
-        if(inputValue.length === 10) {
-            setInputValue(inputValue.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3'));
-
-        } else if(inputValue.length === 13) {
-            setInputValue(inputValue
-                .replace(/-/g, '')
-                .replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3'));
-        }
-    }, [inputValue])
-
+    const [inputValue, setInputValue] = useState([]);
     const navigate = useNavigate();
 
     const handleCancelClick = () => {
         navigate("/menu/menuall/order");
     };
+
+    const handleNumClick = (num) => {
+        console.log(num);
+        setInputValue(() => [...inputValue, num]);
+    };
+
+    const handleDeleteClick = () => {
+        setInputValue(() => inputValue.slice(0, -1));
+    };
+
+    console.log(inputValue);
+
     return (
         <PageModal>
             <div css={s.layout}>
@@ -37,50 +30,110 @@ function PointPhoneNumber() {
                     <h1 css={s.text}>포인트 적립</h1>
                 </div>
                 <div css={s.phoneNumberLayout}>
-                    <input css={s.phoneNumberInput} />
+                    <div css={s.phoneNumberInput}>{inputValue.join("")}</div>
                     <table css={s.tableContainer}>
                         <tr>
                             <td css={s.table}>
-                                <button css={s.number}>1</button>
+                                <button
+                                    css={s.number}
+                                    onClick={() => handleNumClick("1")}
+                                >
+                                    1
+                                </button>
                             </td>
                             <td css={s.table}>
-                                <button css={s.number}>2</button>
+                                <button
+                                    css={s.number}
+                                    onClick={() => handleNumClick("2")}
+                                >
+                                    2
+                                </button>
                             </td>
                             <td css={s.table}>
-                                <button css={s.number}>3</button>
+                                <button
+                                    css={s.number}
+                                    onClick={() => handleNumClick("3")}
+                                >
+                                    3
+                                </button>
                             </td>
                         </tr>
                         <tr>
                             <td css={s.table}>
-                                <button css={s.number}>4</button>
+                                <button
+                                    css={s.number}
+                                    onClick={() => handleNumClick("4")}
+                                >
+                                    4
+                                </button>
                             </td>
                             <td css={s.table}>
-                                <button css={s.number}>5</button>
+                                <button
+                                    css={s.number}
+                                    onClick={() => handleNumClick("5")}
+                                >
+                                    5
+                                </button>
                             </td>
                             <td css={s.table}>
-                                <button css={s.number}>6</button>
+                                <button
+                                    css={s.number}
+                                    onClick={() => handleNumClick("6")}
+                                >
+                                    6
+                                </button>
                             </td>
                         </tr>
                         <tr>
                             <td css={s.table}>
-                                <button css={s.number}>7</button>
+                                <button
+                                    css={s.number}
+                                    onClick={() => handleNumClick("7")}
+                                >
+                                    7
+                                </button>
                             </td>
                             <td css={s.table}>
-                                <button css={s.number}>8</button>
+                                <button
+                                    css={s.number}
+                                    onClick={() => handleNumClick("8")}
+                                >
+                                    8
+                                </button>
                             </td>
                             <td css={s.table}>
-                                <button css={s.number}>9</button>
+                                <button
+                                    css={s.number}
+                                    onClick={() => handleNumClick("9")}
+                                >
+                                    9
+                                </button>
                             </td>
                         </tr>
                         <tr css={s.trBox}>
                             <td css={s.table}>
-                                <button css={s.number}>010</button>
+                                <button
+                                    css={s.number}
+                                    onClick={() => handleNumClick("010")}
+                                >
+                                    010
+                                </button>
                             </td>
                             <td css={s.table}>
-                                <button css={s.number}>0</button>
+                                <button
+                                    css={s.number}
+                                    onClick={() => handleNumClick("0")}
+                                >
+                                    0
+                                </button>
                             </td>
                             <td css={s.table}>
-                                <button css={s.number}>지움</button>
+                                <button
+                                    css={s.number}
+                                    onClick={handleDeleteClick}
+                                >
+                                    지움
+                                </button>
                             </td>
                         </tr>
                     </table>
