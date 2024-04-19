@@ -19,7 +19,7 @@ export const title = css`
     border-bottom: 2px solid #222;
     color: #222;
     width: 90%;
-    height: 30%;
+    height: 40%;
     font-size: 40px;
     font-weight: 700;
 `;
