@@ -55,13 +55,18 @@ export const buttonContainer = css`
 export const boxLayout = css`
     width: 100%;
     height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 `;
 
 export const fontLayout = css`
     display: flex;
     width: 100%;
-    height: 50px;
-    padding: 15px 0;
+    height: 80px;
+    /* padding-bottom: 15px; */
+    align-items: center;
 
     & > :nth-of-type(1) {
         padding-left: 45px;
@@ -72,7 +77,7 @@ export const fontLayout = css`
     }
     & > :nth-of-type(2) {
         padding-left: 10px;
-        padding-top: 27px;
+        padding-top: 20px;
         font-size: 20px;
         font-weight: 600;
         color: #555;
@@ -89,7 +94,7 @@ export const boxContainer = css`
 
 
 export const categoryBox = css`
-    margin-bottom: 10px;    
+    margin-bottom: 10px;
     box-sizing: border-box;
     background-color: #dbdbdb;
     width: 90%;
@@ -100,7 +105,6 @@ export const categoryBox = css`
     display: flex;
     justify-content: center;
     align-items: center;
-    
 `;
 
 export const top3 = css`

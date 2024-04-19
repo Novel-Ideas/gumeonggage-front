@@ -13,7 +13,7 @@ export const container = css`
     width: 100%;
     height: 90%;
     display: flex;
-    align-items: center                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ;
+    align-items: center;
     justify-content: center;
 `;
 
@@ -33,7 +33,7 @@ export const icon = (index) => css`
 
 export const font = css`
     height: 10%;
-    padding-bottom: 10px;
+    /* padding-bottom: 10px; */
     font-size: 30px;
     font-weight: 600;
     color: #555;
@@ -47,15 +47,17 @@ export const top3 = css`
     border-radius: 10px;
     display: flex;
     align-items: center;
+    justify-content: center;
     & > img {
         width: 100%;
     }
 `;
 
 export const menu = css`
-    height: 10%;
-    padding: 15px;
-    font-size: large;
+    height: 20%;
+    /* padding: 15px; */
+    margin: 7px;
+    font-size: 21px;
     font-weight: 700;
-
+    margin-bottom: 20px;
 `;
