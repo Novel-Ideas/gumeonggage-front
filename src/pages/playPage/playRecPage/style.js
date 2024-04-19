@@ -26,11 +26,13 @@ export const recText = css`
     color: black;
 `;
 
+
+
 export const buttonBox = css`
-    width: 80%;
-    height: 60%;
+    width: 70%;
+    height: 50%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 `;
 
@@ -61,7 +63,6 @@ export const rejectButton = css`
         background-color: white;
         color: rgb(252, 10, 86);
     }
-    
 `;
 
 export const acceptButton = css`
@@ -83,5 +84,4 @@ export const acceptButton = css`
         background-color: white;
         color: rgb(252, 10, 86);
     }
-
 `;
