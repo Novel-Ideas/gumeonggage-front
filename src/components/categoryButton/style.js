@@ -18,6 +18,7 @@ export const category = css`
     border-radius: 15px;
     background-color: white;
     border: 1px solid #dbdbdb;
+    padding-top: 10px;
     cursor: pointer;
 
     &:hover {
