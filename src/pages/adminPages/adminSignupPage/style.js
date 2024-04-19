@@ -10,13 +10,6 @@ export const layout = css`
     
 `;
 
-export const box = css`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-`
-
 export const signupBox = css`
     box-sizing: border-box;
     border: 2px solid rgb(252, 10, 86);
@@ -24,7 +17,7 @@ export const signupBox = css`
     background-color: rgb(252, 10, 86);
     padding: 50px;
     width: 40%;
-    height: 40%;
+    height: 60%;
     display: flex;
     flex-direction: column;
     justify-content: center;

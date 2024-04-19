@@ -8,18 +8,13 @@ export const layout = css`
     height: 100%;
 `;
 
-export const nullbox = css`
-    box-sizing: border-box;
-    margin-top: 25px;
-
-`;
-
 export const header = css`
+    height: 20%;
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    padding-top: 10px;
-    padding-left: 40px;
+    padding-top: 20px;
+    padding-left: 30px;
 `;
 
 export const chooseFont = css`
@@ -46,7 +41,6 @@ export const menuListLayout = css`
     overflow: auto;
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none;
-    padding-top: 10px;
     padding-left: 30px;
     height: 100%;
     width: 100%;

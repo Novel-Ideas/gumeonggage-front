@@ -8,6 +8,10 @@ function PlayRecPage() {
     const handleYesClick = () => {
         navigate("/menu/playlist");
     };
+
+    const handleNoClick = () => {
+        navigate("/menu/main");
+    };
     return (
         <PageModal>
             <div css={s.layout}>
@@ -17,12 +21,12 @@ function PlayRecPage() {
                     </h1>
                 </div>
                 <div css={s.buttonBox}>
-                    <div css={s.buttonLayout}>
-                        <button css={s.rejectButton}>안 받을래요</button>
-                    </div>
-                </div>
-                <div css={s.buttonLayout}>
-                    <button css={s.acceptButton}onClick={handleYesClick}>받을래요</button>
+                    <button css={s.rejectButton} onClick={handleNoClick}>
+                        안 받을래요
+                    </button>
+                    <button css={s.acceptButton} onClick={handleYesClick}>
+                        받을래요
+                    </button>
                 </div>
             </div>
         </PageModal>

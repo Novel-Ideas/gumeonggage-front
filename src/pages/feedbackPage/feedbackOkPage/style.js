@@ -13,7 +13,6 @@ export const box = css`
     box-sizing: border-box;
     width: 70%;
     height: 60%;
-    border: 2px solid #dbdbdb;
     border-radius: 30px;
     display: flex;
     justify-content: center;
@@ -21,7 +20,7 @@ export const box = css`
 `;
 
 export const thankyouComment = css`
-    font-size: 50px;
+    font-size: 30px;
     font-weight: 600;
 `;
 

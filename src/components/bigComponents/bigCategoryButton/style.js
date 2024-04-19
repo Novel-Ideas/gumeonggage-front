@@ -13,7 +13,7 @@ export const category = css`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 180px;
+    width: 160px;
     height: 170px;
     border-radius: 15px;
     background-color: white;
@@ -40,8 +40,8 @@ export const imglayout = css`
     justify-content: center;
     align-items: center;
     margin-top: 10px;
-    width: 130px;
-    height: 170px;
+    width: 120px;
+    height: 120px;
     border-radius: 15px;
     font-size: 60px;
 `;
@@ -50,6 +50,7 @@ export const categoryTitleLayout = css`
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 30%;
 `;
 
 export const categoryfont = css`

@@ -17,9 +17,6 @@ function FeedbackChoicePage(props) {
     return (
         <PageModal>
             <div css={s.layout}>
-                <div css={s.textbox}>
-                    <h1 css={s.text}></h1>
-                </div>
                 <div css={s.paybox}>
                     <div css={s.methodLayout}>
                         <div css={s.methodBox} onClick={handleAddMenuClick}>
@@ -37,7 +34,7 @@ function FeedbackChoicePage(props) {
                         건너뛰기
                     </button>
                 </div>
-            </div> 
+            </div>
         </PageModal>
     );
 }

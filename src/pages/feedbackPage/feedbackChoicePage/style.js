@@ -9,21 +9,6 @@ export const layout = css`
     align-items: center; //세로중간
 `;
 
-export const textbox = css`
-    width: 100%;
-    height: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`;
-export const text = css`
-    color: red;
-    font-size: 60px;
-`;
-export const blackText = css`
-    color: black;
-`;
-
 export const paybox = css`
     width: 80%;
     height: 60%;
@@ -48,7 +33,7 @@ export const methodBox = css`
     background-color: rgb(252, 10, 86);
     width: 350px;
     height: 250px;
-    font-size: 50px;
+    font-size: 30px;
     color: white;
     font-weight: 600;
     box-shadow: 5px 5px 5px #898989ff;
@@ -60,7 +45,6 @@ export const methodBox = css`
         background-color: white;
         color: rgb(252, 10, 86);
     }
-
 `;
 
 export const buttonBox = css`

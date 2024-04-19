@@ -8,10 +8,10 @@ export const layout = css`
 `;
 
 export const header = css`
+    height: 40%;
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    margin-top: 20px;
 `;
 
 export const menuFont = css`
@@ -34,9 +34,6 @@ export const categoryLayout = css`
     display: flex;
     box-sizing: border-box;
     align-items: center;
-    
 `;
 
-export const container = css`
-    
-`;
+export const container = css``;
