@@ -18,18 +18,6 @@ function PointAccumulation() {
         mutationKey: "orderRequestMutation",
         mutationFn: orderRequest,
         onSuccess: (response) => {
-            console.log(response);
-            // Swal.fire({
-            //     title: "주문완료~!",
-            //     text: "음식이 나올때까지 조금만 기다려주세요!",
-            //     icon: "success",
-            //     confirmButtonColor: "rgb(252, 10, 86)",
-            //     confirmButtonText: "확인",
-            // }).then((result) => {
-            //     if (result.isConfirmed) {
-            //         window.location.replace("/menu/feedbackChoice");
-            //     }
-            // });
             window.location.replace("/menu/feedbackChoice");
         },
         onError: (error) => {
