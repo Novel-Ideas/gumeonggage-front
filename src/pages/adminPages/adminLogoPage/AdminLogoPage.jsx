@@ -10,10 +10,13 @@ import { storage } from "../../../apis/firebase/config/firebaseConfig";
 import { v4 as uuid } from "uuid";
 import img from "../../../assets/맥도날드.svg";
 import { registerLogoRequest } from "../../../apis/api/logo";
+import { useMenuRegisterInput } from "../../../hooks/useMenuRegisterInput";
 
 function AdminLogoPage() {
     const [newImgFile, setNewImgFile] = useState(""); 
     const newImgRef = useRef(); 
+
+    const logoImgUrl = useMenuRegisterInput();
 
     const Toast = Swal.mixin({
         toast: true,
@@ -27,19 +30,14 @@ function AdminLogoPage() {
         },
     });
 
-    const handleImgChange = (e, setImage) => {
-        const file = e.target.files[0];
+    const handleImgChange = (e) => {
+        const files = Array.from(e.target.files);
 
-        if (!file) {
+        if (files.length === 0) {
             e.target.value = "";
             return;
         }
 
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onloadend = () => {
-            setImage(reader.result);
-        };
         Swal.fire({
             title: "파일을 업로드 하시겠습니까?",
             text: "다시 되돌릴 수 없습니다. 신중하세요.",
@@ -60,9 +58,9 @@ function AdminLogoPage() {
                 Swal.fire("업로드가 완료되었습니다.", "", "success");
                 const storageRef = ref(
                     storage,
-                    `admin/img/${uuid()}_${file.name}`
+                    `admin/img/${uuid()}_${files[0].name}`
                 );
-                const uploadTask = uploadBytesResumable(storageRef, file[0]);
+                const uploadTask = uploadBytesResumable(storageRef, files[0]);
 
                 uploadTask.on(
                     "state_changed",
@@ -74,7 +72,7 @@ function AdminLogoPage() {
                             title: "성공적으로 업로드가 완료되었습니다.",
                         });
                         getDownloadURL(storageRef).then((url) => {
-                            newImgFile.setValue(() => url);
+                            logoImgUrl.setValue(() => url);
                             console.log(url);
                         });
                     }
@@ -96,7 +94,9 @@ function AdminLogoPage() {
     });
 
     const handleSubmitClick = () => {
-        registerLogoMutation()
+        registerLogoMutation.mutate({
+            logoImgUrl: logoImgUrl.value
+        })
     }
 
 
@@ -121,7 +121,7 @@ function AdminLogoPage() {
                     <div css={s.ImgContainer}>
                         <div css={s.ImgBox}>
                             <img css={s.Img}
-                                src={newImgFile ? newImgFile : `/images/icon/user.png`}
+                                src={logoImgUrl.value ? logoImgUrl.value : `/images/icon/user.png`}
                                 alt="이미지"
                             />
                             <input
