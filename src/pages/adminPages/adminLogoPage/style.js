@@ -77,12 +77,15 @@ export const ImgBox = css`
     box-shadow: 2px 2px 2px 2px #dbdbdb;
 `
 export const Img = css`
+    box-sizing: border-box;
+    padding: 20px;
     width: 80%;
     height: 75%;
     margin-top: 30px;
     border-radius: 10px;
     border: 1px solid #dbdbdb;
-    background-color: #dbdbdb;
+    background-color: #ffffff;
+    box-shadow: 5px 5px 5px 5px #dbdbdb inset;
 `
 export const arrowBox = css`
     width: 10%;
