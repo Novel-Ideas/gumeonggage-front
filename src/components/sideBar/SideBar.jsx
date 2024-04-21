@@ -41,9 +41,9 @@ function SideBar() {
                         </Link>
                     </div>
                     <div css={s.imgLayout}>
-                        <h1 css={s.font}>Img</h1>
+                        <h1 css={s.font}>로고</h1>
                         <Link to={"/admin/img"} css={s.link}>
-                            Img 변경하기
+                            로고 변경하기
                         </Link>
                     </div>
                 </div>
