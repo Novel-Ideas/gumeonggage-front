@@ -40,6 +40,12 @@ function SideBar() {
                             회원 조회
                         </Link>
                     </div>
+                    <div css={s.imgLayout}>
+                        <h1 css={s.font}>Img</h1>
+                        <Link to={"/admin/img"} css={s.link}>
+                            Img 변경하기
+                        </Link>
+                    </div>
                 </div>
             </div>
         </PageLayout>
