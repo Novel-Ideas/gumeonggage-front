@@ -1,5 +1,4 @@
 /**@jsxImportSource @emotion/react */
-
 import { editPasswordRequest } from "../../apis/api/editPassword";
 import AuthPageInput from "../../components/authPageInput/AuthPageInput";
 import { useAuthCheck } from "../../hooks/useAuthCheck";

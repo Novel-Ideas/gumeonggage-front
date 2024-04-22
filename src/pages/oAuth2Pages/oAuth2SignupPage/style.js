@@ -4,24 +4,23 @@ export const layout = css`
     width: 100%;
     height: 100%;
     display: flex;
+    align-items: center;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    
+
 `;
 
-export const signupBox = css`
+export const inputBox = css`
+    width: 40%;
+    height: 70%;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     box-sizing: border-box;
-    border: 2px solid rgb(252, 10, 86);
     border-radius: 30px;
     background-color: rgb(252, 10, 86);
-    padding: 50px;
-    width: 40%;
-    height: 40%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    border: 2px solid rgb(252, 10, 86);
     box-shadow: 5px 5px 5px #898989ff;
 
     & > h1 {
@@ -29,31 +28,38 @@ export const signupBox = css`
         color: white;
         font-weight: 700;
     }
+
 `;
 
-export const inputInfo = css`
+export const input = css`
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 5px;
-
+    padding: 10px;
+    
     & > input {
-        width: 150px;
-        height: 30px;
+        width: 300px;
+        height: 50px;
+        border: none;
+        border-radius: 10px;
+        outline: none;
+        font-size: 25px;
+        padding: 5px 10px;
     }
+    
+
 `;
 
-export const signupButton = css`
-    margin-top: 30px;
-    color: rgb(252, 10, 86);
-    font-weight: 700;
-    font-size: 30px;
+export const registrationButton = css`
     box-sizing: border-box;
     border: 2px solid rgb(252, 10, 86);
+    margin-top: 25px;
+    color: rgb(252, 10, 86);
+    font-weight: 700;
     border-radius: 20px;
+    padding: 20px 150px;
+    font-size: 30px;
     background-color: white;
-    padding: 20px 190px;
     box-shadow: 5px 5px 5px #898989ff;
 
     &:active {
@@ -62,4 +68,3 @@ export const signupButton = css`
     }
 
 `;
-
