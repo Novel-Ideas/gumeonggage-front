@@ -76,7 +76,7 @@ export const number = css`
     height: 100%;
     width: 100%;
     border: none;
-    font-size: 40px;
+    font-size: 35px;
     align-items: center;
     justify-content: center;
     color: white;

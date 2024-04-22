@@ -21,11 +21,16 @@ function UsePointPhoneNumber(props) {
     const [buttonMode, setButtonMode] = useState(0);
     const [currentPoint, setCurrentPoint] = useState();
     const [usePoint, setUsePoint] = useState();
+    const [totalPrice, setTotalPrice] = useState();
     const [orderMenuList, setOrderMenuList] =
         useRecoilState(orderMenuListState);
     const [totalPayPrice, setTotalPayPrice] =
         useRecoilState(totalPayPriceState);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        setTotalPrice(() => totalPayPrice);
+    }, []);
 
     const pointCheckMutation = useMutation({
         mutationKey: "pointCheckMutation",
@@ -39,6 +44,7 @@ function UsePointPhoneNumber(props) {
                     timer: 2000,
                     timerProgressBar: true,
                 });
+                return;
             }
             setCurrentPoint(response.data);
             setButtonMode(() => 1);
@@ -102,6 +108,11 @@ function UsePointPhoneNumber(props) {
     };
 
     const handleNumClick = (num) => {
+        if (num === "전액사용") {
+            setUsePoint(() => currentPoint);
+            setInputValue(() => [currentPoint]);
+            return;
+        }
         setInputValue(() => [...inputValue, num]);
     };
 
@@ -125,8 +136,31 @@ function UsePointPhoneNumber(props) {
             setPhoneNumber(() => inputValue.join(""));
             setInputValue(() => []);
         } else if (buttonMode === 1) {
-            setTotalPayPrice(() => totalPayPrice - inputValue.join(""));
+            if (parseInt(inputValue.join("")) > currentPoint) {
+                Swal.fire({
+                    title: "사용가능한 포인트가 부족해요!",
+                    text: `사용가능한 포인트 : ${currentPoint}점`,
+                    icon: "error",
+                    showConfirmButton: false,
+                    timer: 2000,
+                    timerProgressBar: true,
+                });
+                return;
+            }
+            if (parseInt(inputValue.join("")) > currentPoint - usePoint) {
+                Swal.fire({
+                    title: "사용가능한 포인트가 부족해요!",
+                    text: `사용가능한 포인트 : ${currentPoint - usePoint}점`,
+                    icon: "error",
+                    showConfirmButton: false,
+                    timer: 2000,
+                    timerProgressBar: true,
+                });
+                return;
+            }
+            setTotalPrice(() => totalPrice - inputValue.join(""));
             setUsePoint(() => inputValue.join(""));
+            setButtonMode(() => 2);
         }
     };
 
@@ -141,7 +175,7 @@ function UsePointPhoneNumber(props) {
         <PageModal>
             <div css={s.layout}>
                 <div css={s.textbox}>
-                    <h1 css={s.text}>포인트 적립</h1>
+                    <h1 css={s.text}>포인트 사용</h1>
                 </div>
                 <div css={s.main}>
                     <div css={s.phoneNumberLayout}>
@@ -231,9 +265,15 @@ function UsePointPhoneNumber(props) {
                                 <td css={s.table}>
                                     <button
                                         css={s.number}
-                                        onClick={() => handleNumClick("010")}
+                                        onClick={() =>
+                                            handleNumClick(
+                                                buttonMode === 0
+                                                    ? "010"
+                                                    : "전액사용"
+                                            )
+                                        }
                                     >
-                                        010
+                                        {buttonMode === 0 ? "010" : "전액사용"}
                                     </button>
                                 </td>
                                 <td css={s.table}>
@@ -256,7 +296,10 @@ function UsePointPhoneNumber(props) {
                         </table>
                     </div>
                     <div css={s.pointSubmitButtonBox}>
-                        <button onClick={handleCheckClick}>
+                        <button
+                            onClick={handleCheckClick}
+                            disabled={buttonMode === 2 ? true : false}
+                        >
                             <FaCircleChevronRight />
                         </button>
                         Click!
@@ -266,11 +309,11 @@ function UsePointPhoneNumber(props) {
                         <h1>사용할 포인트 : {usePoint}</h1>
                         <h1>
                             남은 포인트 :{" "}
-                            {currentPoint - usePoint > 0
-                                ? currentPoint - usePoint
-                                : ""}
+                            {isNaN(currentPoint - usePoint)
+                                ? 0
+                                : currentPoint - usePoint}
                         </h1>
-                        <h1>총 결제 금액 : {totalPayPrice}원</h1>
+                        <h1>총 결제 금액 : {totalPrice}원</h1>
                     </div>
                 </div>
                 <div css={s.buttonLayout}>
