@@ -75,3 +75,7 @@ export const userLayout = css`
     width: 80%;
     height: 130px;
 `;
+export const imgLayout = css`
+    width: 80%;
+    height: 130px;
+`;
