@@ -1,9 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import * as s from "./style";
-import AdminPageLayout from '../../../components/pageComponents/adminPageLayout/AdminPageLayout';
+import AdminPageLayout from "../../../components/pageComponents/adminPageLayout/AdminPageLayout";
 import { FaArrowRight } from "react-icons/fa";
-import { useRef, useState } from "react";
-import { useMutation } from "react-query";
+import { useEffect, useRef, useState } from "react";
+import { useMutation, useQuery } from "react-query";
 import Swal from "sweetalert2";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { storage } from "../../../apis/firebase/config/firebaseConfig";
@@ -11,12 +11,15 @@ import { v4 as uuid } from "uuid";
 import img from "../../../assets/맥도날드.svg";
 import { registerLogoRequest } from "../../../apis/api/logo";
 import { useMenuRegisterInput } from "../../../hooks/useMenuRegisterInput";
+import noImg from "../../../assets/noImg.webp";
+import { IoCloudUpload } from "react-icons/io5";
+import { getPricipalRequest } from "../../../apis/api/principal";
 
 function AdminLogoPage() {
-    const [newImgFile, setNewImgFile] = useState(""); 
-    const newImgRef = useRef(); 
+    const [newImgFile, setNewImgFile] = useState("");
+    const newImgRef = useRef();
 
-    const logoImgUrl = useMenuRegisterInput();
+    const imgUrl = useMenuRegisterInput();
 
     const Toast = Swal.mixin({
         toast: true,
@@ -28,10 +31,23 @@ function AdminLogoPage() {
             toast.addEventListener("mouseenter", Swal.stopTimer);
             toast.addEventListener("mouseleave", Swal.resumeTimer);
         },
-    });
+    }, );
+
+    const nowImgQuery = useQuery(["nowImgQuery"], () => getPricipalRequest(1), {
+        retry: 0,
+        refetchOnWindowFocus: false,
+        onSuccess: (response) => {
+            setNewImgFile(response.data);
+            console.log(response.data)
+        },
+        onError: (error) => {
+            console.log(error);
+        },
+    })
 
     const handleImgChange = (e) => {
         const files = Array.from(e.target.files);
+        console.log(e.target.value)
 
         if (files.length === 0) {
             e.target.value = "";
@@ -72,7 +88,7 @@ function AdminLogoPage() {
                             title: "성공적으로 업로드가 완료되었습니다.",
                         });
                         getDownloadURL(storageRef).then((url) => {
-                            logoImgUrl.setValue(() => url);
+                            imgUrl.setValue(() => url);
                             console.log(url);
                         });
                     }
@@ -82,23 +98,23 @@ function AdminLogoPage() {
     };
 
     const registerLogoMutation = useMutation({
-        mutationKey: "registerImgMutation",
+        mutationKey: "registerLogoMutation",
         mutationFn: registerLogoRequest,
         onSuccess: (response) => {
             Toast.fire({
                 icon: "success",
                 title: "성공적으로 등록 완료되었습니다.",
             });
+            window.location.replace("/admin/logo");
         },
         onError: (error) => {},
     });
 
     const handleSubmitClick = () => {
         registerLogoMutation.mutate({
-            logoImgUrl: logoImgUrl.value
-        })
-    }
-
+            imgUrl: imgUrl.value
+        });
+    };
 
     return (
         <AdminPageLayout>
@@ -107,29 +123,40 @@ function AdminLogoPage() {
                     <div css={s.title}>로고 변경하기</div>
                 </div>
                 <div css={s.buttonLayout}>
-                    <button css={s.button} onClick={() => handleSubmitClick()}>저장</button>
+                    <button css={s.button} onClick={() => handleSubmitClick()}>
+                        저장
+                    </button>
                 </div>
                 <div css={s.ImgLayout}>
                     <div css={s.ImgContainer}>
                         <div css={s.ImgBox}>
-                            <img css={s.Img} src={img} alt="" />
+                            <img css={s.Img} src={newImgFile.imgUrl} alt="" />
                         </div>
                     </div>
                     <div css={s.arrowBox}>
-                        <div css={s.arrow}><FaArrowRight /></div>
+                        <div css={s.arrow}>
+                            <FaArrowRight />
+                        </div>
                     </div>
                     <div css={s.ImgContainer}>
                         <div css={s.ImgBox}>
-                            <img css={s.Img}
-                                src={logoImgUrl.value ? logoImgUrl.value : `/images/icon/user.png`}
-                                alt="이미지"
+                            <img
+                                css={s.Img}
+                                src={imgUrl.value ? imgUrl.value : noImg}
+                                alt=""
                             />
                             <input
                                 type="file"
-                                id="afterImg"
-                                onChange={(e) => handleImgChange(e, setNewImgFile)}
+                                onChange={handleImgChange}
+                                style={{ display: "none" }}
                                 ref={newImgRef}
                             />
+                            <button
+                                css={s.inputbutton}
+                                onClick={() => newImgRef.current.click()}
+                            >
+                                <IoCloudUpload />
+                            </button>
                         </div>
                     </div>
                 </div>

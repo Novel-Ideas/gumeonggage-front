@@ -100,3 +100,17 @@ export const arrow = css`
     font-size: 70px;
     color:  rgb(0, 153, 255);
 `
+
+export const inputbutton = css`
+    right: 0;
+    width: 60px;
+    height: 50px;
+    font-size: 40px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: white;
+    color:  rgb(0, 153, 255);
+`
