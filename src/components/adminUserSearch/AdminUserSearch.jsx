@@ -43,6 +43,7 @@ function AdminUserSearch() {
                                         <li>Id</li>
                                         <li>권한</li>
                                         <li>전화번호</li>
+                                        <li>포인트</li>
                                         <li>가입날짜</li>
                                 </ul>
                                 <div css={s.listLayout}>   
@@ -52,6 +53,7 @@ function AdminUserSearch() {
                                                 <li>{user.userId}</li>
                                                 <li>{user.roleNameKor}</li>
                                                 <li>{user.phonenumber}</li>
+                                                <li>{user.userPoint}</li>
                                                 <li>{user.createDate}</li>
                                             </ul>
                                         ))   
