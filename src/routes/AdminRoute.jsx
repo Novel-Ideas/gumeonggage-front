@@ -6,6 +6,7 @@ import AdminFeedbackPage from "../pages/adminPages/adminFeedbackPage/AdminFeedba
 import PasswordEditPage from "../pages/passwordEditPage/PasswordEditPage";
 import AdminUserSearch from "../components/adminUserSearch/AdminUserSearch";
 import OAuth2SignupPage from "../pages/oAuth2Pages/oAuth2SignupPage/OAuth2SignupPage";
+import AdminLogoPage from "../pages/adminPages/adminLogoPage/AdminLogoPage";
 
 function AdminRoute(props) {
     return (
@@ -19,6 +20,7 @@ function AdminRoute(props) {
             <Route path="/usersearch" element={<AdminUserSearch />} />
             <Route path="/feedback" element={<AdminFeedbackPage/>}/>
             <Route path="/signup" element={ <OAuth2SignupPage /> }/>
+            <Route path="/logo" element={<AdminLogoPage/>}/>
         </Routes>
     );
 }

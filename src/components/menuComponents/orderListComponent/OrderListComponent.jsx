@@ -5,7 +5,7 @@ import { FiMinus } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
 import { useRecoilState } from "recoil";
 import { useQuery } from "react-query";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { orderListState } from "../../../atoms/orderListAtom";
 import { getMenuRequest } from "../../../apis/api/menuApi";
 import { orderMenuListState } from "../../../atoms/orderMenuListAtom";
@@ -15,6 +15,11 @@ function OrderListComponent(props) {
     const [menuList, setMenuList] = useState([]);
     const [orderMenuList, setOrderMenuList] =
         useRecoilState(orderMenuListState);
+    const ref = useRef();
+
+    useEffect(() => {
+        ref.current.scrollIntoView({ behavior: "smooth" });
+    }, [orderMenuList]);
 
     const menuListQuery = useQuery(["menuQuery"], () => getMenuRequest(1), {
         retry: 0,
@@ -138,6 +143,7 @@ function OrderListComponent(props) {
                             </div>
                         );
                     })}
+                    <div ref={ref}></div>
                 </div>
             </div>
         </div>

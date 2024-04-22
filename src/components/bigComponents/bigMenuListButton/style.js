@@ -58,16 +58,16 @@ export const menuListLayout = css`
 `;
 
 export const menuFont = css`
-    font-size: 22px;
+    font-size: 25px;
     color: #3f3f3f;
     margin: 8px 0px;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 4px;
     padding-top: 3px;
 `;
 
 export const calFont = css`
-    font-size: 20px;
+    font-size: 23px;
     font-weight: 500;
     color: #898989;
     margin-bottom: 5px;

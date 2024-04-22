@@ -5,7 +5,7 @@ import { useInput } from "../../../hooks/useInput";
 import { signinRequest } from "../../../apis/api/signin";
 import { useQueryClient } from "react-query";
 import instance from "../../../apis/utils/instance";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 function AdminAuthPage() {
@@ -45,7 +45,10 @@ function AdminAuthPage() {
                 }, 2000);
             })
             .catch((error) => {
-                alert(error.response.data);
+                Toast.fire({
+                    icon: "error",
+                    title: error.response.data,
+                });
                 console.log(error);
             });
     };
@@ -87,7 +90,7 @@ function AdminAuthPage() {
                 {!principalData ? (
                     <>
                         <div css={s.signinBox}>
-                            <h1>로그인</h1>
+                            <h1>gumeonggage</h1>
                             <div css={s.inputInfo}>
                                 <input
                                     type="text"

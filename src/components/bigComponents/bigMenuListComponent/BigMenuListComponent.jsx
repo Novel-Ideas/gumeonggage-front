@@ -18,8 +18,8 @@ function BigMenuListComponent() {
     const menuListQuery = useQuery(
         ["menuQuery", category],
         () => getMenuRequest(category),
-        { 
-             retry: 0,
+        {
+            retry: 0,
             refetchOnWindowFocus: false,
             onSuccess: (response) => {
                 setMenuList(response.data);
@@ -57,12 +57,10 @@ function BigMenuListComponent() {
 
     return (
         <div css={s.layout}>
-            <div css={s.nullbox}></div>
             <div css={s.header}>
                 <h1 css={s.chooseFont}>메뉴</h1>
                 <h1 css={s.orderFont}> 선택</h1>
             </div>
-            <div css={s.header}></div>
             <div css={s.menuListLayout}>
                 <div css={s.menuListBox}>
                     {category === 2 ? (

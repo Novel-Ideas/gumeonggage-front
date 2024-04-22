@@ -106,7 +106,7 @@ function AdminMenuAdd() {
             }
         });
     };
-
+  
     const registerMenuMutation = useMutation({
         mutationKey: "registerMenuMutation",
         mutationFn: registerMenuRequest,

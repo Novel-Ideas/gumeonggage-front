@@ -58,13 +58,14 @@ export const imgBox = css`
     align-items: center;
 
     & > img {
-        width: 500px;
-        height: 500px;
+        width: 300px;
+        height: 300px;
         background-size: fit;
     }
 `;
 
 export const text = css`
-    font-size: 50px;
+    font-size: 35px;
     font-weight: 700;
+    padding-top: 70px;
 `;

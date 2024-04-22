@@ -76,7 +76,7 @@ function AdminMainPageFeedback(props) {
                         <Pie data={data01} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={50} outerRadius={80} fill="#758e97" label>
                           {data01.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS1[index % COLORS1.length]} />)}
                         </Pie>
-                        <Legend />
+                        <Legend height={35} />
                     </PieChart>
             </ResponsiveContainer>
             <ResponsiveContainer width="33%" height="100%" display="flex" >
@@ -84,7 +84,7 @@ function AdminMainPageFeedback(props) {
                         <Pie data={data02} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={50} outerRadius={80} fill="#eba89c" label >
                         {data02.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS2[index % COLORS2.length]} />)}
                         </Pie>
-                        <Legend />
+                        <Legend height={35}/>
                     </PieChart>
             </ResponsiveContainer>
             <ResponsiveContainer width="33%" height="100%" display="flex" >
@@ -92,7 +92,7 @@ function AdminMainPageFeedback(props) {
                         <Pie data={data03} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={50} outerRadius={80} fill="#87cca1" label >
                         {data03.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS3[index % COLORS3.length]} />)}
                         </Pie>
-                        <Legend />
+                        <Legend height={35}/>
                     </PieChart>
             </ResponsiveContainer>
         </div>

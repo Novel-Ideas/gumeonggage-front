@@ -8,7 +8,7 @@ export const inputBox = css`
 `;
 
 export const input = css`
-    box-sizing: border-box;
+    /* box-sizing: border-box;
     outline: none;
     border: 1px solid #dbdbdb;
     border-radius: 5px;
@@ -16,7 +16,14 @@ export const input = css`
     width: 100%;
     background-color: white;
     font-size: 14px;
-    cursor: pointer;
+    cursor: pointer; */
+    width: 250px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    font-size: 25px;
+    padding: 5px 10px;
 `;
 
 export const messageBox = (type) => css`

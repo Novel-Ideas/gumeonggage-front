@@ -17,7 +17,7 @@ export const signupBox = css`
     background-color: rgb(252, 10, 86);
     padding: 50px;
     width: 40%;
-    height: 40%;
+    height: 60%;
     display: flex;
     flex-direction: column;
     justify-content: center;
