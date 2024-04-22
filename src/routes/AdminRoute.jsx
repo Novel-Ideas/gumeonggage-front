@@ -15,7 +15,6 @@ function AdminRoute(props) {
             <Route path="/main" element={<AdminMainPage />}/>
             <Route path="/add" element={<AdminMenuAdd />}/>
             <Route path="/getmenu/*" element={<AdminMenuSearch/>}/>
-            <Route path="/delete" />
             <Route path="/passwordedit" element={<PasswordEditPage />} />  
             <Route path="/usersearch" element={<AdminUserSearch />} />
             <Route path="/feedback" element={<AdminFeedbackPage/>}/>
