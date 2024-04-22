@@ -25,10 +25,15 @@ function PointAccumulation() {
         },
     });
 
-    const handleOkClick = () => {
+    const handleSaveClick = () => {
         navigate("/menu/menuall/order/pointinput");
     };
-    const handleNoClick = () => {
+
+    const handleUseClick = () => {
+        navigate("/menu/menuall/order/usepointinput");
+    };
+
+    const handleSkipClick = () => {
         let orderInfo = [];
         orderMenuList.map((order) =>
             orderInfo.push({ menuId: order.menuId, menuCount: order.menuCount })
@@ -66,21 +71,23 @@ function PointAccumulation() {
         <PageModal>
             <div css={s.layout}>
                 <div css={s.textbox}>
-                    <h1 css={s.text}>포인트 적립</h1>
+                    <h1 css={s.text}>포인트 적립 / 사용</h1>
                 </div>
                 <div css={s.paybox}>
                     <div css={s.methodLayout}>
-                        <div css={s.methodBox} onClick={handleOkClick}>
+                        <div css={s.methodBox} onClick={handleSaveClick}>
                             <h1>적립하기</h1>
                         </div>
                     </div>
                     <div css={s.methodLayout}>
-                        <div css={s.methodBox} onClick={handleNoClick}>
-                            <h1>사용안함</h1>
+                        <div css={s.methodBox} onClick={handleUseClick}>
+                            <h1>사용하기</h1>
                         </div>
                     </div>
                 </div>
-                <div css={s.buttonBox}></div>
+                <div css={s.buttonBox}>
+                    <button onClick={handleSkipClick}>건너뛰기</button>
+                </div>
             </div>
         </PageModal>
     );
