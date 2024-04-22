@@ -21,7 +21,6 @@ function MenuRoute(props) {
             <Route path="/menuall/*" element={<MenuPage />} />
             <Route path="/point" element={<PointAccumulation />} />
             <Route path="/point/check" element={<PointCheck />} />
-            <Route path="/pointphone" element={<PointPhoneNumber />} />
             <Route path="/feedbackChoice" element={<FeedbackChoicePage />} />
             <Route path="/feedback" element={<FeedbackWritePage />} />
             <Route path="/feedback/ok" element={<FeedbackOkPage />} />

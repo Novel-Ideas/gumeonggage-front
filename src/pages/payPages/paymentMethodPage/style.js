@@ -70,7 +70,7 @@ export const buttonBox = css`
 
 export const cancel = css`
     border: 2px solid rgb(252, 10, 86);
-    border-radius: 10px;
+    border-radius: 15px;
     background-color: white;
     color: rgb(252, 10, 86);
     width: 280px;

@@ -3,16 +3,13 @@ import * as s from "./style";
 import DutchPayPage from "../dutchPayPage/DutchPayPage";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import PageModal from "../../../components/pageComponents/pageModal/PageModal";
-import { useRecoilState } from "recoil";
-import { orderMenuListState } from "../../../atoms/orderMenuListAtom";
-import { useMutation } from "react-query";
-import { orderRequest } from "../../../apis/api/menuApi";
 import PointAccumulation from "../../pointPage/pointAccumulation/PointAccumulation";
 import PointPhoneNumber from "../../pointPage/pointPhoneNumber/PointPhoneNumber";
+import UsePointPhoneNumber from "../../pointPage/usePointPhoneNumber/UsePointPhoneNumber";
 
 function PaymentMethod() {
     const navigate = useNavigate();
-    
+
     const handleCancelClick = () => {
         navigate("/menu/menuall");
     };
@@ -53,6 +50,10 @@ function PaymentMethod() {
                     <Route path="/" element={<></>} />
                     <Route path="/askpoint" element={<PointAccumulation />} />
                     <Route path="/pointinput" element={<PointPhoneNumber />} />
+                    <Route
+                        path="/usepointinput"
+                        element={<UsePointPhoneNumber />}
+                    />
                     <Route path="/dutchpay" element={<DutchPayPage />} />
                 </Routes>
             </div>

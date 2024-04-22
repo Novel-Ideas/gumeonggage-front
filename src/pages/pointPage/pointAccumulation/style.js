@@ -17,7 +17,7 @@ export const textbox = css`
     align-items: center;
 `;
 export const text = css`
-    color: red;
+    color: black;
     font-size: 60px;
 `;
 export const blackText = css`
@@ -68,6 +68,24 @@ export const buttonBox = css`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    & > button {
+        font-size: 30px;
+        font-weight: 600;
+        color: rgb(252, 10, 86);
+        border: 2px solid rgb(252, 10, 86);
+        padding: 15px 60px;
+        width: 280px;
+        border-radius: 15px;
+        box-shadow: 5px 5px 5px #898989ff;
+        background-color: white;
+        transition: 0.2s all ease-in-out;
+
+        &:active {
+            color: white;
+            background-color: rgb(252, 10, 86);
+        }
+    }
 `;
 
 export const cancel = css`

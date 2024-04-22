@@ -25,9 +25,17 @@ export const text = css`
     justify-content: center;
 `;
 
-export const phoneNumberLayout = css`
+export const main = css`
     width: 100%;
     height: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const phoneNumberLayout = css`
+    width: 45%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -35,7 +43,7 @@ export const phoneNumberLayout = css`
 `;
 
 export const phoneNumberInput = css`
-    width: 49.8%;
+    width: 87.8%;
     height: 22%;
     border: 2px solid rgb(252, 10, 86);
     border-top-left-radius: 15px;
@@ -47,7 +55,7 @@ export const phoneNumberInput = css`
 `;
 
 export const tableContainer = css`
-    width: 50%;
+    width: 88%;
     border-collapse: collapse;
     border-radius: 15px;
     border-style: hidden;
@@ -68,7 +76,7 @@ export const number = css`
     height: 100%;
     width: 100%;
     border: none;
-    font-size: 40px;
+    font-size: 35px;
     align-items: center;
     justify-content: center;
     color: white;
@@ -88,6 +96,39 @@ export const trBox = css`
     & > td:nth-of-type(3) {
         border-bottom-right-radius: 15px;
     }
+`;
+
+export const pointSubmitButtonBox = css`
+    width: 10%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+
+    & > button {
+        font-size: 60px;
+        color: rgb(252, 10, 86);
+        border: 2px solid rgb(252, 10, 86);
+        border-radius: 50%;
+        background-color: transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        transition: 0.2s all ease-in-out;
+
+        &:active {
+            background-color: rgb(252, 10, 86);
+            color: white;
+        }
+    }
+`;
+
+export const usePoint = css`
+    width: 45%;
+    height: 100%;
 `;
 
 export const buttonLayout = css`
@@ -112,8 +153,8 @@ export const buttonBox = css`
         border: 2px solid rgb(252, 10, 86);
         padding: 15px 40px;
         border-radius: 15px;
-        box-shadow: 5px 5px 5px #898989ff;
         background-color: white;
+        box-shadow: 5px 5px 5px #898989ff;
         transition: 0.2s all ease-in-out;
 
         &:active {

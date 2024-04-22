@@ -85,7 +85,7 @@ function PointPhoneNumber() {
                 setTimeout(() => {
                     savePointMutation.mutate({
                         phoneNumber: inputValue.join(""),
-                        point: Math.ceil((totalPayPrice * 5) / 100),
+                        point: Math.ceil((totalPayPrice * 1) / 100),
                     });
                 }, 2000);
             }
@@ -123,7 +123,7 @@ function PointPhoneNumber() {
                 console.log(response.data);
                 savePointMutation.mutate({
                     phoneNumber: inputValue.join(""),
-                    point: Math.ceil((totalPayPrice * 2) / 100),
+                    point: Math.ceil((totalPayPrice * 1) / 100),
                 });
             }
         },
@@ -137,7 +137,6 @@ function PointPhoneNumber() {
     };
 
     const handleNumClick = (num) => {
-        console.log(num);
         setInputValue(() => [...inputValue, num]);
     };
 
