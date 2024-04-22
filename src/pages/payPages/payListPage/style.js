@@ -4,9 +4,9 @@ export const layout = css`
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: column;// 세로로 세우겠다
-    justify-content: center;//가로중간 이거없으면 
-    align-items: center;//세로중간
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 `;
 
 export const textbox = css`
@@ -69,4 +69,3 @@ export const buttonX = css`
     font-size: 25px;
     color: red;
 `;
-//마진이나 포지션은 최대한 쓰지말것

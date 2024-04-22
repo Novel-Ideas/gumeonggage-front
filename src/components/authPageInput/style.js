@@ -11,7 +11,7 @@ export const input = css`
     /* box-sizing: border-box;
     outline: none;
     border: 1px solid #dbdbdb;
-    border-radius: 3px;
+    border-radius: 5px;
     padding: 10px 30px 10px 10px;
     width: 100%;
     background-color: white;
