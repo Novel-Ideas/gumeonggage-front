@@ -33,14 +33,8 @@ export const main = css`
     align-items: center;
 `;
 
-export const usePoint = css`
-    width: 50%;
-    height: 100%;
-    background-color: coral;
-`;
-
 export const phoneNumberLayout = css`
-    width: 50%;
+    width: 45%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -49,7 +43,7 @@ export const phoneNumberLayout = css`
 `;
 
 export const phoneNumberInput = css`
-    width: 57.8%;
+    width: 87.8%;
     height: 22%;
     border: 2px solid rgb(252, 10, 86);
     border-top-left-radius: 15px;
@@ -61,7 +55,7 @@ export const phoneNumberInput = css`
 `;
 
 export const tableContainer = css`
-    width: 58%;
+    width: 88%;
     border-collapse: collapse;
     border-radius: 15px;
     border-style: hidden;
@@ -104,6 +98,39 @@ export const trBox = css`
     }
 `;
 
+export const pointSubmitButtonBox = css`
+    width: 10%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+
+    & > button {
+        font-size: 60px;
+        color: rgb(252, 10, 86);
+        border: 2px solid rgb(252, 10, 86);
+        border-radius: 50%;
+        background-color: transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        transition: 0.2s all ease-in-out;
+
+        &:active {
+            background-color: rgb(252, 10, 86);
+            color: white;
+        }
+    }
+`;
+
+export const usePoint = css`
+    width: 45%;
+    height: 100%;
+`;
+
 export const buttonLayout = css`
     width: 100%;
     height: 20%;
@@ -122,16 +149,17 @@ export const buttonBox = css`
     & > button {
         font-size: 30px;
         font-weight: 600;
-        color: white;
+        color: rgb(252, 10, 86);
         border: 2px solid rgb(252, 10, 86);
         padding: 15px 40px;
         border-radius: 15px;
-        background-color: rgb(252, 10, 86);
+        background-color: white;
+        box-shadow: 5px 5px 5px #898989ff;
         transition: 0.2s all ease-in-out;
 
         &:active {
-            color: rgb(252, 10, 86);
-            background-color: white;
+            color: white;
+            background-color: rgb(252, 10, 86);
         }
     }
 `;

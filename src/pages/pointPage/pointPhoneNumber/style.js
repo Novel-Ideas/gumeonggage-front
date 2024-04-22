@@ -108,16 +108,17 @@ export const buttonBox = css`
     & > button {
         font-size: 30px;
         font-weight: 600;
-        color: white;
+        color: rgb(252, 10, 86);
         border: 2px solid rgb(252, 10, 86);
         padding: 15px 40px;
         border-radius: 15px;
-        background-color: rgb(252, 10, 86);
+        box-shadow: 5px 5px 5px #898989ff;
+        background-color: white;
         transition: 0.2s all ease-in-out;
 
         &:active {
-            color: rgb(252, 10, 86);
-            background-color: white;
+            color: white;
+            background-color: rgb(252, 10, 86);
         }
     }
 `;

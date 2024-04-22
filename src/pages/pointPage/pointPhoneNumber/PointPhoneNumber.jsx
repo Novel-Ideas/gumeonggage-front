@@ -137,7 +137,6 @@ function PointPhoneNumber() {
     };
 
     const handleNumClick = (num) => {
-        console.log(num);
         setInputValue(() => [...inputValue, num]);
     };
 
