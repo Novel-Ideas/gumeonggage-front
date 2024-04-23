@@ -1,6 +1,7 @@
 /**@jsxImportSource @emotion/react */
 import { useMutation } from "react-query";
 import * as s from "./style";
+import { useState } from "react";
 
 function PlayMap() {
     const mutation = useMutation(async (requestData) => {
@@ -39,9 +40,12 @@ function PlayMap() {
             },
         });
     };
+
     return (
         <div css={s.layout}>
-            <div css={s.mapContainer}><button  onClick={handleClick}>요청</button></div>
+            <div css={s.mapContainer}>
+                <button onClick={handleClick}>요청</button>
+            </div>
         </div>
     );
 }
