@@ -2,10 +2,11 @@
 import { useEffect, useState } from "react";
 import { useInput } from "../../../hooks/useInput";
 import * as s from "./style";
-import { signupRequest } from "../../../apis/api/signup";
+import { signupRequest } from "../../../apis/api/authApi";
 import { useNavigate } from "react-router-dom";
 import AuthPageInput from "../../../components/authPageInput/AuthPageInput";
 import PageLayout from "../../../components/pageComponents/pageLayout/PageLayout";
+import Swal from "sweetalert2";
 
 function AdminSignupPage() {
     const navigate = useNavigate();
@@ -16,6 +17,18 @@ function AdminSignupPage() {
     const [name, nameChange, , nameMessage] = useInput("name");
     const [email, emailChange, , emailMessage] = useInput("email");
     const [checkPasswordMessage, setCheckPasswordMessage] = useState(null);
+
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+    });
 
     useEffect(() => {
         if (!checkPassword || !password) {
@@ -50,13 +63,27 @@ function AdminSignupPage() {
             .then((response) => {
                 console.log(response);
                 if (response.status === 201) {
-                    navigate("/");
+                    Toast.fire({
+                        icon: "success",
+                        title: "회원가입이 완료되었습니다!",
+                    });
+                    setTimeout(() => {
+                        window.location.href = "/";
+                    }, 2000);
                 }
             })
             .catch((error) => {
+                console.log(error.response.data);
                 if (error.response.status === 400) {
+                    Toast.fire({
+                        icon: "error",
+                        title: Object.values(error.response.data).join("\n"),
+                    });
                 } else {
-                    alert("회원가입 오류");
+                    Toast.fire({
+                        icon: "error",
+                        title: "회원가입에 실패하였습니다.",
+                    });
                 }
             });
     };

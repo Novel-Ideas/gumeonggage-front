@@ -48,35 +48,20 @@ export const inputInfo = css`
 `;
 
 export const loginButton = css`
-    margin-top: 30px;
+    text-decoration: none;
+    text-align: center;
+    width: 40%;
+    margin-top: 15px;
     color: rgb(252, 10, 86);
     font-weight: 700;
-    font-size: 30px;
+    font-size: 20px;
     box-sizing: border-box;
     border: 2px solid rgb(252, 10, 86);
     border-radius: 20px;
     background-color: white;
-    padding: 20px 195px;
+    padding: 10px 0px;
     box-shadow: 5px 5px 5px #898989ff;
     transition: 0.2s all ease-in-out;
-
-    &:active {
-        background-color: rgb(252, 10, 86);
-        color: white;
-    }
-`;
-
-export const signupButton = css`
-    margin-top: 30px;
-    color: rgb(252, 10, 86);
-    font-weight: 700;
-    font-size: 30px;
-    box-sizing: border-box;
-    border: 2px solid rgb(252, 10, 86);
-    border-radius: 20px;
-    background-color: white;
-    padding: 20px 180px;
-    box-shadow: 5px 5px 5px #898989ff;
 
     &:active {
         background-color: rgb(252, 10, 86);

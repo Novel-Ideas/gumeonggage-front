@@ -4,23 +4,23 @@ export const layout = css`
     width: 100%;
     height: 100%;
     display: flex;
-    align-items: center;
     flex-direction: column;
     justify-content: center;
-
+    align-items: center;
 `;
 
-export const inputBox = css`
-    width: 40%;
-    height: 70%;
-    padding: 25px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+export const signupBox = css`
     box-sizing: border-box;
+    border: 2px solid rgb(252, 10, 86);
     border-radius: 30px;
     background-color: rgb(252, 10, 86);
-    border: 2px solid rgb(252, 10, 86);
+    padding: 50px;
+    width: 40%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     box-shadow: 5px 5px 5px #898989ff;
 
     & > h1 {
@@ -28,43 +28,35 @@ export const inputBox = css`
         color: white;
         font-weight: 700;
     }
-
 `;
 
-export const input = css`
+export const inputInfo = css`
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 10px;
-    
-    & > input {
-        width: 300px;
-        height: 50px;
-        border: none;
-        border-radius: 10px;
-        outline: none;
-        font-size: 25px;
-        padding: 5px 10px;
-    }
-    
+    padding: 5px;
 
+    & > input {
+        width: 150px;
+        height: 30px;
+    }
 `;
 
-export const registrationButton = css`
-    box-sizing: border-box;
-    border: 2px solid rgb(252, 10, 86);
-    margin-top: 25px;
+export const signupButton = css`
+    margin-top: 30px;
     color: rgb(252, 10, 86);
     font-weight: 700;
-    border-radius: 20px;
-    padding: 20px 150px;
     font-size: 30px;
+    box-sizing: border-box;
+    border: 2px solid rgb(252, 10, 86);
+    border-radius: 20px;
     background-color: white;
+    padding: 20px 190px;
     box-shadow: 5px 5px 5px #898989ff;
 
     &:active {
         background-color: rgb(252, 10, 86);
         color: white;
     }
-
 `;
