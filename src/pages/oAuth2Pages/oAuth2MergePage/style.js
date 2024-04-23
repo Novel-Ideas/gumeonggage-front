@@ -47,7 +47,7 @@ export const inputInfo = css`
     }
 `;
 
-export const loginButton = css`
+export const mergeButton = css`
     text-decoration: none;
     text-align: center;
     width: 40%;
@@ -62,30 +62,6 @@ export const loginButton = css`
     padding: 10px 0px;
     box-shadow: 5px 5px 5px #898989ff;
     transition: 0.2s all ease-in-out;
-
-    &:active {
-        background-color: rgb(0, 153, 255);
-        color: white;
-    }
-`;
-
-export const accountInfo = css`
-    font-size: 40px;
-    font-weight: 700;
-    color: white;
-`;
-
-export const storeButton = css`
-    margin-top: 50px;
-    color: rgb(0, 153, 255);
-    font-weight: 700;
-    font-size: 30px;
-    box-sizing: border-box;
-    border: 2px solid rgb(0, 153, 255);
-    border-radius: 20px;
-    background-color: white;
-    padding: 20px 100px;
-    box-shadow: 5px 5px 5px #898989ff;
 
     &:active {
         background-color: rgb(0, 153, 255);
