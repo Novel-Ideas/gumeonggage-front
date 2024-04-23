@@ -1,48 +1,53 @@
 /**@jsxImportSource @emotion/react */
-import { useMutation } from "react-query";
+import { useEffect, useState } from "react";
 import * as s from "./style";
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import useCurrentLocation from "../../../hooks/useCrruntLocation";
+import PageModal from "../../pageComponents/pageModal/PageModal";
+
+const containerStyle = {
+    width: "95%",
+    height: "90%",
+    border: "3px solid #dbdbdb",
+    borderRadius: "30px",
+};
+
+// const center = {
+//     lat: -3.745,
+//     lng: -38.523,
+// };
 
 function PlayMap() {
-    const mutation = useMutation(async (requestData) => {
-        const response = await fetch(
-            "https://places.googleapis.com/v1/places:searchNearby",
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "X-Goog-Api-Key": "AIzaSyBfW0NY0PPlXdijK-njQI4HbCDrDZwy5Ko",
-                    "X-Goog-FieldMask": "*",
-                },
-                body: JSON.stringify(requestData),
-            }
-        );
+    const { location } = useCurrentLocation();
+    const [map, setMap] = useState(<></>);
+    useEffect(() => {
+        setMap(() => (
+            <LoadScript googleMapsApiKey="AIzaSyBfW0NY0PPlXdijK-njQI4HbCDrDZwy5Ko">
+                <GoogleMap
+                    mapContainerStyle={containerStyle}
+                    center={{
+                        lat: location.latitude,
+                        lng: location.longitude,
+                    }}
+                    zoom={17}
+                >
+                    {/* Child components, such as markers, info windows, etc. */}
+                    <Marker
+                        position={{
+                            lat: location.latitude,
+                            lng: location.longitude,
+                        }}
+                    />
+                    <></>
+                </GoogleMap>
+            </LoadScript>
+        ));
+    }, [location]);
 
-        if (!response.ok) {
-            throw new Error("Network response was not ok");
-        }
-
-        return response.json();
-    });
-
-    const handleClick = () => {
-        mutation.mutate({
-            includedTypes: ["tourist_attraction"],
-            maxResultCount: 10,
-            locationRestriction: {
-                circle: {
-                    center: {
-                        latitude: 35.15246,
-                        longitude: 129.059681,
-                    },
-                    radius: 500.0,
-                },
-            },
-        });
-    };
     return (
-        <div css={s.layout}>
-            <div css={s.mapContainer}><button  onClick={handleClick}>요청</button></div>
-        </div>
+        <PageModal>
+            <div css={s.layout}>{map}</div>;
+        </PageModal>
     );
 }
 

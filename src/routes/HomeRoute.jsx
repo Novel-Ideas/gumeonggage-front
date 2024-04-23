@@ -6,6 +6,10 @@ import SelectAdminPage from "../pages/selectAdminPage/SelectAdminPage";
 import AdminSignupPage from "../pages/adminPages/adminSignupPage/AdminSignupPage";
 import { useQuery } from "react-query";
 import { getPricipalRequest } from "../apis/api/principal";
+import OAuth2Page from "../pages/oAuth2Pages/oAuth2Page/OAuth2Page";
+import OAuth2SignupPage from "../pages/oAuth2Pages/oAuth2SignupPage/OAuth2SignupPage";
+import OAuth2SigninPage from "../pages/oAuth2Pages/oAuth2SigninPage/OAuth2SigninPage";
+import OAuth2MergePage from "../pages/oAuth2Pages/oAuth2MergePage/OAuth2MergePage";
 
 function HomeRoute(props) {
     const principalQuery = useQuery(["principalQuery"], getPricipalRequest, {
@@ -30,6 +34,16 @@ function HomeRoute(props) {
                     <Route path="/" element={<AdminAuthPage />} />
                     <Route path="/selectmenu" element={<SelectAdminPage />} />
                     <Route path="/adminsignup" element={<AdminSignupPage />} />
+                    <Route path="/oauth2" element={<OAuth2Page />} />
+                    <Route
+                        path="/oauth2/signup"
+                        element={<OAuth2SignupPage />}
+                    />
+                    <Route
+                        path="/oauth2/signin"
+                        element={<OAuth2SigninPage />}
+                    />
+                    <Route path="/oauth2/merge" element={<OAuth2MergePage />} />
                     <Route path="/menu/*" element={<MenuRoute />} />
                     <Route path="/admin/*" element={<AdminRoute />} />
                 </Routes>

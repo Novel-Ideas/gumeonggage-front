@@ -9,9 +9,7 @@ import PointAccumulation from "../pages/pointPage/pointAccumulation/PointAccumul
 import FeedbackChoicePage from "../pages/feedbackPage/feedbackChoicePage/FeedbackChoicePage";
 import PlayRecPage from "../pages/playPage/playRecPage/PlayRecPage";
 import PointCheck from "../pages/pointPage/pointCheck/PointCheck";
-import PointPhoneNumber from "../pages/pointPage/pointPhoneNumber/PointPhoneNumber";
 import PlayListPage from "../pages/playPage/playListPage/PlayListPage";
-import OAuth2SignupPage from "../pages/oAuth2Pages/oAuth2SignupPage/OAuth2SignupPage";
 
 function MenuRoute(props) {
     return (
