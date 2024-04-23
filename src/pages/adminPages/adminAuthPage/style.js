@@ -11,9 +11,9 @@ export const layout = css`
 
 export const signinBox = css`
     box-sizing: border-box;
-    border: 2px solid rgb(252, 10, 86);
+    border: 2px solid rgb(0, 153, 255);
     border-radius: 30px;
-    background-color: rgb(252, 10, 86);
+    background-color: rgb(0, 153, 255);
     padding: 50px;
     width: 40%;
     height: 40%;
@@ -52,11 +52,11 @@ export const loginButton = css`
     text-align: center;
     width: 40%;
     margin-top: 15px;
-    color: rgb(252, 10, 86);
+    color: rgb(0, 153, 255);
     font-weight: 700;
     font-size: 20px;
     box-sizing: border-box;
-    border: 2px solid rgb(252, 10, 86);
+    border: 2px solid rgb(0, 153, 255);
     border-radius: 20px;
     background-color: white;
     padding: 10px 0px;
@@ -64,7 +64,7 @@ export const loginButton = css`
     transition: 0.2s all ease-in-out;
 
     &:active {
-        background-color: rgb(252, 10, 86);
+        background-color: rgb(0, 153, 255);
         color: white;
     }
 `;
@@ -77,18 +77,18 @@ export const accountInfo = css`
 
 export const storeButton = css`
     margin-top: 50px;
-    color: rgb(252, 10, 86);
+    color: rgb(0, 153, 255);
     font-weight: 700;
     font-size: 30px;
     box-sizing: border-box;
-    border: 2px solid rgb(252, 10, 86);
+    border: 2px solid rgb(0, 153, 255);
     border-radius: 20px;
     background-color: white;
     padding: 20px 100px;
     box-shadow: 5px 5px 5px #898989ff;
 
     &:active {
-        background-color: rgb(252, 10, 86);
+        background-color: rgb(0, 153, 255);
         color: white;
     }
 `;
