@@ -1,6 +1,6 @@
 /**@jsxImportSource @emotion/react */
 import * as s from "./style";
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useQuery } from "react-query";
 import { searchUserRequest } from '../../apis/api/searchUser';
 import AdminPageLayout from '../pageComponents/adminPageLayout/AdminPageLayout';
@@ -46,17 +46,17 @@ function AdminUserSearch() {
                                         <li>포인트</li>
                                         <li>가입날짜</li>
                                 </ul>
-                                <div css={s.listLayout}>   
+                                <div css={s.listLayout}>
                                     {
                                         userList.map(user =>(
                                             <ul css={s.askList}>
                                                 <li>{user.userId}</li>
                                                 <li>{user.roleNameKor}</li>
                                                 <li>{user.phonenumber}</li>
-                                                <li>{user.userPoint}</li>
+                                                <li>{user.totalPoint}</li>
                                                 <li>{user.createDate}</li>
                                             </ul>
-                                        ))   
+                                        ))
                                     }
                                </div>
                             </div>

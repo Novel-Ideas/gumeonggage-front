@@ -1,10 +1,10 @@
 /**@jsxImportSource @emotion/react */
 import * as s from "./style";
 import { FaCircle } from "react-icons/fa";
-import { useMutation, useQuery } from "react-query";
+import { useQuery } from "react-query";
 import AdminPageLayout from '../../../components/pageComponents/adminPageLayout/AdminPageLayout';
 import { getFeedbackRequest } from "../../../apis/api/feedback";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function AdminFeedbackPage(props) {
     const [ feedbackList, setFeedbackList ] = useState([]);
