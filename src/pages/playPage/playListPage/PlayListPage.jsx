@@ -43,14 +43,12 @@ function PlayListPage() {
         }
     );
 
-    console.log(playListData);
-
     return (
         <PageModal>
             <div css={s.layout}>
                 <div css={s.container}>
                     <PlayList />
-                    <PlayInfo />
+                    {/* <PlayInfo playListData={playListData} /> */}
                 </div>
                 <div css={s.buttonBox}>
                     <button css={s.cancel}>확인</button>
