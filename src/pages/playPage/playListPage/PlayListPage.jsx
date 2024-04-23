@@ -5,12 +5,14 @@ import * as s from "./style";
 import PageModal from "../../../components/pageComponents/pageModal/PageModal";
 import { useRecoilState } from "recoil";
 import { playDataListState } from "../../../atoms/playDataListAtom";
-import { useMutation, useQuery } from "react-query";
+import { useQuery } from "react-query";
 import { playListDataRequest } from "../../../apis/api/playList";
 import PlayInfo from "../../../components/playComponent/playInfo/PlayInfo";
+import { Route, Routes, useNavigate } from "react-router-dom";
 
 function PlayListPage() {
     const [playListData, setPlayListData] = useRecoilState(playDataListState);
+    const navigate = useNavigate();
 
     const playListDataQuery = useQuery(
         ["playListDataQuery"],
@@ -43,7 +45,9 @@ function PlayListPage() {
         }
     );
 
-    console.log(playListData);
+    const handleSubmitClick = () => {
+        navigate("/menu/main");
+    };
 
     return (
         <PageModal>
@@ -53,8 +57,14 @@ function PlayListPage() {
                     <PlayInfo />
                 </div>
                 <div css={s.buttonBox}>
-                    <button css={s.cancel}>확인</button>
+                    <button css={s.cancel} onClick={handleSubmitClick}>
+                        확인
+                    </button>
                 </div>
+                <Routes>
+                    <Route path="/" element={<></>} />
+                    <Route path="/map" element={<PlayMap />} />
+                </Routes>
             </div>
         </PageModal>
     );
