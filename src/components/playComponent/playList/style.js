@@ -5,12 +5,12 @@ export const layout = css`
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
 `;
 
 export const listContainer = css`
     height: 90%;
-    width: 80%;
+    width: 100%;
     margin-top: 20px;
     box-sizing: border-box;
     /* border: 1px solid #222; */
