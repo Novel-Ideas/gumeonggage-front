@@ -12,6 +12,7 @@ export const listContainer = css`
     height: 90%;
     width: 100%;
     margin-top: 20px;
+    margin-left: 30px;
     box-sizing: border-box;
     /* border: 1px solid #222; */
     /* background-color: aqua; */
