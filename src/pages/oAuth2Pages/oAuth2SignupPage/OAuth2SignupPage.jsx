@@ -1,6 +1,5 @@
 /**@jsxImportSource @emotion/react */
 import * as s from "./style";
-import AuthPageInput from "../../../components/authPageInput/AuthPageInput";
 import PageLayout from "../../../components/pageComponents/pageLayout/PageLayout";
 
 function OAuth2SignupPage(props) {

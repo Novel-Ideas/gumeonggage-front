@@ -46,7 +46,6 @@ export const input = css`
         font-size: 25px;
         padding: 5px 10px;
     }
-    
 
 `;
 
