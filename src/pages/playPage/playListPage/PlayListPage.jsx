@@ -49,7 +49,7 @@ function PlayListPage() {
             <div css={s.layout}>
                 <div css={s.container}>
                     <PlayList />
-                    <PlayMap />
+                    {/* <PlayMap /> */}
                 </div>
                 <div css={s.buttonBox}>
                     <button css={s.cancel}>확인</button>
