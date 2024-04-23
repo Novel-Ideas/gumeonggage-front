@@ -2,7 +2,7 @@
 import * as s from "./style";
 import PageLayout from "../../../components/pageComponents/pageLayout/PageLayout";
 import { useInput } from "../../../hooks/useInput";
-import { signinRequest } from "../../../apis/api/signin";
+import { signinRequest } from "../../../apis/api/authApi";
 import { useQueryClient } from "react-query";
 import instance from "../../../apis/utils/instance";
 import { useNavigate } from "react-router-dom";
@@ -117,10 +117,21 @@ function AdminAuthPage() {
                         <button css={s.loginButton} onClick={handleSigninClick}>
                             로그인
                         </button>
-                        <button
-                            css={s.signupButton}
-                            onClick={handleSignupClick}
+                        <a
+                            href="http://localhost:8080/oauth2/authorization/kakao"
+                            css={s.loginButton}
                         >
+                            <span>카카오</span>
+                            로그인
+                        </a>
+                        <a
+                            href="http://localhost:8080/oauth2/authorization/naver"
+                            css={s.loginButton}
+                        >
+                            <span>네이버</span>
+                            로그인
+                        </a>
+                        <button css={s.loginButton} onClick={handleSignupClick}>
                             회원가입
                         </button>
                     </>

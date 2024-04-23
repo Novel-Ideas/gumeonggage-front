@@ -66,6 +66,11 @@ export const selectWay = css`
     box-shadow: 5px 5px 5px #898989ff;
     cursor: pointer;
 
+    &:nth-of-type(1) {
+        background-color: rgb(0, 153, 255);
+        border: 4px solid rgb(0, 153, 255);
+    }
+
     & > h1 {
         font-size: 70px;
     }

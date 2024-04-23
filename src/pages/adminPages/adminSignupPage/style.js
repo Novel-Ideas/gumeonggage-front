@@ -12,9 +12,9 @@ export const layout = css`
 
 export const signupBox = css`
     box-sizing: border-box;
-    border: 2px solid rgb(252, 10, 86);
+    border: 2px solid rgb(0, 153, 255);
     border-radius: 30px;
-    background-color: rgb(252, 10, 86);
+    background-color: rgb(0, 153, 255);
     padding: 50px;
     width: 40%;
     height: 60%;
@@ -46,18 +46,18 @@ export const inputInfo = css`
 
 export const signupButton = css`
     margin-top: 30px;
-    color: rgb(252, 10, 86);
+    color: rgb(0, 153, 255);
     font-weight: 700;
     font-size: 30px;
     box-sizing: border-box;
-    border: 2px solid rgb(252, 10, 86);
+    border: 2px solid rgb(0, 153, 255);
     border-radius: 20px;
     background-color: white;
     padding: 20px 190px;
     box-shadow: 5px 5px 5px #898989ff;
 
     &:active {
-        background-color: rgb(252, 10, 86);
+        background-color: rgb(0, 153, 255);
         color: white;
     }
 
