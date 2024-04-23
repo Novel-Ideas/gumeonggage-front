@@ -1,27 +1,26 @@
 import { css } from "@emotion/react";
 
 export const layout = css`
-    box-sizing: border-box;
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 30px;
 `;
 
 export const listContainer = css`
-    height: 80%;
+    height: 90%;
     width: 80%;
+    margin-top: 20px;
     box-sizing: border-box;
-    border: 1px solid #222;
+    /* border: 1px solid #222; */
     /* background-color: aqua; */
     overflow: scroll;
     border-radius: 30px;
     ::-webkit-scrollbar {
 	display:none 
 }
-    box-shadow: 2px 2px 5px #dbdbdb;
+    /* box-shadow: 2px 2px 5px #dbdbdb; */
 `;
 
 export const listLayout = css`
@@ -29,19 +28,25 @@ export const listLayout = css`
     height: 90%;
     display: flex;
     align-items: center;
-    flex-direction: row;
     flex-wrap: wrap;
     /* gap: 15px; */
+    padding: 0;
+    box-sizing: border-box;
+
 `;
 
 export const list = css`
+    width: 100%;
+    height: 56px;
     display: flex;
     align-items: center;
-    padding: 10px;
-    box-sizing: border-box;
-    border-bottom: 1px solid #dbdbdb;
-    width: 100%;
-    height: 105px;
-    background-color: white;
-    font-size: 18px;
+    margin: 10px ;
+    cursor: pointer;
+    padding: 1em;
+    background: rgb(43, 43, 43);
+    position: relative;
+    color: white;
+    border-radius: 15px;
 `;
+
+

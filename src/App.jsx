@@ -6,7 +6,7 @@ function App() {
         <>
             {/* <Reset /> */}
             <HomeRoute />
-            <OAuth2SignupPage />
+            {/* <OAuth2SignupPage /> */}
         </>
     );
 }
