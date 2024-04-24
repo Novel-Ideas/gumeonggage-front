@@ -6,24 +6,22 @@ import useCurrentLocation from "../../../hooks/useCrruntLocation";
 import PageModal from "../../pageComponents/pageModal/PageModal";
 import { useRecoilState } from "recoil";
 import { playDataState } from "../../../atoms/playDataAtom";
+import { IoMdCloseCircle } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 const containerStyle = {
-    width: "95%",
-    height: "90%",
+    width: "92%",
+    height: "88%",
     border: "3px solid #dbdbdb",
     borderRadius: "30px",
 };
-
-// const center = {
-//     lat: -3.745,
-//     lng: -38.523,
-// };
 
 function PlayMap() {
     const [playData, setPlayData] = useRecoilState(playDataState);
     const [playLocation, setPlayLocation] = useState({});
     const { location } = useCurrentLocation();
     const [map, setMap] = useState(<></>);
+    const navigate = useNavigate();
 
     useEffect(() => {
         setPlayLocation({
@@ -31,6 +29,10 @@ function PlayMap() {
             lng: playData.location.longitude,
         });
     }, [playData]);
+
+    const handleCloseClick = () => {
+        navigate("/menu/playlist");
+    };
     useEffect(() => {
         setMap(() => (
             <LoadScript googleMapsApiKey="AIzaSyBfW0NY0PPlXdijK-njQI4HbCDrDZwy5Ko">
@@ -49,7 +51,13 @@ function PlayMap() {
 
     return (
         <PageModal>
-            <div css={s.layout}>{map}</div>;
+            <div css={s.layout}>
+                <button css={s.closeButton} onClick={handleCloseClick}>
+                    <IoMdCloseCircle />
+                </button>
+                {map}
+            </div>
+            ;
         </PageModal>
     );
 }

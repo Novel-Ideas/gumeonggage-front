@@ -36,6 +36,7 @@ function UsePointPhoneNumber(props) {
         mutationKey: "pointCheckMutation",
         mutationFn: pointCheckRequest,
         onSuccess: (response) => {
+            console.log(response.data);
             if (inputValue.length > 0 && response.data === 0) {
                 Swal.fire({
                     title: "회원을 찾을 수 없어요!",
@@ -147,7 +148,7 @@ function UsePointPhoneNumber(props) {
                 });
                 return;
             }
-            if (parseInt(inputValue.join("")) > currentPoint - usePoint) {
+            if (parseInt(inputValue.join("")) > currentPoint) {
                 Swal.fire({
                     title: "사용가능한 포인트가 부족해요!",
                     text: `사용가능한 포인트 : ${currentPoint - usePoint}점`,
