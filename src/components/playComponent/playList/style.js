@@ -2,26 +2,21 @@ import { css } from "@emotion/react";
 
 export const layout = css`
     width: 100%;
-    height: 100%;
+    height: 95%;
     display: flex;
     align-items: center;
     /* justify-content: center; */
 `;
 
 export const listContainer = css`
-    height: 90%;
+    height: 100%;
     width: 100%;
-    margin-top: 20px;
     margin-left: 30px;
     box-sizing: border-box;
-    /* border: 1px solid #222; */
-    /* background-color: aqua; */
     overflow: scroll;
-    border-radius: 30px;
     ::-webkit-scrollbar {
-	display:none 
-}
-    /* box-shadow: 2px 2px 5px #dbdbdb; */
+        display: none;
+    }
 `;
 
 export const listLayout = css`
@@ -30,10 +25,8 @@ export const listLayout = css`
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    /* gap: 15px; */
     padding: 0;
-    box-sizing: border-box;
-
+    margin: 0;
 `;
 
 export const list = css`
@@ -41,7 +34,7 @@ export const list = css`
     height: 56px;
     display: flex;
     align-items: center;
-    margin: 10px ;
+    margin: 10px;
     cursor: pointer;
     padding: 1em;
     background: rgb(43, 43, 43);
@@ -53,19 +46,16 @@ export const list = css`
 export const contentLayout = css`
     width: 2000px;
     height: 100%;
-    margin-top: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
 `;
 
-
 export const container = css`
     box-sizing: border-box;
     border: 1px solid #dbdbdb;
     width: 90%;
-    height: 83%;
-    /* background-color: coral; */
+    height: 95%;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
@@ -82,7 +72,8 @@ export const mapButton = css`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 13%;
+    z-index: 99;
+    width: 15%;
     height: 40%;
     padding: 20px;
     margin-top: 15px;
@@ -103,7 +94,7 @@ export const bodyContainer = css`
     width: 90%;
     height: 100%;
     margin-left: 25px;
-`
+`;
 
 export const name = css`
     width: 100%;
@@ -113,15 +104,22 @@ export const name = css`
     padding-bottom: 10px;
 `;
 
+export const openNow = (boolean) => css`
+    box-sizing: border-box;
+    border: 4px solid ${boolean === true ? "green" : "red"};
+    border-radius: 10px;
+    color: ${boolean === true ? "green" : "red"};
+    padding: 5px;
+    font-size: 14px;
+    font-weight: 600;
+`;
+
 export const text = css`
     width: 100%;
     height: 10%;
-`
+`;
 export const review = css`
     width: 100%;
     height: 50%;
     border-top: 1px solid #dbdbdb;
-    
-`
-
-
+`;

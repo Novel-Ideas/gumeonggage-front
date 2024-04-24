@@ -7,7 +7,7 @@ export const layout = css`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 `;
 
 export const container = css`
@@ -16,11 +16,11 @@ export const container = css`
     justify-content: center;
     flex-direction: row;
     width: 100%;
-    height: 80%;
-`
+    height: 85%;
+`;
 
 export const buttonBox = css`
-    height: 20%;
+    height: 15%;
     display: flex;
     justify-content: center;
     align-items: center;

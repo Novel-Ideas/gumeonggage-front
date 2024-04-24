@@ -2,41 +2,40 @@
 import { useRecoilState } from "recoil";
 import * as s from "./style";
 import { playDataListState } from "../../../atoms/playDataListAtom";
-import { useSearchParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import PlayInfo from "../playInfo/PlayInfo";
+import { useEffect } from "react";
 import { FaStar } from "react-icons/fa";
 import { IoIosPhonePortrait } from "react-icons/io";
 import { FaRegClock } from "react-icons/fa6";
 import { MdPlace } from "react-icons/md";
 import PlayMap from "../playMap/PlayMap";
+import { playDataState } from "../../../atoms/playDataAtom";
+import { useNavigate } from "react-router-dom";
 
 function PlayList() {
     const [playListData, setPlayListData] = useRecoilState(playDataListState);
-    const [selectedPlayList, setSelectedPlayList] = useState("");
+    const [playData, setPlayData] = useRecoilState(playDataState);
+    const navigate = useNavigate();
     const handlePageClick = () => {
-        <PlayMap />;
+        navigate("/menu/playlist/map");
     };
 
     const handleSubmitClick = (id) => {
-        console.log(id);
-
         const playList = playListData.filter((data) => data.id === id)[0];
-        console.log(playListData);
-        if (playListData.id !== playList?.id) {
-            setSelectedPlayList(playList);
-        }
-        // console.log(playList.id);
-    };
-    console.log(playListData);
 
-    useEffect(() => {}, [playListData]);
+        if (playListData.id !== playList?.id) {
+            setPlayData(() => playList);
+        }
+    };
+
+    useEffect(() => {
+        setPlayData(playListData[0]);
+    }, [playListData]);
 
     return (
         <div css={s.layout}>
             <div css={s.listContainer}>
                 <ul css={s.listLayout}>
-                    {playListData.map(  (data) => (
+                    {playListData.map((data) => (
                         <li
                             css={s.list}
                             key={data.id}
@@ -50,83 +49,90 @@ function PlayList() {
             <div css={s.contentLayout}>
                 <div css={s.container}>
                     <div css={s.top}>
-                        <button
-                            css={s.mapButton}
-                            onClick={() => handlePageClick()}
-                        >
+                        <button css={s.mapButton} onClick={handlePageClick}>
                             지도 보기
                         </button>
                     </div>
                     <div css={s.bodyContainer}>
-                        {selectedPlayList && (
+                        {playData && (
                             <>
-                                <div
-                                    css={s.name}
-                                    onClick={() =>
-                                        handleSubmitClick(
-                                            selectedPlayList.displayName
+                                <div css={s.name}>
+                                    {playData.displayName?.text !== undefined
+                                        ? playData?.displayName?.text
+                                        : "정보없음"}
+
+                                    {playData.currentOpeningHours !==
+                                    undefined ? (
+                                        playData.currentOpeningHours.openNow ===
+                                        true ? (
+                                            <span
+                                                css={s.openNow(
+                                                    playData.currentOpeningHours
+                                                        .openNow
+                                                )}
+                                            >
+                                                OPEN
+                                            </span>
+                                        ) : (
+                                            <span
+                                                css={s.openNow(
+                                                    playData.currentOpeningHours
+                                                        .openNow
+                                                )}
+                                            >
+                                                CLOSE
+                                            </span>
                                         )
-                                    }
-                                >
-                                    {selectedPlayList.displayName.text !==
-                                    undefined
-                                        ? selectedPlayList.displayName.text
+                                    ) : (
+                                        ""
+                                    )}
+                                </div>
+                                <div css={s.text}>
+                                    <FaStar />{" "}
+                                    {playData.rating !== undefined
+                                        ? playData?.rating
                                         : "정보없음"}
                                 </div>
                                 <div css={s.text}>
-                                    <FaStar /> 별점
-                                </div>
-                                <div
-                                    css={s.text}
-                                    onClick={() =>
-                                        handleSubmitClick(
-                                            selectedPlayList.formattedAddress
-                                        )
-                                    }
-                                >
                                     <MdPlace />{" "}
-                                    {selectedPlayList.formattedAddress !==
-                                    undefined
-                                        ? selectedPlayList.formattedAddress
+                                    {playData.formattedAddress !== undefined
+                                        ? playData?.formattedAddress
                                         : "정보없음"}
                                 </div>
-                                <div
-                                    css={s.text}
-                                    onClick={() =>
-                                        handleSubmitClick(
-                                            selectedPlayList.nationalPhoneNumber
-                                        )
-                                    }
-                                >
+                                <div css={s.text}>
                                     <IoIosPhonePortrait />{" "}
-                                    {selectedPlayList.nationalPhoneNumber !==
-                                    undefined
-                                        ? selectedPlayList.nationalPhoneNumber
+                                    {playData.nationalPhoneNumber !== undefined
+                                        ? playData?.nationalPhoneNumber
                                         : "정보없음"}
                                 </div>
-                                <div
-                                    css={s.text}
-                                    onClick={() =>
-                                        handleSubmitClick(
-                                            selectedPlayList.periods
-                                        )
-                                    }
-                                >
+                                <div css={s.text}>
                                     <FaRegClock />{" "}
-                                    {selectedPlayList.periods !== undefined
-                                        ? selectedPlayList.periods
-                                        : "정보없음"}
+                                    <ul>
+                                        {playData.currentOpeningHours !==
+                                        undefined
+                                            ? playData?.currentOpeningHours.weekdayDescriptions.map(
+                                                  (hours, index) => (
+                                                      <li key={index}>
+                                                          {hours}
+                                                      </li>
+                                                  )
+                                              )
+                                            : "정보없음"}
+                                    </ul>
                                 </div>
-                                <div
-                                    css={s.review}
-                                    onClick={() =>
-                                        handleSubmitClick(selectedPlayList.text)
-                                    }
-                                >
+                                <div css={s.review}>
                                     Review{" "}
-                                    {selectedPlayList.reviews.text !== undefined
-                                        ? selectedPlayList.reviews.text
-                                        : "정보없음"}
+                                    <ul>
+                                        {playData?.reviews !== undefined
+                                            ? playData?.reviews?.map(
+                                                  (review, index) => (
+                                                      <li key={index}>
+                                                          {review?.text?.text}
+                                                      </li>
+                                                  )
+                                              )
+                                            : "정보없음"}
+                                    </ul>
                                 </div>
                             </>
                         )}
