@@ -23,7 +23,7 @@ function MenuRoute(props) {
             <Route path="/feedback" element={<FeedbackWritePage />} />
             <Route path="/feedback/ok" element={<FeedbackOkPage />} />
             <Route path="/play" element={<PlayRecPage />} />
-            <Route path="/playlist" element={<PlayListPage />} />
+            <Route path="/playlist/*" element={<PlayListPage />} />
         </Routes>
     );
 }

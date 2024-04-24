@@ -4,6 +4,8 @@ import * as s from "./style";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import useCurrentLocation from "../../../hooks/useCrruntLocation";
 import PageModal from "../../pageComponents/pageModal/PageModal";
+import { useRecoilState } from "recoil";
+import { playDataState } from "../../../atoms/playDataAtom";
 
 const containerStyle = {
     width: "95%",
@@ -18,26 +20,27 @@ const containerStyle = {
 // };
 
 function PlayMap() {
+    const [playData, setPlayData] = useRecoilState(playDataState);
+    const [playLocation, setPlayLocation] = useState({});
     const { location } = useCurrentLocation();
     const [map, setMap] = useState(<></>);
+
+    useEffect(() => {
+        setPlayLocation({
+            lat: playData.location.latitude,
+            lng: playData.location.longitude,
+        });
+    }, [playData]);
     useEffect(() => {
         setMap(() => (
             <LoadScript googleMapsApiKey="AIzaSyBfW0NY0PPlXdijK-njQI4HbCDrDZwy5Ko">
                 <GoogleMap
                     mapContainerStyle={containerStyle}
-                    center={{
-                        lat: location.latitude,
-                        lng: location.longitude,
-                    }}
+                    center={playLocation}
                     zoom={17}
                 >
                     {/* Child components, such as markers, info windows, etc. */}
-                    <Marker
-                        position={{
-                            lat: location.latitude,
-                            lng: location.longitude,
-                        }}
-                    />
+                    <Marker position={playLocation} />
                     <></>
                 </GoogleMap>
             </LoadScript>

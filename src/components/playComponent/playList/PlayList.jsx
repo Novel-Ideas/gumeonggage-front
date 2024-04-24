@@ -36,7 +36,7 @@ function PlayList() {
         <div css={s.layout}>
             <div css={s.listContainer}>
                 <ul css={s.listLayout}>
-                    {playListData.map((data) => (
+                    {playListData.map(  (data) => (
                         <li
                             css={s.list}
                             key={data.id}
