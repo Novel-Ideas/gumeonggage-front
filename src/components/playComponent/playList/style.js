@@ -34,6 +34,7 @@ export const list = css`
     height: 56px;
     display: flex;
     align-items: center;
+    justify-content: center;
     margin: 10px;
     cursor: pointer;
     padding: 1em;
@@ -41,6 +42,8 @@ export const list = css`
     position: relative;
     color: white;
     border-radius: 15px;
+    font-size: 22px;
+    font-weight: 600;
 `;
 
 export const contentLayout = css`

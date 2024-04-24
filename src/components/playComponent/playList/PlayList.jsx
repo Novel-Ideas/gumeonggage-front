@@ -30,6 +30,7 @@ function PlayList() {
     useEffect(() => {
         setPlayData(playListData[0]);
     }, [playListData]);
+    
 
     return (
         <div css={s.layout}>
