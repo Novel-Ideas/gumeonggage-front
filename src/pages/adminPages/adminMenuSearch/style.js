@@ -36,5 +36,4 @@ export const searchMenuList = css`
     flex-wrap: wrap;
     padding-left: 80px;
     gap: 20px;
-    
 `;
