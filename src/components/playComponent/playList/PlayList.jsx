@@ -30,6 +30,7 @@ function PlayList() {
     useEffect(() => {
         setPlayData(playListData[0]);
     }, [playListData]);
+    
 
     return (
         <div css={s.layout}>
@@ -61,53 +62,53 @@ function PlayList() {
                                         ? playData?.displayName?.text
                                         : "정보없음"}
 
-                                    {playData.currentOpeningHours !==
-                                    undefined ? (
-                                        playData.currentOpeningHours.openNow ===
-                                        true ? (
-                                            <span
-                                                css={s.openNow(
-                                                    playData.currentOpeningHours
-                                                        .openNow
-                                                )}
-                                            >
-                                                OPEN
-                                            </span>
-                                        ) : (
-                                            <span
-                                                css={s.openNow(
-                                                    playData.currentOpeningHours
-                                                        .openNow
-                                                )}
-                                            >
-                                                CLOSE
-                                            </span>
-                                        )
-                                    ) : (
-                                        ""
-                                    )}
                                 </div>
+                                        {playData.currentOpeningHours !==
+                                        undefined ? (
+                                            playData.currentOpeningHours.openNow ===
+                                            true ? (
+                                                <span
+                                                    css={s.openNow(
+                                                        playData.currentOpeningHours
+                                                            .openNow
+                                                    )}
+                                                >
+                                                    영업 중
+                                                </span>
+                                            ) : (
+                                                <span
+                                                    css={s.openNow(
+                                                        playData.currentOpeningHours
+                                                            .openNow
+                                                    )}
+                                                >
+                                                    영업 종료
+                                                </span>
+                                            )
+                                        ) : (
+                                            ""
+                                        )}
                                 <div css={s.text}>
-                                    <FaStar />{" "}
+                                    <FaStar css={s.star}/>{" "}
                                     {playData.rating !== undefined
                                         ? playData?.rating
                                         : "정보없음"}
                                 </div>
                                 <div css={s.text}>
-                                    <MdPlace />{" "}
+                                    <MdPlace css={s.icon} />{" "}
                                     {playData.formattedAddress !== undefined
                                         ? playData?.formattedAddress
                                         : "정보없음"}
                                 </div>
                                 <div css={s.text}>
-                                    <IoIosPhonePortrait />{" "}
+                                    <IoIosPhonePortrait css={s.icon}/>{" "}
                                     {playData.nationalPhoneNumber !== undefined
                                         ? playData?.nationalPhoneNumber
                                         : "정보없음"}
                                 </div>
-                                <div css={s.text}>
-                                    <FaRegClock />{" "}
-                                    <ul>
+                                <div css={s.time}>
+                                    <FaRegClock css={s.icon} />{" "}
+                                    <ul css={s.liLayout}>
                                         {playData.currentOpeningHours !==
                                         undefined
                                             ? playData?.currentOpeningHours.weekdayDescriptions.map(
@@ -121,8 +122,8 @@ function PlayList() {
                                     </ul>
                                 </div>
                                 <div css={s.review}>
-                                    Review{" "}
-                                    <ul>
+                                    <p>Review</p>
+                                    <ul css={s.reviewLayout}>
                                         {playData?.reviews !== undefined
                                             ? playData?.reviews?.map(
                                                   (review, index) => (

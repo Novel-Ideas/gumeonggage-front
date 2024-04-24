@@ -34,6 +34,7 @@ export const list = css`
     height: 56px;
     display: flex;
     align-items: center;
+    justify-content: center;
     margin: 10px;
     cursor: pointer;
     padding: 1em;
@@ -41,6 +42,8 @@ export const list = css`
     position: relative;
     color: white;
     border-radius: 15px;
+    font-size: 22px;
+    font-weight: 600;
 `;
 
 export const contentLayout = css`
@@ -55,8 +58,9 @@ export const container = css`
     box-sizing: border-box;
     border: 1px solid #dbdbdb;
     width: 90%;
-    height: 95%;
+    height: 99%;
     border-radius: 20px;
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
 `;
@@ -73,15 +77,16 @@ export const mapButton = css`
     align-items: center;
     justify-content: center;
     z-index: 99;
-    width: 15%;
+    width: 17%;
     height: 40%;
-    padding: 20px;
+    padding: 20px 0;
     margin-top: 15px;
     margin-right: 25px;
     border-radius: 10px;
     font-weight: 700;
     text-align: center;
     background-color: white;
+    font-size: larger;
     border: 1px solid rgb(252, 10, 86);
     box-shadow: 3px 3px 3px #ada8a8;
     color: rgb(252, 10, 86);
@@ -98,28 +103,82 @@ export const bodyContainer = css`
 
 export const name = css`
     width: 100%;
-    height: 10%;
+    height: 7%;
     font-size: 30px;
     font-weight: 600;
-    padding-bottom: 10px;
+    margin-bottom: 5px;
 `;
 
 export const openNow = (boolean) => css`
     box-sizing: border-box;
-    border: 4px solid ${boolean === true ? "green" : "red"};
-    border-radius: 10px;
-    color: ${boolean === true ? "green" : "red"};
-    padding: 5px;
-    font-size: 14px;
+    color: ${boolean === true ? "rgb(24,112,43)" : "rgb(208,38,41)"};
+    font-size: 20px;
     font-weight: 600;
 `;
 
 export const text = css`
     width: 100%;
-    height: 10%;
+    height: 33px;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+`;
+export const star = css`
+    color: gold;
+    margin-right: 10px;
+    font-size: 22px;
+`;
+
+export const icon = css`
+    color: rgb(0, 153, 255);
+    margin-right: 10px;
+    font-size: 22px;
+`;
+
+export const time = css`
+    width: 100%;
+    height: 160px;
+    padding-top: 7px;
+`;
+export const liLayout = css`
+    width: 100%;
+    height: 10px;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 27px;
+    list-style:none;
+    padding-left: 30px;
+    font-size: 16px;
 `;
 export const review = css`
     width: 100%;
     height: 50%;
     border-top: 1px solid #dbdbdb;
+    font-weight: 600;
+    & > p {
+        font-size: 19px;
+    }
+`;
+export const reviewLayout = css`
+    width: 100%;
+    height: 50%;
+    overflow-y: auto;
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+  ::-webkit-scrollbar {
+    display: none; 
+    width: 0px;
+  } 
+
+  list-style:none;
+  padding: 0;
+  & > li {
+    text-align: left;
+      border-radius: 20px;
+      border-bottom: 15px solid white;
+      padding: 13px;
+    background-color:#eeeeee77;
+  }
 `;
