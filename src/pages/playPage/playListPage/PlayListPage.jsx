@@ -44,7 +44,7 @@ function PlayListPage() {
             },
         }
     );
-
+  
     const handleSubmitClick = () => {
         navigate("/menu/main");
     };
@@ -54,7 +54,7 @@ function PlayListPage() {
             <div css={s.layout}>
                 <div css={s.container}>
                     <PlayList />
-                    <PlayInfo />
+                    {/* <PlayInfo playListData={playListData} /> */}
                 </div>
                 <div css={s.buttonBox}>
                     <button css={s.cancel} onClick={handleSubmitClick}>
