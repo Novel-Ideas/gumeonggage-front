@@ -33,6 +33,7 @@ function MenuCategory() {
                     icon={<TiThSmall />}
                     categoryName={"ALL"}
                     onclick={handleAllClick}
+                    isChecked={true}
                 />
                 <CategoryButton
                     icon={<FaCrown />}

@@ -5,6 +5,13 @@ export const categoryLayout = css`
     & > button:nth-of-type(1) {
         margin-right: 15px;
     }
+
+    & > input[type="radio"]:checked + label {
+        background-color: #fcd93c;
+        & > div:nth-of-type(1) {
+            background-color: white;
+        }
+    }
 `;
 
 export const category = css`
@@ -20,19 +27,6 @@ export const category = css`
     border: 1px solid #dbdbdb;
     padding-top: 10px;
     cursor: pointer;
-
-    &:hover {
-        background-color: #fcd93c;
-        & > div:nth-of-type(1) {
-            background-color: white;
-        }
-    }
-    &:active {
-        background-color: #fcd93c;
-        & > div:nth-of-type(1) {
-            background-color: white;
-        }
-    }
 `;
 
 export const imglayout = css`

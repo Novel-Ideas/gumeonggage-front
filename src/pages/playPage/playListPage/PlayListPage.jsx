@@ -7,7 +7,6 @@ import { useRecoilState } from "recoil";
 import { playDataListState } from "../../../atoms/playDataListAtom";
 import { useQuery } from "react-query";
 import { playListDataRequest } from "../../../apis/api/playList";
-import PlayInfo from "../../../components/playComponent/playInfo/PlayInfo";
 import { Route, Routes, useNavigate } from "react-router-dom";
 
 function PlayListPage() {
@@ -54,7 +53,6 @@ function PlayListPage() {
             <div css={s.layout}>
                 <div css={s.container}>
                     <PlayList />
-                    {/* <PlayInfo playListData={playListData} /> */}
                 </div>
                 <div css={s.buttonBox}>
                     <button css={s.cancel} onClick={handleSubmitClick}>

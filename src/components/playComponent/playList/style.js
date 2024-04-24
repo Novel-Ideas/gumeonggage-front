@@ -29,7 +29,7 @@ export const listLayout = css`
     margin: 0;
 `;
 
-export const list = css`
+export const list = (isSeleted) => css`
     width: 100%;
     height: 56px;
     display: flex;
@@ -38,7 +38,7 @@ export const list = css`
     margin: 10px;
     cursor: pointer;
     padding: 1em;
-    background: rgb(43, 43, 43);
+    background-color: ${isSeleted ? "rgb(252, 10, 86)" : "rgb(43, 43, 43)"};
     position: relative;
     color: white;
     border-radius: 15px;
@@ -63,6 +63,7 @@ export const container = css`
     margin-top: 10px;
     display: flex;
     flex-direction: column;
+    position: relative;
 `;
 
 export const top = css`
@@ -73,15 +74,14 @@ export const top = css`
 `;
 
 export const mapButton = css`
+    position: absolute;
+    top: 15px;
+    right: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 99;
-    width: 17%;
-    height: 40%;
-    padding: 20px 0;
-    margin-top: 15px;
-    margin-right: 25px;
+    padding: 10px;
     border-radius: 10px;
     font-weight: 700;
     text-align: center;
@@ -104,9 +104,10 @@ export const bodyContainer = css`
 export const name = css`
     width: 100%;
     height: 7%;
-    font-size: 30px;
+    font-size: 35px;
     font-weight: 600;
-    margin-bottom: 5px;
+    margin-top: 15px;
+    margin-bottom: 8px;
 `;
 
 export const openNow = (boolean) => css`
@@ -139,18 +140,23 @@ export const time = css`
     width: 100%;
     height: 160px;
     padding-top: 7px;
+    display: flex;
 `;
 export const liLayout = css`
     width: 100%;
-    height: 10px;
+    height: 160px;
     display: flex;
     align-items: start;
     justify-content: center;
     flex-direction: column;
-    padding-top: 27px;
-    list-style:none;
-    padding-left: 30px;
-    font-size: 16px;
+    list-style: none;
+    padding-left: 0px;
+    font-size: 18px;
+    margin: 0;
+
+    & > li {
+        margin-bottom: 1px;
+    }
 `;
 export const review = css`
     width: 100%;
@@ -158,27 +164,29 @@ export const review = css`
     border-top: 1px solid #dbdbdb;
     font-weight: 600;
     & > p {
-        font-size: 19px;
+        font-size: 24px;
+        margin: 10px 0;
     }
 `;
 export const reviewLayout = css`
     width: 100%;
-    height: 50%;
+    height: 60%;
     overflow-y: auto;
-  -ms-overflow-style: none; 
-  scrollbar-width: none; 
-  ::-webkit-scrollbar {
-    display: none; 
-    width: 0px;
-  } 
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    ::-webkit-scrollbar {
+        display: none;
+        width: 0px;
+    }
 
-  list-style:none;
-  padding: 0;
-  & > li {
-    text-align: left;
-      border-radius: 20px;
-      border-bottom: 15px solid white;
-      padding: 13px;
-    background-color:#eeeeee77;
-  }
+    list-style: none;
+    padding: 0;
+    & > li {
+        text-align: left;
+        border-radius: 20px;
+        border-bottom: 15px solid white;
+        padding: 13px;
+        background-color: #eeeeee77;
+        font-weight: 500;
+    }
 `;
