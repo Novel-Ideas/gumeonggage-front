@@ -23,10 +23,10 @@ function PlayListPage() {
                 locationRestriction: {
                     circle: {
                         center: {
-                            latitude: 35.15246,
-                            longitude: 129.059681,
+                            latitude: 35.159774,
+                            longitude: 129.162045,
                         },
-                        radius: 500.0,
+                        radius: 1000.0,
                     },
                 },
             }),
@@ -44,7 +44,7 @@ function PlayListPage() {
             },
         }
     );
-  
+
     const handleSubmitClick = () => {
         navigate("/menu/main");
     };
