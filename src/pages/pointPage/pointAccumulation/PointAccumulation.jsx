@@ -20,7 +20,17 @@ function PointAccumulation() {
         mutationKey: "orderRequestMutation",
         mutationFn: orderRequest,
         onSuccess: (response) => {
-            window.location.replace("/menu/feedbackChoice");
+            Swal.fire({
+                title: "주문 완료!",
+                text: "음식이 나올때까지 조금만 기다려주세요!",
+                icon: "success",
+                timer: 2000,
+                timerProgressBar: true,
+                showConfirmButton: false,
+            });
+            setTimeout(() => {
+                window.location.replace("/menu/feedbackChoice");
+            }, 2000);
         },
         onError: (error) => {
             console.log(error);
@@ -31,6 +41,17 @@ function PointAccumulation() {
         mutationKey: "portOnePayRequestMutation",
         mutationFn: portOnePayRequest,
         onSuccess: (response) => {
+            if (response.code != null) {
+                Swal.fire({
+                    title: "결제가 취소되었습니다.",
+                    text: "다시 시도해 주세요.",
+                    icon: "error",
+                    timer: 2000,
+                    timerProgressBar: true,
+                    showConfirmButton: false,
+                });
+                return;
+            }
             let orderInfo = [];
             orderMenuList.map((order) =>
                 orderInfo.push({
@@ -38,15 +59,8 @@ function PointAccumulation() {
                     menuCount: order.menuCount,
                 })
             );
-            Swal.fire({
-                title: "주문 완료!",
-                text: "음식이 나올때까지 조금만 기다려주세요!",
-                icon: "success",
-                showConfirmButton: false,
-            });
-            setTimeout(() => {
-                orderRequestMutation.mutate(orderInfo);
-            }, 3000);
+
+            orderRequestMutation.mutate(orderInfo);
         },
         onError: (error) => {
             console.log(error);
