@@ -6,7 +6,7 @@ import { FaImages } from "react-icons/fa";
 import { useMutation, useQuery } from "react-query";
 import noImg from "../../../assets/noImg.webp";
 import Select from "react-select";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { storage } from "../../../apis/firebase/config/firebaseConfig";
 import { v4 as uuid } from "uuid";
@@ -18,6 +18,7 @@ import Swal from "sweetalert2";
 function AdminMenuAdd() {
     const [selectedOption, setSelectedOption] = useState(null);
     const [categoryOptions, setCategoryOptions] = useState([]);
+    const [noMinus, setNoMinus] = useState();
     const fileRef = useRef();
 
     const Toast = Swal.mixin({
@@ -31,6 +32,12 @@ function AdminMenuAdd() {
             toast.addEventListener("mouseleave", Swal.resumeTimer);
         },
     });
+
+    useEffect(() => {
+        if (menuPrice.value < 0) {
+            alert("sdf");
+        }
+    }, []);
 
     const menuName = useMenuRegisterInput();
     const menuCategoryId = useMenuRegisterInput();
@@ -106,11 +113,12 @@ function AdminMenuAdd() {
             }
         });
     };
-  
+
     const registerMenuMutation = useMutation({
         mutationKey: "registerMenuMutation",
         mutationFn: registerMenuRequest,
         onSuccess: (response) => {
+            console.log(response.data);
             Toast.fire({
                 icon: "success",
                 title: "성공적으로 등록 완료되었습니다.",
@@ -123,13 +131,42 @@ function AdminMenuAdd() {
     });
 
     const handleSubmitClick = () => {
-        registerMenuMutation.mutate({
-            menuName: menuName.value,
-            categoryId: menuCategoryId.value.value,
-            menuPrice: menuPrice.value,
-            menuCal: menuCal.value,
-            menuImgUrl: menuImgUrl.value,
-        });
+        if (
+            menuName.value &&
+            menuCategoryId.value &&
+            menuPrice.value &&
+            menuCal.value &&
+            menuImgUrl.value !== ""
+        ) {
+            if (menuPrice.value < 0) {
+                Toast.fire({
+                    icon: "error",
+                    title: "가격이 음수일 수 없습니다!",
+                });
+            } else if (menuCal.value < 0) {
+                Toast.fire({
+                    icon: "error",
+                    title: "칼로리가 음수일 수 없습니다!",
+                });
+            } else {
+                registerMenuMutation.mutate({
+                    menuName: menuName.value,
+                    categoryId: menuCategoryId.value.value,
+                    menuPrice: menuPrice.value,
+                    menuCal: menuCal.value,
+                    menuImgUrl: menuImgUrl.value,
+                });
+            }
+        } else {
+            Swal.fire({
+                title: "Oh..No..",
+                text: "전부 다 입력해주세요!",
+                icon: "error",
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+            });
+        }
     };
 
     const handleResetClick = () => {
@@ -206,7 +243,7 @@ function AdminMenuAdd() {
                                     </div>
                                     <div css={s.input}>
                                         <input
-                                            type="text"
+                                            type="number"
                                             placeholder="가격"
                                             value={menuPrice.value}
                                             onChange={menuPrice.handleOnChange}
@@ -214,7 +251,7 @@ function AdminMenuAdd() {
                                     </div>
                                     <div css={s.input}>
                                         <input
-                                            type="text"
+                                            type="number"
                                             placeholder="칼로리"
                                             value={menuCal.value}
                                             onChange={menuCal.handleOnChange}
