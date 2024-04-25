@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import PageModal from "../../../components/pageComponents/pageModal/PageModal";
 import * as s from "./style";
 import { useState } from "react";
-import { useMutation } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import {
     pointCheckRequest,
     savePointRequest,
@@ -14,26 +14,89 @@ import { orderRequest } from "../../../apis/api/menuApi";
 import Swal from "sweetalert2";
 import { useRecoilState } from "recoil";
 import { totalPayPriceState } from "../../../atoms/totalPayPriceAtom";
+import { portOnePayRequest } from "../../../apis/api/portOneApi";
+import { searchUserRequest } from "../../../apis/api/searchUser";
 
 function PointPhoneNumber() {
-    const [inputValue, setInputValue] = useState([]);
+    const [inputValue, setInputValue] = useState("");
+    const [userList, setUserList] = useState([]);
     const [orderMenuList, setOrderMenuList] =
         useRecoilState(orderMenuListState);
     const [totalPayPrice, setTotalPayPrice] =
         useRecoilState(totalPayPriceState);
     const navigate = useNavigate();
 
-    const orderRequestMutation = useMutation({
-        mutationKey: "orderRequestMutation",
-        mutationFn: orderRequest,
+    // ------------ 회원 조회 쿼리 -----------------
+    const searchUserQuery = useQuery(["searchUserQuery"], searchUserRequest, {
+        retry: 0,
+        refetchOnWindowFocus: false,
         onSuccess: (response) => {
-            window.location.replace("/menu/feedbackChoice");
+            setUserList(response.data);
         },
         onError: (error) => {
             console.log(error);
         },
     });
 
+    //  ----------- 주문 요청 --------------
+
+    const orderRequestMutation = useMutation({
+        mutationKey: "orderRequestMutation",
+        mutationFn: orderRequest,
+        onSuccess: (response) => {
+            Swal.fire({
+                title: "주문 완료!",
+                text: "음식이 나올때까지 조금만 기다려주세요!",
+                icon: "success",
+                timer: 2000,
+                timerProgressBar: true,
+                showConfirmButton: false,
+            });
+            setTimeout(() => {
+                savePointMutation.mutate({
+                    phoneNumber: inputValue,
+                    point: Math.ceil((totalPayPrice * 1) / 100),
+                });
+            }, 2000);
+        },
+        onError: (error) => {
+            console.log(error);
+        },
+    });
+
+    //  -------------- 결제 요청 ----------------------
+    const portOnePayRequestMutation = useMutation({
+        mutationKey: "portOnePayRequestMutation",
+        mutationFn: portOnePayRequest,
+        onSuccess: (response) => {
+            console.log(response);
+            if (response.code != null) {
+                Swal.fire({
+                    title: "결제가 취소되었습니다.",
+                    text: "다시 시도해 주세요.",
+                    icon: "error",
+                    timer: 2000,
+                    timerProgressBar: true,
+                    showConfirmButton: false,
+                });
+                return;
+            }
+            let orderInfo = [];
+            orderMenuList.map((order) =>
+                orderInfo.push({
+                    menuId: order.menuId,
+                    menuCount: order.menuCount,
+                })
+            );
+
+            orderRequestMutation.mutate(orderInfo);
+        },
+        onError: (error) => {
+            console.log(error);
+        },
+    });
+
+    // --------------- 포인트 저장 요청 ---------------
     const savePointMutation = useMutation({
         mutationKey: "savePointMutation",
         mutationFn: savePointRequest,
@@ -48,27 +111,13 @@ function PointPhoneNumber() {
                     timerProgressBar: true,
                 });
                 setTimeout(() => {
-                    let orderInfo = [];
-                    orderMenuList.map((order) =>
-                        orderInfo.push({
-                            menuId: order.menuId,
-                            menuCount: order.menuCount,
-                        })
-                    );
-                    Swal.fire({
-                        title: "주문 완료!",
-                        text: "음식이 나올때까지 조금만 기다려주세요!",
-                        icon: "success",
-                        showConfirmButton: false,
-                    });
-                    setTimeout(() => {
-                        orderRequestMutation.mutate(orderInfo);
-                    }, 3000);
+                    window.location.replace("/menu/feedbackChoice");
                 }, 2000);
             }
         },
     });
 
+    // --------------- 회원가입 요청 ----------------
     const userSignupMutation = useMutation({
         mutationKey: "userSignupMutation",
         mutationFn: userSignupRequest,
@@ -76,16 +125,25 @@ function PointPhoneNumber() {
             if (response.data === true) {
                 Swal.fire({
                     title: "회원가입 완료!",
-                    text: "바로 적립도 도와드릴게요!",
+                    text: "바로 결제도 도와드릴게요!",
                     icon: "success",
                     showConfirmButton: false,
                     timer: 2000,
                     timerProgressBar: true,
                 });
                 setTimeout(() => {
-                    savePointMutation.mutate({
-                        phoneNumber: inputValue.join(""),
-                        point: Math.ceil((totalPayPrice * 1) / 100),
+                    let menuName = orderMenuList.map((order) => order.menuName);
+                    let orderName = "";
+                    if (menuName.length > 1) {
+                        orderName = `${menuName[0]} 외 ${
+                            menuName.length - 1
+                        }건`;
+                    } else {
+                        orderName = menuName[0];
+                    }
+                    portOnePayRequestMutation.mutate({
+                        orderName: orderName,
+                        totalAmount: totalPayPrice,
                     });
                 }, 2000);
             }
@@ -95,11 +153,31 @@ function PointPhoneNumber() {
         },
     });
 
-    const pointCheckMutation = useMutation({
-        mutationKey: "pointCheckMutation",
-        mutationFn: pointCheckRequest,
-        onSuccess: (response) => {
-            if (response.data === 0) {
+    const handleCancelClick = () => {
+        navigate("/menu/menuall/order");
+    };
+
+    const handleNumClick = (num) => {
+        setInputValue((prev) => prev + num);
+    };
+
+    const handleDeleteClick = () => {
+        setInputValue(() => inputValue.slice(0, -1));
+    };
+
+    const handleSavePointClick = () => {
+        let user = {};
+        user = userList.filter((user) => user.phonenumber === inputValue)[0];
+        if (inputValue.length === 0) {
+            Swal.fire({
+                title: "전화번호를 입력해주세요!",
+                icon: "error",
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+            });
+        } else {
+            if (user === undefined) {
                 Swal.fire({
                     title: "가입되어있지 않아요!",
                     text: "회원을 가입하고 적립을 하시겠습니까?",
@@ -115,40 +193,26 @@ function PointPhoneNumber() {
                 }).then((result) => {
                     if (result.isConfirmed) {
                         userSignupMutation.mutate({
-                            phonenumber: inputValue.join(""),
+                            phonenumber: inputValue,
                         });
                     }
                 });
+                return;
             } else {
-                console.log(response.data);
-                savePointMutation.mutate({
-                    phoneNumber: inputValue.join(""),
-                    point: Math.ceil((totalPayPrice * 1) / 100),
+                let menuName = orderMenuList.map((order) => order.menuName);
+                let orderName = "";
+                if (menuName.length > 1) {
+                    orderName = `${menuName[0]} 외 ${menuName.length - 1}건`;
+                } else {
+                    orderName = menuName[0];
+                }
+                portOnePayRequestMutation.mutate({
+                    orderName: orderName,
+                    totalAmount: totalPayPrice,
                 });
             }
-        },
-        onError: (error) => {
-            console.log(error);
-        },
-    });
-
-    const handleCancelClick = () => {
-        navigate("/menu/menuall/order");
+        }
     };
-
-    const handleNumClick = (num) => {
-        setInputValue(() => [...inputValue, num]);
-    };
-
-    const handleDeleteClick = () => {
-        setInputValue(() => inputValue.slice(0, -1));
-    };
-
-    const handleSavePointClick = () => {
-        pointCheckMutation.mutate(inputValue.join(""));
-    };
-
-    console.log(inputValue);
 
     return (
         <PageModal>
@@ -157,7 +221,7 @@ function PointPhoneNumber() {
                     <h1 css={s.text}>포인트 적립</h1>
                 </div>
                 <div css={s.phoneNumberLayout}>
-                    <div css={s.phoneNumberInput}>{inputValue.join("")}</div>
+                    <div css={s.phoneNumberInput}>{inputValue}</div>
                     <table css={s.tableContainer}>
                         <tr>
                             <td css={s.table}>

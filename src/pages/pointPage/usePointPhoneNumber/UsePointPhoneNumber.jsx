@@ -2,127 +2,110 @@
 import { useEffect, useState } from "react";
 import PageModal from "../../../components/pageComponents/pageModal/PageModal";
 import * as s from "./style";
+import { FaCircleChevronRight, FaCoins } from "react-icons/fa6";
+import { GrPowerReset } from "react-icons/gr";
+import { searchUserRequest } from "../../../apis/api/searchUser";
+import { useMutation, useQuery } from "react-query";
 import { useRecoilState } from "recoil";
-import { useNavigate } from "react-router-dom";
 import { totalPayPriceState } from "../../../atoms/totalPayPriceAtom";
-import { orderMenuListState } from "../../../atoms/orderMenuListAtom";
-import { FaCircleChevronRight } from "react-icons/fa6";
-import { useMutation } from "react-query";
-import {
-    pointCheckRequest,
-    savePointRequest,
-} from "../../../apis/api/pointApi";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { portOnePayRequest } from "../../../apis/api/portOneApi";
 import { orderRequest } from "../../../apis/api/menuApi";
+import { orderMenuListState } from "../../../atoms/orderMenuListAtom";
 
 function UsePointPhoneNumber(props) {
-    const [inputValue, setInputValue] = useState([]);
-    const [phoneNumber, setPhoneNumber] = useState();
+    const navigate = useNavigate();
+    const [inputValue, setInputValue] = useState("");
+    const [usePoint, setUsePoint] = useState(0);
+    const [currentPoint, setCurrentPoint] = useState(0);
+    const [userList, setUserList] = useState([]);
     const [buttonMode, setButtonMode] = useState(0);
-    const [currentPoint, setCurrentPoint] = useState();
-    const [usePoint, setUsePoint] = useState();
-    const [totalPrice, setTotalPrice] = useState();
-    const [orderMenuList, setOrderMenuList] =
-        useRecoilState(orderMenuListState);
+    const [totalAmount, setTotalAmount] = useState();
     const [totalPayPrice, setTotalPayPrice] =
         useRecoilState(totalPayPriceState);
-    const navigate = useNavigate();
+    const [orderMenuList, setOrderMenuList] =
+        useRecoilState(orderMenuListState);
 
+    // ------------ 총 결제 가격 상태 초기화 -----------
     useEffect(() => {
-        setTotalPrice(() => totalPayPrice);
+        setTotalAmount(() => totalPayPrice);
     }, []);
 
-    const pointCheckMutation = useMutation({
-        mutationKey: "pointCheckMutation",
-        mutationFn: pointCheckRequest,
-        onSuccess: (response) => {
-            console.log(response.data);
-            if (inputValue.length > 0 && response.data === 0) {
-                Swal.fire({
-                    title: "회원을 찾을 수 없어요!",
-                    icon: "question",
-                    showConfirmButton: false,
-                    timer: 2000,
-                    timerProgressBar: true,
-                });
-                return;
-            }
-            setCurrentPoint(response.data);
-            setButtonMode(() => 1);
-        },
-        onError: (error) => {
-            console.log(error);
-        },
-    });
-
+    // ------------ 주문 요청 -------------------
     const orderRequestMutation = useMutation({
         mutationKey: "orderRequestMutation",
         mutationFn: orderRequest,
         onSuccess: (response) => {
-            window.location.replace("/menu/feedbackChoice");
+            Swal.fire({
+                title: "주문 완료!",
+                text: "음식이 나올때까지 조금만 기다려주세요!",
+                icon: "success",
+                timer: 2000,
+                timerProgressBar: true,
+                showConfirmButton: false,
+            });
+            setTimeout(() => {
+                window.location.replace("/menu/feedbackChoice");
+            }, 2000);
         },
         onError: (error) => {
             console.log(error);
         },
     });
 
-    const usePointMutation = useMutation({
-        mutationKey: "usePointMutation",
-        mutationFn: savePointRequest,
+    // ------------ 결제 요청 ---------------------
+    const portOnePayRequestMutation = useMutation({
+        mutationKey: "portOnePayRequestMutation",
+        mutationFn: portOnePayRequest,
         onSuccess: (response) => {
-            console.log(response.data);
-            if (response.data === 1) {
+            if (response.code != null) {
                 Swal.fire({
-                    title: "포인트 사용 완료!",
-                    icon: "success",
-                    showConfirmButton: false,
+                    title: "결제가 취소되었습니다.",
+                    text: "다시 시도해 주세요.",
+                    icon: "error",
                     timer: 2000,
                     timerProgressBar: true,
+                    showConfirmButton: false,
                 });
-                setTimeout(() => {
-                    let orderInfo = [];
-                    orderMenuList.map((order) =>
-                        orderInfo.push({
-                            menuId: order.menuId,
-                            menuCount: order.menuCount,
-                        })
-                    );
-                    Swal.fire({
-                        title: "주문 완료!",
-                        text: "음식이 나올때까지 조금만 기다려주세요!",
-                        icon: "success",
-                        showConfirmButton: false,
-                    });
-                    setTimeout(() => {
-                        orderRequestMutation.mutate(orderInfo);
-                    }, 3000);
-                }, 2000);
+                return;
             }
+            let orderInfo = [];
+            orderMenuList.map((order) =>
+                orderInfo.push({
+                    menuId: order.menuId,
+                    menuCount: order.menuCount,
+                })
+            );
+            orderRequestMutation.mutate(orderInfo);
         },
         onError: (error) => {
             console.log(error);
         },
     });
 
-    const handleCancelClick = () => {
-        navigate("/menu/menuall/order");
-    };
+    // ------------ 회원 조회 쿼리 -----------------
+    const searchUserQuery = useQuery(["searchUserQuery"], searchUserRequest, {
+        retry: 0,
+        refetchOnWindowFocus: false,
+        onSuccess: (response) => {
+            setUserList(response.data);
+        },
+        onError: (error) => {
+            console.log(error);
+        },
+    });
 
-    const handleNumClick = (num) => {
-        if (num === "전액사용") {
-            setUsePoint(() => currentPoint);
-            setInputValue(() => [currentPoint]);
-            return;
-        }
-        setInputValue(() => [...inputValue, num]);
-    };
-
-    const handleDeleteClick = () => {
-        setInputValue(() => inputValue.slice(0, -1));
-    };
-
-    const handleCheckClick = () => {
+    // ------------ 전화번호 확인 함수 --------------
+    const handlePhoneNumberSubmitClick = () => {
         if (buttonMode === 0) {
+            setUsePoint(() => 0);
+            setCurrentPoint(() => 0);
+            setTotalAmount(() => totalPayPrice);
+            let user = {};
+            user = userList.filter(
+                (user) => user.phonenumber === inputValue
+            )[0];
             if (inputValue.length === 0) {
                 Swal.fire({
                     title: "전화번호를 입력해주세요!",
@@ -131,13 +114,36 @@ function UsePointPhoneNumber(props) {
                     timer: 2000,
                     timerProgressBar: true,
                 });
-                return;
+            } else {
+                if (user === undefined) {
+                    Swal.fire({
+                        title: "회원을 찾을 수 없어요!",
+                        icon: "question",
+                        showConfirmButton: false,
+                        timer: 2000,
+                        timerProgressBar: true,
+                    });
+                    return;
+                } else {
+                    setCurrentPoint(() => user.totalPoint);
+                    setInputValue(() => []);
+                }
+                setButtonMode(() => 1);
             }
-            pointCheckMutation.mutate(inputValue.join(""));
-            setPhoneNumber(() => inputValue.join(""));
-            setInputValue(() => []);
         } else if (buttonMode === 1) {
-            if (parseInt(inputValue.join("")) > currentPoint) {
+            if (currentPoint >= parseInt(inputValue)) {
+                setUsePoint(() => parseInt(inputValue));
+                setButtonMode(() => 0);
+                setInputValue(() => []);
+            } else if (usePoint === 0) {
+                Swal.fire({
+                    title: "사용할 포인트를 입력해주세요!",
+                    icon: "error",
+                    showConfirmButton: false,
+                    timer: 2000,
+                    timerProgressBar: true,
+                });
+            } else {
                 Swal.fire({
                     title: "사용가능한 포인트가 부족해요!",
                     text: `사용가능한 포인트 : ${currentPoint}점`,
@@ -146,30 +152,81 @@ function UsePointPhoneNumber(props) {
                     timer: 2000,
                     timerProgressBar: true,
                 });
-                return;
+                setInputValue(() => []);
             }
-            if (parseInt(inputValue.join("")) > currentPoint) {
-                Swal.fire({
-                    title: "사용가능한 포인트가 부족해요!",
-                    text: `사용가능한 포인트 : ${currentPoint - usePoint}점`,
-                    icon: "error",
-                    showConfirmButton: false,
-                    timer: 2000,
-                    timerProgressBar: true,
-                });
-                return;
-            }
-            setTotalPrice(() => totalPrice - inputValue.join(""));
-            setUsePoint(() => inputValue.join(""));
-            setButtonMode(() => 2);
         }
     };
 
+    // ------------ 전화번호 입력 함수 ---------------
+    const handleNumClick = (num) => {
+        if (num === "전액사용") {
+            if (totalAmount > currentPoint) {
+                setInputValue(() => currentPoint);
+                return;
+            } else {
+                setInputValue(() => totalAmount);
+                return;
+            }
+        } else {
+            setInputValue((prev) => prev + num);
+        }
+    };
+    // 사용 포인트가 셋 되었을때 결제금액 변경
+    useEffect(() => {
+        if (!!usePoint) {
+            setTotalAmount(() => totalAmount - usePoint);
+        }
+    }, [usePoint]);
+
+    const handleDeleteClick = () => {
+        setInputValue(() => inputValue.slice(0, -1));
+    };
+
+    // ------------- 하단 버튼 함수 ----------------
+    const handleCancelClick = () => {
+        navigate("/menu/menuall/order");
+    };
     const handleUsePointClick = () => {
-        usePointMutation.mutate({
-            phoneNumber: phoneNumber,
-            point: -usePoint,
-        });
+        if (totalAmount === totalPayPrice) {
+            Swal.fire({
+                title: "포인트를 사용하지 않고 결제하시겠습니까?",
+                icon: "error",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "결제하기",
+                cancelButtonText: "취소하기",
+                reverseButtons: true,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    let menuName = orderMenuList.map((order) => order.menuName);
+                    let orderName = "";
+                    if (menuName.length > 1) {
+                        orderName = `${menuName[0]} 외 ${
+                            menuName.length - 1
+                        }건`;
+                    } else {
+                        orderName = menuName[0];
+                    }
+                    portOnePayRequestMutation.mutate({
+                        orderName: orderName,
+                        totalAmount: totalAmount,
+                    });
+                }
+            });
+        } else {
+            let menuName = orderMenuList.map((order) => order.menuName);
+            let orderName = "";
+            if (menuName.length > 1) {
+                orderName = `${menuName[0]} 외 ${menuName.length - 1}건`;
+            } else {
+                orderName = menuName[0];
+            }
+            portOnePayRequestMutation.mutate({
+                orderName: orderName,
+                totalAmount: totalAmount,
+            });
+        }
     };
 
     return (
@@ -180,9 +237,7 @@ function UsePointPhoneNumber(props) {
                 </div>
                 <div css={s.main}>
                     <div css={s.phoneNumberLayout}>
-                        <div css={s.phoneNumberInput}>
-                            {inputValue.join("")}
-                        </div>
+                        <div css={s.phoneNumberInput}>{inputValue}</div>
                         <table css={s.tableContainer}>
                             <tr>
                                 <td css={s.table}>
@@ -297,30 +352,22 @@ function UsePointPhoneNumber(props) {
                         </table>
                     </div>
                     <div css={s.pointSubmitButtonBox}>
-                        <button
-                            onClick={handleCheckClick}
-                            disabled={buttonMode === 2 ? true : false}
-                        >
+                        <button onClick={handlePhoneNumberSubmitClick}>
                             <FaCircleChevronRight />
                         </button>
                         Click!
                     </div>
                     <div css={s.usePoint}>
-                        <h1>현재 포인트 : {currentPoint}</h1>
-                        <h1>사용할 포인트 : {usePoint}</h1>
-                        <h1>
-                            남은 포인트 :{" "}
-                            {isNaN(currentPoint - usePoint)
-                                ? 0
-                                : currentPoint - usePoint}
-                        </h1>
-                        <h1>총 결제 금액 : {totalPrice}원</h1>
+                        <h1>현재 포인트 : {currentPoint}pt</h1>
+                        <h1>사용할 포인트 : {usePoint}pt</h1>
+                        <h1>남은 포인트 : {currentPoint - usePoint}pt</h1>
+                        <h1>총 결제 금액 : {totalAmount}원</h1>
                     </div>
                 </div>
                 <div css={s.buttonLayout}>
                     <div css={s.buttonBox}>
                         <button onClick={handleCancelClick}>취소하기</button>
-                        <button onClick={handleUsePointClick}>사용하기</button>
+                        <button onClick={handleUsePointClick}>결제하기</button>
                     </div>
                 </div>
             </div>
