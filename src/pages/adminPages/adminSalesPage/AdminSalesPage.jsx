@@ -13,7 +13,10 @@ import {
     YAxis,
 } from "recharts";
 import { useQuery } from "react-query";
-import { getSalesRequest } from "../../../apis/api/salesApi";
+import {
+    getPaymentsRequest,
+    getSalesRequest,
+} from "../../../apis/api/salesApi";
 import { useState } from "react";
 import { getMenuRequest } from "../../../apis/api/menuApi";
 import MenuButton from "../../../components/menuButton/MenuButton";
@@ -43,6 +46,21 @@ function AdminSalesPage() {
             console.log(error);
         },
     });
+
+    const paymentsQuery = useQuery(
+        ["paymentsQuery"],
+        () => getPaymentsRequest,
+        {
+            retry: 5,
+            refetchOnWindowFocus: false,
+            onSuccess: (response) => {
+                console.log(response.data);
+            },
+            onError: (error) => {
+                console.log(error);
+            },
+        }
+    );
     return (
         <AdminPageLayout>
             <div css={s.layout}>
