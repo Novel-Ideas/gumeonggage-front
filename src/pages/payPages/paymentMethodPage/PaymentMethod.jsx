@@ -13,9 +13,9 @@ function PaymentMethod() {
     const handleCancelClick = () => {
         navigate("/menu/menuall");
     };
-    const handleDutchPayClick = () => {
-        navigate("/menu/menuall/order/dutchpay");
-    };
+    // const handleDutchPayClick = () => {
+    //     navigate("/menu/menuall/order/dutchpay");
+    // };
 
     const handleOrderClick = () => {
         navigate("/menu/menuall/order/askpoint");
@@ -36,8 +36,8 @@ function PaymentMethod() {
                         </button>
                     </div>
                     <div css={s.methodLayout}>
-                        <button css={s.methodBox} onClick={handleDutchPayClick}>
-                            더치페이
+                        <button css={s.methodBox2} onClick={handleOrderClick} >
+                            <img src="https://blog.kakaocdn.net/dn/cEaPmw/btrcIUODymI/EBvA7nx7wVTcdLIrgiVsJK/img.jpg" alt="카카오페이" css={s.kakaoButton}/>
                         </button>
                     </div>
                 </div>

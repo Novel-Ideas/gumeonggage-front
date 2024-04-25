@@ -41,6 +41,7 @@ export const methodLayout = css`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
 `;
 
 export const methodBox = css`
@@ -60,6 +61,24 @@ export const methodBox = css`
         color: rgb(252, 10, 86);
     }
 `;
+export const methodBox2 = css`
+    border-radius: 30px;
+    width: 350px;
+    height: 250px;
+    font-weight: 600;
+    box-shadow: 5px 5px 5px #898989ff;
+`;
+
+export const kakaoButton = css`
+    position: absolute;
+    box-sizing: border-box;
+    width: 350px;
+    height: 250px;
+    border-radius: 30px;
+    right: 50px;
+    bottom: 110px;
+    border: 5px solid rgb(255, 230, 3);
+`
 
 export const buttonBox = css`
     height: 20%;
