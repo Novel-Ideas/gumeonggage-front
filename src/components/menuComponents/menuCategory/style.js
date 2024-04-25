@@ -32,7 +32,9 @@ export const categoryFont = css`
 
 export const categoryLayout = css`
     box-sizing: border-box;
+    width: 610px;
     display: flex;
     align-items: center;
     padding-bottom: 10px;
+    justify-content: space-between;
 `;
