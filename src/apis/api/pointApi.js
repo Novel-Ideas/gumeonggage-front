@@ -1,4 +1,4 @@
-import instance from "../utils/instance";
+import { instance } from "../utils/instance";
 
 export const pointCheckRequest = async (data) => {
     return await instance.get(`/point?phonenumber=${data}`);
