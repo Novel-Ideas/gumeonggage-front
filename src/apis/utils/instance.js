@@ -1,5 +1,4 @@
 import axios from "axios";
-import { getPaymentsRequest } from "../api/salesApi";
 
 export const instance = axios.create({
     baseURL: "http://localhost:8080",

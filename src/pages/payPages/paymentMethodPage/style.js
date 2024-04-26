@@ -78,7 +78,7 @@ export const kakaoButton = css`
     right: 50px;
     bottom: 110px;
     border: 5px solid rgb(255, 230, 3);
-`
+`;
 
 export const buttonBox = css`
     height: 20%;
