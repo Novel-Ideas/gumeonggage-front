@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getPaymentsRequest } from "../api/salesApi";
 
 export const instance = axios.create({
     baseURL: "http://localhost:8080",
@@ -14,31 +15,3 @@ export const portOneInstance = axios.create({
         Accept: "application/json",
     },
 });
-
-portOneInstance.interceptors.response.use(
-    (response) => response,
-    (error) => {
-        switch (error.response.status) {
-            case 401:
-                portOneInstance
-                    .post("/token/refresh", {
-                        refreshToken: localStorage.getItem(
-                            "PortOneRefreshToken"
-                        ),
-                    })
-                    .then((response) => {
-                        localStorage.setItem(
-                            "PortOneAccessToken",
-                            response.accessToken
-                        );
-                        localStorage.setItem(
-                            "PortOneRefreshToken",
-                            response.refreshToken
-                        );
-                    });
-                break;
-            default:
-        }
-        return Promise.reject(error);
-    }
-);

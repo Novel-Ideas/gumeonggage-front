@@ -52,12 +52,12 @@ function AdminSalesPage() {
         () => getPaymentsRequest,
         {
             retry: 5,
-            refetchOnWindowFocus: false,
+            refetchOnWindowFocus: true,
             onSuccess: (response) => {
                 console.log(response.data);
             },
             onError: (error) => {
-                console.log(error);
+                paymentsQuery.refetch();
             },
         }
     );

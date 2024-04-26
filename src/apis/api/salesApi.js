@@ -1,4 +1,3 @@
-import axios from "axios";
 import { instance, portOneInstance } from "../utils/instance";
 
 export const getSalesRequest = async () => {
@@ -8,11 +7,11 @@ export const getSalesRequest = async () => {
 export const getPaymentsRequest = async () => {
     return await portOneInstance.get("/payments", {
         headers: {
-            Authorization: localStorage.getItem("PortOneAccessToken"),
+            Authorization: `PortOne ${process.env.REACT_APP_PORTONE_API_SECRET_KEY}`,
         },
         data: {
             page: {
-                size: 5,
+                size: 40,
             },
             filter: {
                 storeId: process.env.REACT_APP_STORE_ID,
