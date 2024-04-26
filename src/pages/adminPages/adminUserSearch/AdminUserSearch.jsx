@@ -2,9 +2,9 @@
 import * as s from "./style";
 import { useState } from "react";
 import { useQuery } from "react-query";
-import { searchUserRequest } from "../../apis/api/searchUser";
-import AdminPageLayout from "../pageComponents/adminPageLayout/AdminPageLayout";
 import { FaCircle } from "react-icons/fa";
+import { searchUserRequest } from "../../../apis/api/searchUser";
+import AdminPageLayout from "../../../components/pageComponents/adminPageLayout/AdminPageLayout";
 
 function AdminUserSearch() {
     const [userList, setUserList] = useState([]);
