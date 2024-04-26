@@ -158,13 +158,13 @@ function AdminMenuUpdate({ menuList }) {
             text: "수정된 메뉴는 다시 되돌릴 수 없습니다. 신중하세요.",
             icon: "warning",
 
-            showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
-            confirmButtonColor: "#3085d6", // confrim 버튼 색깔 지정
-            cancelButtonColor: "#d33", // cancel 버튼 색깔 지정
-            confirmButtonText: "수정", // confirm 버튼 텍스트 지정
-            cancelButtonText: "취소", // cancel 버튼 텍스트 지정
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "수정",
+            cancelButtonText: "취소",
 
-            reverseButtons: true, // 버튼 순서 거꾸로
+            reverseButtons: true,
         }).then((result) => {
             if (result.isConfirmed) {
                 updateMenuMutation.mutate({
@@ -186,13 +186,13 @@ function AdminMenuUpdate({ menuList }) {
             text: "삭제된 메뉴는 다시 되돌릴 수 없습니다. 신중하세요.",
             icon: "warning",
 
-            showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
-            confirmButtonColor: "#3085d6", // confrim 버튼 색깔 지정
-            cancelButtonColor: "#d33", // cancel 버튼 색깔 지정
-            confirmButtonText: "삭제", // confirm 버튼 텍스트 지정
-            cancelButtonText: "취소", // cancel 버튼 텍스트 지정
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "삭제",
+            cancelButtonText: "취소",
 
-            reverseButtons: true, // 버튼 순서 거꾸로
+            reverseButtons: true,
         }).then((result) => {
             if (result.isConfirmed) {
                 deleteMenuMutation.mutate(parseInt(searchParams.get("menuId")));

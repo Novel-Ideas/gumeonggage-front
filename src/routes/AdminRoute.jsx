@@ -13,7 +13,7 @@ function AdminRoute(props) {
     return (
         <Routes>
             <Route path="/main" element={<AdminMainPage />} />
-            <Route path="/sale" element={<AdminSalesPage />} />
+            <Route path="/sale/*" element={<AdminSalesPage />} />
             <Route path="/add" element={<AdminMenuAdd />} />
             <Route path="/getmenu/*" element={<AdminMenuSearch />} />
             <Route path="/passwordedit" element={<PasswordEditPage />} />

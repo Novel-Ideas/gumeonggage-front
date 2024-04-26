@@ -13,14 +13,17 @@ import {
     YAxis,
 } from "recharts";
 import { useQuery } from "react-query";
-import { getSalesRequest } from "../../../apis/api/salesApi";
+import { getSalesRequest, searchSaleByMenuRequest } from "../../../apis/api/salesApi";
 import { useState } from "react";
 import { getMenuRequest } from "../../../apis/api/menuApi";
 import MenuButton from "../../../components/menuButton/MenuButton";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import AdminSaleByMenu from "../../../components/adminSaleByMenu/AdminSaleByMenu";
 
 function AdminSalesPage() {
     const [sales, setSales] = useState([]);
     const [menuList, setMenuList] = useState([]);
+    const navigate = useNavigate();
 
     const salesQuery = useQuery(["salesQuery"], getSalesRequest, {
         retry: 0,
@@ -40,9 +43,14 @@ function AdminSalesPage() {
             setMenuList(response.data);
         },
         onError: (error) => {
-            console.log(error);
+              console.log(error);
         },
     });
+
+    const handleMenuClick = id => {
+        navigate(`/admin/sale/menu?menuId=${id}`);
+    }
+
     return (
         <AdminPageLayout>
             <div css={s.layout}>
@@ -83,7 +91,7 @@ function AdminSalesPage() {
                     {menuList.map((menu, index) => (
                         <MenuButton
                             key={menu.menuId}
-                            // onClick={() => handleMenuClick(menu.menuId)}
+                            onClick={() => handleMenuClick(menu.menuId)}
                             menuName={menu.menuName}
                             price={menu.menuPrice}
                             cal={menu.menuCal}
@@ -91,6 +99,10 @@ function AdminSalesPage() {
                         />
                     ))}
                 </div>
+                <Routes>
+                    <Route path="/" element={<></>} />
+                    <Route path="/menu/*" element={<AdminSaleByMenu />} />
+                </Routes>
             </div>
         </AdminPageLayout>
     );
