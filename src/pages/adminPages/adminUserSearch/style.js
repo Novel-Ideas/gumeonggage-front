@@ -30,8 +30,7 @@ export const searchBoxLayout = css`
     display: flex;
     align-items: center;
     justify-content: center;
-    
-`
+`;
 
 export const searchBox = css`
     width: 80%;
@@ -39,7 +38,7 @@ export const searchBox = css`
     border: 1px solid #4d4d4d;
     border-radius: 30px;
     background-color: white;
-`
+`;
 
 export const top = css`
     background-color: #fafafa;
@@ -50,20 +49,20 @@ export const top = css`
     display: flex;
     align-items: center;
     border-bottom: 1px solid #4d4d4d;
-`
+`;
 
 export const circle = css`
     padding-left: 13px;
     &:nth-of-type(1) {
-        color: red
-}
+        color: red;
+    }
     &:nth-of-type(2) {
-        color: gold
-}
+        color: gold;
+    }
     &:nth-of-type(3) {
-        color: green
-}
-`
+        color: green;
+    }
+`;
 export const searchLayout = css`
     display: flex;
     align-items: center;
@@ -111,26 +110,27 @@ export const askTitle = css`
     & > li:nth-of-type(5) {
         width: 25%;
     }
-
+    & > li:nth-of-type(6) {
+        width: 15%;
+    }
 `;
-
 
 export const listLayout = css`
     width: 100%;
     height: 90%;
     overflow: auto;
     &::-webkit-scrollbar {
-    width: 13px;
-}
+        width: 13px;
+    }
     &::-webkit-scrollbar-track {
-    background: transparent;
-}
+        background: transparent;
+    }
     &::-webkit-scrollbar-thumb {
-    background: #aae0ff;
-    background-clip: padding-box;
-    border: 3px solid transparent;
-    border-radius: 8px;
-}
+        background: #aae0ff;
+        background-clip: padding-box;
+        border: 3px solid transparent;
+        border-radius: 8px;
+    }
 `;
 
 export const askList = css`
@@ -142,7 +142,7 @@ export const askList = css`
     height: 8%;
     color: #333;
     padding-left: 0;
-    
+
     & > li {
         text-align: center;
     }
@@ -161,5 +161,19 @@ export const askList = css`
     }
     & > li:nth-of-type(5) {
         width: 25%;
+    }
+    & > li:nth-of-type(6) {
+        width: 15%;
+        display: flex;
+        justify-content: center;
+        & > button {
+            font-size: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            background-color: transparent;
+            color: red;
+        }
     }
 `;

@@ -49,9 +49,12 @@ function AdminFeedbackPage(props) {
                                     <li>날짜</li>
                                 </ul>
                                 <div css={s.listLayout}>
-                                    {feedbackList.map((feedback) => (
-                                        <ul css={s.askList}>
-                                            <li>{feedback.feedbackId}</li>
+                                    {feedbackList.map((feedback, index) => (
+                                        <ul
+                                            key={feedback.feedbackId}
+                                            css={s.askList}
+                                        >
+                                            <li>{index + 1}</li>
                                             <li>
                                                 {feedback.answer1 === 1
                                                     ? "맛없음"
