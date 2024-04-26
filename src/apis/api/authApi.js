@@ -25,4 +25,4 @@ export const oAuth2MergeRequest = async (data) => {
 
 export const deleteUserRequest = async(userId) =>{
     return await instance.delete(`/auth/user/${userId}`);
-}
+};

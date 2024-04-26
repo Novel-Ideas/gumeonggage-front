@@ -6,6 +6,9 @@ import { searchUserRequest } from "../../../apis/api/searchUser";
 import { FaCircle } from "react-icons/fa";
 import AdminPageLayout from "../../../components/pageComponents/adminPageLayout/AdminPageLayout";
 import { deleteUserRequest } from "../../../apis/api/authApi";
+import { useQuery } from "react-query";
+import { FaCircle } from "react-icons/fa";
+import { searchUserRequest } from "../../../apis/api/searchUser";
 
 function AdminUserSearch() {
     const [userList, setUserList] = useState([]);

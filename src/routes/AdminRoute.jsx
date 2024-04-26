@@ -4,10 +4,10 @@ import AdminMainPage from "../pages/adminPages/adminMainPage/AdminMainPage";
 import AdminMenuSearch from "../pages/adminPages/adminMenuSearch/AdminMenuSearch";
 import AdminFeedbackPage from "../pages/adminPages/adminFeedbackPage/AdminFeedbackPage";
 import PasswordEditPage from "../pages/passwordEditPage/PasswordEditPage";
+import AdminUserSearch from "../pages/adminPages/adminUserSearch/AdminUserSearch";
 import OAuth2SignupPage from "../pages/oAuth2Pages/oAuth2SignupPage/OAuth2SignupPage";
 import AdminLogoPage from "../pages/adminPages/adminLogoPage/AdminLogoPage";
 import AdminSalesPage from "../pages/adminPages/adminSalesPage/AdminSalesPage";
-import AdminUserSearch from "../pages/adminPages/adminUserSearch/AdminUserSearch";
 
 function AdminRoute(props) {
     return (
