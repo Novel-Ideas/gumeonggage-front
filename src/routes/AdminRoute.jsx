@@ -8,12 +8,14 @@ import AdminUserSearch from "../pages/adminPages/adminUserSearch/AdminUserSearch
 import OAuth2SignupPage from "../pages/oAuth2Pages/oAuth2SignupPage/OAuth2SignupPage";
 import AdminLogoPage from "../pages/adminPages/adminLogoPage/AdminLogoPage";
 import AdminSalesPage from "../pages/adminPages/adminSalesPage/AdminSalesPage";
+import AdminPayPage from "../pages/adminPages/adminPayPage/AdminPayPage";
 
 function AdminRoute(props) {
     return (
         <Routes>
             <Route path="/main" element={<AdminMainPage />} />
             <Route path="/sale" element={<AdminSalesPage />} />
+            <Route path="/pay" element={<AdminPayPage />} />
             <Route path="/add" element={<AdminMenuAdd />} />
             <Route path="/getmenu/*" element={<AdminMenuSearch />} />
             <Route path="/passwordedit" element={<PasswordEditPage />} />

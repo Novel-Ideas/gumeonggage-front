@@ -19,6 +19,12 @@ function SideBar() {
                             매출 조회
                         </Link>
                     </div>
+                    <div css={s.salesLayout}>
+                        <h1 css={s.font}>결제</h1>
+                        <Link to={"/admin/pay"} css={s.link}>
+                            결제 내역 조회
+                        </Link>
+                    </div>
                     <div css={s.menuLayout}>
                         <h1 css={s.font}>메뉴</h1>
                         <Link to={"/admin/add"} css={s.link}>
