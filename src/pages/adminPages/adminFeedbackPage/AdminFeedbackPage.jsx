@@ -24,6 +24,8 @@ function AdminFeedbackPage(props) {
         }
     );
 
+    console.log(feedbackList);
+
     return (
         <AdminPageLayout>
             <div css={s.layout}>

@@ -47,20 +47,7 @@ function AdminSalesPage() {
         },
     });
 
-    const paymentsQuery = useQuery(
-        ["paymentsQuery"],
-        () => getPaymentsRequest,
-        {
-            retry: 5,
-            refetchOnWindowFocus: true,
-            onSuccess: (response) => {
-                console.log(response.data);
-            },
-            onError: (error) => {
-                paymentsQuery.refetch();
-            },
-        }
-    );
+    
     return (
         <AdminPageLayout>
             <div css={s.layout}>
