@@ -45,47 +45,40 @@ export const methodLayout = css`
 `;
 
 export const methodBox = css`
+    box-sizing: border-box;
+    border: 2px solid rgb(252, 10, 86);
     border-radius: 30px;
+    background-color: rgb(252, 10, 86);
     width: 350px;
     height: 250px;
-    box-shadow: 5px 5px 5px 5px #898989ff;
-    display: flex;
-    background-color: white;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    border: none;
+    font-size: 50px;
+    color: white;
+    font-weight: 600;
+    box-shadow: 5px 5px 5px #898989ff;
 
-    & > img {
-        height: 90%;
+    &:active {
+        background-color: white;
+        color: rgb(252, 10, 86);
     }
 `;
 export const methodBox2 = css`
     border-radius: 30px;
     width: 350px;
     height: 250px;
-    box-shadow: 5px 5px 5px 5px #898989ff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    border: 5px solid rgb(255, 230, 3);
-
-    & > img {
-        height: 110%;
-    }
+    font-weight: 600;
+    box-shadow: 5px 5px 5px #898989ff;
 `;
 
-// export const kakaoButton = css`
-//     position: absolute;
-//     box-sizing: border-box;
-//     width: 350px;
-//     height: 250px;
-//     border-radius: 30px;
-//     right: 50px;
-//     bottom: 110px;
-//     border: 5px solid rgb(255, 230, 3);
-// `
+export const kakaoButton = css`
+    position: absolute;
+    box-sizing: border-box;
+    width: 350px;
+    height: 250px;
+    border-radius: 30px;
+    right: 50px;
+    bottom: 110px;
+    border: 5px solid rgb(255, 230, 3);
+`;
 
 export const buttonBox = css`
     height: 20%;
