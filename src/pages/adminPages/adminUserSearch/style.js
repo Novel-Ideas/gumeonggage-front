@@ -111,6 +111,9 @@ export const askTitle = css`
     & > li:nth-of-type(5) {
         width: 25%;
     }
+    & > li:nth-of-type(6) {
+        width: 15%;
+    }
 
 `;
 
@@ -161,5 +164,8 @@ export const askList = css`
     }
     & > li:nth-of-type(5) {
         width: 25%;
+    }
+    & > li:nth-of-type(6) {
+        width: 15%;
     }
 `;

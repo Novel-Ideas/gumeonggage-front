@@ -22,3 +22,7 @@ export const oAuth2SignupRequest = async (data) => {
 export const oAuth2MergeRequest = async (data) => {
     return await instance.post("/admin/auth/oauth2/merge", data);
 };
+
+export const deleteUserRequest = async(userId) =>{
+    return await instance.delete(`/auth/user/${userId}`);
+};
