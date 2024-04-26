@@ -14,7 +14,7 @@ function AdminRoute(props) {
     return (
         <Routes>
             <Route path="/main" element={<AdminMainPage />} />
-            <Route path="/sale" element={<AdminSalesPage />} />
+            <Route path="/sale/*" element={<AdminSalesPage />} />
             <Route path="/pay" element={<AdminPayPage />} />
             <Route path="/add" element={<AdminMenuAdd />} />
             <Route path="/getmenu/*" element={<AdminMenuSearch />} />

@@ -5,7 +5,6 @@ import { easyPayListState } from "../../atoms/easyPayListAtom";
 export const getSalesRequest = async () => {
     return await instance.get("/admin/sales");
 };
-
 export const getPaymentsRequest = async () => {
     return await portOneInstance
         .get("/payments", {

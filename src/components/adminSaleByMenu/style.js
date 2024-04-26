@@ -1,15 +1,9 @@
 import { css } from "@emotion/react";
 
 export const layout = css`
-    z-index: 99;
+    z-index: 90;
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow: auto;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
 `;
 
 export const header = css`
@@ -25,15 +19,23 @@ export const title = css`
     border-bottom: 2px solid #222;
     color: #222;
     width: 90%;
-    height: 40%;
+    height: 30%;
     font-size: 40px;
     font-weight: 700;
 `;
 
-export const salesCharts = css`
+export const main = css`
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
+export const chartLayout = css`
     margin-bottom: 10px;
     width: 100%;
-    height: 40%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,28 +48,35 @@ export const chartBox = css`
     border: 1px solid #dbdbdb;
     border-radius: 15px;
     width: 90%;
-    height: 300px;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
 `;
 
-export const line = css`
-    width: 90%;
-    margin-top: 30px;
-    box-sizing: border-box;
-    border-top: 2px solid #22222255;
+export const buttonLayout = css`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
 `;
 
-export const menuList = css`
-    height: 30%;
-    box-sizing: border-box;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding-left: 80px;
-    margin-top: 40px;
-    gap: 20px;
+export const cancel = css`
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    margin-top: 20px;
+    background-color: rgb(0, 153, 255);
+    font-size: 30px;
+    font-weight: 600;
+    color: white;
+    border: 2px solid rgb(0, 153, 255);
+    border-radius: 15px;
+    padding: 10px 30px;
+
+    &:active {
+        background-color: white;
+        color: rgb(0, 153, 255);
+    }
+
 `;
