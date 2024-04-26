@@ -31,6 +31,7 @@ function AdminMainPage() {
         retry: 0,
         refetchOnWindowFocus: false,
         onSuccess: (response) => {
+            console.log(response.data);
             setSales(() => response.data);
         },
         onError: (error) => {
@@ -42,23 +43,25 @@ function AdminMainPage() {
         retry: 0,
         refetchOnWindowFocus: false,
         onSuccess: (response) => {
-            console.log(response.data)
+            console.log(response.data);
             setRanking(() => response.data);
         },
         onError: (error) => {
             console.log("rankingQuery", error);
         },
     });
-  
+
     const handlebackButtonClick = () => {
         navigate("/selectmenu");
     };
-  
+
     return (
         <AdminPageLayout>
             <div css={s.layout}>
                 <div css={s.buttonLayout}>
-                    <button css={s.backButton} onClick={handlebackButtonClick}><TbArrowBigLeftFilled /></button>
+                    <button css={s.backButton} onClick={handlebackButtonClick}>
+                        <TbArrowBigLeftFilled />
+                    </button>
                 </div>
                 <div css={s.boxLayout}>
                     <div css={s.fontLayout}>
@@ -74,7 +77,7 @@ function AdminMainPage() {
                                     data={sales}
                                 >
                                     <XAxis dataKey="month" />
-                                    <YAxis name="aocnf" />
+                                    <YAxis />
                                     <Tooltip />
                                     <Legend />
                                     <CartesianGrid stroke="#f5f5f5" />

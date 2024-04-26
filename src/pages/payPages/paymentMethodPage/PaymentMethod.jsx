@@ -1,6 +1,5 @@
 /** @jsxImportSource @emotion/react */
 import * as s from "./style";
-import DutchPayPage from "../dutchPayPage/DutchPayPage";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import PageModal from "../../../components/pageComponents/pageModal/PageModal";
 import PointAccumulation from "../../pointPage/pointAccumulation/PointAccumulation";
@@ -13,9 +12,6 @@ function PaymentMethod() {
     const handleCancelClick = () => {
         navigate("/menu/menuall");
     };
-    // const handleDutchPayClick = () => {
-    //     navigate("/menu/menuall/order/dutchpay");
-    // };
 
     const handleOrderClick = () => {
         navigate("/menu/menuall/order/askpoint");
@@ -36,8 +32,12 @@ function PaymentMethod() {
                         </button>
                     </div>
                     <div css={s.methodLayout}>
-                        <button css={s.methodBox2} onClick={handleOrderClick} >
-                            <img src="https://blog.kakaocdn.net/dn/cEaPmw/btrcIUODymI/EBvA7nx7wVTcdLIrgiVsJK/img.jpg" alt="카카오페이" css={s.kakaoButton}/>
+                        <button css={s.methodBox2} onClick={handleOrderClick}>
+                            <img
+                                src="https://blog.kakaocdn.net/dn/cEaPmw/btrcIUODymI/EBvA7nx7wVTcdLIrgiVsJK/img.jpg"
+                                alt="카카오페이"
+                                css={s.kakaoButton}
+                            />
                         </button>
                     </div>
                 </div>
@@ -54,7 +54,6 @@ function PaymentMethod() {
                         path="/usepointinput"
                         element={<UsePointPhoneNumber />}
                     />
-                    <Route path="/dutchpay" element={<DutchPayPage />} />
                 </Routes>
             </div>
         </PageModal>

@@ -24,14 +24,20 @@ export const title = css`
     font-weight: 700;
 `;
 
+export const main = css`
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
 export const searchBoxLayout = css`
     width: 100%;
     height: 75%;
     display: flex;
     align-items: center;
     justify-content: center;
-    
-`
+`;
 
 export const searchBox = css`
     width: 80%;
@@ -39,7 +45,7 @@ export const searchBox = css`
     border: 1px solid #4d4d4d;
     border-radius: 30px;
     background-color: white;
-`
+`;
 
 export const top = css`
     background-color: #fafafa;
@@ -50,20 +56,20 @@ export const top = css`
     display: flex;
     align-items: center;
     border-bottom: 1px solid #4d4d4d;
-`
+`;
 
 export const circle = css`
     padding-left: 13px;
     &:nth-of-type(1) {
-        color: red
-}
+        color: red;
+    }
     &:nth-of-type(2) {
-        color: gold
-}
+        color: gold;
+    }
     &:nth-of-type(3) {
-        color: green
-}
-`
+        color: green;
+    }
+`;
 export const searchLayout = css`
     display: flex;
     align-items: center;
@@ -97,10 +103,11 @@ export const askTitle = css`
     }
 
     & > li:nth-of-type(1) {
-        width: 15%;
+        width: 10%;
+        padding-left: 15px;
     }
     & > li:nth-of-type(2) {
-        width: 20%;
+        width: 40%;
     }
     & > li:nth-of-type(3) {
         width: 20%;
@@ -109,28 +116,9 @@ export const askTitle = css`
         width: 20%;
     }
     & > li:nth-of-type(5) {
-        width: 25%;
+        width: 30%;
+        padding-right: 20px;
     }
-
-`;
-
-
-export const listLayout = css`
-    width: 100%;
-    height: 90%;
-    overflow: auto;
-    &::-webkit-scrollbar {
-    width: 13px;
-}
-    &::-webkit-scrollbar-track {
-    background: transparent;
-}
-    &::-webkit-scrollbar-thumb {
-    background: #aae0ff;
-    background-clip: padding-box;
-    border: 3px solid transparent;
-    border-radius: 8px;
-}
 `;
 
 export const askList = css`
@@ -142,13 +130,13 @@ export const askList = css`
     height: 8%;
     color: #333;
     padding-left: 0;
-    
+
     & > li {
         text-align: center;
     }
 
     & > li:nth-of-type(1) {
-        width: 15%;
+        width: 10%;
     }
     & > li:nth-of-type(2) {
         width: 20%;
@@ -160,6 +148,57 @@ export const askList = css`
         width: 20%;
     }
     & > li:nth-of-type(5) {
+        width: 30%;
+        padding-right: 20px;
+    }
+`;
+
+export const listLayout = css`
+    width: 100%;
+    height: 90%;
+`;
+
+export const listContainer = css`
+    width: 100%;
+    height: 30px;
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+    margin-right: 10px;
+
+    /* overflow: auto;
+    &::-webkit-scrollbar {
+        width: 13px;
+    }
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: #aae0ff;
+        background-clip: padding-box;
+        border: 3px solid transparent;
+        border-radius: 8px;
+    } */
+    & > li {
+        text-align: center;
+    }
+
+    & > li:nth-of-type(1) {
+        width: 10%;
+        padding-left: 10px;
+        color:
+    }
+    & > li:nth-of-type(2) {
+        width: 30%;
+    }
+    & > li:nth-of-type(3) {
+        width: 20%;
+    }
+    & > li:nth-of-type(4) {
+        width: 15%;
+    }
+    & > li:nth-of-type(5) {
         width: 25%;
+        padding-right: 15px;
     }
 `;
