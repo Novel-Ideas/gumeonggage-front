@@ -13,12 +13,17 @@ import {
     YAxis,
 } from "recharts";
 import { useQuery } from "react-query";
-import { getSalesRequest, searchSaleByMenuRequest } from "../../../apis/api/salesApi";
+import {
+    getSalesRequest,
+    searchSaleByMenuRequest,
+} from "../../../apis/api/salesApi";
 import { useState } from "react";
 import { getMenuRequest } from "../../../apis/api/menuApi";
 import MenuButton from "../../../components/menuButton/MenuButton";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import AdminSaleByMenu from "../../../components/adminSaleByMenu/AdminSaleByMenu";
+import SwitchExample from "../../../components/toggleSwitch/ToggleSwitch";
+import ToggleSwitch from "../../../components/toggleSwitch/ToggleSwitch";
 
 function AdminSalesPage() {
     const [sales, setSales] = useState([]);
@@ -43,13 +48,13 @@ function AdminSalesPage() {
             setMenuList(response.data);
         },
         onError: (error) => {
-              console.log(error);
+            console.log(error);
         },
     });
 
-    const handleMenuClick = id => {
+    const handleMenuClick = (id) => {
         navigate(`/admin/sale/menu?menuId=${id}`);
-    }
+    };
 
     return (
         <AdminPageLayout>
@@ -58,15 +63,18 @@ function AdminSalesPage() {
                     <div css={s.title}>매출 조회</div>
                 </div>
                 <div css={s.salesCharts}>
+                    <ToggleSwitch />
                     <div css={s.chartBox}>
-                        <ResponsiveContainer width={800} height="90%">
-                            <ComposedChart
-                                // width={730}
-                                // height={250}
-                                data={sales}
-                            >
+                        <ResponsiveContainer width="100%" height="90%">
+                            <ComposedChart data={sales}>
                                 <XAxis dataKey="month" />
-                                <YAxis name="aocnf" />
+                                <YAxis
+                                    width={100}
+                                    tickCount={7}
+                                    type="number"
+                                    domain={[0, "auto"]}
+                                    allowDataOverflow
+                                />
                                 <Tooltip />
                                 <Legend />
                                 <CartesianGrid stroke="#f5f5f5" />
