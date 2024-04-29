@@ -6,21 +6,11 @@ import { useAuthCheck } from "../../../hooks/useAuthCheck";
 import { useState } from "react";
 import { useQuery } from "react-query";
 import { getMenuRequest } from "../../../apis/api/menuApi";
-import {
-    Bar,
-    CartesianGrid,
-    ComposedChart,
-    Legend,
-    Line,
-    ResponsiveContainer,
-    Tooltip,
-    XAxis,
-    YAxis,
-} from "recharts";
 import { getSalesRequest } from "../../../apis/api/salesApi";
 import { TbArrowBigLeftFilled } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
 import AdminMainPageFeedback from "../../../components/adminMainPageFeedback/AdminMainPageFeedback";
+import AdminSalesChart from "../../../components/adminSalesChart/AdminSalesChart";
 
 function AdminMainPage() {
     useAuthCheck();
@@ -70,33 +60,14 @@ function AdminMainPage() {
                     </div>
                     <div css={s.boxContainer}>
                         <div css={s.categoryBox}>
-                            <ResponsiveContainer width="100%" height="90%">
-                                <ComposedChart data={sales}>
-                                    <XAxis dataKey="month" />
-                                    <YAxis
-                                        width={100}
-                                        tickCount={7}
-                                        type="number"
-                                        domain={[0, "auto"]}
-                                        allowDataOverflow
-                                    />
-                                    <Tooltip />
-                                    <Legend />
-                                    <CartesianGrid stroke="#f5f5f5" />
-                                    <Bar
-                                        dataKey="totalSales"
-                                        barSize={20}
-                                        name="매출"
-                                        fill="#8abdf3"
-                                    />
-                                    <Line
-                                        type="monotone"
-                                        dataKey="totalSales"
-                                        stroke="#ff7300"
-                                        legendType="none"
-                                    />
-                                </ComposedChart>
-                            </ResponsiveContainer>
+                            <AdminSalesChart
+                                sales={sales}
+                                month={"month"}
+                                keyName={"총 매출"}
+                                dataKey={"totalSales"}
+                                barColor={"#8abdf3"}
+                                lineColor={"#ff7300"}
+                            />
                         </div>
                     </div>
                 </div>
