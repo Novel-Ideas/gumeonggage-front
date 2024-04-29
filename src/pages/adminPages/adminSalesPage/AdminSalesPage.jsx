@@ -3,7 +3,8 @@ import * as s from "./style";
 import AdminPageLayout from "../../../components/pageComponents/adminPageLayout/AdminPageLayout";
 import { useQuery } from "react-query";
 import { getSalesRequest } from "../../../apis/api/salesApi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Select from "react-select";
 import { getMenuRequest } from "../../../apis/api/menuApi";
 import MenuButton from "../../../components/menuButton/MenuButton";
 import { Route, Routes, useNavigate } from "react-router-dom";
@@ -17,13 +18,37 @@ function AdminSalesPage() {
     const [sales, setSales] = useState([]);
     const [menuList, setMenuList] = useState([]);
     const [salesMode, setSalesMode] = useRecoilState(salesModeState);
+    const [yearOptions, setYearOptions] = useState([]);
+    const [year, setYear] = useState();
+    const [salesData, setSalesData] = useState([]);
     const navigate = useNavigate();
-    
+
+    useEffect(() => {
+        setSalesData(() => sales.filter((sales) => sales.year === year.value));
+    }, [year]);
+
+    useEffect(() => {
+        let maxYear = -Infinity; // 최대값을 저장할 변수를 음수 무한대로 초기화
+
+        sales.forEach((item) => {
+            if (item.year > maxYear) {
+                maxYear = item.year; // 현재 year 속성이 최대값보다 크면 최대값을 업데이트
+            }
+        });
+        setYear(() => ({
+            value: maxYear,
+            label: maxYear,
+        }));
+    }, [sales]);
+
     const salesQuery = useQuery(["salesQuery"], getSalesRequest, {
         retry: 0,
         refetchOnWindowFocus: false,
         onSuccess: (response) => {
             setSales(() => response.data);
+            response.data.map((data) =>
+                setYearOptions((prev) => [...prev, data.year])
+            );
         },
         onError: (error) => {
             console.log("salesQuery", error);
@@ -45,6 +70,10 @@ function AdminSalesPage() {
         navigate(`/admin/sale/menu?menuId=${id}`);
     };
 
+    const handleYearOptionsOnChange = (value) => {
+        setYear(() => value);
+    };
+
     return (
         <AdminPageLayout>
             <div css={s.layout}>
@@ -53,14 +82,34 @@ function AdminSalesPage() {
                 </div>
                 <div css={s.salesCharts}>
                     <div css={s.toggleSwitch}>
-                        <div>총 매출</div>
-                        <ToggleSwitch />
-                        <div>총 주문수</div>
+                        <div>
+                            <div>총 매출</div>
+                            <ToggleSwitch />
+                            <div>총 주문 수</div>
+                        </div>
+                        <Select
+                            options={[...new Set(yearOptions)].map((year) => ({
+                                label: year,
+                                value: year,
+                            }))}
+                            value={year}
+                            onChange={handleYearOptionsOnChange}
+                            placeholder="연도"
+                            styles={{
+                                control: (baseStyles, state) => ({
+                                    ...baseStyles,
+                                    border: state.isFocused ? "none" : "none",
+                                    // borderBottom: "2px solid #222",
+                                    backgroundColor: "transparent",
+                                    fontSize: "20px",
+                                }),
+                            }}
+                        />
                     </div>
                     <div css={s.chartBox}>
                         {salesMode ? (
                             <AdminSalesChart
-                                sales={sales}
+                                sales={salesData}
                                 month={"month"}
                                 keyName={"총 매출"}
                                 dataKey={"totalSales"}
@@ -69,7 +118,7 @@ function AdminSalesPage() {
                             />
                         ) : (
                             <AdminSalesChart
-                                sales={sales}
+                                sales={salesData}
                                 month={"month"}
                                 keyName={"총 주문 수"}
                                 dataKey={"orderCount"}

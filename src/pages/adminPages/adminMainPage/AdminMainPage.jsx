@@ -3,7 +3,7 @@ import * as s from "./style";
 import AdminPageLayout from "../../../components/pageComponents/adminPageLayout/AdminPageLayout";
 import AdminMainPageTop3 from "../../../components/adminMainPageTop3/AdminMainPageTop3";
 import { useAuthCheck } from "../../../hooks/useAuthCheck";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { getMenuRequest } from "../../../apis/api/menuApi";
 import { getSalesRequest } from "../../../apis/api/salesApi";
@@ -16,12 +16,24 @@ function AdminMainPage() {
     useAuthCheck();
     const [ranking, setRanking] = useState([]);
     const [sales, setSales] = useState([]);
+    const [salesData, setSalesData] = useState([]);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        let maxYear = -Infinity; // 최대값을 저장할 변수를 음수 무한대로 초기화
+
+        sales.forEach((item) => {
+            if (item.year > maxYear) {
+                maxYear = item.year; // 현재 year 속성이 최대값보다 크면 최대값을 업데이트
+            }
+        });
+        setSalesData(() => sales.filter((sales) => sales.year === 2024));
+    }, [sales]);
+
     const salesQuery = useQuery(["salesQuery"], getSalesRequest, {
         retry: 0,
         refetchOnWindowFocus: false,
         onSuccess: (response) => {
-            console.log(response.data);
             setSales(() => response.data);
         },
         onError: (error) => {
@@ -33,7 +45,6 @@ function AdminMainPage() {
         retry: 0,
         refetchOnWindowFocus: false,
         onSuccess: (response) => {
-            console.log(response.data);
             setRanking(() => response.data);
         },
         onError: (error) => {
@@ -61,7 +72,7 @@ function AdminMainPage() {
                     <div css={s.boxContainer}>
                         <div css={s.categoryBox}>
                             <AdminSalesChart
-                                sales={sales}
+                                sales={salesData}
                                 month={"month"}
                                 keyName={"총 매출"}
                                 dataKey={"totalSales"}
