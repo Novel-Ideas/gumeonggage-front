@@ -54,7 +54,7 @@ function AdminSalesPage() {
             console.log("salesQuery", error);
         },
     });
-    
+
     const menuQuery = useQuery(["menuQuery"], () => getMenuRequest(1), {
         retry: 0,
         refetchOnWindowFocus: false,
@@ -67,12 +67,14 @@ function AdminSalesPage() {
     });
 
     const handleMenuClick = (id) => {
-        navigate(`/admin/sale/menu?menuId=${id}`)
+        navigate(`/admin/sale/menu?menuId=${id}`);
     };
 
     const handleYearOptionsOnChange = (value) => {
         setYear(() => value);
     };
+
+    console.log(menuList);
 
     return (
         <AdminPageLayout>
@@ -143,7 +145,10 @@ function AdminSalesPage() {
                 </div>
                 <Routes>
                     <Route path="/" element={<></>} />
-                    <Route path="/menu/*" element={<AdminSaleByMenu />} />
+                    <Route
+                        path="/menu/*"
+                        element={<AdminSaleByMenu menuList={menuList} />}
+                    />
                 </Routes>
             </div>
         </AdminPageLayout>
