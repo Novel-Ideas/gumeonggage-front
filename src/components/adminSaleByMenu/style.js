@@ -48,11 +48,65 @@ export const chartBox = css`
     border: 1px solid #dbdbdb;
     border-radius: 15px;
     width: 90%;
-    height: 100vh;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 `;
+
+export const inputBox = css`
+display: flex;
+width: 100%;
+height: 100%;
+display: flex;
+/* align-items: center; */
+justify-content: center;
+`
+
+export const input = css`
+    width: 70%;
+    height: 13%;
+
+    & > input {
+        box-sizing: border-box;
+        background-color: transparent;
+        width: 100%;
+        height: 100%;
+        outline: none;
+        border: none;
+        border-bottom: 2px solid #222;
+        font-size: 25px;
+        padding-left: 10px;
+    }
+
+    /* & > span {
+        box-sizing: border-box;
+        background-color: transparent;
+        width: 100%;
+        height: 100%;
+        outline: none;
+        border: none;
+        border-bottom: 2px solid #222;
+        font-size: 25px;
+        padding-left: 10px;
+        display: flex;
+        align-items: center;
+    } */
+
+    /* & > span > input {
+        border: none;
+        outline: none;
+        width: 90%;
+        height: 90%;
+    }
+
+    &:nth-of-type(5) {
+        display: flex;
+        align-items: center;
+        position: relative;
+    } */
+`;
+
 
 export const buttonLayout = css`
     display: flex;
