@@ -17,7 +17,7 @@ function PlayRecPage() {
             <div css={s.layout}>
                 <div css={s.textBox}>
                     <h1 css={s.highlightText}>
-                        후식 <span css={s.recText}>추천 받기</span>
+                        관광지 <span css={s.recText}>추천 받기</span>
                     </h1>
                 </div>
                 <div css={s.buttonBox}>

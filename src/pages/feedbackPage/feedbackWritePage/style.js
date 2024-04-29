@@ -79,17 +79,17 @@ export const checkButton = css`
     margin-top: 30px;
     font-size: 30px;
     font-weight: 600;
-    color: white;
+    color: rgb(252, 10, 86);
     border-radius: 10px;
     border: 2px solid rgb(252, 10, 86);
     padding: 10px 200px;
-    background-color: rgb(252, 10, 86);
+    background-color:  white;
     box-shadow: 5px 5px 5px #898989ff;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
 
     &:hover {
-        background-color: white;
-        color: rgb(252, 10, 86);
+        background-color: rgb(252, 10, 86);
+        color: white;
     }
 `;
