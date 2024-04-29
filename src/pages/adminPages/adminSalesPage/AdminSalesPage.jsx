@@ -1,41 +1,54 @@
 /**@jsxImportSource @emotion/react */
 import * as s from "./style";
 import AdminPageLayout from "../../../components/pageComponents/adminPageLayout/AdminPageLayout";
-import {
-    Bar,
-    CartesianGrid,
-    ComposedChart,
-    Legend,
-    Line,
-    ResponsiveContainer,
-    Tooltip,
-    XAxis,
-    YAxis,
-} from "recharts";
 import { useQuery } from "react-query";
-import {
-    getSalesRequest,
-    searchSaleByMenuRequest,
-} from "../../../apis/api/salesApi";
-import { useState } from "react";
+import { getSalesRequest } from "../../../apis/api/salesApi";
+import { useEffect, useState } from "react";
+import Select from "react-select";
 import { getMenuRequest } from "../../../apis/api/menuApi";
 import MenuButton from "../../../components/menuButton/MenuButton";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import AdminSaleByMenu from "../../../components/adminSaleByMenu/AdminSaleByMenu";
-import SwitchExample from "../../../components/toggleSwitch/ToggleSwitch";
 import ToggleSwitch from "../../../components/toggleSwitch/ToggleSwitch";
+import { useRecoilState } from "recoil";
+import { salesModeState } from "../../../atoms/salesModeAtom";
+import AdminSalesChart from "../../../components/adminSalesChart/AdminSalesChart";
 
 function AdminSalesPage() {
     const [sales, setSales] = useState([]);
     const [menuList, setMenuList] = useState([]);
+    const [salesMode, setSalesMode] = useRecoilState(salesModeState);
+    const [yearOptions, setYearOptions] = useState([]);
+    const [year, setYear] = useState();
+    const [salesData, setSalesData] = useState([]);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        setSalesData(() => sales.filter((sales) => sales.year === year.value));
+    }, [year]);
+
+    useEffect(() => {
+        let maxYear = -Infinity; // 최대값을 저장할 변수를 음수 무한대로 초기화
+
+        sales.forEach((item) => {
+            if (item.year > maxYear) {
+                maxYear = item.year; // 현재 year 속성이 최대값보다 크면 최대값을 업데이트
+            }
+        });
+        setYear(() => ({
+            value: maxYear,
+            label: maxYear,
+        }));
+    }, [sales]);
 
     const salesQuery = useQuery(["salesQuery"], getSalesRequest, {
         retry: 0,
         refetchOnWindowFocus: false,
         onSuccess: (response) => {
             setSales(() => response.data);
-            console.log(response.data)
+            response.data.map((data) =>
+                setYearOptions((prev) => [...prev, data.year])
+            );
         },
         onError: (error) => {
             console.log("salesQuery", error);
@@ -58,6 +71,10 @@ function AdminSalesPage() {
         navigate(`/admin/sale/menu?menuId=${id}`)
     };
 
+    const handleYearOptionsOnChange = (value) => {
+        setYear(() => value);
+    };
+
     return (
         <AdminPageLayout>
             <div css={s.layout}>
@@ -65,35 +82,51 @@ function AdminSalesPage() {
                     <div css={s.title}>매출 조회</div>
                 </div>
                 <div css={s.salesCharts}>
-                    <ToggleSwitch />
+                    <div css={s.toggleSwitch}>
+                        <div>
+                            <div>총 매출</div>
+                            <ToggleSwitch />
+                            <div>총 주문 수</div>
+                        </div>
+                        <Select
+                            options={[...new Set(yearOptions)].map((year) => ({
+                                label: year,
+                                value: year,
+                            }))}
+                            value={year}
+                            onChange={handleYearOptionsOnChange}
+                            placeholder="연도"
+                            styles={{
+                                control: (baseStyles, state) => ({
+                                    ...baseStyles,
+                                    border: state.isFocused ? "none" : "none",
+                                    // borderBottom: "2px solid #222",
+                                    backgroundColor: "transparent",
+                                    fontSize: "20px",
+                                }),
+                            }}
+                        />
+                    </div>
                     <div css={s.chartBox}>
-                        <ResponsiveContainer width="100%" height="90%">
-                            <ComposedChart data={sales}>
-                                <XAxis dataKey="month" />
-                                <YAxis
-                                    width={100}
-                                    tickCount={7}
-                                    type="number"
-                                    domain={[0, "auto"]}
-                                    allowDataOverflow
-                                />
-                                <Tooltip />
-                                <Legend />
-                                <CartesianGrid stroke="#f5f5f5" />
-                                <Bar
-                                    dataKey="totalSales"
-                                    barSize={20}
-                                    name="총 매출"
-                                    fill="#8abdf3"
-                                />
-                                <Line
-                                    type="monotone"
-                                    dataKey="totalSales"
-                                    stroke="#ff7300"
-                                    legendType="none"
-                                />
-                            </ComposedChart>
-                        </ResponsiveContainer>
+                        {salesMode ? (
+                            <AdminSalesChart
+                                sales={salesData}
+                                month={"month"}
+                                keyName={"총 매출"}
+                                dataKey={"totalSales"}
+                                barColor={"#8abdf3"}
+                                lineColor={"#ff7300"}
+                            />
+                        ) : (
+                            <AdminSalesChart
+                                sales={salesData}
+                                month={"month"}
+                                keyName={"총 주문 수"}
+                                dataKey={"orderCount"}
+                                barColor={"#ff7300"}
+                                lineColor={"#8abdf3"}
+                            />
+                        )}
                     </div>
                 </div>
                 <div css={s.line}></div>

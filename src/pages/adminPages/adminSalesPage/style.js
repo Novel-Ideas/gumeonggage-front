@@ -40,6 +40,24 @@ export const salesCharts = css`
     justify-content: center;
 `;
 
+export const toggleSwitch = css`
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    & > div > div {
+        margin: 0 10px;
+        font-size: 25px;
+        font-weight: 600;
+    }
+`;
+
 export const chartBox = css`
     box-sizing: border-box;
     background-color: white;
