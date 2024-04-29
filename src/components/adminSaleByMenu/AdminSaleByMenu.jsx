@@ -1,17 +1,6 @@
 /**@jsxImportSource @emotion/react */
 import * as s from "./style";
 import PageModal from "../pageComponents/pageModal/PageModal";
-import {
-    Bar,
-    CartesianGrid,
-    ComposedChart,
-    Legend,
-    Line,
-    ResponsiveContainer,
-    Tooltip,
-    XAxis,
-    YAxis,
-} from "recharts";
 import { useEffect, useState } from "react";
 import Select from "react-select";
 import { useQuery } from "react-query";
@@ -22,15 +11,24 @@ import ToggleSwitch from "../toggleSwitch/ToggleSwitch";
 import { useRecoilState } from "recoil";
 import { salesModeState } from "../../atoms/salesModeAtom";
 
-function AdminSaleByMenu() {
+function AdminSaleByMenu({ menuList }) {
     const [searchParams, setSearchParams] = useSearchParams();
     const [salesMode, setSalesMode] = useRecoilState(salesModeState);
     const [salesByMenu, setSalesByMenu] = useState([]);
+    const [menuInfo, setMenuInfo] = useState();
     const [selectedMenu, setSelectedMenu] = useState();
     const [yearOptions, setYearOptions] = useState([]);
     const [year, setYear] = useState();
     const navigate = useNavigate();
 
+    useEffect(() => {
+        setMenuInfo(() => {
+            return menuList.filter(
+                (menu) => menu.menuId === parseInt(searchParams.get("menuId"))
+            )[0];
+        }, []);
+    }, []);
+    console.log(menuInfo);
     useEffect(() => {
         let maxYear = -Infinity; // 최대값을 저장할 변수를 음수 무한대로 초기화
 
@@ -52,7 +50,6 @@ function AdminSaleByMenu() {
             retry: 0,
             refetchOnWindowFocus: false,
             onSuccess: (response) => {
-                console.log(response.data);
                 setSalesByMenu(response.data);
                 response.data.map((data) =>
                     setYearOptions((prev) => [
@@ -127,7 +124,7 @@ function AdminSaleByMenu() {
                                             : "none",
                                         // borderBottom: "2px solid #222",
                                         backgroundColor: "transparent",
-                                        fontSize: "20px",
+                                        fontSize: "25px",
                                     }),
                                 }}
                             />
@@ -148,17 +145,27 @@ function AdminSaleByMenu() {
                                     month={"month"}
                                     keyName={"총 주문 수"}
                                     dataKey={"totalCount"}
-                                    barColor={"#8abdf3"}
-                                    lineColor={"#ff7300"}
+                                    barColor={"#ff7300"}
+                                    lineColor={"#8abdf3"}
                                 />
                             )}
                         </div>
                     </div>
-                    <div></div>
+                </div>
+                <div css={s.menuInfo}>
+                    <div css={s.imgBox}>
+                        <img src={menuInfo?.menuImgUrl} alt="menuImg" />
+                    </div>
+                    <div css={s.infoBox}>
+                        <div>{menuInfo?.menuName}</div>
+                        <div>{menuInfo?.categoryName}</div>
+                        <div>{menuInfo?.menuPrice}원</div>
+                        <div>{menuInfo?.menuCal} cal</div>
+                    </div>
                 </div>
                 <div css={s.buttonLayout}>
                     <button css={s.cancel} onClick={handleonClickCancel}>
-                        취소
+                        닫기
                     </button>
                 </div>
             </div>
