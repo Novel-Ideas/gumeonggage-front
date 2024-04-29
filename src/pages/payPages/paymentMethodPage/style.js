@@ -66,17 +66,18 @@ export const methodBox2 = css`
     width: 350px;
     height: 250px;
     font-weight: 600;
+    border: none;
     box-shadow: 5px 5px 5px #898989ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 `;
 
 export const kakaoButton = css`
-    position: absolute;
     box-sizing: border-box;
-    width: 350px;
-    height: 250px;
+    width: 500px;
     border-radius: 30px;
-    right: 50px;
-    bottom: 110px;
     border: 5px solid rgb(255, 230, 3);
 `;
 
