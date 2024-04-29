@@ -13,18 +13,38 @@ import {
     YAxis,
 } from "recharts";
 import { useEffect, useState } from "react";
+import Select from "react-select";
 import { useQuery } from "react-query";
 import { searchSalesByMenuRequest } from "../../apis/api/salesApi";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import AdminSalesChart from "../adminSalesChart/AdminSalesChart";
+import ToggleSwitch from "../toggleSwitch/ToggleSwitch";
+import { useRecoilState } from "recoil";
+import { salesModeState } from "../../atoms/salesModeAtom";
 
 function AdminSaleByMenu() {
     const [searchParams, setSearchParams] = useSearchParams();
+    const [salesMode, setSalesMode] = useRecoilState(salesModeState);
     const [salesByMenu, setSalesByMenu] = useState([]);
-    const [selectedMenu, setSelectedMenu] = useState([]);
-    const [menuId, setMenuId] = useState();
+    const [selectedMenu, setSelectedMenu] = useState();
+    const [yearOptions, setYearOptions] = useState([]);
+    const [year, setYear] = useState();
     const navigate = useNavigate();
 
-    console.log(searchParams.get("menuId"));
+    useEffect(() => {
+        let maxYear = -Infinity; // 최대값을 저장할 변수를 음수 무한대로 초기화
+
+        salesByMenu.forEach((item) => {
+            if (parseInt(item.orderYear) > maxYear) {
+                maxYear = parseInt(item.orderYear); // 현재 year 속성이 최대값보다 크면 최대값을 업데이트
+            }
+        });
+        setYear(() => ({
+            value: maxYear,
+            label: maxYear,
+        }));
+    }, [salesByMenu]);
+
     const salesByMenuQuery = useQuery(
         ["salesByMenuQuery"],
         searchSalesByMenuRequest,
@@ -34,6 +54,12 @@ function AdminSaleByMenu() {
             onSuccess: (response) => {
                 console.log(response.data);
                 setSalesByMenu(response.data);
+                response.data.map((data) =>
+                    setYearOptions((prev) => [
+                        ...prev,
+                        parseInt(data.orderYear),
+                    ])
+                );
             },
             onError: (error) => {
                 console.log(error);
@@ -42,18 +68,31 @@ function AdminSaleByMenu() {
     );
     useEffect(() => {
         setSelectedMenu(() =>
-            salesByMenu.filter((menu) => {
-                return (
-                    menu?.menuId === parseInt(searchParams.get("menuId")) &&
-                    menu.orderYear === "2022"
-                );
-            })
+            salesByMenu
+                .filter((menu) => {
+                    return (
+                        menu?.menuId === parseInt(searchParams.get("menuId")) &&
+                        parseInt(menu.orderYear) === year?.value
+                    );
+                })
+                .map((menu) => {
+                    return {
+                        menuId: menu.menuId,
+                        month: parseInt(menu.orderMonth),
+                        year: parseInt(menu.orderYear),
+                        totalSales: menu.sales,
+                        totalCount: menu.totalCount,
+                    };
+                })
         );
-    }, [salesByMenu]);
+    }, [year]);
 
-    console.log(selectedMenu);
     const handleonClickCancel = () => {
         navigate("/admin/sale");
+    };
+
+    const handleYearOptionsOnChange = (value) => {
+        setYear(() => value);
     };
 
     return (
@@ -64,77 +103,58 @@ function AdminSaleByMenu() {
                 </div>
                 <div css={s.main}>
                     <div css={s.chartLayout}>
-                        <div css={s.chartBox}>
-                            <div css={s.inputBox}>
-                                <div css={s.input}>
-                                    {salesByMenu.map((menu) => (
-                                        <>
-                                            <input
-                                                css={s.input}
-                                                type="text"
-                                                value={menu.menuId}
-                                                placeholder="메뉴 아이디"
-                                                disabled
-                                            />
-                                            <input
-                                                type="text"
-                                                value={menu.orderMonth}
-                                                placeholder="주문월"
-                                                disabled
-                                            />
-                                            <input
-                                                type="text"
-                                                value={menu.orderYear}
-                                                placeholder="주문연도"
-                                                disabled
-                                            />
-                                            <input
-                                                type="text"
-                                                value={menu.sales}
-                                                placeholder="총합 가격 "
-                                                disabled
-                                            />
-                                            <input
-                                                type="text"
-                                                value={menu.totalCount}
-                                                placeholder="전체 주문 횟수"
-                                                disabled
-                                            />
-                                        </>
-                                    ))}
-                                </div>
+                        <div css={s.toggleSwitchLayout}>
+                            <div css={s.toggleSwitch}>
+                                <div>총 매출</div>
+                                <ToggleSwitch />
+                                <div>총 주문 수</div>
                             </div>
+                            <Select
+                                options={[...new Set(yearOptions)].map(
+                                    (year) => ({
+                                        label: year,
+                                        value: year,
+                                    })
+                                )}
+                                value={year}
+                                onChange={handleYearOptionsOnChange}
+                                placeholder="연도"
+                                styles={{
+                                    control: (baseStyles, state) => ({
+                                        ...baseStyles,
+                                        border: state.isFocused
+                                            ? "none"
+                                            : "none",
+                                        // borderBottom: "2px solid #222",
+                                        backgroundColor: "transparent",
+                                        fontSize: "20px",
+                                    }),
+                                }}
+                            />
+                        </div>
+                        <div css={s.chartBox}>
+                            {salesMode ? (
+                                <AdminSalesChart
+                                    sales={selectedMenu}
+                                    month={"month"}
+                                    keyName={"총 매출"}
+                                    dataKey={"totalSales"}
+                                    barColor={"#8abdf3"}
+                                    lineColor={"#ff7300"}
+                                />
+                            ) : (
+                                <AdminSalesChart
+                                    sales={selectedMenu}
+                                    month={"month"}
+                                    keyName={"총 주문 수"}
+                                    dataKey={"totalCount"}
+                                    barColor={"#8abdf3"}
+                                    lineColor={"#ff7300"}
+                                />
+                            )}
                         </div>
                     </div>
-                    <div>
-                        <ResponsiveContainer width="90%" height="70%">
-                            <ComposedChart data={salesByMenu}>
-                                <XAxis dataKey="month" />
-                                <YAxis
-                                    width={100}
-                                    tickCount={7}
-                                    type="number"
-                                    domain={[0, "auto"]}
-                                    allowDataOverflow
-                                />
-                                <Tooltip />
-                                <Legend />
-                                <CartesianGrid stroke="#f5f5f5" />
-                                <Bar
-                                    dataKey="totalSales"
-                                    barSize={20}
-                                    name="매출"
-                                    fill="#8abdf3"
-                                />
-                                <Line
-                                    type="monotone"
-                                    dataKey="totalSales"
-                                    stroke="#ff7300"
-                                    legendType="none"
-                                />
-                            </ComposedChart>
-                        </ResponsiveContainer>
-                    </div>
+                    <div></div>
                 </div>
                 <div css={s.buttonLayout}>
                     <button css={s.cancel} onClick={handleonClickCancel}>

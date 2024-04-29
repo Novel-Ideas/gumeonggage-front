@@ -59,7 +59,6 @@ function AdminSalesPage() {
         retry: 0,
         refetchOnWindowFocus: false,
         onSuccess: (response) => {
-            console.log(response.data)
             setMenuList(response.data);
         },
         onError: (error) => {

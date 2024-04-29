@@ -28,7 +28,7 @@ function AdminSalesChart({
                     tickCount={7}
                     type="number"
                     domain={[0, "auto"]}
-                    allowDataOverflow
+                    allowDecimals={false}
                 />
                 <Tooltip />
                 <Legend />
