@@ -35,16 +35,18 @@ function AdminSalesPage() {
         refetchOnWindowFocus: false,
         onSuccess: (response) => {
             setSales(() => response.data);
+            console.log(response.data)
         },
         onError: (error) => {
             console.log("salesQuery", error);
         },
     });
-
+    
     const menuQuery = useQuery(["menuQuery"], () => getMenuRequest(1), {
         retry: 0,
         refetchOnWindowFocus: false,
         onSuccess: (response) => {
+            console.log(response.data)
             setMenuList(response.data);
         },
         onError: (error) => {
@@ -53,7 +55,7 @@ function AdminSalesPage() {
     });
 
     const handleMenuClick = (id) => {
-        navigate(`/admin/sale/menu?menuId=${id}`);
+        navigate(`/admin/sale/menu?menuId=${id}`)
     };
 
     return (

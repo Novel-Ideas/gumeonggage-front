@@ -12,15 +12,19 @@ import {
     XAxis,
     YAxis,
 } from "recharts";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { searchSalesByMenuRequest } from "../../apis/api/salesApi";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 function AdminSaleByMenu() {
+    const [searchParams, setSearchParams] = useSearchParams();
     const [salesByMenu, setSalesByMenu] = useState([]);
+    const [selectedMenu, setSelectedMenu] = useState([]);
+    const [menuId, setMenuId] = useState();
     const navigate = useNavigate();
 
+    console.log(searchParams.get("menuId"));
     const salesByMenuQuery = useQuery(
         ["salesByMenuQuery"],
         searchSalesByMenuRequest,
@@ -36,7 +40,18 @@ function AdminSaleByMenu() {
             },
         }
     );
+    useEffect(() => {
+        setSelectedMenu(() =>
+            salesByMenu.filter((menu) => {
+                return (
+                    menu?.menuId === parseInt(searchParams.get("menuId")) &&
+                    menu.orderYear === "2022"
+                );
+            })
+        );
+    }, [salesByMenu]);
 
+    console.log(selectedMenu);
     const handleonClickCancel = () => {
         navigate("/admin/sale");
     };
@@ -49,7 +64,47 @@ function AdminSaleByMenu() {
                 </div>
                 <div css={s.main}>
                     <div css={s.chartLayout}>
-                        <div css={s.chartBox}></div>
+                        <div css={s.chartBox}>
+                            <div css={s.inputBox}>
+                                <div css={s.input}>
+                                    {salesByMenu.map((menu) => (
+                                        <>
+                                            <input
+                                                css={s.input}
+                                                type="text"
+                                                value={menu.menuId}
+                                                placeholder="메뉴 아이디"
+                                                disabled
+                                            />
+                                            <input
+                                                type="text"
+                                                value={menu.orderMonth}
+                                                placeholder="주문월"
+                                                disabled
+                                            />
+                                            <input
+                                                type="text"
+                                                value={menu.orderYear}
+                                                placeholder="주문연도"
+                                                disabled
+                                            />
+                                            <input
+                                                type="text"
+                                                value={menu.sales}
+                                                placeholder="총합 가격 "
+                                                disabled
+                                            />
+                                            <input
+                                                type="text"
+                                                value={menu.totalCount}
+                                                placeholder="전체 주문 횟수"
+                                                disabled
+                                            />
+                                        </>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div>
                         <ResponsiveContainer width="90%" height="70%">
@@ -82,7 +137,7 @@ function AdminSaleByMenu() {
                     </div>
                 </div>
                 <div css={s.buttonLayout}>
-                    <button css={s.cancel} onclick={handleonClickCancel}>
+                    <button css={s.cancel} onClick={handleonClickCancel}>
                         취소
                     </button>
                 </div>
