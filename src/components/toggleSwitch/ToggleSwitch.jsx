@@ -15,8 +15,8 @@ const ToggleSwitch = () => {
     return (
         <label>
             <Switch
-                height={35}
-                width={70}
+                height={25}
+                width={50}
                 uncheckedIcon={false}
                 checkedIcon={false}
                 onColor="#ff7300"
