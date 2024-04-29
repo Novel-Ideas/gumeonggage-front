@@ -56,7 +56,7 @@ function PlayListPage() {
                 </div>
                 <div css={s.buttonBox}>
                     <button css={s.cancel} onClick={handleSubmitClick}>
-                        확인
+                        닫기
                     </button>
                 </div>
                 <Routes>
