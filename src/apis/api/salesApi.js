@@ -26,3 +26,17 @@ export const getPaymentsRequest = async () => {
         },
     });
 };
+
+export const paymentsCancelRequest = async (id) => {
+    return await portOneInstance.post(
+        `/payments/${id}/cancel`,
+        {
+            reason: "reason",
+        },
+        {
+            headers: {
+                Authorization: `PortOne ${process.env.REACT_APP_PORTONE_API_SECRET_KEY}`,
+            },
+        }
+    );
+};
