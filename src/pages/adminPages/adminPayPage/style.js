@@ -45,6 +45,7 @@ export const searchBox = css`
     border: 1px solid #4d4d4d;
     border-radius: 30px;
     background-color: white;
+    box-shadow: 10px 10px 5px #bdc7ca;
 `;
 
 export const top = css`
@@ -186,7 +187,6 @@ export const listContainer = css`
     & > li:nth-of-type(1) {
         width: 10%;
         padding-left: 10px;
-        color:
     }
     & > li:nth-of-type(2) {
         width: 30%;

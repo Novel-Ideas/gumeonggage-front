@@ -43,6 +43,8 @@ export const button = css`
     border-radius: 15px;
     padding: 10px 40px;
     transition: 0.2s all ease-in-out;
+    box-shadow: 5px 5px 5px #bdc7ca;
+
     &:active {
         background-color: white;
         color: rgb(0, 153, 255);

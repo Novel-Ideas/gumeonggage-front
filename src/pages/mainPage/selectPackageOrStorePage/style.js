@@ -24,7 +24,7 @@ export const selectWay = css`
     color: white;
     font-weight: 700;
     transition: all 0.2s ease-in-out;
-    box-shadow: 5px 5px 5px #898989ff;
+    box-shadow: 10px 10px 5px #bdc7ca;
     cursor: pointer;
 
     & > :nth-child(1) {
