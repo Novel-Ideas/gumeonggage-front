@@ -2,12 +2,29 @@
 import * as s from "./style";
 import AdminPageLayout from "../../../components/pageComponents/adminPageLayout/AdminPageLayout";
 import { FaCircle } from "react-icons/fa";
-import { useQuery } from "react-query";
-import { getPaymentsRequest } from "../../../apis/api/salesApi";
-import { useEffect, useState } from "react";
+import { useMutation, useQuery } from "react-query";
+import {
+    getPaymentsRequest,
+    paymentsCancelRequest,
+} from "../../../apis/api/salesApi";
+import { useState } from "react";
+import { FaWindowClose } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 function AdminPayPage(props) {
     const [payData, setPayData] = useState({});
+
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+    });
 
     const paymentsQuery = useQuery(
         ["paymentsQuery"],
@@ -23,6 +40,24 @@ function AdminPayPage(props) {
             },
         }
     );
+
+    const paymentsCancelMutation = useMutation({
+        mutationKey: "paymentsCancelMutation",
+        mutationFn: paymentsCancelRequest,
+        onSuccess: (response) => {
+            console.log(response.data);
+            Toast.fire({
+                icon: "success",
+                title: "결제가 취소되었습니다.",
+            });
+            setTimeout(() => {
+                window.location.replace("/admin/pay");
+            }, 2000);
+        },
+        onError: (error) => {
+            console.log(error);
+        },
+    });
 
     const dateFormat = (date) => {
         let month = date?.getMonth() + 1;
@@ -51,7 +86,27 @@ function AdminPayPage(props) {
             second
         );
     };
-    
+
+    const handleCancelClick = (id) => {
+        console.log(id);
+        Swal.fire({
+            title: "결제를 취소하시겠습니까?",
+            text: "다시 되돌릴 수 없습니다. 신중하세요.",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "결제취소",
+            cancelButtonText: "닫기",
+            reverseButtons: true, // 버튼 순서 거꾸로
+        }).then((result) => {
+            if (result.isConfirmed) {
+                paymentsCancelMutation.mutate(id);
+            }
+            return;
+        });
+    };
+
     return (
         <AdminPageLayout>
             <div css={s.layout}>
@@ -82,12 +137,22 @@ function AdminPayPage(props) {
                                                     color:
                                                         data.status === "FAILED"
                                                             ? "red"
-                                                            : "green",
+                                                            : data.status ===
+                                                              "PAID"
+                                                            ? "green"
+                                                            : data.status ===
+                                                              "READY"
+                                                            ? "skyblue"
+                                                            : "gray",
                                                 }}
                                             >
                                                 {data.status === "FAILED"
                                                     ? "결제실패"
-                                                    : "결제성공"}
+                                                    : data.status === "PAID"
+                                                    ? "결제성공"
+                                                    : data.status === "READY"
+                                                    ? "결제예정"
+                                                    : "결제취소"}
                                             </li>
                                             <li>{data.orderName}</li>
                                             <li>{data?.channel?.name}</li>
@@ -105,6 +170,21 @@ function AdminPayPage(props) {
                                                             }
                                                         )
                                                     )
+                                                )}
+                                            </li>
+                                            <li>
+                                                {data.status === "PAID" ? (
+                                                    <button
+                                                        onClick={() =>
+                                                            handleCancelClick(
+                                                                data.id
+                                                            )
+                                                        }
+                                                    >
+                                                        <FaWindowClose />
+                                                    </button>
+                                                ) : (
+                                                    <></>
                                                 )}
                                             </li>
                                         </ul>

@@ -40,7 +40,7 @@ export const searchBoxLayout = css`
 `;
 
 export const searchBox = css`
-    width: 80%;
+    width: 90%;
     height: 100%;
     border: 1px solid #4d4d4d;
     border-radius: 30px;
@@ -157,6 +157,9 @@ export const askList = css`
 export const listLayout = css`
     width: 100%;
     height: 90%;
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 `;
 
 export const listContainer = css`
@@ -165,7 +168,7 @@ export const listContainer = css`
     display: flex;
     list-style: none;
     padding-left: 0;
-    margin-right: 10px;
+    /* margin-right: 10px; */
 
     /* overflow: auto;
     &::-webkit-scrollbar {
@@ -175,7 +178,7 @@ export const listContainer = css`
         background: transparent;
     }
     &::-webkit-scrollbar-thumb {
-        background: #aae0ff;
+        background: skyblue;
         background-clip: padding-box;
         border: 3px solid transparent;
         border-radius: 8px;
@@ -198,7 +201,20 @@ export const listContainer = css`
         width: 15%;
     }
     & > li:nth-of-type(5) {
-        width: 25%;
+        width: 22%;
+    }
+    & > li:nth-of-type(6) {
+        width: 3%;
         padding-right: 15px;
+
+        & > button {
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            background-color: transparent;
+            color: red;
+        }
     }
 `;
