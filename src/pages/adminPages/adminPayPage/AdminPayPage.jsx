@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 
 function AdminPayPage(props) {
     const [payData, setPayData] = useState({});
+
     const paymentsQuery = useQuery(
         ["paymentsQuery"],
         () => getPaymentsRequest,
@@ -22,7 +23,35 @@ function AdminPayPage(props) {
             },
         }
     );
-    console.log(payData);
+
+    const dateFormat = (date) => {
+        let month = date?.getMonth() + 1;
+        let day = date?.getDate();
+        let hour = date?.getHours();
+        let minute = date?.getMinutes();
+        let second = date?.getSeconds();
+
+        month = month >= 10 ? month : "0" + month;
+        day = day >= 10 ? day : "0" + day;
+        hour = hour >= 10 ? hour : "0" + hour;
+        minute = minute >= 10 ? minute : "0" + minute;
+        second = second >= 10 ? second : "0" + second;
+
+        return (
+            date?.getFullYear() +
+            "-" +
+            month +
+            "-" +
+            day +
+            " " +
+            hour +
+            ":" +
+            minute +
+            ":" +
+            second
+        );
+    };
+    
     return (
         <AdminPageLayout>
             <div css={s.layout}>
@@ -48,11 +77,36 @@ function AdminPayPage(props) {
                                 <div css={s.listLayout}>
                                     {payData?.data?.items.map((data) => (
                                         <ul key={data.id} css={s.listContainer}>
-                                            <li style={{color: data.status === "FAILED" ? "red" : "green"}}>{data.status === "FAILED" ? "결제실패" : "결제성공"}</li>
+                                            <li
+                                                style={{
+                                                    color:
+                                                        data.status === "FAILED"
+                                                            ? "red"
+                                                            : "green",
+                                                }}
+                                            >
+                                                {data.status === "FAILED"
+                                                    ? "결제실패"
+                                                    : "결제성공"}
+                                            </li>
                                             <li>{data.orderName}</li>
                                             <li>{data?.channel?.name}</li>
                                             <li>{data.amount.total}원</li>
-                                            <li>{data.updatedAt}</li>
+                                            <li>
+                                                {dateFormat(
+                                                    new Date(
+                                                        new Date(
+                                                            data?.updatedAt
+                                                        ).toLocaleString(
+                                                            "en-US",
+                                                            {
+                                                                timeZone:
+                                                                    "Asia/Seoul",
+                                                            }
+                                                        )
+                                                    )
+                                                )}
+                                            </li>
                                         </ul>
                                     ))}
                                 </div>
