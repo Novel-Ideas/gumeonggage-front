@@ -1,16 +1,25 @@
 /**@jsxImportSource @emotion/react */
 import * as s from "./style";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { getMenuRequest } from "../../../apis/api/menuApi";
 import MenuButton from "../../../components/menuButton/MenuButton";
 import AdminPageLayout from "../../../components/pageComponents/adminPageLayout/AdminPageLayout";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import AdminMenuUpdate from "../adminMenuUpdate/AdminMenuUpdate";
+import { useInput } from "../../../hooks/useInput";
 
 function AdminMenuSearch() {
     const [menuList, setMenuList] = useState([]);
+    const [searchMenuList, setSearchMenuList] = useState(menuList);
+    const [searchInput, setSearchInput] = useState("");
     const navigate = useNavigate();
+
+    useEffect(() => {
+        setSearchMenuList(() =>
+            menuList.filter((menu) => menu.menuName.includes(searchInput))
+        );
+    }, [searchInput, menuList]);
 
     const menuQuery = useQuery(["menuQuery"], () => getMenuRequest(1), {
         retry: 0,
@@ -27,14 +36,28 @@ function AdminMenuSearch() {
         navigate(`/admin/getmenu/menu?menuId=${id}`);
     };
 
+    const handleOnChange = (e) => {
+        setSearchInput(() => e.target.value);
+    };
+
     return (
         <AdminPageLayout>
             <div css={s.layout}>
                 <div css={s.header}>
                     <div css={s.title}>메뉴 관리</div>
                 </div>
+                <div css={s.inputLayout}>
+                    <div>
+                        <input
+                            type="text"
+                            onChange={handleOnChange}
+                            value={searchInput}
+                            placeholder="메뉴 이름을 검색해주세요"
+                        />
+                    </div>
+                </div>
                 <div css={s.searchMenuList}>
-                    {menuList.map((menu, index) => (
+                    {searchMenuList.map((menu, index) => (
                         <MenuButton
                             key={menu.menuId}
                             onClick={() => handleMenuClick(menu.menuId)}

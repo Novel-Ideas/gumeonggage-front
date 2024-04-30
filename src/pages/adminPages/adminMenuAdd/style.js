@@ -30,6 +30,7 @@ export const main = css`
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 `;
 
 export const resetLayout = css`
@@ -64,6 +65,7 @@ export const addLayout = css`
     display: flex;
     justify-content: center;
     background-color: white;
+    box-shadow: 10px 10px 5px #bdc7ca;
 `;
 
 export const addBox = css`
@@ -202,6 +204,7 @@ export const saveButton = css`
     border-radius: 15px;
     padding: 10px 100px;
     transition: 0.2s all ease-in-out;
+    box-shadow: 7px 7px 5px #bdc7ca;
 
     &:active {
         background-color: white;

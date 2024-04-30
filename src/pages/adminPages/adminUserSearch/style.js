@@ -4,6 +4,7 @@ export const layout = css`
     z-index: 99;
     width: 100%;
     height: 100%;
+    
 `;
 
 export const header = css`
@@ -38,9 +39,11 @@ export const searchBox = css`
     border: 1px solid #4d4d4d;
     border-radius: 30px;
     background-color: white;
+    box-shadow: 10px 10px 5px #bdc7ca;
 `;
 
 export const top = css`
+    position: relative;
     background-color: #fafafa;
     width: 100%;
     height: 8%;
@@ -49,6 +52,23 @@ export const top = css`
     display: flex;
     align-items: center;
     border-bottom: 1px solid #4d4d4d;
+
+    & > input {
+        position: absolute;
+        border-radius: 6px;
+        border: 1px solid #dbdbdb;
+        outline: none;
+        right: 15px;
+        width: 200px;
+        height: 20px;
+        font-size: 20px;
+        padding: 5px;
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+    }
 `;
 
 export const circle = css`

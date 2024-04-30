@@ -1,6 +1,6 @@
 /**@jsxImportSource @emotion/react */
 import * as s from "./style";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { searchUserRequest } from "../../../apis/api/searchUser";
 import { FaCircle, FaWindowClose } from "react-icons/fa";
@@ -10,7 +10,14 @@ import Swal from "sweetalert2";
 
 function AdminUserSearch() {
     const [userList, setUserList] = useState([]);
-    const [deleted, setDeleted] = useState(false);
+    const [searchInput, setSearchInput] = useState("");
+    const [userSearchList, setUserSearchList] = useState([]);
+
+    useEffect(() => {
+        setUserSearchList(() =>
+            userList.filter((user) => user.phonenumber.includes(searchInput))
+        );
+    }, [searchInput, userList]);
 
     const Toast = Swal.mixin({
         toast: true,
@@ -71,6 +78,10 @@ function AdminUserSearch() {
         });
     };
 
+    const handleOnChange = (e) => {
+        setSearchInput(() => e.target.value);
+    };
+
     return (
         <AdminPageLayout>
             <div css={s.layout}>
@@ -83,6 +94,12 @@ function AdminUserSearch() {
                             <FaCircle css={s.circle} />
                             <FaCircle css={s.circle} />
                             <FaCircle css={s.circle} />
+                            <input
+                                type="number"
+                                onChange={handleOnChange}
+                                value={searchInput}
+                                placeholder="전화번호를 입력해주세요."
+                            />
                         </div>
                         <div css={s.searchLayout}>
                             <div css={s.search}>
@@ -95,7 +112,7 @@ function AdminUserSearch() {
                                     <li>회원삭제</li>
                                 </ul>
                                 <div css={s.listLayout}>
-                                    {userList.map((user, index) => (
+                                    {userSearchList.map((user, index) => (
                                         <ul key={index} css={s.askList}>
                                             <li>{index + 1}</li>
                                             <li>{user.roleNameKor}</li>
