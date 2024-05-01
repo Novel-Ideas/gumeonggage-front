@@ -70,8 +70,6 @@ function AdminFeedbackPage(props) {
         },
     ];
     
-    console.log(data01.name)
-
     const data03 = [
         {
             name: "불친절함",
@@ -103,6 +101,56 @@ function AdminFeedbackPage(props) {
             refetchOnWindowFocus: false,
         }
     );
+
+    const getMaxValueName = (data) => {
+        let maxValue = 0;
+        let maxName = '';
+        data.forEach(item => {
+          if (item.value > maxValue) {
+            maxValue = item.value;
+            maxName = item.name;
+          }
+        });
+        return maxName;
+      };
+
+      const getDesiredText = (data) => {
+        const maxName = getMaxValueName(data);
+        let desiredText = '';
+        switch (maxName) {
+          case '맛없음':
+            desiredText = '음식이 맛없어요';
+            break;
+          case '보통':
+            desiredText = '음식이 보통이에요';
+            break;
+          case '맛있음':
+            desiredText = '음식이 맛있어요';
+            break;
+          case '적음':
+            desiredText = '양이 적어요';
+            break;
+          case '적당함':
+            desiredText = '양이 적당해요';
+            break;
+          case '많음':
+            desiredText = '양이 많아요';
+            break;
+          case '불친절함':
+            desiredText = '서비스가 불친절해요';
+            break;
+          case '친절함':
+            desiredText = '서비스가 친절해요';
+            break;
+          default:
+            desiredText = '상태를 정의할 수 없어요';
+        }
+        return desiredText;
+      };
+
+        const desiredTextData01 = getDesiredText(data01);
+        const desiredTextData02 = getDesiredText(data02);
+        const desiredTextData03 = getDesiredText(data03);
 
     // console.log(feedbackList);
 
@@ -144,7 +192,7 @@ function AdminFeedbackPage(props) {
                             </PieChart>
                         </ResponsiveContainer>
                         <div css={s.comment}>
-                            <div css={s.textBox}>"한줄 피드백"</div>
+                            <div css={s.textBox}>{desiredTextData01}</div>
                         </div>
                     </div>
                     <div css={s.commentBox}>
@@ -178,7 +226,7 @@ function AdminFeedbackPage(props) {
                             </PieChart>
                         </ResponsiveContainer>
                         <div css={s.comment}>
-                            <div css={s.textBox}>"한줄 피드백"</div>
+                            <div css={s.textBox}>{desiredTextData02}</div>
                         </div>
                     </div>
                     <div css={s.commentBox}>
@@ -212,7 +260,7 @@ function AdminFeedbackPage(props) {
                             </PieChart>
                         </ResponsiveContainer>
                         <div css={s.comment}>
-                            <div css={s.textBox}>"한줄 피드백"</div>
+                            <div css={s.textBox}>{desiredTextData03}</div>
                         </div>
                     </div>
                     <div css={s.searchBoxLayout}>
