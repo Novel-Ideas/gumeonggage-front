@@ -75,7 +75,7 @@ function OAuth2SignupPage(props) {
         },
     });
 
-    const handlerSubmitClick = () => {
+    const handleSubmitClick = () => {
         oAuth2SignupMutation.mutate({
             username: username,
             password: password,
@@ -135,7 +135,7 @@ function OAuth2SignupPage(props) {
                     </div>
                 </div>
                 <div>
-                    <button css={s.signupButton} onClick={handlerSubmitClick}>
+                    <button css={s.signupButton} onClick={handleSubmitClick}>
                         가입하기
                     </button>
                 </div>

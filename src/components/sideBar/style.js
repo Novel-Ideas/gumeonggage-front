@@ -28,7 +28,15 @@ export const link = css`
     cursor: pointer;
     color: #333;
     font-size: 20px;
-    
+`;
+
+export const link2 = css`
+    display: flex;
+    margin-top: 15px;
+    text-decoration: none;
+    cursor: pointer;
+    color: #333;
+    font-size: 20px;
 `;
 
 export const homeLayout = css`
