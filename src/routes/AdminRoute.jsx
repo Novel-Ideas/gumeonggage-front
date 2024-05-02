@@ -24,7 +24,6 @@ function AdminRoute(props) {
             <Route path="/usersearch" element={<AdminUserSearch />} />
             <Route path="/feedback" element={<AdminFeedbackPage />} />
             <Route path="/signup" element={<OAuth2SignupPage />} />
-            <Route path="/logo" element={<AdminLogoPage />} />
             <Route path="/setting" element={<AdminStoreSettingPage />} />
             <Route path="/trade" element={<AdminTradeNamePage />} />
         </Routes>

@@ -31,23 +31,23 @@ function AdminLogoPage() {
             toast.addEventListener("mouseenter", Swal.stopTimer);
             toast.addEventListener("mouseleave", Swal.resumeTimer);
         },
-    }, );
+    });
 
     const nowImgQuery = useQuery(["nowImgQuery"], () => getPricipalRequest(1), {
         retry: 0,
         refetchOnWindowFocus: false,
         onSuccess: (response) => {
             setNewImgFile(response.data);
-            console.log(response.data)
+            console.log(response.data);
         },
         onError: (error) => {
             console.log(error);
         },
-    })
+    });
 
     const handleImgChange = (e) => {
         const files = Array.from(e.target.files);
-        console.log(e.target.value)
+        console.log(e.target.value);
 
         if (files.length === 0) {
             e.target.value = "";
@@ -105,63 +105,56 @@ function AdminLogoPage() {
                 icon: "success",
                 title: "성공적으로 등록 완료되었습니다.",
             });
-            window.location.replace("/admin/logo");
+            window.location.replace("/admin/setting");
         },
         onError: (error) => {},
     });
 
     const handleSubmitClick = () => {
         registerLogoMutation.mutate({
-            imgUrl: imgUrl.value
+            imgUrl: imgUrl.value,
         });
     };
 
     return (
-        <AdminPageLayout>
-            <div css={s.layout}>
-                <div css={s.header}>
-                    <div css={s.title}>로고 변경하기</div>
-                </div>
-                <div css={s.buttonLayout}>
-                    <button css={s.button} onClick={() => handleSubmitClick()}>
-                        저장
-                    </button>
-                </div>
-                <div css={s.ImgLayout}>
-                    <div css={s.ImgContainer}>
-                        <div css={s.ImgBox}>
-                            <img css={s.Img} src={newImgFile.imgUrl} alt="" />
-                        </div>
+        <div css={s.layout}>
+            <div css={s.header}>
+                <div css={s.title}>로고 변경하기</div>
+            </div>
+            <div css={s.buttonLayout}>
+                <button css={s.button} onClick={() => handleSubmitClick()}>
+                    저장
+                </button>
+            </div>
+            <div css={s.ImgLayout}>
+                <div css={s.ImgContainer}>
+                    <div css={s.ImgBox}>
+                        <img css={s.Img} src={newImgFile.imgUrl} alt="" />
                     </div>
-                    <div css={s.arrowBox}>
-                        <div css={s.arrow}>
-                            <FaArrowRight />
-                        </div>
+                </div>
+                <div css={s.arrowBox}>
+                    <div css={s.arrow}>
+                        <FaArrowRight />
                     </div>
-                    <div css={s.ImgContainer}>
-                        <div css={s.ImgBox}>
-                            <img
-                                css={s.Img}
-                                src={imgUrl.value ? imgUrl.value : noImg}
-                                alt=""
-                            />
-                            <input
-                                type="file"
-                                onChange={handleImgChange}
-                                style={{ display: "none" }}
-                                ref={newImgRef}
-                            />
-                            <button
-                                css={s.inputbutton}
-                                onClick={() => newImgRef.current.click()}
-                            >
-                                <IoCloudUpload />
-                            </button>
-                        </div>
+                </div>
+                <div css={s.ImgContainer}>
+                    <div css={s.ImgBox}>
+                        <input
+                            type="file"
+                            onChange={handleImgChange}
+                            style={{ display: "none" }}
+                            ref={newImgRef}
+                        />
+                        <img
+                            css={s.Img}
+                            src={imgUrl.value ? imgUrl.value : noImg}
+                            onClick={() => newImgRef.current.click()}
+                            alt=""
+                        />
                     </div>
                 </div>
             </div>
-        </AdminPageLayout>
+        </div>
     );
 }
 
