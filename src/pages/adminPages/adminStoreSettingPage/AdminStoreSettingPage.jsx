@@ -8,6 +8,7 @@ import { storeFeedbackSettingState } from "../../../atoms/storeFeedbackSettingAt
 import { storePlaySettingState } from "../../../atoms/storePlaySettingAtom";
 import { useEffect } from "react";
 import { storeSettingRequest } from "../../../apis/api/storeSettingApi";
+import AdminLogoPage from "../adminLogoPage/AdminLogoPage";
 
 function AdminStoreSettingPage(props) {
     const queryClient = useQueryClient();
@@ -32,7 +33,6 @@ function AdminStoreSettingPage(props) {
         mutationKey: "storeSettingMutation",
         mutationFn: storeSettingRequest,
         onSuccess: (response) => {
-            console.log(response.data);
             queryClient.invalidateQueries(["principalQuery"]);
         },
         onError: (error) => {
@@ -46,9 +46,7 @@ function AdminStoreSettingPage(props) {
             playUse: storePlaySetting === true ? 1 : 0,
         });
     }, [storeFeedbackSetting, storePlaySetting]);
-
-    console.log(storeFeedbackSetting);
-    console.log(storePlaySetting);
+    
     return (
         <AdminPageLayout>
             <div css={s.layout}>
@@ -56,30 +54,37 @@ function AdminStoreSettingPage(props) {
                     <div css={s.title}>가게 설정</div>
                 </div>
                 <div css={s.main}>
-                    <div css={s.mainBox}>
-                        <div css={s.mainTitle}>피드백 페이지 활성화</div>
-                        <div>
-                            <ToggleSwitch
-                                width={65}
-                                height={35}
-                                onColor={"#0099ff"}
-                                state={"feedback"}
-                                checked={storeFeedbackSetting}
-                            />
+                    <div css={s.mainLayout}>
+                        <div css={s.mainBox}>
+                            <div css={s.mainTitle}>피드백 페이지 활성화</div>
+                            <div>
+                                <ToggleSwitch
+                                    width={65}
+                                    height={35}
+                                    onColor={"#0099ff"}
+                                    state={"feedback"}
+                                    checked={storeFeedbackSetting}
+                                />
+                            </div>
+                        </div>
+                        <div css={s.mainBox}>
+                            <div css={s.mainTitle}>
+                                관광지 추천 페이지 활성화
+                            </div>
+                            <div>
+                                <ToggleSwitch
+                                    width={65}
+                                    height={35}
+                                    onColor={"#0099ff"}
+                                    state={"play"}
+                                    checked={storePlaySetting}
+                                />
+                            </div>
                         </div>
                     </div>
-                    <div css={s.mainBox}>
-                        <div css={s.mainTitle}>관광지 추천 페이지 활성화</div>
-                        <div>
-                            <ToggleSwitch
-                                width={65}
-                                height={35}
-                                onColor={"#0099ff"}
-                                state={"play"}
-                                checked={storePlaySetting}
-                            />
-                        </div>
-                    </div>
+                </div>
+                <div css={s.logoLayout}>
+                    <AdminLogoPage />
                 </div>
             </div>
         </AdminPageLayout>

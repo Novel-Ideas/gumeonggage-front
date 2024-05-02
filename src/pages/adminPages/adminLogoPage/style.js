@@ -8,7 +8,7 @@ export const layout = css`
 
 export const header = css`
     width: 100%;
-    height: 20%;
+    height: 35%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,14 +19,14 @@ export const title = css`
     border-bottom: 2px solid #222;
     color: #222;
     width: 90%;
-    height: 40%;
+    height: 35%;
     font-size: 40px;
     font-weight: 700;
 `;
 
 export const buttonLayout = css`
     width: 100%;
-    height: 5%;
+    height: 10%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -36,12 +36,12 @@ export const button = css`
     box-sizing: border-box;
     background-color: rgb(0, 153, 255);
     margin-right: 40px;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 600;
     color: white;
     border: 2px solid rgb(0, 153, 255);
     border-radius: 15px;
-    padding: 10px 40px;
+    padding: 5px 20px;
     transition: 0.2s all ease-in-out;
     box-shadow: 5px 5px 5px #bdc7ca;
 
@@ -53,25 +53,26 @@ export const button = css`
 
 export const ImgLayout = css`
     width: 100%;
-    height: 75%;
+    height: 80%;
     display: flex;
     align-items: center;
-    justify-content: center;    
+    justify-content: center;
 `;
 
 export const ImgContainer = css`
-    height: 100%;
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
 `;
-    
+
 export const ImgBox = css`
     background-color: white;
     margin-top: 30px;
     width: 80%;
-    height: 80%;
+    height: 100%; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -83,7 +84,7 @@ export const Img = css`
     box-sizing: border-box;
     padding: 20px;
     width: 80%;
-    height: 75%;
+    height: 80%;
     margin-top: 30px;
     border-radius: 10px;
     border: 1px solid #dbdbdb;
@@ -117,5 +118,5 @@ export const inputbutton = css`
     align-items: center;
     border: none;
     background-color: white;
-    color:  rgb(0, 153, 255);
+    color: rgb(0, 153, 255);
 `;
