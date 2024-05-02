@@ -8,13 +8,13 @@ import { editTradeNameRequest } from "../../../apis/api/tradeName";
 
 function AdminTradeNamePage() {
 
-    const [ newTradeName, setNewTradeName ] = useState("");
+    const [ tradeName, setTradeName ] = useState("");
 
     const editTradeNameMutation = useMutation({
         mutationKey: "editTradeNameMutation",
         mutationFn: editTradeNameRequest,
         onSuccess: response => {
-            setNewTradeName(() => response.data);
+            setTradeName(() => response.data);
             window.location.reload("/");
         },
         onError: error => {
@@ -43,6 +43,7 @@ function AdminTradeNamePage() {
                     <div css={s.inputLayout}>
                         <div>
                             <h1>변경 전 매장명</h1>
+                            <h1>: 구멍가게</h1>
                         </div>
                     </div>
                     <div css={s.arrowBox}>

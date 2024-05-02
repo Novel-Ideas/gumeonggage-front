@@ -43,7 +43,7 @@ export const inputLayout = css`
     height: 70%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    font-size: 25px;
 `;
 
 export const input = css`
@@ -51,11 +51,9 @@ export const input = css`
     border: 1px solid rgb(0, 153, 255);
     width: 100%;
     height: 100%;
-    font-size: 50px;
-    font-weight: 600;
+    font-size: 65px;
     outline: none;
     border-radius: 20px;
-    justify-content: center;
 `;
 
 export const arrowBox = css`
@@ -70,7 +68,7 @@ export const arrow = css`
     width: 100%;
     height: 15%;
     font-size: 70px;
-    color:  rgb(0, 153, 255);
+    color: rgb(0, 153, 255);
 `;
 
 export const buttonLayout = css`
