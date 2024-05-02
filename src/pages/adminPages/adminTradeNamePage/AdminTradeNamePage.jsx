@@ -25,8 +25,12 @@ function AdminTradeNamePage() {
 
     const handleOnClick = () => {
         editTradeNameMutation.mutate({
-            tradeName: newTradeName
+            tradeName : newTradeName
         })
+    }
+
+    const handleOnChange = (e) => {
+        setNewTradeName(() => e.target.value)
     }
     
     return (
@@ -49,7 +53,7 @@ function AdminTradeNamePage() {
                     <div css={s.inputLayout}>
                         <div>
                             <h1>변경 후 매장명</h1>
-                            <input type="text" css={s.input}/>
+                            <input type="text" css={s.input} onChange={handleOnChange}/>
                         </div>
                     </div>
                 </div>
