@@ -30,8 +30,8 @@ export const buttonLayout = css`
     display: flex;
     align-items: center;
     justify-content: flex-end;
+`;
 
-`
 export const button = css`
     box-sizing: border-box;
     background-color: rgb(0, 153, 255);
@@ -49,23 +49,23 @@ export const button = css`
         background-color: white;
         color: rgb(0, 153, 255);
     }
-`
+`;
 
 export const ImgLayout = css`
     width: 100%;
     height: 75%;
     display: flex;
     align-items: center;
-    justify-content: center;
-    
-    `
+    justify-content: center;    
+`;
+
 export const ImgContainer = css`
     height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-`
+`;
     
 export const ImgBox = css`
     background-color: white;
@@ -77,7 +77,8 @@ export const ImgBox = css`
     align-items: center;
     border-radius: 20px;
     box-shadow: 2px 2px 2px 2px #dbdbdb;
-`
+`;
+
 export const Img = css`
     box-sizing: border-box;
     padding: 20px;
@@ -88,20 +89,22 @@ export const Img = css`
     border: 1px solid #dbdbdb;
     background-color: #ffffff;
     box-shadow: 5px 5px 5px 5px #dbdbdb inset;
-`
+`;
+
 export const arrowBox = css`
     width: 10%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-`
+`;
+
 export const arrow = css`
     width: 100%;
     height: 10%;
     font-size: 70px;
-    color:  rgb(0, 153, 255);
-`
+    color: rgb(0, 153, 255);
+`;
 
 export const inputbutton = css`
     right: 0;
@@ -115,4 +118,4 @@ export const inputbutton = css`
     border: none;
     background-color: white;
     color:  rgb(0, 153, 255);
-`
+`;
