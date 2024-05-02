@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import PageModal from "../../../components/pageComponents/pageModal/PageModal";
 import * as s from "./style";
 import { useMutation } from "react-query";
+import { useQueryClient } from "react-query";
 import { orderRequest } from "../../../apis/api/menuApi";
 import { orderMenuListState } from "../../../atoms/orderMenuListAtom";
 import { useRecoilState } from "recoil";
@@ -10,6 +11,8 @@ import { portOnePayRequest } from "../../../apis/api/portOneApi";
 import { totalPayPriceState } from "../../../atoms/totalPayPriceAtom";
 
 function PointAccumulation() {
+    const queryClient = useQueryClient();
+    const principalData = queryClient.getQueryData("principalQuery");
     const Swal = require("sweetalert2");
     const navigate = useNavigate();
     const [orderMenuList, setOrderMenuList] =
@@ -29,7 +32,17 @@ function PointAccumulation() {
                 showConfirmButton: false,
             });
             setTimeout(() => {
-                window.location.replace("/menu/feedbackChoice");
+                if (principalData.data.feedbackUse === 0) {
+                    if (principalData.data.playUse === 0) {
+                        window.location.replace("/menu/main");
+                        return;
+                    } else if (principalData.data.playUse === 1) {
+                        window.location.replace("/menu/play");
+                        return;
+                    }
+                } else if (principalData.data.feedbackUse === 1) {
+                    window.location.replace("/menu/feedbackChoice");
+                }
             }, 2000);
         },
         onError: (error) => {

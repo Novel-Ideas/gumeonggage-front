@@ -19,6 +19,7 @@ export const category = css`
     background-color: white;
     border: 1px solid #dbdbdb;
     cursor: pointer;
+    box-shadow: 10px 10px 5px #bdc7ca;
 
     &:hover {
         background-color: #fcd93c;

@@ -86,7 +86,14 @@ function AdminSalesPage() {
                     <div css={s.toggleSwitch}>
                         <div>
                             <div>총 매출</div>
-                            <ToggleSwitch />
+                            <ToggleSwitch
+                                width={50}
+                                height={25}
+                                onColor={"#ff7300"}
+                                offColor={"#8abdf3"}
+                                state={"sales"}
+                                checked={salesMode}
+                            />
                             <div>총 주문 수</div>
                         </div>
                         <Select
@@ -109,7 +116,7 @@ function AdminSalesPage() {
                         />
                     </div>
                     <div css={s.chartBox}>
-                        {salesMode ? (
+                        {!salesMode ? (
                             <AdminSalesChart
                                 sales={salesData}
                                 month={"month"}

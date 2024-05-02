@@ -2,11 +2,20 @@
 import { useNavigate } from "react-router-dom";
 import PageLayout from "../../../components/pageComponents/pageLayout/PageLayout";
 import * as s from "./style";
+import { useQueryClient } from "react-query";
 
 function FeedbackOkPage() {
-    const navigate = useNavigate();
+    const queryClient = useQueryClient();
+    const principalData = queryClient.getQueryData("principalQuery");
+    // const navigate = useNavigate();
     const handleOkClick = () => {
-        navigate("/menu/play");
+        if (principalData.data.playUse === 0) {
+            window.location.replace("/menu/main");
+            return;
+        } else if (principalData.data.playUse === 1) {
+            window.location.replace("/menu/play");
+            return;
+        }
     };
     return (
         <PageLayout>
@@ -16,7 +25,9 @@ function FeedbackOkPage() {
                         <h1>후기를 남겨 주셔서 감사합니다!</h1>
                     </div>
                 </div>
-                <button css={s.checkButton} onClick={handleOkClick}>확인</button>
+                <button css={s.checkButton} onClick={handleOkClick}>
+                    확인
+                </button>
             </div>
         </PageLayout>
     );
