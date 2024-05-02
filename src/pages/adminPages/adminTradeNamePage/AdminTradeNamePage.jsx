@@ -7,32 +7,31 @@ import { useMutation } from "react-query";
 import { editTradeNameRequest } from "../../../apis/api/tradeName";
 
 function AdminTradeNamePage() {
-
-    const [ tradeName, setTradeName ] = useState("");
+    const [tradeName, setTradeName] = useState("");
 
     const editTradeNameMutation = useMutation({
         mutationKey: "editTradeNameMutation",
         mutationFn: editTradeNameRequest,
-        onSuccess: response => {
+        onSuccess: (response) => {
             setTradeName(() => response.data);
             window.location.reload("/");
         },
-        onError: error => {
+        onError: (error) => {
             console.log(error);
-            alert("변경할 매장 이름 확인이 필요합니다")
-        }
-    })
+            alert("변경할 매장 이름 확인이 필요합니다");
+        },
+    });
 
     const handleOnClick = () => {
         editTradeNameMutation.mutate({
-            tradeName : newTradeName
-        })
-    }
+            tradeName: tradeName,
+        });
+    };
 
     const handleOnChange = (e) => {
-        setNewTradeName(() => e.target.value)
-    }
-    
+        setTradeName(() => e.target.value);
+    };
+
     return (
         <AdminPageLayout>
             <div css={s.layout}>
@@ -54,12 +53,18 @@ function AdminTradeNamePage() {
                     <div css={s.inputLayout}>
                         <div>
                             <h1>변경 후 매장명</h1>
-                            <input type="text" css={s.input} onChange={handleOnChange}/>
+                            <input
+                                type="text"
+                                css={s.input}
+                                onChange={handleOnChange}
+                            />
                         </div>
                     </div>
                 </div>
                 <div css={s.buttonLayout}>
-                    <button css={s.button} onClick={() => handleOnClick()}>저장</button>
+                    <button css={s.button} onClick={() => handleOnClick()}>
+                        저장
+                    </button>
                 </div>
             </div>
         </AdminPageLayout>
