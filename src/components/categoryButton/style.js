@@ -27,6 +27,7 @@ export const category = css`
     border: 1px solid #dbdbdb;
     padding-top: 10px;
     cursor: pointer;
+    box-shadow: 10px 10px 5px #bdc7ca;
 `;
 
 export const imglayout = css`

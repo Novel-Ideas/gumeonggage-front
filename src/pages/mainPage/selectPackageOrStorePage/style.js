@@ -27,13 +27,9 @@ export const selectWay = css`
     box-shadow: 10px 10px 5px #bdc7ca;
     cursor: pointer;
 
-    & > :nth-child(1) {
+    & > :nth-of-type(1) {
         font-size: 160px;
         margin: 40px;
-    }
-    & > :nth-child(2) {
-        font-size: 100px;
-  
     }
     
     &:hover {

@@ -2,10 +2,9 @@
 import { useEffect, useState } from "react";
 import PageModal from "../../../components/pageComponents/pageModal/PageModal";
 import * as s from "./style";
-import { FaCircleChevronRight, FaCoins } from "react-icons/fa6";
-import { GrPowerReset } from "react-icons/gr";
+import { FaCircleChevronRight } from "react-icons/fa6";
 import { searchUserRequest } from "../../../apis/api/searchUser";
-import { useMutation, useQuery } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useRecoilState } from "recoil";
 import { totalPayPriceState } from "../../../atoms/totalPayPriceAtom";
 import { useNavigate } from "react-router-dom";
@@ -15,6 +14,8 @@ import { orderRequest } from "../../../apis/api/menuApi";
 import { orderMenuListState } from "../../../atoms/orderMenuListAtom";
 
 function UsePointPhoneNumber(props) {
+    const queryClient = useQueryClient();
+    const principalData = queryClient.getQueryData("principalQuery");
     const navigate = useNavigate();
     const [inputValue, setInputValue] = useState("");
     const [usePoint, setUsePoint] = useState(0);
@@ -46,7 +47,17 @@ function UsePointPhoneNumber(props) {
                 showConfirmButton: false,
             });
             setTimeout(() => {
-                window.location.replace("/menu/feedbackChoice");
+                if (principalData.data.feedbackUse === 0) {
+                    if (principalData.data.playUse === 0) {
+                        window.location.replace("/menu/main");
+                        return;
+                    } else if (principalData.data.playUse === 1) {
+                        window.location.replace("/menu/play");
+                        return;
+                    }
+                } else if (principalData.data.feedbackUse === 1) {
+                    window.location.replace("/menu/feedbackChoice");
+                }
             }, 2000);
         },
         onError: (error) => {
@@ -215,6 +226,17 @@ function UsePointPhoneNumber(props) {
                 }
             });
         } else {
+            if (totalAmount === 0) {
+                let orderInfo = [];
+                orderMenuList.map((order) =>
+                    orderInfo.push({
+                        menuId: order.menuId,
+                        menuCount: order.menuCount,
+                    })
+                );
+                orderRequestMutation.mutate(orderInfo);
+                return;
+            }
             let menuName = orderMenuList.map((order) => order.menuName);
             let orderName = "";
             if (menuName.length > 1) {
