@@ -64,5 +64,6 @@ function AdminTradeNamePage() {
         </AdminPageLayout>
     );
 }
+//존나 머라하네
 
 export default AdminTradeNamePage;
