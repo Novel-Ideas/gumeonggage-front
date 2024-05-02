@@ -139,7 +139,7 @@ function AdminAuthPage() {
                     <>
                         <div css={s.signinBox}>
                             <div css={s.accountInfo}>
-                                {principalData.data.name}가게{" "}
+                                {principalData.data.tradename}가게{" "}
                                 {principalData.data.username}사장님
                             </div>
                             <button

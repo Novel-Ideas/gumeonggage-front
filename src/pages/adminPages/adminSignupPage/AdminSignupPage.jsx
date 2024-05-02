@@ -14,7 +14,7 @@ function AdminSignupPage() {
         useInput("username");
     const [password, passswordChange, , passwordMessage] = useInput("password");
     const [checkPassword, checkPasswordChange] = useInput("checkPassword");
-    const [name, nameChange, , nameMessage] = useInput("name");
+    const [tradename, tradenameChange, , tradenameMessage] = useInput("tradename");
     const [email, emailChange, , emailMessage] = useInput("email");
     const [checkPasswordMessage, setCheckPasswordMessage] = useState(null);
 
@@ -57,7 +57,7 @@ function AdminSignupPage() {
         signupRequest({
             username,
             password,
-            name,
+            tradename,
             email,
         })
             .then((response) => {
@@ -119,11 +119,11 @@ function AdminSignupPage() {
                         />
                         <AuthPageInput
                             type={"text"}
-                            name={"name"}
-                            placeholder={"성명"}
-                            value={name}
-                            onChange={nameChange}
-                            message={nameMessage}
+                            name={"tradeNaem"}
+                            placeholder={"상호명"}
+                            value={tradename}
+                            onChange={tradenameChange}
+                            message={tradenameMessage}
                         />
                         <AuthPageInput
                             type={"text"}
