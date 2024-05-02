@@ -94,7 +94,8 @@ export const searchBox = css`
     border: 1px solid #4d4d4d;
     border-radius: 30px;
     background-color: white;
-`;
+    box-shadow: 10px 10px 5px #bdc7ca;
+`
 
 export const top = css`
     background-color: #fafafa;

@@ -13,14 +13,30 @@ export const getPaymentsRequest = async () => {
         headers: {
             Authorization: `PortOne ${process.env.REACT_APP_PORTONE_API_SECRET_KEY}`,
         },
-        data: {
-            page: {
-                size: 40,
-            },
-            filter: {
-                storeId: process.env.REACT_APP_STORE_ID,
-                isTest: true,
-            },
+        params: {
+            requestBody: JSON.stringify({
+                page: {
+                    size: 1000,
+                },
+                filter: {
+                    storeId: process.env.REACT_APP_STORE_ID,
+                    isTest: true,
+                },
+            }),
         },
     });
+};
+
+export const paymentsCancelRequest = async (id) => {
+    return await portOneInstance.post(
+        `/payments/${id}/cancel`,
+        {
+            reason: "reason",
+        },
+        {
+            headers: {
+                Authorization: `PortOne ${process.env.REACT_APP_PORTONE_API_SECRET_KEY}`,
+            },
+        }
+    );
 };

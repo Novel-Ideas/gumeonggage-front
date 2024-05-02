@@ -30,7 +30,7 @@ align-items: center;
 border: 1px solid #dbdbdb;
 background-color: white;
 border-radius: 10px;
-box-shadow: 0px 4px #bdc7ca;
+box-shadow: 5px 5px 5px #bdc7ca;
 font-size: 16px;
 
 &:active {
@@ -63,7 +63,7 @@ export const selectWay = css`
     font-size: 120px;
     font-weight: 700;
     transition: all 0.2s ease-in-out;
-    box-shadow: 5px 5px 5px #898989ff;
+    box-shadow: 10px 10px 5px #bdc7ca;
     cursor: pointer;
 
     &:nth-of-type(1) {

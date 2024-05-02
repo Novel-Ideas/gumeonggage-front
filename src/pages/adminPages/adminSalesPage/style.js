@@ -68,6 +68,7 @@ export const chartBox = css`
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 7px 7px 5px #bdc7ca;
 `;
 
 export const line = css`
