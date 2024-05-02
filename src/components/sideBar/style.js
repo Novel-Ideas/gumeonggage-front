@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 
-export const container = css` 
+export const container = css`
     width: 20%;
     height: 100%;
     background-color: #f5f5f5;
@@ -17,7 +17,9 @@ export const layout = css`
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     background-color: white;
-    overflow-y: 30;
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
     box-shadow: 1px 0px 5px #00000022;
 `;
 

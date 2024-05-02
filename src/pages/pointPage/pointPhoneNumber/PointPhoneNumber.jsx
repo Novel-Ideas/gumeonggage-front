@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import PageModal from "../../../components/pageComponents/pageModal/PageModal";
 import * as s from "./style";
 import { useState } from "react";
-import { useMutation, useQuery } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import {
     pointCheckRequest,
     savePointRequest,
@@ -18,6 +18,8 @@ import { portOnePayRequest } from "../../../apis/api/portOneApi";
 import { searchUserRequest } from "../../../apis/api/searchUser";
 
 function PointPhoneNumber() {
+    const queryClient = useQueryClient();
+    const principalData = queryClient.getQueryData("principalQuery");
     const [inputValue, setInputValue] = useState("");
     const [userList, setUserList] = useState([]);
     const [orderMenuList, setOrderMenuList] =
@@ -111,7 +113,17 @@ function PointPhoneNumber() {
                     timerProgressBar: true,
                 });
                 setTimeout(() => {
-                    window.location.replace("/menu/feedbackChoice");
+                    if (principalData.data.feedbackUse === 0) {
+                        if (principalData.data.playUse === 0) {
+                            window.location.replace("/menu/main");
+                            return;
+                        } else if (principalData.data.playUse === 1) {
+                            window.location.replace("/menu/play");
+                            return;
+                        }
+                    } else if (principalData.data.feedbackUse === 1) {
+                        window.location.replace("/menu/feedbackChoice");
+                    }
                 }, 2000);
             }
         },

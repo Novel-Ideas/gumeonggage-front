@@ -2,10 +2,11 @@
 import * as s from "./style";
 import PageLayout from "../../../components/pageComponents/pageLayout/PageLayout";
 import { useInput } from "../../../hooks/useInput";
-import { getPortOneToken, signinRequest } from "../../../apis/api/authApi";
-import { useMutation, useQueryClient } from "react-query";
+import { signinRequest } from "../../../apis/api/authApi";
+import { useQueryClient } from "react-query";
 import { instance } from "../../../apis/utils/instance";
 import { useNavigate } from "react-router-dom";
+import logo from "../../../assets/coconut . (2).png";
 import Swal from "sweetalert2";
 
 function AdminAuthPage() {
@@ -90,7 +91,9 @@ function AdminAuthPage() {
                 {!principalData ? (
                     <>
                         <div css={s.signinBox}>
-                            <h1>gumeonggage</h1>
+                            <div css={s.logoBox}>
+                                <img src={logo} alt="" />
+                            </div>
                             <div css={s.inputInfo}>
                                 <input
                                     type="text"
