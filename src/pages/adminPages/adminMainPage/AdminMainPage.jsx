@@ -11,6 +11,10 @@ import { TbArrowBigLeftFilled } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
 import AdminMainPageFeedback from "../../../components/adminMainPageFeedback/AdminMainPageFeedback";
 import AdminSalesChart from "../../../components/adminSalesChart/AdminSalesChart";
+import PasswordCheck from "../../../components/passwordCheck/PasswordCheck";
+import { checkPasswordState } from "../../../atoms/checkPasswordAtom";
+import { useRecoilState } from "recoil";
+
 
 function AdminMainPage() {
     useAuthCheck();
@@ -18,6 +22,8 @@ function AdminMainPage() {
     const [sales, setSales] = useState([]);
     const [salesData, setSalesData] = useState([]);
     const navigate = useNavigate();
+    const [checkPassword, setCheckPassword] =
+        useRecoilState(checkPasswordState);
 
     useEffect(() => {
         let maxYear = -Infinity; // 최대값을 저장할 변수를 음수 무한대로 초기화
@@ -54,65 +60,75 @@ function AdminMainPage() {
 
     const handlebackButtonClick = () => {
         navigate("/selectmenu");
+        setCheckPassword(() => false);
     };
 
     return (
-        <AdminPageLayout>
-            <div css={s.layout}>
-                <div css={s.buttonLayout}>
-                    <button css={s.backButton} onClick={handlebackButtonClick}>
-                        <TbArrowBigLeftFilled />
-                    </button>
-                </div>
-                <div css={s.boxLayout}>
-                    <div css={s.fontLayout}>
-                        <h1>Sales</h1>
-                        <h1>매출</h1>
-                    </div>
-                    <div css={s.boxContainer}>
-                        <div css={s.categoryBox}>
-                            <AdminSalesChart
-                                sales={salesData}
-                                month={"month"}
-                                keyName={"총 매출"}
-                                dataKey={"totalSales"}
-                                barColor={"#8abdf3"}
-                                lineColor={"#ff7300"}
-                            />
+        <>
+            {checkPassword ? (
+                <AdminPageLayout>
+                    <div css={s.layout}>
+                        <div css={s.buttonLayout}>
+                            <button
+                                css={s.backButton}
+                                onClick={handlebackButtonClick}
+                            >
+                                <TbArrowBigLeftFilled />
+                            </button>
+                        </div>
+                        <div css={s.boxLayout}>
+                            <div css={s.fontLayout}>
+                                <h1>Sales</h1>
+                                <h1>매출</h1>
+                            </div>
+                            <div css={s.boxContainer}>
+                                <div css={s.categoryBox}>
+                                    <AdminSalesChart
+                                        sales={salesData}
+                                        month={"month"}
+                                        keyName={"총 매출"}
+                                        dataKey={"totalSales"}
+                                        barColor={"#8abdf3"}
+                                        lineColor={"#ff7300"}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div css={s.boxLayout}>
+                            <div css={s.fontLayout}>
+                                <h1>TOP3</h1>
+                                <h1>랭킹</h1>
+                            </div>
+                            <div css={s.boxContainer}>
+                                <div css={s.categoryBox}>
+                                    {ranking.map((menu, index) => (
+                                        <AdminMainPageTop3
+                                            key={menu.menuId}
+                                            img={menu.menu?.menuImgUrl}
+                                            menuName={menu.menu?.menuName}
+                                            index={index}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div css={s.fontLayout}>
+                                <h1>Feedback</h1>
+                                <h1>피드백</h1>
+                            </div>
+                            <div css={s.boxContainer}>
+                                <div css={s.categoryBox}>
+                                    <AdminMainPageFeedback />
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div css={s.boxLayout}>
-                    <div css={s.fontLayout}>
-                        <h1>TOP3</h1>
-                        <h1>랭킹</h1>
-                    </div>
-                    <div css={s.boxContainer}>
-                        <div css={s.categoryBox}>
-                            {ranking.map((menu, index) => (
-                                <AdminMainPageTop3
-                                    key={menu.menuId}
-                                    img={menu.menu?.menuImgUrl}
-                                    menuName={menu.menu?.menuName}
-                                    index={index}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div css={s.fontLayout}>
-                        <h1>Feedback</h1>
-                        <h1>피드백</h1>
-                    </div>
-                    <div css={s.boxContainer}>
-                        <div css={s.categoryBox}>
-                            <AdminMainPageFeedback />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </AdminPageLayout>
+                </AdminPageLayout>
+            ) : (
+                <PasswordCheck />
+            )}
+        </>
     );
 }
 
