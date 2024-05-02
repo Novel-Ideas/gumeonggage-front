@@ -47,12 +47,14 @@ function SideBar() {
                         </Link>
                     </div>
                     <div css={s.imgLayout}>
-                        <h1 css={s.font}>로고</h1>
+                        <h1 css={s.font}>점포 관리</h1>
                         <Link to={"/admin/logo"} css={s.link}>
                             로고 변경하기
                         </Link>
                         <Link to={"/admin/setting"} css={s.link}>
                             가게 설정
+                        <Link to={"/admin/trade"} css={s.link2}>
+                            상호명 변경하기
                         </Link>
                     </div>
                 </div>

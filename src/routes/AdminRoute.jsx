@@ -10,6 +10,7 @@ import AdminLogoPage from "../pages/adminPages/adminLogoPage/AdminLogoPage";
 import AdminSalesPage from "../pages/adminPages/adminSalesPage/AdminSalesPage";
 import AdminPayPage from "../pages/adminPages/adminPayPage/AdminPayPage";
 import AdminStoreSettingPage from "../pages/adminPages/adminStoreSettingPage/AdminStoreSettingPage";
+import AdminTradeNamePage from "../pages/adminPages/adminTradeNamePage/AdminTradeNamePage";
 
 function AdminRoute(props) {
     return (
@@ -25,6 +26,7 @@ function AdminRoute(props) {
             <Route path="/signup" element={<OAuth2SignupPage />} />
             <Route path="/logo" element={<AdminLogoPage />} />
             <Route path="/setting" element={<AdminStoreSettingPage />} />
+            <Route path="/trade" element={<AdminTradeNamePage />} />
         </Routes>
     );
 }

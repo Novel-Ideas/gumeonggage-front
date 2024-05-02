@@ -32,6 +32,15 @@ export const link = css`
     font-size: 20px;
 `;
 
+export const link2 = css`
+    display: flex;
+    margin-top: 15px;
+    text-decoration: none;
+    cursor: pointer;
+    color: #333;
+    font-size: 20px;
+`;
+
 export const homeLayout = css`
     display: flex;
     align-items: center;
