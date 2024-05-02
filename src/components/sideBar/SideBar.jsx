@@ -57,6 +57,9 @@ function SideBar() {
                         <Link to={"/admin/trade"} css={s.link2}>
                             상호명 변경하기
                         </Link>
+                        <Link to={"/admin/passwordedit"} css={s.link2}>
+                            비밀번호 변경하기
+                        </Link>
                     </div>
                 </div>
             </div>
