@@ -17,7 +17,7 @@ export const signupBox = css`
     background-color: rgb(0, 153, 255);
     padding: 50px;
     width: 40%;
-    height: 60%;
+    height: 65%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -53,7 +53,7 @@ export const signupButton = css`
     border: 2px solid rgb(0, 153, 255);
     border-radius: 20px;
     background-color: white;
-    padding: 20px 190px;
+    padding: 20px 180px;
     box-shadow: 5px 5px 5px #898989ff;
 
     &:active {
