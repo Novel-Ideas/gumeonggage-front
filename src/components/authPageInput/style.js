@@ -21,7 +21,7 @@ export const input = css`
     background-color: white;
     font-size: 14px;
     cursor: pointer; */
-    width: 40%;
+    width: 100%;
     height: 40px;
     border: none;
     border-radius: 10px;
