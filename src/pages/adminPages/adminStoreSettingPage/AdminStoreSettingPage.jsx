@@ -11,8 +11,10 @@ import { storeSettingRequest } from "../../../apis/api/storeSettingApi";
 import AdminLogoPage from "../adminLogoPage/AdminLogoPage";
 import { editTradeNameRequest } from "../../../apis/api/tradeName";
 import Swal from "sweetalert2";
+import { useAuthCheck } from "../../../hooks/useAuthCheck";
 
 function AdminStoreSettingPage(props) {
+    useAuthCheck();
     const queryClient = useQueryClient();
     const principalData = queryClient.getQueryData("principalQuery");
     const [storeFeedbackSetting, setStoreFeedbackSetting] = useRecoilState(
@@ -84,10 +86,10 @@ function AdminStoreSettingPage(props) {
 
     useEffect(() => {
         setStoreFeedbackSetting(() =>
-            principalData.data.feedbackUse === 0 ? false : true
+            principalData?.data.feedbackUse === 0 ? false : true
         );
         setStorePlaySetting(() =>
-            principalData.data.playUse === 0 ? false : true
+            principalData?.data.playUse === 0 ? false : true
         );
     }, []);
 

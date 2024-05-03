@@ -13,8 +13,10 @@ import ToggleSwitch from "../../../components/toggleSwitch/ToggleSwitch";
 import { useRecoilState } from "recoil";
 import { salesModeState } from "../../../atoms/salesModeAtom";
 import AdminSalesChart from "../../../components/adminSalesChart/AdminSalesChart";
+import { useAuthCheck } from "../../../hooks/useAuthCheck";
 
 function AdminSalesPage() {
+    useAuthCheck()
     const [sales, setSales] = useState([]);
     const [menuList, setMenuList] = useState([]);
     const [salesMode, setSalesMode] = useRecoilState(salesModeState);

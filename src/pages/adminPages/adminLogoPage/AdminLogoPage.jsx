@@ -14,8 +14,10 @@ import { useMenuRegisterInput } from "../../../hooks/useMenuRegisterInput";
 import noImg from "../../../assets/noImg.webp";
 import { IoCloudUpload } from "react-icons/io5";
 import { getPricipalRequest } from "../../../apis/api/principal";
+import { useAuthCheck } from "../../../hooks/useAuthCheck";
 
 function AdminLogoPage() {
+    useAuthCheck()
     const [newImgFile, setNewImgFile] = useState("");
     const newImgRef = useRef();
 

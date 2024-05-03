@@ -2,6 +2,7 @@
 import * as s from "./style";
 import { FaCircle } from "react-icons/fa";
 import { useQuery } from "react-query";
+import { useAuthCheck } from "../../../hooks/useAuthCheck";
 import AdminPageLayout from "../../../components/pageComponents/adminPageLayout/AdminPageLayout";
 import {
     getFeedbackCountRequest,
@@ -11,6 +12,7 @@ import { useState } from "react";
 import { PieChart, Pie, ResponsiveContainer, Legend, Cell } from "recharts";
 
 function AdminFeedbackPage(props) {
+    useAuthCheck();
     const [feedbackCount, setfeedbackCount] = useState([]);
     const COLORS1 = ["#e9b78b", "#776858", "#ac8a68"];
     const COLORS2 = ["#7cc26a", "#a3ce80", "#407a3e"];

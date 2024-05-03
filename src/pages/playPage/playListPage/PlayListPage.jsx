@@ -8,8 +8,10 @@ import { playDataListState } from "../../../atoms/playDataListAtom";
 import { useQuery } from "react-query";
 import { playListDataRequest } from "../../../apis/api/playList";
 import { Route, Routes, useNavigate } from "react-router-dom";
+import { useAuthCheck } from "../../../hooks/useAuthCheck";
 
 function PlayListPage() {
+    useAuthCheck()
     const [playListData, setPlayListData] = useRecoilState(playDataListState);
     const navigate = useNavigate();
 

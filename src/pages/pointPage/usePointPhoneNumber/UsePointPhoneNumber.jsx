@@ -12,8 +12,10 @@ import Swal from "sweetalert2";
 import { portOnePayRequest } from "../../../apis/api/portOneApi";
 import { orderRequest } from "../../../apis/api/menuApi";
 import { orderMenuListState } from "../../../atoms/orderMenuListAtom";
+import { useAuthCheck } from "../../../hooks/useAuthCheck";
 
 function UsePointPhoneNumber(props) {
+    useAuthCheck();
     const queryClient = useQueryClient();
     const principalData = queryClient.getQueryData("principalQuery");
     const navigate = useNavigate();

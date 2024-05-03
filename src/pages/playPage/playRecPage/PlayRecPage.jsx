@@ -2,8 +2,10 @@
 import * as s from "./style";
 import PageModal from "../../../components/pageComponents/pageModal/PageModal";
 import { useNavigate } from "react-router-dom";
+import { useAuthCheck } from "../../../hooks/useAuthCheck";
 
 function PlayRecPage() {
+    useAuthCheck();
     const navigate = useNavigate();
     const handleYesClick = () => {
         navigate("/menu/playlist");

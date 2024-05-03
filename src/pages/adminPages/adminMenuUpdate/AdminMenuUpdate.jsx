@@ -17,8 +17,10 @@ import { getAllCategoryRequest } from "../../../apis/api/options";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { v4 as uuid } from "uuid";
 import Swal from "sweetalert2";
+import { useAuthCheck } from "../../../hooks/useAuthCheck";
 
 function AdminMenuUpdate({ menuList }) {
+    useAuthCheck()
     const [searchParams, setSearchParams] = useSearchParams();
     const [selectedOption, setSelectedOption] = useState(null);
     const [categoryOptions, setCategoryOptions] = useState([]);
