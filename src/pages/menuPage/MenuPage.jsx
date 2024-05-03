@@ -12,8 +12,10 @@ import { useEffect, useState } from "react";
 import BigMenuComponent from "../../components/bigComponents/bigMenuComponent/BigMenuComponent";
 import { totalPayPriceState } from "../../atoms/totalPayPriceAtom";
 import BigMenuListComponent from "../../components/bigComponents/bigMenuListComponent/BigMenuListComponent";
+import { useAuthCheck } from "../../hooks/useAuthCheck";
 
 function MenuPage(props) {
+    useAuthCheck();
     const Swal = require("sweetalert2");
     const [bigMode, setBigMode] = useState(false);
     const [orderMenuList, setOrderMenuList] =

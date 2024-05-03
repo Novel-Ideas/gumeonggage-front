@@ -7,8 +7,10 @@ import { FaCircle, FaWindowClose } from "react-icons/fa";
 import AdminPageLayout from "../../../components/pageComponents/adminPageLayout/AdminPageLayout";
 import { deleteUserRequest } from "../../../apis/api/authApi";
 import Swal from "sweetalert2";
+import { useAuthCheck } from "../../../hooks/useAuthCheck";
 
 function AdminUserSearch() {
+    useAuthCheck();
     const [userList, setUserList] = useState([]);
     const [searchInput, setSearchInput] = useState("");
     const [userSearchList, setUserSearchList] = useState([]);

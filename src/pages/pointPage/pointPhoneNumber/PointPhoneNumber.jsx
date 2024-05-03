@@ -16,8 +16,10 @@ import { useRecoilState } from "recoil";
 import { totalPayPriceState } from "../../../atoms/totalPayPriceAtom";
 import { portOnePayRequest } from "../../../apis/api/portOneApi";
 import { searchUserRequest } from "../../../apis/api/searchUser";
+import { useAuthCheck } from "../../../hooks/useAuthCheck";
 
 function PointPhoneNumber() {
+    useAuthCheck();
     const queryClient = useQueryClient();
     const principalData = queryClient.getQueryData("principalQuery");
     const [inputValue, setInputValue] = useState("");

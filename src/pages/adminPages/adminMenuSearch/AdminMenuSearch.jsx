@@ -7,8 +7,10 @@ import MenuButton from "../../../components/menuButton/MenuButton";
 import AdminPageLayout from "../../../components/pageComponents/adminPageLayout/AdminPageLayout";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import AdminMenuUpdate from "../adminMenuUpdate/AdminMenuUpdate";
+import { useAuthCheck } from "../../../hooks/useAuthCheck";
 
 function AdminMenuSearch() {
+    useAuthCheck()
     const [menuList, setMenuList] = useState([]);
     const [searchMenuList, setSearchMenuList] = useState(menuList);
     const [searchInput, setSearchInput] = useState("");

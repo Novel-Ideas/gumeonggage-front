@@ -10,8 +10,10 @@ import {
 import { useState } from "react";
 import { FaWindowClose } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { useAuthCheck } from "../../../hooks/useAuthCheck";
 
 function AdminPayPage(props) {
+    useAuthCheck()
     const [payData, setPayData] = useState({});
 
     const Toast = Swal.mixin({

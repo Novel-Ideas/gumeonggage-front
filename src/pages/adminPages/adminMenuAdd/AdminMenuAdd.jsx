@@ -14,8 +14,10 @@ import { getAllCategoryRequest } from "../../../apis/api/options";
 import { useMenuRegisterInput } from "../../../hooks/useMenuRegisterInput";
 import { registerMenuRequest } from "../../../apis/api/menuApi";
 import Swal from "sweetalert2";
+import { useAuthCheck } from "../../../hooks/useAuthCheck";
 
 function AdminMenuAdd() {
+    useAuthCheck();
     const [selectedOption, setSelectedOption] = useState(null);
     const [categoryOptions, setCategoryOptions] = useState([]);
     const [noMinus, setNoMinus] = useState();
