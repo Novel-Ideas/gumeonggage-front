@@ -4,6 +4,9 @@ import AuthPageInput from "../../components/authPageInput/AuthPageInput";
 import { useAuthCheck } from "../../hooks/useAuthCheck";
 import { useEditPassword } from "../../hooks/useEditPassword";
 import { useMutation } from "react-query";
+import AdminPageLayout from "../../components/pageComponents/adminPageLayout/AdminPageLayout";
+import * as s from "./style";
+import { IoIosLock } from "react-icons/io";
 
 function PasswordEditPage() {
     useAuthCheck();
@@ -62,31 +65,44 @@ function PasswordEditPage() {
     };
 
     return (
-        <div>
-            <h1>비밀번호변경</h1>
-            <AuthPageInput
-                type={"password"}
-                value={oldPassword}
-                onChange={handleOldPassword}
-                placeholder={"현재 비밀번호를 입력하세요."}
-                message={oldMessage}
-            />
-            <AuthPageInput
-                type={"password"}
-                value={newPassword}
-                onChange={handleNewPassword}
-                placeholder={"새로운 비밀번호를 입력하세요."}
-                message={newMessage}
-            />
-            <AuthPageInput
-                type={"password"}
-                value={newPasswordCheck}
-                onChange={handleNewPasswordCheck}
-                placeholder={"새로운 비밀번호를 확인하세요."}
-                message={newCheckMessage}
-            />
-            <button onClick={handleEditsubmitClick}>비밀번호 변경하기</button>
-        </div>
+        <AdminPageLayout>
+            <div css={s.layout}>
+                <div css={s.header}>
+                    <div css={s.title}>비밀번호 변경하기</div>
+                </div>
+                <div css={s.contatiner}>
+                    <h1 css={s.ciLock}>
+                        <IoIosLock />
+                    </h1>
+                    <AuthPageInput
+                        type={"password"}
+                        value={oldPassword}
+                        onChange={handleOldPassword}
+                        placeholder={"현재 비밀번호를 입력하세요."}
+                        message={oldMessage}
+                    />
+                    <AuthPageInput
+                        type={"password"}
+                        value={newPassword}
+                        onChange={handleNewPassword}
+                        placeholder={"새로운 비밀번호를 입력하세요."}
+                        message={newMessage}
+                    />
+                    <AuthPageInput
+                        type={"password"}
+                        value={newPasswordCheck}
+                        onChange={handleNewPasswordCheck}
+                        placeholder={"새로운 비밀번호를 확인하세요."}
+                        message={newCheckMessage}
+                    />
+                    <div css={s.buttonLayout}>
+                        <button css={s.button} onClick={handleEditsubmitClick}>
+                            변경하기
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </AdminPageLayout>
     );
 }
 

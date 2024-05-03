@@ -30,7 +30,7 @@ function HomePage() {
         refetchOnWindowFocus: false,
         onSuccess: (response) => {
             setImgFile(response.data);
-            console.log(response.data);
+            console.log(response.data); 
         },
         onError: (error) => {
             console.log(error);
