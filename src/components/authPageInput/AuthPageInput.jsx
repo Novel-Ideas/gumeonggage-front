@@ -12,15 +12,19 @@ function AuthPageInput({ type, value, placeholder, onChange, message }) {
                 value={value}
                 placeholder={placeholder}
                 onChange={onChange}
-                />
-                {!!message && (
+            />
+            {!!message && (
+                <div css={s.messageBox(message.type)}>
                     <div css={s.inputIcon(message.type)}>
-                        {message.type === "error" ? <MdError /> : <FaCheckCircle />}
+                        {message.type === "error" ? (
+                            <MdError />
+                        ) : (
+                            <FaCheckCircle />
+                        )}
                     </div>
-                )}
-                {!!message && (
-                    <div css={s.messageBox(message.type)}>{message.text}</div>
-                )}
+                    {message.text}
+                </div>
+            )}
         </div>
     );
 }

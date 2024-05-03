@@ -7,7 +7,6 @@ export const layout = css`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
 `;
 
 export const signupBox = css`
@@ -15,9 +14,8 @@ export const signupBox = css`
     border: 2px solid rgb(0, 153, 255);
     border-radius: 30px;
     background-color: rgb(0, 153, 255);
-    padding: 50px;
+    padding: 20px;
     width: 40%;
-    height: 65%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -32,11 +30,13 @@ export const signupBox = css`
 `;
 
 export const inputInfo = css`
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 5px;
+    width: 80%;
 
     & > input {
         width: 150px;
@@ -60,6 +60,4 @@ export const signupButton = css`
         background-color: rgb(0, 153, 255);
         color: white;
     }
-
 `;
-
