@@ -14,7 +14,7 @@ export const signinBox = css`
     border: 2px solid rgb(0, 153, 255);
     border-radius: 30px;
     background-color: rgb(0, 153, 255);
-    padding: 50px 60px;
+    padding: 30px 40px;
     width: 40%;
     height: 40%;
     display: flex;
@@ -22,12 +22,15 @@ export const signinBox = css`
     justify-content: center;
     align-items: center;
     box-shadow: 5px 5px 5px #898989ff;
+`;
 
-    & > h1 {
-        font-size: 60px;
-        color: white;
-        font-weight: 700;
-    }
+export const imgBox = css`
+    width: 100%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 `;
 
 export const inputInfo = css`

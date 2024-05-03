@@ -8,16 +8,7 @@ import {
     getFeedbackRequest,
 } from "../../../apis/api/feedback";
 import { useState } from "react";
-import AdminMainPageFeedback from "../../../components/adminMainPageFeedback/AdminMainPageFeedback";
-import {
-    PieChart,
-    Pie,
-    ResponsiveContainer,
-    Label,
-    LabelList,
-    Legend,
-    Cell,
-} from "recharts";
+import { PieChart, Pie, ResponsiveContainer, Legend, Cell } from "recharts";
 
 function AdminFeedbackPage(props) {
     const [feedbackCount, setfeedbackCount] = useState([]);
@@ -69,7 +60,7 @@ function AdminFeedbackPage(props) {
             value: feedbackCount[0]?.q2a3,
         },
     ];
-    
+
     const data03 = [
         {
             name: "불친절함",
@@ -104,54 +95,60 @@ function AdminFeedbackPage(props) {
 
     const getMaxValueName = (data) => {
         let maxValue = 0;
-        let maxName = '';
-        data.forEach(item => {
-          if (item.value > maxValue) {
-            maxValue = item.value;
-            maxName = item.name;
-          }
+        let maxName = "";
+        data.forEach((item) => {
+            if (item.value > maxValue) {
+                maxValue = item.value;
+                maxName = item.name;
+            }
         });
         return maxName;
-      };
-      
+    };
 
-      const getDesiredText = (data) => {
+    const getDesiredText = (data) => {
         const maxName = getMaxValueName(data);
-        let desiredText = '';
+        let desiredText = "";
         switch (maxName) {
-          case '맛없음':
-            desiredText = '음식이 맛없어요';
-            break;
-          case '보통':
-            desiredText = '음식이 보통이에요';
-            break;
-          case '맛있음':
-            desiredText = '음식이 맛있어요';
-            break;
-          case '적음':
-            desiredText = '양이 적어요';
-            break;
-          case '적당함':
-            desiredText = '양이 적당해요';
-            break;
-          case '많음':
-            desiredText = '양이 많아요';
-            break;
-          case '불친절함':
-            desiredText = '서비스가 불친절해요';
-            break;
-          case '친절함':
-            desiredText = '서비스가 친절해요';
-            break;
-          default:
-            desiredText = '상태를 정의할 수 없어요';
+            case "맛없음":
+                desiredText =
+                    "음식이 맛없다는 평이 많아요. 맛을 개선시킬 필요가 있어보여요.";
+                break;
+            case "보통":
+                desiredText =
+                    "음식의 맛이 보통이라는 평이 많아요. 여기서 조금만 더 노력하신다면 맛있다는 평을 받을거 같아요!";
+                break;
+            case "맛있음":
+                desiredText = "음식이 맛있다는 평이 많아요! 이대로만 유지해요!";
+                break;
+            case "적음":
+                desiredText =
+                    "양이 적다는 평이 많아요. 양을 좀 더 늘릴 필요가 있어보여요.";
+                break;
+            case "적당함":
+                desiredText =
+                    "양이 적당하는 평이 많아요. 적지도 많지도 않게 딱 좋아요!";
+                break;
+            case "많음":
+                desiredText =
+                    "음식의 양이 너무 많아요. 손님들이 음식을 남기는 일이 많을거 같아요.";
+                break;
+            case "불친절함":
+                desiredText =
+                    "서비스가 불친절하다는 평이 많아요. 서비스의 개선이 필요해 보여요.";
+                break;
+            case "친절함":
+                desiredText =
+                    "서비스가 친절하다는 평이 많아요! 이렇게만 유지해주세요!";
+                break;
+            default:
+                desiredText = "상태를 정의할 수 없어요";
         }
         return desiredText;
-      };
+    };
 
-        const desiredTextData01 = getDesiredText(data01);
-        const desiredTextData02 = getDesiredText(data02);
-        const desiredTextData03 = getDesiredText(data03);
+    const desiredTextData01 = getDesiredText(data01);
+    const desiredTextData02 = getDesiredText(data02);
+    const desiredTextData03 = getDesiredText(data03);
 
     // console.log(feedbackList);
 

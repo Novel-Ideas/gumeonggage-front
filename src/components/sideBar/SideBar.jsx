@@ -51,9 +51,6 @@ function SideBar() {
                         <Link to={"/admin/setting"} css={s.link}>
                             가게 설정
                         </Link>
-                        <Link to={"/admin/trade"} css={s.link2}>
-                            상호명 변경하기
-                        </Link>
                         <Link to={"/admin/passwordedit"} css={s.link2}>
                             비밀번호 변경하기
                         </Link>

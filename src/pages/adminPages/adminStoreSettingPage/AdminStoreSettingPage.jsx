@@ -6,9 +6,11 @@ import * as s from "./style";
 import { useRecoilState } from "recoil";
 import { storeFeedbackSettingState } from "../../../atoms/storeFeedbackSettingAtom";
 import { storePlaySettingState } from "../../../atoms/storePlaySettingAtom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { storeSettingRequest } from "../../../apis/api/storeSettingApi";
 import AdminLogoPage from "../adminLogoPage/AdminLogoPage";
+import { editTradeNameRequest } from "../../../apis/api/tradeName";
+import Swal from "sweetalert2";
 
 function AdminStoreSettingPage(props) {
     const queryClient = useQueryClient();
@@ -19,6 +21,66 @@ function AdminStoreSettingPage(props) {
     const [storePlaySetting, setStorePlaySetting] = useRecoilState(
         storePlaySettingState
     );
+    const [tradeName, setTradeName] = useState("");
+
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+    });
+
+    const editTradeNameMutation = useMutation({
+        mutationKey: "editTradeNameMutation",
+        mutationFn: editTradeNameRequest,
+        onSuccess: (response) => {
+            Toast.fire({
+                icon: "success",
+                title: "성공적으로 업로드가 완료되었습니다.",
+            });
+            setTimeout(() => {
+                window.location.reload("/");
+            }, 1000);
+        },
+        onError: (error) => {
+            console.log(error);
+            alert("변경할 매장 이름 확인이 필요합니다");
+        },
+    });
+
+    const handleOnClick = () => {
+        if (tradeName === "") {
+            Swal.fire({
+                title: "점포 이름을 입력해주세요!",
+                icon: "error",
+                timer: 1500,
+                timerProgressBar: true,
+                showConfirmButton: false,
+            });
+            return;
+        } else if (tradeName === principalData.data.tradename) {
+            Swal.fire({
+                title: "현재 점포 이름과 같아요!",
+                icon: "error",
+                timer: 1500,
+                timerProgressBar: true,
+                showConfirmButton: false,
+            });
+            return;
+        }
+        editTradeNameMutation.mutate({
+            tradeName: tradeName,
+        });
+    };
+
+    const handleOnChange = (e) => {
+        setTradeName(() => e.target.value);
+    };
 
     useEffect(() => {
         setStoreFeedbackSetting(() =>
@@ -46,7 +108,7 @@ function AdminStoreSettingPage(props) {
             playUse: storePlaySetting === true ? 1 : 0,
         });
     }, [storeFeedbackSetting, storePlaySetting]);
-    
+
     return (
         <AdminPageLayout>
             <div css={s.layout}>
@@ -79,6 +141,17 @@ function AdminStoreSettingPage(props) {
                                     state={"play"}
                                     checked={storePlaySetting}
                                 />
+                            </div>
+                        </div>
+                        <div css={s.nameBox}>
+                            <div css={s.mainTitle}>점포 이름 변경하기</div>
+                            <div css={s.inputBox}>
+                                <input
+                                    type="text"
+                                    onChange={handleOnChange}
+                                    placeholder="점포 이름을 입력하세요."
+                                />
+                                <button onClick={handleOnClick}>변경</button>
                             </div>
                         </div>
                     </div>

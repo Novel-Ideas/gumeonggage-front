@@ -2,12 +2,13 @@
 import { useState } from "react";
 import * as s from "./style";
 import { useNavigate } from "react-router-dom";
-import { useMutation } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import { addFeedbackRequest } from "../../../apis/api/feedback";
 import PageModal from "../../../components/pageComponents/pageModal/PageModal";
-import Swal from "sweetalert2";
 
 function FeedbackWritePage() {
+    const queryClient = useQueryClient();
+    const principalData = queryClient.getQueryData("principalQuery");
     const Swal = require("sweetalert2");
     const [answer1, setAnswer1] = useState();
     const [answer2, setAnswer2] = useState();
@@ -21,7 +22,7 @@ function FeedbackWritePage() {
         onSuccess: (response) => {
             Swal.fire({
                 title: "감사합니다~!",
-                text: "더욱 성장하는 맥도날드가 되겠습니다!",
+                text: `더욱 성장하는 ${principalData.data.tradename}가 되겠습니다!`,
                 icon: "success",
                 confirmButtonColor: "rgb(252, 10, 86)",
                 confirmButtonText: "확인",
