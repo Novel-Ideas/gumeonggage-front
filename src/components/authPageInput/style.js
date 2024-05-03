@@ -48,7 +48,7 @@ export const messageBox = (type) => css`
 export const inputIcon = (type) => css`
     position: absolute;
     font-size: 20px;
-    top: 65px;
-    right: 280px;
-    color: ${type === "error" ? "white" : "#00921b"};
+    top: ${type === "error" ? "65px" : "14px"};
+    right: ${type === "error" ? "280px" : "-45px"};
+    color: white;
 `;
