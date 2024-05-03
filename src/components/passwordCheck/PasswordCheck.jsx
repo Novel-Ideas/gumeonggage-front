@@ -2,11 +2,11 @@
 import * as s from "./style";
 import { useInput } from "../../hooks/useInput";
 import PageLayout from "../pageComponents/pageLayout/PageLayout";
-import { useMutation, useQueryClient } from "react-query";
-import { useEffect, useState } from "react";
+import { useMutation } from "react-query";
 import { checkPasswordRequest } from "../../apis/api/checkPassword";
 import { useRecoilState } from "recoil";
 import { checkPasswordState } from "../../atoms/checkPasswordAtom";
+import img from "../../assets/coconut . (2).png";
 import Swal from "sweetalert2";
 
 function PasswordCheck(props) {
@@ -65,7 +65,9 @@ function PasswordCheck(props) {
         <PageLayout>
             <div css={s.layout}>
                 <div css={s.signinBox}>
-                    <h1>gumeonggage</h1>
+                    <div css={s.imgBox}>
+                        <img src={img} alt="" />
+                    </div>
                     <div css={s.inputInfo}>
                         <input
                             type="password"

@@ -7,7 +7,6 @@ import MenuButton from "../../../components/menuButton/MenuButton";
 import AdminPageLayout from "../../../components/pageComponents/adminPageLayout/AdminPageLayout";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import AdminMenuUpdate from "../adminMenuUpdate/AdminMenuUpdate";
-import { useInput } from "../../../hooks/useInput";
 
 function AdminMenuSearch() {
     const [menuList, setMenuList] = useState([]);

@@ -26,18 +26,6 @@ function AdminMenuUpdate({ menuList }) {
     const navigate = useNavigate();
     const fileRef = useRef();
 
-    const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 2000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-            toast.addEventListener("mouseenter", Swal.stopTimer);
-            toast.addEventListener("mouseleave", Swal.resumeTimer);
-        },
-    });
-
     const menuName = useMenuRegisterInput();
     const menuCategoryId = useMenuRegisterInput();
     const menuPrice = useMenuRegisterInput();

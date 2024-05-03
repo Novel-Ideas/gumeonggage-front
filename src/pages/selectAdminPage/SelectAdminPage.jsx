@@ -6,7 +6,6 @@ import PageLayout from "../../components/pageComponents/pageLayout/PageLayout";
 import { useNavigate } from "react-router-dom";
 import { useAuthCheck } from "../../hooks/useAuthCheck";
 import { TbArrowBigLeftFilled } from "react-icons/tb";
-import { useEffect } from "react";
 
 function SelectAdminPage(props) {
     useAuthCheck();
