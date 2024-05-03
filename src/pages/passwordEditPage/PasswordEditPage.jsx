@@ -7,6 +7,7 @@ import { useMutation } from "react-query";
 import AdminPageLayout from "../../components/pageComponents/adminPageLayout/AdminPageLayout";
 import * as s from "./style";
 import { IoIosLock } from "react-icons/io";
+import Swal from "sweetalert2";
 
 function PasswordEditPage() {
     useAuthCheck();
@@ -22,13 +23,30 @@ function PasswordEditPage() {
         setNewCheckMessage,
     ] = useEditPassword("newPasswordCheck");
 
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+    });
+
     const editPasswordMutation = useMutation({
         mutationKey: "editPasswordMutation",
         mutationFn: editPasswordRequest,
         onSuccess: (response) => {
-            alert("비밀번호를 정상적으로 변경하였습니다.");
-            localStorage.removeItem("AccessToken");
-            window.location.replace("/");
+            Toast.fire({
+                icon: "success",
+                title: "비밀번호 변경이 완료되었습니다!",
+            });
+            setTimeout(() => {
+                localStorage.removeItem("AccessToken");
+                window.location.replace("/");
+            }, 2000);
         },
         onError: (error) => {
             if (error.response.status === 400) {
@@ -42,6 +60,10 @@ function PasswordEditPage() {
                         type: "error",
                         text: v,
                     };
+                    Toast.fire({
+                        icon: "error",
+                        title: "비밀번호 인증에 실패하셨습니다. 다시 입력해주세요",
+                    });
                     if (k === "oldPassword") {
                         setOldMessage(() => message);
                     }
@@ -79,21 +101,18 @@ function PasswordEditPage() {
                         value={oldPassword}
                         onChange={handleOldPassword}
                         placeholder={"현재 비밀번호를 입력하세요."}
-                        message={oldMessage}
                     />
                     <AuthPageInput
                         type={"password"}
                         value={newPassword}
                         onChange={handleNewPassword}
                         placeholder={"새로운 비밀번호를 입력하세요."}
-                        message={newMessage}
                     />
                     <AuthPageInput
                         type={"password"}
                         value={newPasswordCheck}
                         onChange={handleNewPasswordCheck}
                         placeholder={"새로운 비밀번호를 확인하세요."}
-                        message={newCheckMessage}
                     />
                     <div css={s.buttonLayout}>
                         <button css={s.button} onClick={handleEditsubmitClick}>
