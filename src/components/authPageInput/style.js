@@ -4,7 +4,11 @@ export const inputBox = css`
     position: relative;
     box-sizing: border-box;
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 `;
 
 export const input = css`
@@ -17,27 +21,33 @@ export const input = css`
     background-color: white;
     font-size: 14px;
     cursor: pointer; */
-    width: 250px;
+    width: 40%;
     height: 40px;
     border: none;
     border-radius: 10px;
     outline: none;
-    font-size: 25px;
+    font-size: 23px;
     padding: 5px 10px;
+
+    &:hover {
+        background-color: #dbdbdb;
+    }
 `;
 
 export const messageBox = (type) => css`
-    padding: ${type === "error" ? "5px 10px" : 0};
-    width: 100%;
-    color: ${type === "error" ? "white" : "#00921b"};
+    padding: ${type === "error" ? "20px 0px" : 0};
+    width: 80%;
+    color: ${type === "error" ? "red" : "#00921b"};
     font-size: 18px;
     font-weight: 600;
+    text-align: center;
+    padding-right: 20px;
 `;
 
 export const inputIcon = (type) => css`
     position: absolute;
     font-size: 20px;
-    top: 16px;
-    right: 10px;
+    top: 20px;
+    right: 280px;
     color: ${type === "error" ? "#ff3030" : "#00921b"};
 `;
