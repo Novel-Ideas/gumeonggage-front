@@ -35,9 +35,10 @@ export const input = css`
 `;
 
 export const messageBox = (type) => css`
-    padding: ${type === "error" ? "20px 0px" : 0};
+    padding: ${type === "error" ? "5px 0px" : 0};
     width: 80%;
-    color: ${type === "error" ? "red" : "#00921b"};
+    margin-top: 10px;
+    color: ${type === "error" ? "white" : "#00921b"};
     font-size: 18px;
     font-weight: 600;
     text-align: center;
@@ -47,7 +48,7 @@ export const messageBox = (type) => css`
 export const inputIcon = (type) => css`
     position: absolute;
     font-size: 20px;
-    top: 20px;
-    right: 280px;
-    color: ${type === "error" ? "#ff3030" : "#00921b"};
+    top: ${type === "error" ? "65px" : "14px"};
+    right: ${type === "error" ? "280px" : "-45px"};
+    color: white;
 `;

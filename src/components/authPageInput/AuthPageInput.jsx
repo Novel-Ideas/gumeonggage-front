@@ -6,14 +6,6 @@ import { MdError } from "react-icons/md";
 function AuthPageInput({ type, value, placeholder, onChange, message }) {
     return (
         <div css={s.inputBox}>
-            {!!message && (
-                <div css={s.inputIcon(message.type)}>
-                    {message.type === "error" ? <MdError /> : <FaCheckCircle />}
-                </div>
-            )}
-            {!!message && (
-                <div css={s.messageBox(message.type)}>{message.text}</div>
-            )}
             <input
                 css={s.input}
                 type={type}
@@ -21,6 +13,14 @@ function AuthPageInput({ type, value, placeholder, onChange, message }) {
                 placeholder={placeholder}
                 onChange={onChange}
                 />
+                {!!message && (
+                    <div css={s.inputIcon(message.type)}>
+                        {message.type === "error" ? <MdError /> : <FaCheckCircle />}
+                    </div>
+                )}
+                {!!message && (
+                    <div css={s.messageBox(message.type)}>{message.text}</div>
+                )}
         </div>
     );
 }
