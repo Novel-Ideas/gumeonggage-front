@@ -15,7 +15,7 @@ function OAuth2SignupPage(props) {
         useInput("username");
     const [password, passswordChange, , passwordMessage] = useInput("password");
     const [checkPassword, checkPasswordChange] = useInput("checkPassword");
-    const [name, nameChange, , nameMessage] = useInput("name");
+    const [tradeName, tradenameChange, , tradenameMessage] = useInput("tradeName");
     const [email, emailChange, , emailMessage] = useInput("email");
     const [checkPasswordMessage, setCheckPasswordMessage] = useState(null);
 
@@ -79,7 +79,7 @@ function OAuth2SignupPage(props) {
         oAuth2SignupMutation.mutate({
             username: username,
             password: password,
-            name: name,
+            tradeName: tradeName,
             email: email,
             oauth2Name: searchParams.get("name"),
             providerName: searchParams.get("provider"),
@@ -119,10 +119,10 @@ function OAuth2SignupPage(props) {
                         <AuthPageInput
                             type={"text"}
                             name={"name"}
-                            placeholder={"성명"}
-                            value={name}
-                            onChange={nameChange}
-                            message={nameMessage}
+                            placeholder={"상호명"}
+                            value={tradeName}
+                            onChange={tradenameChange}
+                            message={tradenameMessage}
                         />
                         <AuthPageInput
                             type={"text"}
