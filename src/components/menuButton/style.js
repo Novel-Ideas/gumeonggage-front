@@ -42,6 +42,7 @@ export const imglayout = css`
     height: 160px;
     font-size: 40px;
     overflow: hidden;
+    border-radius: 10px;
 
     & > img {
         width: 100%;
