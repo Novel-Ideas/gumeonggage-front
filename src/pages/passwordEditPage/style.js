@@ -4,7 +4,6 @@ export const layout = css`
     z-index: 99;
     width: 100%;
     height: 100%;
-
 `;
 
 export const header = css`
@@ -49,23 +48,8 @@ export const ciLock = css`
 
 export const inputLayout = css`
     box-sizing: border-box;
-    border: 2px solid rgb(0, 153, 255);
-    margin: 25px;
-    background-color: rgb(0, 153, 255);
-    color: white;
-    border-radius: 30px;
-    width: 30%;
-    height: 70%;
-    display: flex;
-    align-items: center;
-    font-size: 25px;
-`;
-
-export const input = css`
-    box-sizing: border-box;
-    border: 1px solid rgb(0, 153, 255);
-    width: 100%;
-    height: 100%;
+    width: 40%;
+    height: 40%;
     font-size: 65px;
     outline: none;
     border-radius: 20px;

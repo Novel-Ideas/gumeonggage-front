@@ -96,24 +96,26 @@ function PasswordEditPage() {
                     <h1 css={s.ciLock}>
                         <IoIosLock />
                     </h1>
-                    <AuthPageInput
-                        type={"password"}
-                        value={oldPassword}
-                        onChange={handleOldPassword}
-                        placeholder={"현재 비밀번호를 입력하세요."}
-                    />
-                    <AuthPageInput
-                        type={"password"}
-                        value={newPassword}
-                        onChange={handleNewPassword}
-                        placeholder={"새로운 비밀번호를 입력하세요."}
-                    />
-                    <AuthPageInput
-                        type={"password"}
-                        value={newPasswordCheck}
-                        onChange={handleNewPasswordCheck}
-                        placeholder={"새로운 비밀번호를 확인하세요."}
-                    />
+                    <div css={s.inputLayout}>
+                        <AuthPageInput
+                            type={"password"}
+                            value={oldPassword}
+                            onChange={handleOldPassword}
+                            placeholder={"현재 비밀번호를 입력하세요."}
+                        />
+                        <AuthPageInput
+                            type={"password"}
+                            value={newPassword}
+                            onChange={handleNewPassword}
+                            placeholder={"새로운 비밀번호를 입력하세요."}
+                        />
+                        <AuthPageInput
+                            type={"password"}
+                            value={newPasswordCheck}
+                            onChange={handleNewPasswordCheck}
+                            placeholder={"새로운 비밀번호를 확인하세요."}
+                        />
+                    </div>
                     <div css={s.buttonLayout}>
                         <button css={s.button} onClick={handleEditsubmitClick}>
                             변경하기
