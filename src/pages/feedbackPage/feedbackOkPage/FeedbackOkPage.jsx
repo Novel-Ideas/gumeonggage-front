@@ -1,5 +1,4 @@
 /** @jsxImportSource @emotion/react */
-import { useNavigate } from "react-router-dom";
 import PageLayout from "../../../components/pageComponents/pageLayout/PageLayout";
 import * as s from "./style";
 import { useQueryClient } from "react-query";
@@ -7,7 +6,6 @@ import { useQueryClient } from "react-query";
 function FeedbackOkPage() {
     const queryClient = useQueryClient();
     const principalData = queryClient.getQueryData("principalQuery");
-    // const navigate = useNavigate();
     const handleOkClick = () => {
         if (principalData.data.playUse === 0) {
             window.location.replace("/menu/main");

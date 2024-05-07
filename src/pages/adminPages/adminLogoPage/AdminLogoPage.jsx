@@ -1,18 +1,15 @@
 /** @jsxImportSource @emotion/react */
 import * as s from "./style";
-import AdminPageLayout from "../../../components/pageComponents/adminPageLayout/AdminPageLayout";
 import { FaArrowRight } from "react-icons/fa";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import Swal from "sweetalert2";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { storage } from "../../../apis/firebase/config/firebaseConfig";
 import { v4 as uuid } from "uuid";
-import img from "../../../assets/맥도날드.svg";
 import { registerLogoRequest } from "../../../apis/api/logo";
 import { useMenuRegisterInput } from "../../../hooks/useMenuRegisterInput";
 import noImg from "../../../assets/noImg.webp";
-import { IoCloudUpload } from "react-icons/io5";
 import { getPricipalRequest } from "../../../apis/api/principal";
 import { useAuthCheck } from "../../../hooks/useAuthCheck";
 
