@@ -350,6 +350,11 @@ https://mangrove-comic-a17.notion.site/da55c3b2cb47486eb592dbc297ae8e01?v=f86578
     <img src="https://github.com/Novel-Ideas/gumeonggage-front/assets/106566223/b57232fd-74b6-4416-a988-4139407fe249" width="100%"/>
     <b>포인트 사용 결제화면</b>
 </div>
+<div align="center" dir="auto">
+    <img src="https://github.com/Novel-Ideas/gumeonggage-front/assets/106566223/f2cb1cc8-3f14-4cce-9c2d-34003626bcfb" width="50%" />
+    <br/>
+    <b>카카오페이 결제 화면</b>
+</div>
 
 ### 📨 피드백 화면
 
