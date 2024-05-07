@@ -7,7 +7,6 @@ import { FaStar } from "react-icons/fa";
 import { IoIosPhonePortrait } from "react-icons/io";
 import { FaRegClock } from "react-icons/fa6";
 import { MdPlace } from "react-icons/md";
-import PlayMap from "../playMap/PlayMap";
 import { playDataState } from "../../../atoms/playDataAtom";
 import { useNavigate } from "react-router-dom";
 

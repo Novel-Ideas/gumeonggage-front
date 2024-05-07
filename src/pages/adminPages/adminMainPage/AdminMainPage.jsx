@@ -15,7 +15,6 @@ import PasswordCheck from "../../../components/passwordCheck/PasswordCheck";
 import { checkPasswordState } from "../../../atoms/checkPasswordAtom";
 import { useRecoilState } from "recoil";
 
-
 function AdminMainPage() {
     useAuthCheck();
     const [ranking, setRanking] = useState([]);

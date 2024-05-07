@@ -5,15 +5,12 @@ import {
     PieChart,
     Pie,
     ResponsiveContainer,
-    Label,
-    LabelList,
     Legend,
     Cell,
 } from "recharts";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
     getFeedbackCountRequest,
-    getFeedbackRequest,
 } from "../../apis/api/feedback";
 
 function AdminMainPageFeedback(props) {

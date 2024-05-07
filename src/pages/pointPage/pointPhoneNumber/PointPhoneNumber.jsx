@@ -5,7 +5,6 @@ import * as s from "./style";
 import { useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import {
-    pointCheckRequest,
     savePointRequest,
     userSignupRequest,
 } from "../../../apis/api/pointApi";
