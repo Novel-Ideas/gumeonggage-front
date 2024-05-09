@@ -6,6 +6,8 @@
 >
 > ## 👥 팀원 소개
 >
+> ## 💼 역할 분담
+>
 > ## 🛠 개발 도구
 >
 > ## 📆 프로젝트 일정
@@ -74,6 +76,45 @@
 <br/>
 
 ## 👥 팀원 소개
+
+<div align="center">
+<img src="https://github.com/Novel-Ideas/gumeonggage-front/assets/83110386/6339b2ff-101b-4316-98b1-fe5e53bda768" />
+<img src="https://github.com/Novel-Ideas/gumeonggage-front/assets/83110386/344a9254-8f2f-439e-af78-addcb748c4e9" />
+<table>
+    <thead>
+        <tr align="center">
+            <th align="center"><span>이동윤(팀장)</span></th>
+            <th align="center"><span>이지언</span></th>
+            <th align="center"><span>서현욱</span></th>
+            <th align="center"><span>김종현</span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <td align="center">
+            <a >
+                <img src="https://github.com/Novel-Ideas/gumeonggage-front/assets/83110386/50f5a224-bbbc-4486-9ce0-b873d962898d" width="150" height="150" />
+            </a>
+        </td>
+        <td align="center">
+            <a>
+                <img src="https://github.com/Novel-Ideas/gumeonggage-front/assets/83110386/37d1fc3b-f435-44d0-adb4-0404c1b71837" width="150" height="150" />
+            </a>
+        </td>
+        <td align="center">
+            <a>
+                <img src="https://github.com/Novel-Ideas/gumeonggage-front/assets/83110386/b015e01d-1078-428e-a713-a92b23e4ff6a" width="150" height="150" />
+            </a>
+        </td>
+        <td align="center">
+            <a>
+                <img src="https://github.com/Novel-Ideas/gumeonggage-front/assets/83110386/ffb0f7a2-6df1-4935-8b3f-036cf89e344b" width="150" height="150" />
+            </a>
+        </td>
+    </tbody>
+</table>
+</div>
+
+## 💼 역할 분담
 
 > 🛩 팀장: 이동윤
 
