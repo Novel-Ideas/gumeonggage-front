@@ -80,9 +80,9 @@
 <div align="center">
 <img src="https://github.com/Novel-Ideas/gumeonggage-front/assets/83110386/6339b2ff-101b-4316-98b1-fe5e53bda768" />
 <img src="https://github.com/Novel-Ideas/gumeonggage-front/assets/83110386/344a9254-8f2f-439e-af78-addcb748c4e9" />
-<table>
+<table >
     <thead>
-        <tr align="center">
+        <tr>
             <th align="center"><span>이동윤(팀장)</span></th>
             <th align="center"><span>이지언</span></th>
             <th align="center"><span>서현욱</span></th>
@@ -91,22 +91,22 @@
     </thead>
     <tbody>
         <td align="center">
-            <a >
+            <a href="https://github.com/dongyoon7212">
                 <img src="https://github.com/Novel-Ideas/gumeonggage-front/assets/83110386/50f5a224-bbbc-4486-9ce0-b873d962898d" width="150" height="150" />
             </a>
         </td>
         <td align="center">
-            <a>
+            <a href="https://github.com/ez0603">
                 <img src="https://github.com/Novel-Ideas/gumeonggage-front/assets/83110386/37d1fc3b-f435-44d0-adb4-0404c1b71837" width="150" height="150" />
             </a>
         </td>
         <td align="center">
-            <a>
+            <a href="https://github.com/seohyeonwook">
                 <img src="https://github.com/Novel-Ideas/gumeonggage-front/assets/83110386/b015e01d-1078-428e-a713-a92b23e4ff6a" width="150" height="150" />
             </a>
         </td>
         <td align="center">
-            <a>
+            <a href="https://github.com/jayhyeon12">
                 <img src="https://github.com/Novel-Ideas/gumeonggage-front/assets/83110386/ffb0f7a2-6df1-4935-8b3f-036cf89e344b" width="150" height="150" />
             </a>
         </td>
@@ -219,6 +219,26 @@
 
 <br/>
 <br/>
+
+## 🤝 협업 방식
+1. 해당하는 업무에 대해 GitHub Issue를 생성합니다.
+2. GitHub Actions에 의해 자동으로 생성된 브랜치로 전환하여 해당하는 업무를 진행합니다.
+3. 작업을 완료하면 각자의 생성한 브랜치에서 코드를  push합니다.
+4. PR(Pull Request) 을 오픈합니다.
+
+- PR(pull request)을 오픈하면, 팀장이 코드를 확인하고 승인합니다.
+
+- 코드 리뷰 & 승인은 팀장이 일임했지만, 팀원들의 코드 스타일은 다같이 공유하며 서로 잘 이해할 수 있도록 다 같이 정리하는 시간을 가지도록 하였습니다.
+
++ 컨펌 담당
+    + 지언 : <code>동윤</code>
+    + 현욱 : <code>동윤</code>
+    + 종현 : <code>동윤</code>
+
+5. PR이 merge되어 close 되면 해당 이슈는 자동으로 Done상태로 변경됩니다.
+
+## 📚 프로젝트 진행 상황 관리
+- <a href="https://github.com/Novel-Ideas/gumeonggage-front/issues?q=is%3Aissue+is%3Aclosed"></a>
 
 ## 🛠 개발 도구
 
