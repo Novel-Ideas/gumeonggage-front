@@ -26,7 +26,7 @@
 >
 > ## [🖥 화면 구현](#-화면-구현-1)
 >
-> ## [💡 느낀점](#💡-느낀점)
+> ## [💡 느낀점](#-느낀점-1)
 
 <br/>
 <br/>
@@ -252,7 +252,8 @@
 ## 📚 프로젝트 진행 상황 관리
 
 -   <a href="https://github.com/Novel-Ideas/gumeonggage-front/issues?q=is%3Aissue+is%3Aclosed">📋 GitHub Issues(Front) & </a>
-    <a href="https://github.com/Novel-Ideas/gumeonggage-back/issues?q=is%3Aissue+is%3Aclosed"> GitHub Issues(Back) & </a> + 간편한 이슈 생성을 위해 이슈 템플릿을 만들어 사용했습니다. + 팀원이 현재 어떤 작업을 진행하고 있는지를 바로 알 수 있어 의사소통 비용을 줄일 수 있었습니다.
+    <a href="https://github.com/Novel-Ideas/gumeonggage-back/issues?q=is%3Aissue+is%3Aclosed"> GitHub Issues(Back) </a> 
+    + 간편한 이슈 생성을 위해 이슈 템플릿을 만들어 사용했습니다. + 팀원이 현재 어떤 작업을 진행하고 있는지를 바로 알 수 있어 의사소통 비용을 줄일 수 있었습니다.
 -   <a href="https://github.com/orgs/Novel-Ideas/projects/1">📁 GitHub Projects</a>
     -   칸반 보드로 프로젝트 진행 상황을 한 눈에 확인할 수 있어 일정을 관리하기 수월했습니다.
 
