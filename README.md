@@ -669,4 +669,43 @@ https://mangrove-comic-a17.notion.site/da55c3b2cb47486eb592dbc297ae8e01?v=f86578
 <p align="right" dir="auto">
 <a href="https://github.com/Novel-Ideas/gumeonggage-front">TOP 🔼</a>
 </p>
+
 </br>
+</br>
+
+## 💡 느낀점
+
+### 이동윤(팀장)
+
+<div align="center">
+    <img src="https://github.com/Novel-Ideas/gumeonggage-front/assets/83110386/50f5a224-bbbc-4486-9ce0-b873d962898d" width="200" height="200" />
+</div>
+<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed vulputate tortor, vel auctor nunc. Suspendisse nec varius quam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi eu mauris varius, tincidunt mi ut, commodo mauris. Quisque lacinia lobortis urna. Vestibulum id lacinia sapien, eget gravida massa. Donec id eros lacinia, lacinia nulla ac, ornare lorem. Proin ut lacus congue ex consectetur faucibus a sit amet velit. Pellentesque pulvinar egestas nibh at aliquam. Phasellus porttitor posuere lacus, id porta ante. Aenean congue nibh eu ex aliquam, ut sollicitudin risus semper. Ut lobortis, enim eu pretium dignissim, enim tortor interdum libero, eu venenatis ex mi vitae nisi. Nunc suscipit, dolor sit amet euismod varius, sapien neque ullamcorper turpis, a commodo dolor arcu at orci. Maecenas tempor turpis et arcu sagittis euismod.</span>
+
+---
+
+### 이지언
+
+<div align="center">
+    <img src="https://github.com/Novel-Ideas/gumeonggage-front/assets/83110386/37d1fc3b-f435-44d0-adb4-0404c1b71837" width="200" height="200" />
+</div>
+<span>Nulla molestie arcu id scelerisque eleifend. Morbi blandit diam quis euismod eleifend. Suspendisse et viverra orci, ut rutrum augue. Maecenas non molestie orci, vel fermentum nunc. Proin efficitur elit ultricies, volutpat lacus id, suscipit erat. Vivamus placerat dolor at velit hendrerit, vitae eleifend justo aliquam. Aenean mollis, lacus sit amet iaculis sollicitudin, lectus tortor euismod mi, non sodales quam dui vitae turpis. Vivamus ex tortor, cursus eu enim non, lobortis elementum arcu.</span>
+
+---
+
+### 서현욱
+
+<div align="center">
+    <img src="https://github.com/Novel-Ideas/gumeonggage-front/assets/83110386/b015e01d-1078-428e-a713-a92b23e4ff6a" width="200" height="200" />
+</div>
+
+팀 프로젝트를 진행하며 여러 가지 느낀 점이 있지만 첫 번째로 ***협업의 중요성***을 깨달았습니다. 프로젝트의 결과와 별개로 그 과정에서 각자의 역할과 책임을 정하고 소통하며 함께 작업하는 중요성을 깨달았습니다.<br/> 두 번째로는 ***문제 해결능력이 향상***되었습니다. 프로젝트 도중 발생한 문제들을 스스로 해결하거나 팀원들과 상의하는 동안 새로운 아이디어를 생각해 내고 습관적으로 사용하고 있던 코드들이 어떻게 상호작용하는지 다시금 생각해 보게 되었습니다.<br/> 세 번째로 ***팀원과의 소통의 중요성***을 느꼈습니다 각자의 의견을 나누고 수용하고 제가 생각하지 못하던 부분으로도 누군가 생각할 수 있다는 것을 느꼈습니다.<br/> 네 번째로 ***지속적인 검토의 중요성***에 대해 느꼈습니다 코드를 다 작성하고 그 순간 동작이 잘 되는 것을 확인하더라도 팀원들의 다른 코드와 합쳐지면서 생각지도 못한 방향으로 오류가 일어날 수도 있다는 것을 많이 봤습니다 그러면서 작성해둔 코드의 검토와 유지 보수 중요성을 느꼈습니다.<br/> 마지막으로 ***팀원들과의 분위기***가 팀 내 프로젝트의 결과물과 과정에 얼마나 큰 영향을 끼치는지 알았습니다. 각자의 일만 잘하는 게 팀 프로젝트의 다가 아니라 긍정적인 분위기와 서로에 대한 신뢰가 팀의 결속력을 다지고 가끔은 서로의 책임보다 더 긍정적인 효과를 나타낼 수도 있다는 것을 느꼈습니다.
+
+---
+
+### 김종현
+
+<div align="center">
+    <img src="https://github.com/Novel-Ideas/gumeonggage-front/assets/83110386/ffb0f7a2-6df1-4935-8b3f-036cf89e344b" width="200" height="200" />
+</div>
+<span>Integer blandit, mi at pharetra convallis, neque leo tempus magna, non gravida libero metus ut dui. Maecenas ac velit commodo, lacinia nisi quis, sagittis ante. Phasellus semper nulla est, in sodales dui pellentesque tristique. Aenean vitae varius ipsum, vitae pretium velit. Nulla efficitur erat nec ligula faucibus rhoncus. Donec porta tincidunt felis, malesuada ullamcorper erat suscipit in. Quisque quis nisi sapien. Mauris sit amet varius magna, in tincidunt nunc.</span>
