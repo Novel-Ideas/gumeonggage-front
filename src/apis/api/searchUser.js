@@ -1,5 +1,5 @@
 import { instance } from "../utils/instance";
 
 export const searchUserRequest = async () => {
-    return await instance.get("/admin/auth/users");
+    return await instance.get("/admin/account/users");
 };
