@@ -8,6 +8,7 @@ import { instance } from "../../../apis/utils/instance";
 import { useNavigate } from "react-router-dom";
 import logo from "../../../assets/coconut . (2).png";
 import Swal from "sweetalert2";
+import getServerAddress from "../../../constants/serverAddress";
 
 function AdminAuthPage() {
     const [username, handleOnChangeUsername] = useInput();
@@ -121,14 +122,14 @@ function AdminAuthPage() {
                             로그인
                         </button>
                         <a
-                            href="http://3.36.22.124/oauth2/authorization/kakao"
+                            href={`${getServerAddress()}/oauth2/authorization/kakao`}
                             css={s.loginButton}
                         >
                             <span>카카오</span>
                             로그인
                         </a>
                         <a
-                            href="http://3.36.22.124/oauth2/authorization/naver"
+                            href={`${getServerAddress()}/oauth2/authorization/naver`}
                             css={s.loginButton}
                         >
                             <span>네이버</span>

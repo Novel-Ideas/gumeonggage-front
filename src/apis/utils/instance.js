@@ -1,7 +1,8 @@
 import axios from "axios";
+import getServerAddress from "../../constants/serverAddress";
 
 export const instance = axios.create({
-    baseURL: "http://3.36.22.124",
+    baseURL: getServerAddress(),
     headers: {
         Authorization: "Bearer " + localStorage.getItem("AccessToken"),
     },
