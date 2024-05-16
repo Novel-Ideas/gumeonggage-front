@@ -121,14 +121,14 @@ function AdminAuthPage() {
                             로그인
                         </button>
                         <a
-                            href="http://localhost:8080/oauth2/authorization/kakao"
+                            href="http://3.36.22.124/oauth2/authorization/kakao"
                             css={s.loginButton}
                         >
                             <span>카카오</span>
                             로그인
                         </a>
                         <a
-                            href="http://localhost:8080/oauth2/authorization/naver"
+                            href="http://3.36.22.124/oauth2/authorization/naver"
                             css={s.loginButton}
                         >
                             <span>네이버</span>
